@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Publish tagged release
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Check release version
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: npm run release:check-version -- "${TAG_NAME}"
+
+      - name: Start WordPress
+        run: npm run wp:start
+
+      - name: Install PHP dependencies
+        run: npm run composer:install
+
+      - name: Validate release package
+        run: npm run validate
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          gh release create "${TAG_NAME}" \
+            dist/executive-signal-wordpress-theme.zip \
+            --title "${TAG_NAME}" \
+            --generate-notes
+
+      - name: Stop WordPress
+        if: always()
+        continue-on-error: true
+        run: npm run wp:stop
