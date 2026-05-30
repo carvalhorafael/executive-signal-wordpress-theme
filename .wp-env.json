@@ -1,0 +1,13 @@
+{
+  "core": null,
+  "plugins": [
+    "https://downloads.wordpress.org/plugin/theme-check.latest-stable.zip"
+  ],
+  "themes": [
+    "."
+  ],
+  "config": {
+    "WP_DEBUG": true,
+    "WP_ENVIRONMENT_TYPE": "local"
+  }
+}
