@@ -33,6 +33,8 @@ test.describe("Executive Signal theme front end", () => {
     await page.goto("/");
 
     await expect(page.locator("[data-site-header]")).toBeVisible();
+    await expect(page.locator("html")).toHaveAttribute("data-es-theme", "light");
+    await expect(page.locator("html")).toHaveAttribute("data-es-palette", "signal");
     await expect(page.locator("[data-site-header]")).toHaveAttribute("data-enhanced", "true");
     await expect(page.locator('link[href*="assets/dist/assets/main-"]')).toHaveCount(1);
     await expect(page.locator('script[src*="assets/dist/assets/main-"]')).toHaveCount(1);

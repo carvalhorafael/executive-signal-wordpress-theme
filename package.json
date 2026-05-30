@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run wp:start && vite --host 0.0.0.0",
+    "dev": "npm run wp:start && npm run composer:install && vite --host 0.0.0.0",
     "build": "vite build",
     "composer:install": "npx wp-env run cli bash -lc 'cd /var/www/html/wp-content/themes/executive-signal-wordpress-theme && composer install'",
     "i18n:pot": "npx wp-env run cli -- wp i18n make-pot /var/www/html/wp-content/themes/executive-signal-wordpress-theme /var/www/html/wp-content/themes/executive-signal-wordpress-theme/languages/executive-signal-wordpress-theme.pot --domain=executive-signal-wordpress-theme --exclude=assets/dist,coverage,dist,docs,node_modules,scripts,tests,vendor --headers='{\"Language-Team\":\"Executive Signal\",\"POT-Creation-Date\":\"\"}' --skip-js",
@@ -27,6 +27,12 @@
     "wp:start": "wp-env start",
     "wp:stop": "wp-env stop",
     "wp:destroy": "wp-env destroy"
+  },
+  "dependencies": {
+    "@carvalhorafael/executive-signal-css": "0.3.0",
+    "@carvalhorafael/executive-signal-patterns": "0.2.0",
+    "@carvalhorafael/executive-signal-tokens": "0.2.0",
+    "@carvalhorafael/executive-signal-web": "0.2.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",

@@ -200,32 +200,32 @@ msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Ink"
+msgid "Text primary"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Canvas"
+msgid "Background"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Surface"
+msgid "Panel"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Signal"
+msgid "Accent"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Attention"
+msgid "Warning"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Muted"
+msgid "Text tertiary"
 msgstr ""
 
 #: theme.json
@@ -250,12 +250,12 @@ msgstr ""
 
 #: theme.json
 msgctxt "Font family name"
-msgid "Sans"
+msgid "Executive Signal Sans"
 msgstr ""
 
 #: theme.json
 msgctxt "Font family name"
-msgid "Mono"
+msgid "Executive Signal Mono"
 msgstr ""
 
 #: theme.json

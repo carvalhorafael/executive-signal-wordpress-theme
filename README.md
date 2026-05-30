@@ -4,13 +4,26 @@ Tema WordPress do Executive Signal.
 
 Este repositorio contem uma base de tema hibrido: templates PHP classicos, suporte ao editor de blocos via `theme.json`, block patterns, assets compilados com Vite e validacoes automatizadas para qualidade, empacotamento e release.
 
+O tema consome o Executive Signal Design System pelos pacotes publicados no GitHub Packages. O design system e a fonte de verdade para tokens, CSS compartilhado, contratos de pattern e comportamentos web portaveis; este repositorio adapta esses contratos para WordPress.
+
 ## Requisitos
 
 - Docker
 - Node.js 20+
 - npm
+- token do GitHub Packages com leitura dos pacotes `@carvalhorafael/*`
 
 O ambiente WordPress local roda com `@wordpress/env`.
+
+## GitHub Packages
+
+Copie `.npmrc.example` para `.npmrc` e substitua `SEU_TOKEN_GITHUB` por um token com permissao de leitura dos packages:
+
+```bash
+cp .npmrc.example .npmrc
+```
+
+O arquivo `.npmrc` real nao deve ser commitado.
 
 ## Desenvolvimento local
 
@@ -20,23 +33,13 @@ Instale as dependencias:
 npm install
 ```
 
-Inicie o WordPress local:
-
-```bash
-npm run wp:start
-```
-
-Instale as dependencias PHP dentro do container:
-
-```bash
-npm run composer:install
-```
-
-Inicie o servidor de desenvolvimento do tema:
+Inicie o ambiente local de desenvolvimento:
 
 ```bash
 npm run dev
 ```
+
+Esse comando sobe o WordPress local com `wp-env`, instala as dependencias PHP dentro do container e inicia o Vite.
 
 URLs locais:
 
@@ -94,6 +97,17 @@ Para os containers do WordPress local.
 - `tests/e2e/`: testes Playwright.
 - `docs/`: documentacao operacional e decisoes do projeto.
 
+## Design System
+
+Pacotes consumidos:
+
+- `@carvalhorafael/executive-signal-tokens`
+- `@carvalhorafael/executive-signal-css`
+- `@carvalhorafael/executive-signal-web`
+- `@carvalhorafael/executive-signal-patterns`
+
+O CSS fonte importa os pacotes em `src/styles/main.css`. Ajustes especificos do WordPress ficam em `src/styles/theme.css`. Se uma tela precisar de markup ou comportamento que ainda nao exista no design system, siga a politica de issues cruzadas descrita em `AGENTS.md`.
+
 ## Fluxo de trabalho
 
 O fluxo padrao usa `develop` como branch de integracao.
@@ -111,9 +125,9 @@ Abra pull requests de branches de trabalho para `develop`. Mudancas em `main` de
 
 ## Release
 
-A release e acionada por tag humana no formato `vX.Y.Z`.
+A decisao de release e humana. Quando for hora de lancar, prepare uma branch de release a partir de `develop`, atualize a versao e abra PR para `main`.
 
-Antes de criar a tag, mantenha a versao sincronizada em:
+Antes de abrir o PR para `main`, mantenha a versao sincronizada em:
 
 - `package.json`
 - `style.css`
@@ -125,16 +139,9 @@ Valide a paridade:
 npm run release:check-version -- v0.1.0
 ```
 
-Depois do merge da release em `main`, crie e envie a tag:
+Depois do merge em `main`, o workflow `Release` cria a tag `vX.Y.Z`, valida o tema e publica o ZIP na GitHub Release.
 
-```bash
-git checkout main
-git pull --ff-only origin main
-git tag -a v0.1.0 -m "Release v0.1.0"
-git push origin v0.1.0
-```
-
-O workflow de release valida o tema e publica o ZIP na GitHub Release.
+O tema tambem consulta a ultima GitHub Release pelo updater em `inc/updater.php`. Quando houver uma versao mais nova, o painel do WordPress deve oferecer atualizacao de tema em um clique.
 
 ## Documentacao adicional
 

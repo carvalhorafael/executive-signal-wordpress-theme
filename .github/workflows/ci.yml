@@ -29,8 +29,12 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          registry-url: https://npm.pkg.github.com
+          scope: "@carvalhorafael"
 
       - name: Install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.EXECUTIVE_SIGNAL_PACKAGES_TOKEN }}
         run: npm ci
 
       - name: Install Playwright browsers

@@ -2,8 +2,9 @@ name: Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,22 +18,46 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: npm
+          registry-url: https://npm.pkg.github.com
+          scope: "@carvalhorafael"
 
       - name: Install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.EXECUTIVE_SIGNAL_PACKAGES_TOKEN }}
         run: npm ci
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
+      - name: Resolve release tag
+        id: release
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          TAG_NAME="v${VERSION}"
+          echo "version=${VERSION}" >> "${GITHUB_OUTPUT}"
+          echo "tag=${TAG_NAME}" >> "${GITHUB_OUTPUT}"
+
+      - name: Ensure release tag is new
+        env:
+          TAG_NAME: ${{ steps.release.outputs.tag }}
+        run: |
+          git fetch --tags origin
+          if git rev-parse --verify --quiet "refs/tags/${TAG_NAME}"; then
+            echo "Release tag ${TAG_NAME} already exists. Bump the theme version before merging to main."
+            exit 1
+          fi
+
       - name: Check release version
         env:
-          TAG_NAME: ${{ github.ref_name }}
+          TAG_NAME: ${{ steps.release.outputs.tag }}
         run: npm run release:check-version -- "${TAG_NAME}"
 
       - name: Start WordPress
@@ -44,10 +69,19 @@ jobs:
       - name: Validate release package
         run: npm run validate
 
+      - name: Create release tag
+        env:
+          TAG_NAME: ${{ steps.release.outputs.tag }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "${TAG_NAME}" -m "Release ${TAG_NAME}"
+          git push origin "${TAG_NAME}"
+
       - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{ github.ref_name }}
+          TAG_NAME: ${{ steps.release.outputs.tag }}
         run: |
           gh release create "${TAG_NAME}" \
             dist/executive-signal-wordpress-theme.zip \
