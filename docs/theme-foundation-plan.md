@@ -46,7 +46,7 @@ Este plano transforma a decisao arquitetural inicial em uma sequencia executavel
    - `languages/`, scripts `i18n:*` e catalogo `pt_BR` inicial.
    - Validacao: `npm run i18n:check`.
 
-8. [ ] Adicionar empacotamento e release gates
+8. [x] Adicionar empacotamento e release gates
    - `scripts/build-theme-zip.mjs`, `scripts/validate-theme-zip.mjs`, `scripts/validate-release-version.mjs`.
    - `npm run theme:zip`, `npm run theme:validate-zip`, `npm run release:check-version`.
    - Validacao: ZIP contem apenas allowlist e metadados em paridade.
