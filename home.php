@@ -12,10 +12,10 @@ get_header();
 	<header class="es-blog-archive-header">
 		<div class="es-blog-archive-header__main">
 			<div class="es-blog-archive-header__copy">
-				<p class="es-blog-archive-header__eyebrow"><?php esc_html_e( 'Executive Signal', 'executive-signal-wordpress-theme' ); ?></p>
-				<h1 class="es-blog-archive-header__title"><?php esc_html_e( 'Briefings for sharper decisions.', 'executive-signal-wordpress-theme' ); ?></h1>
+				<p class="es-blog-archive-header__eyebrow"><?php echo esc_html( executive_signal_get_blog_setting( 'eyebrow', executive_signal_get_blog_eyebrow_default() ) ); ?></p>
+				<h1 class="es-blog-archive-header__title"><?php echo esc_html( executive_signal_get_blog_setting( 'title', executive_signal_get_blog_title_default() ) ); ?></h1>
 				<p class="es-blog-archive-header__description">
-					<?php esc_html_e( 'A running archive of strategic signals, operating notes and market context for leaders who need the useful part first.', 'executive-signal-wordpress-theme' ); ?>
+					<?php echo esc_html( executive_signal_get_blog_setting( 'description', executive_signal_get_blog_description_default() ) ); ?>
 				</p>
 			</div>
 			<div class="es-blog-archive-header__meta">

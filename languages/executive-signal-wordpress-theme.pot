@@ -62,20 +62,6 @@ msgstr ""
 msgid "Primary menu"
 msgstr ""
 
-#: home.php:15
-#: inc/patterns.php:25
-#: patterns/hero.php:14
-msgid "Executive Signal"
-msgstr ""
-
-#: home.php:16
-msgid "Briefings for sharper decisions."
-msgstr ""
-
-#: home.php:18
-msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
-msgstr ""
-
 #. translators: %s: Number of published posts.
 #: home.php:25
 #, php-format
@@ -86,6 +72,32 @@ msgstr[1] ""
 
 #: home.php:33
 msgid "Latest articles"
+msgstr ""
+
+#: inc/customizer.php:22
+msgid "Blog"
+msgstr ""
+
+#: inc/customizer.php:23
+msgid "Controls the introductory copy shown on the posts page."
+msgstr ""
+
+#: inc/customizer.php:40
+msgid "Blog eyebrow"
+msgstr ""
+
+#: inc/customizer.php:58
+msgid "Blog title"
+msgstr ""
+
+#: inc/customizer.php:76
+msgid "Blog description"
+msgstr ""
+
+#: inc/patterns.php:25
+#: inc/template-tags.php:57
+#: patterns/hero.php:14
+msgid "Executive Signal"
 msgstr ""
 
 #: inc/patterns.php:59
@@ -136,29 +148,37 @@ msgstr ""
 msgid "Post information"
 msgstr ""
 
-#: inc/template-tags.php:92
+#: inc/template-tags.php:66
+msgid "Briefings for sharper decisions."
+msgstr ""
+
+#: inc/template-tags.php:75
+msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
+msgstr ""
+
+#: inc/template-tags.php:130
 msgid "Article information"
 msgstr ""
 
-#: inc/template-tags.php:94
+#: inc/template-tags.php:132
 msgid "Date"
 msgstr ""
 
-#: inc/template-tags.php:101
+#: inc/template-tags.php:139
 msgid "By"
 msgstr ""
 
-#: inc/template-tags.php:117
-#: inc/template-tags.php:156
+#: inc/template-tags.php:155
+#: inc/template-tags.php:194
 msgid "Previous"
 msgstr ""
 
-#: inc/template-tags.php:118
-#: inc/template-tags.php:170
+#: inc/template-tags.php:156
+#: inc/template-tags.php:208
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags.php:151
+#: inc/template-tags.php:189
 msgid "Posts pagination"
 msgstr ""
 

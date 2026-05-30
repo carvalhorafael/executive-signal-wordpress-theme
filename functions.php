@@ -16,6 +16,7 @@ define( 'EXECUTIVE_SIGNAL_THEME_VERSION', wp_get_theme()->get( 'Version' ) );
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/setup.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/vite.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/assets.php';
+require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/customizer.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/patterns.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/template-tags.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/updater.php';

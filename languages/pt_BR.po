@@ -6,6 +6,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,11 +43,11 @@ msgstr "https://github.com/carvalhorafael"
 
 #: 404.php:14
 msgid "Page not found"
-msgstr "Page not found"
+msgstr "Página não encontrada"
 
 #: 404.php:18
 msgid "The requested page could not be found. Try searching for what you need."
-msgstr "The requested page could not be found. Try searching for what you need."
+msgstr "A página solicitada não foi encontrada. Tente buscar pelo que você precisa."
 
 #. translators: %s: Current year.
 #: footer.php:15
@@ -55,229 +57,249 @@ msgstr "Executive Signal %s"
 
 #: header.php:18
 msgid "Skip to content"
-msgstr "Skip to content"
+msgstr "Pular para o conteúdo"
 
 #: header.php:34
 #: inc/setup.php:44
 msgid "Primary menu"
-msgstr "Primary menu"
-
-#: home.php:15
-#: inc/patterns.php:25
-#: patterns/hero.php:14
-msgid "Executive Signal"
-msgstr "Executive Signal"
-
-#: home.php:16
-msgid "Briefings for sharper decisions."
-msgstr "Briefings for sharper decisions."
-
-#: home.php:18
-msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
-msgstr "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
+msgstr "Menu principal"
 
 #. translators: %s: Number of published posts.
 #: home.php:25
 #, php-format
 msgid "%s published article"
 msgid_plural "%s published articles"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s artigo publicado"
+msgstr[1] "%s artigos publicados"
 
 #: home.php:33
 msgid "Latest articles"
-msgstr "Latest articles"
+msgstr "Artigos mais recentes"
+
+#: inc/customizer.php:22
+msgid "Blog"
+msgstr "Blog"
+
+#: inc/customizer.php:23
+msgid "Controls the introductory copy shown on the posts page."
+msgstr "Controla os textos introdutórios exibidos na página de posts."
+
+#: inc/customizer.php:40
+msgid "Blog eyebrow"
+msgstr "Texto superior do blog"
+
+#: inc/customizer.php:58
+msgid "Blog title"
+msgstr "Título do blog"
+
+#: inc/customizer.php:76
+msgid "Blog description"
+msgstr "Descrição do blog"
+
+#: inc/patterns.php:25
+#: inc/template-tags.php:57
+#: patterns/hero.php:14
+msgid "Executive Signal"
+msgstr "Executive Signal"
 
 #: inc/patterns.php:59
 msgid "Executive Signal hero"
-msgstr "Executive Signal hero"
+msgstr "Hero do Executive Signal"
 
 #: inc/patterns.php:60
 msgid "Hero section for the Executive Signal homepage."
-msgstr "Hero section for the Executive Signal homepage."
+msgstr "Seção hero para a página inicial do Executive Signal."
 
 #: inc/patterns.php:63
 msgid "Signal grid"
-msgstr "Signal grid"
+msgstr "Grade de sinais"
 
 #: inc/patterns.php:64
 msgid "Grid for editorial or operational signals."
-msgstr "Grid for editorial or operational signals."
+msgstr "Grade para sinais editoriais ou operacionais."
 
 #: inc/patterns.php:67
 msgid "Report preview"
-msgstr "Report preview"
+msgstr "Prévia de relatório"
 
 #: inc/patterns.php:68
 msgid "Preview band for a report or briefing."
-msgstr "Preview band for a report or briefing."
+msgstr "Faixa de prévia para relatório ou briefing."
 
 #: inc/patterns.php:71
 msgid "Executive Signal CTA"
-msgstr "Executive Signal CTA"
+msgstr "CTA do Executive Signal"
 
 #: inc/patterns.php:72
 msgid "Focused call to action section."
-msgstr "Focused call to action section."
+msgstr "Seção de chamada para ação focada."
 
 #: inc/patterns.php:75
 msgid "Executive Signal landing page"
-msgstr "Executive Signal landing page"
+msgstr "Landing page do Executive Signal"
 
 #: inc/patterns.php:76
 msgid "Initial homepage composition."
-msgstr "Initial homepage composition."
+msgstr "Composição inicial da página inicial."
 
 #: inc/setup.php:45
 msgid "Footer menu"
-msgstr "Footer menu"
+msgstr "Menu do rodapé"
 
 #: inc/template-tags.php:41
 msgid "Post information"
-msgstr "Post information"
+msgstr "Informações do post"
 
-#: inc/template-tags.php:92
+#: inc/template-tags.php:66
+msgid "Briefings for sharper decisions."
+msgstr "Briefings para decisões mais claras."
+
+#: inc/template-tags.php:75
+msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
+msgstr "Um arquivo contínuo de sinais estratégicos, notas operacionais e contexto de mercado para líderes que precisam da parte útil primeiro."
+
+#: inc/template-tags.php:130
 msgid "Article information"
-msgstr "Article information"
+msgstr "Informações do artigo"
 
-#: inc/template-tags.php:94
+#: inc/template-tags.php:132
 msgid "Date"
-msgstr "Date"
+msgstr "Data"
 
-#: inc/template-tags.php:101
+#: inc/template-tags.php:139
 msgid "By"
-msgstr "By"
+msgstr "Por"
 
-#: inc/template-tags.php:117
-#: inc/template-tags.php:156
+#: inc/template-tags.php:155
+#: inc/template-tags.php:194
 msgid "Previous"
-msgstr "Previous"
+msgstr "Anterior"
 
-#: inc/template-tags.php:118
-#: inc/template-tags.php:170
+#: inc/template-tags.php:156
+#: inc/template-tags.php:208
 msgid "Next"
-msgstr "Next"
+msgstr "Próxima"
 
-#: inc/template-tags.php:151
+#: inc/template-tags.php:189
 msgid "Posts pagination"
-msgstr "Posts pagination"
+msgstr "Paginação de posts"
 
 #: patterns/cta.php
 msgctxt "Pattern title"
 msgid "Executive Signal CTA"
-msgstr "Executive Signal CTA"
+msgstr "CTA do Executive Signal"
 
 #: patterns/cta.php:14
 msgid "Turn signal into decision."
-msgstr "Turn signal into decision."
+msgstr "Transforme sinal em decisão."
 
 #: patterns/cta.php:18
 msgid "Use this section for a newsletter, briefing request or executive workflow call to action."
-msgstr "Use this section for a newsletter, briefing request or executive workflow call to action."
+msgstr "Use esta seção para newsletter, solicitação de briefing ou chamada para ação de um fluxo executivo."
 
 #: patterns/hero.php
 msgctxt "Pattern title"
 msgid "Executive Signal hero"
-msgstr "Executive Signal hero"
+msgstr "Hero do Executive Signal"
 
 #: patterns/hero.php:18
 msgid "Decisions, signals and briefings with executive clarity."
-msgstr "Decisions, signals and briefings with executive clarity."
+msgstr "Decisões, sinais e briefings com clareza executiva."
 
 #: patterns/hero.php:22
 msgid "A focused WordPress surface for publishing high-signal operational intelligence."
-msgstr "A focused WordPress surface for publishing high-signal operational intelligence."
+msgstr "Uma superfície WordPress focada para publicar inteligência operacional de alto sinal."
 
 #: patterns/landing-page.php
 msgctxt "Pattern title"
 msgid "Executive Signal landing page"
-msgstr "Executive Signal landing page"
+msgstr "Landing page do Executive Signal"
 
 #: patterns/report-preview.php
 msgctxt "Pattern title"
 msgid "Report preview"
-msgstr "Report preview"
+msgstr "Prévia de relatório"
 
 #: patterns/report-preview.php:14
 msgid "Weekly brief"
-msgstr "Weekly brief"
+msgstr "Brief semanal"
 
 #: patterns/report-preview.php:18
 msgid "A concise view of what changed and what matters next."
-msgstr "A concise view of what changed and what matters next."
+msgstr "Uma visão concisa do que mudou e do que importa agora."
 
 #: patterns/signal-grid.php
 msgctxt "Pattern title"
 msgid "Signal grid"
-msgstr "Signal grid"
+msgstr "Grade de sinais"
 
 #: patterns/signal-grid.php:14
 msgid "Signals worth attention"
-msgstr "Signals worth attention"
+msgstr "Sinais que merecem atenção"
 
 #: patterns/signal-grid.php:20
 msgid "Market"
-msgstr "Market"
+msgstr "Mercado"
 
 #: patterns/signal-grid.php:20
 msgid "Track shifts before they become obvious."
-msgstr "Track shifts before they become obvious."
+msgstr "Acompanhe mudanças antes que elas fiquem óbvias."
 
 #: patterns/signal-grid.php:24
 msgid "Operation"
-msgstr "Operation"
+msgstr "Operação"
 
 #: patterns/signal-grid.php:24
 msgid "Connect execution signals to decisions."
-msgstr "Connect execution signals to decisions."
+msgstr "Conecte sinais de execução a decisões."
 
 #. translators: %s: Search query.
 #: search.php:17
 #, php-format
 msgid "Search results for: %s"
-msgstr "Search results for: %s"
+msgstr "Resultados de busca para: %s"
 
 #: template-parts/content-none.php:11
 msgid "Nothing found"
-msgstr "Nothing found"
+msgstr "Nada encontrado"
 
 #: template-parts/content-none.php:15
 msgid "Try a different search or return to the homepage."
-msgstr "Try a different search or return to the homepage."
+msgstr "Tente uma busca diferente ou volte para a página inicial."
 
 #: template-parts/content.php:29
 msgid "Read article"
-msgstr "Read article"
+msgstr "Ler artigo"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Text primary"
-msgstr "Text primary"
+msgstr "Texto principal"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Background"
-msgstr "Background"
+msgstr "Fundo"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Panel"
-msgstr "Panel"
+msgstr "Painel"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Accent"
-msgstr "Accent"
+msgstr "Destaque"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Warning"
-msgstr "Warning"
+msgstr "Aviso"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Text tertiary"
-msgstr "Text tertiary"
+msgstr "Texto terciário"
 
 #: theme.json
 msgctxt "Space size name"

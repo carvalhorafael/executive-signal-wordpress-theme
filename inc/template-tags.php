@@ -49,6 +49,44 @@ function executive_signal_render_post_meta( $post_id = null ) {
 }
 
 /**
+ * Get the default blog eyebrow.
+ *
+ * @return string
+ */
+function executive_signal_get_blog_eyebrow_default() {
+	return __( 'Executive Signal', 'executive-signal-wordpress-theme' );
+}
+
+/**
+ * Get the default blog title.
+ *
+ * @return string
+ */
+function executive_signal_get_blog_title_default() {
+	return __( 'Briefings for sharper decisions.', 'executive-signal-wordpress-theme' );
+}
+
+/**
+ * Get the default blog description.
+ *
+ * @return string
+ */
+function executive_signal_get_blog_description_default() {
+	return __( 'A running archive of strategic signals, operating notes and market context for leaders who need the useful part first.', 'executive-signal-wordpress-theme' );
+}
+
+/**
+ * Get a Customizer-backed blog setting.
+ *
+ * @param string $setting Setting name suffix.
+ * @param string $default_value Default value.
+ * @return string
+ */
+function executive_signal_get_blog_setting( $setting, $default_value ) {
+	return get_theme_mod( 'executive_signal_blog_' . $setting, $default_value );
+}
+
+/**
  * Render the primary category label for an article.
  *
  * @param string   $class_name Class name for the label element.
