@@ -1,8 +1,8 @@
 <?php
 /**
- * Hero block pattern.
- *
- * @package ExecutiveSignal
+ * Title: Executive Signal hero
+ * Slug: executive-signal/hero
+ * Categories: executive-signal-wordpress-theme
  */
 
 ?>

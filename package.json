@@ -17,7 +17,7 @@
     "lint:php:syntax": "npx wp-env run cli bash -lc 'cd /var/www/html/wp-content/themes/executive-signal-wordpress-theme && find . \\( -path \"./dist\" -o -path \"./vendor\" -o -path \"./node_modules\" -o -path \"./assets/dist\" \\) -prune -o -name \"*.php\" -print0 | xargs -0 -n1 php -l'",
     "release:check-version": "node scripts/validate-release-version.mjs",
     "test:static": "npm run build && npm run i18n:check && npm run lint:php:syntax && npm run lint:php && npm run theme:check",
-    "test:php": "npx wp-env run tests-cli bash -lc 'cd /var/www/html/wp-content/themes/executive-signal-wordpress-theme && vendor/bin/phpunit --configuration phpunit.xml.dist'",
+    "test:php": "npx wp-env run tests-cli bash -lc 'wp --path=/var/www/html theme activate executive-signal-wordpress-theme && cd /var/www/html/wp-content/themes/executive-signal-wordpress-theme && vendor/bin/phpunit --configuration phpunit.xml.dist'",
     "test:e2e": "playwright test",
     "test": "npm run test:static && npm run test:php && npm run test:e2e",
     "theme:check": "npx wp-env run cli wp eval-file /var/www/html/wp-content/themes/executive-signal-wordpress-theme/scripts/run-theme-check.php",

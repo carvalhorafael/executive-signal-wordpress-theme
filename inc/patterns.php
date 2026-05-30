@@ -78,6 +78,12 @@ function executive_signal_register_block_patterns() {
 	);
 
 	foreach ( $patterns as $slug => $metadata ) {
+		$pattern_name = 'executive-signal/' . $slug;
+
+		if ( WP_Block_Patterns_Registry::get_instance()->is_registered( $pattern_name ) ) {
+			continue;
+		}
+
 		$content = executive_signal_get_pattern_content( EXECUTIVE_SIGNAL_THEME_DIR . '/patterns/' . $slug . '.php' );
 
 		if ( '' === $content ) {
@@ -85,7 +91,7 @@ function executive_signal_register_block_patterns() {
 		}
 
 		register_block_pattern(
-			'executive-signal/' . $slug,
+			$pattern_name,
 			array(
 				'title'       => $metadata['title'],
 				'description' => $metadata['description'],

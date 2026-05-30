@@ -1,8 +1,8 @@
 <?php
 /**
- * Signal grid block pattern.
- *
- * @package ExecutiveSignal
+ * Title: Signal grid
+ * Slug: executive-signal/signal-grid
+ * Categories: executive-signal-wordpress-theme
  */
 
 ?>

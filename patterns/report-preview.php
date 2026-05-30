@@ -1,8 +1,8 @@
 <?php
 /**
- * Report preview block pattern.
- *
- * @package ExecutiveSignal
+ * Title: Report preview
+ * Slug: executive-signal/report-preview
+ * Categories: executive-signal-wordpress-theme
  */
 
 ?>

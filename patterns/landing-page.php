@@ -1,8 +1,8 @@
 <?php
 /**
- * Landing page composition block pattern.
- *
- * @package ExecutiveSignal
+ * Title: Executive Signal landing page
+ * Slug: executive-signal/landing-page
+ * Categories: executive-signal-wordpress-theme
  */
 
 echo executive_signal_get_pattern_content( EXECUTIVE_SIGNAL_THEME_DIR . '/patterns/hero.php' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
