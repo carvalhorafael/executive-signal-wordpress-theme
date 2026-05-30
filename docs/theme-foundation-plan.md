@@ -42,7 +42,7 @@ Este plano transforma a decisao arquitetural inicial em uma sequencia executavel
    - Testes para setup, patterns e escaping de helpers.
    - Validacao: `npm run lint:php:syntax`, `npm run lint:php`, `npm run test:php`.
 
-7. [ ] Adicionar internacionalizacao
+7. [x] Adicionar internacionalizacao
    - `languages/`, scripts `i18n:*` e catalogo `pt_BR` inicial.
    - Validacao: `npm run i18n:check`.
 

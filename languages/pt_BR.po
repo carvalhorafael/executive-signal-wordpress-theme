@@ -1,0 +1,254 @@
+# Copyright (C) 2026 Rafael Carvalho
+# This file is distributed under the Proprietary.
+msgid ""
+msgstr ""
+"Project-Id-Version: Executive Signal WordPress Theme 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Executive Signal\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: executive-signal-wordpress-theme\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Executive Signal WordPress Theme"
+msgstr "Executive Signal WordPress Theme"
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://github.com/carvalhorafael/executive-signal-wordpress-theme"
+msgstr "https://github.com/carvalhorafael/executive-signal-wordpress-theme"
+
+#. Description of the theme
+#: style.css
+msgid "Tema WordPress do Executive Signal."
+msgstr "Tema WordPress do Executive Signal."
+
+#. Author of the theme
+#: style.css
+msgid "Rafael Carvalho"
+msgstr "Rafael Carvalho"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://github.com/carvalhorafael"
+msgstr "https://github.com/carvalhorafael"
+
+#: 404.php:14
+msgid "Page not found"
+msgstr "Page not found"
+
+#: 404.php:18
+msgid "The requested page could not be found. Try searching for what you need."
+msgstr "The requested page could not be found. Try searching for what you need."
+
+#. translators: %s: Current year.
+#: footer.php:15
+#, php-format
+msgid "Executive Signal %s"
+msgstr "Executive Signal %s"
+
+#: header.php:18
+msgid "Skip to content"
+msgstr "Skip to content"
+
+#: header.php:34
+#: inc/setup.php:44
+msgid "Primary menu"
+msgstr "Primary menu"
+
+#: inc/patterns.php:25
+#: patterns/hero.php:12
+msgid "Executive Signal"
+msgstr "Executive Signal"
+
+#: inc/patterns.php:59
+msgid "Executive Signal hero"
+msgstr "Executive Signal hero"
+
+#: inc/patterns.php:60
+msgid "Hero section for the Executive Signal homepage."
+msgstr "Hero section for the Executive Signal homepage."
+
+#: inc/patterns.php:63
+msgid "Signal grid"
+msgstr "Signal grid"
+
+#: inc/patterns.php:64
+msgid "Grid for editorial or operational signals."
+msgstr "Grid for editorial or operational signals."
+
+#: inc/patterns.php:67
+msgid "Report preview"
+msgstr "Report preview"
+
+#: inc/patterns.php:68
+msgid "Preview band for a report or briefing."
+msgstr "Preview band for a report or briefing."
+
+#: inc/patterns.php:71
+msgid "Executive Signal CTA"
+msgstr "Executive Signal CTA"
+
+#: inc/patterns.php:72
+msgid "Focused call to action section."
+msgstr "Focused call to action section."
+
+#: inc/patterns.php:75
+msgid "Executive Signal landing page"
+msgstr "Executive Signal landing page"
+
+#: inc/patterns.php:76
+msgid "Initial homepage composition."
+msgstr "Initial homepage composition."
+
+#: inc/setup.php:45
+msgid "Footer menu"
+msgstr "Footer menu"
+
+#: inc/template-tags.php:41
+msgid "Post information"
+msgstr "Post information"
+
+#: patterns/cta.php:12
+msgid "Turn signal into decision."
+msgstr "Turn signal into decision."
+
+#: patterns/cta.php:16
+msgid "Use this section for a newsletter, briefing request or executive workflow call to action."
+msgstr "Use this section for a newsletter, briefing request or executive workflow call to action."
+
+#: patterns/hero.php:16
+msgid "Decisions, signals and briefings with executive clarity."
+msgstr "Decisions, signals and briefings with executive clarity."
+
+#: patterns/hero.php:20
+msgid "A focused WordPress surface for publishing high-signal operational intelligence."
+msgstr "A focused WordPress surface for publishing high-signal operational intelligence."
+
+#: patterns/report-preview.php:12
+msgid "Weekly brief"
+msgstr "Weekly brief"
+
+#: patterns/report-preview.php:16
+msgid "A concise view of what changed and what matters next."
+msgstr "A concise view of what changed and what matters next."
+
+#: patterns/signal-grid.php:12
+msgid "Signals worth attention"
+msgstr "Signals worth attention"
+
+#: patterns/signal-grid.php:18
+msgid "Market"
+msgstr "Market"
+
+#: patterns/signal-grid.php:18
+msgid "Track shifts before they become obvious."
+msgstr "Track shifts before they become obvious."
+
+#: patterns/signal-grid.php:22
+msgid "Operation"
+msgstr "Operation"
+
+#: patterns/signal-grid.php:22
+msgid "Connect execution signals to decisions."
+msgstr "Connect execution signals to decisions."
+
+#. translators: %s: Search query.
+#: search.php:17
+#, php-format
+msgid "Search results for: %s"
+msgstr "Search results for: %s"
+
+#: template-parts/content-none.php:11
+msgid "Nothing found"
+msgstr "Nothing found"
+
+#: template-parts/content-none.php:15
+msgid "Try a different search or return to the homepage."
+msgstr "Try a different search or return to the homepage."
+
+#: theme.json
+msgctxt "Color name"
+msgid "Ink"
+msgstr "Ink"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr "Surface"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Signal"
+msgstr "Signal"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Attention"
+msgstr "Attention"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr "Muted"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr "Small"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Medium"
+msgstr "Medium"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr "Large"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Sans"
+msgstr "Sans"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Mono"
+msgstr "Mono"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Small"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Base"
+msgstr "Base"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Large"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Display"
+msgstr ""

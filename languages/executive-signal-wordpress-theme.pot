@@ -1,0 +1,254 @@
+# Copyright (C) 2026 Rafael Carvalho
+# This file is distributed under the Proprietary.
+msgid ""
+msgstr ""
+"Project-Id-Version: Executive Signal WordPress Theme 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Executive Signal\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: executive-signal-wordpress-theme\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Executive Signal WordPress Theme"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://github.com/carvalhorafael/executive-signal-wordpress-theme"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Tema WordPress do Executive Signal."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Rafael Carvalho"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://github.com/carvalhorafael"
+msgstr ""
+
+#: 404.php:14
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:18
+msgid "The requested page could not be found. Try searching for what you need."
+msgstr ""
+
+#. translators: %s: Current year.
+#: footer.php:15
+#, php-format
+msgid "Executive Signal %s"
+msgstr ""
+
+#: header.php:18
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:34
+#: inc/setup.php:44
+msgid "Primary menu"
+msgstr ""
+
+#: inc/patterns.php:25
+#: patterns/hero.php:12
+msgid "Executive Signal"
+msgstr ""
+
+#: inc/patterns.php:59
+msgid "Executive Signal hero"
+msgstr ""
+
+#: inc/patterns.php:60
+msgid "Hero section for the Executive Signal homepage."
+msgstr ""
+
+#: inc/patterns.php:63
+msgid "Signal grid"
+msgstr ""
+
+#: inc/patterns.php:64
+msgid "Grid for editorial or operational signals."
+msgstr ""
+
+#: inc/patterns.php:67
+msgid "Report preview"
+msgstr ""
+
+#: inc/patterns.php:68
+msgid "Preview band for a report or briefing."
+msgstr ""
+
+#: inc/patterns.php:71
+msgid "Executive Signal CTA"
+msgstr ""
+
+#: inc/patterns.php:72
+msgid "Focused call to action section."
+msgstr ""
+
+#: inc/patterns.php:75
+msgid "Executive Signal landing page"
+msgstr ""
+
+#: inc/patterns.php:76
+msgid "Initial homepage composition."
+msgstr ""
+
+#: inc/setup.php:45
+msgid "Footer menu"
+msgstr ""
+
+#: inc/template-tags.php:41
+msgid "Post information"
+msgstr ""
+
+#: patterns/cta.php:12
+msgid "Turn signal into decision."
+msgstr ""
+
+#: patterns/cta.php:16
+msgid "Use this section for a newsletter, briefing request or executive workflow call to action."
+msgstr ""
+
+#: patterns/hero.php:16
+msgid "Decisions, signals and briefings with executive clarity."
+msgstr ""
+
+#: patterns/hero.php:20
+msgid "A focused WordPress surface for publishing high-signal operational intelligence."
+msgstr ""
+
+#: patterns/report-preview.php:12
+msgid "Weekly brief"
+msgstr ""
+
+#: patterns/report-preview.php:16
+msgid "A concise view of what changed and what matters next."
+msgstr ""
+
+#: patterns/signal-grid.php:12
+msgid "Signals worth attention"
+msgstr ""
+
+#: patterns/signal-grid.php:18
+msgid "Market"
+msgstr ""
+
+#: patterns/signal-grid.php:18
+msgid "Track shifts before they become obvious."
+msgstr ""
+
+#: patterns/signal-grid.php:22
+msgid "Operation"
+msgstr ""
+
+#: patterns/signal-grid.php:22
+msgid "Connect execution signals to decisions."
+msgstr ""
+
+#. translators: %s: Search query.
+#: search.php:17
+#, php-format
+msgid "Search results for: %s"
+msgstr ""
+
+#: template-parts/content-none.php:11
+msgid "Nothing found"
+msgstr ""
+
+#: template-parts/content-none.php:15
+msgid "Try a different search or return to the homepage."
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Ink"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Canvas"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Signal"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Attention"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Mono"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Base"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Display"
+msgstr ""
