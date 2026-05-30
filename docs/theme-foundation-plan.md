@@ -51,7 +51,7 @@ Este plano transforma a decisao arquitetural inicial em uma sequencia executavel
    - `npm run theme:zip`, `npm run theme:validate-zip`, `npm run release:check-version`.
    - Validacao: ZIP contem apenas allowlist e metadados em paridade.
 
-9. [ ] Adicionar CI e release automation
+9. [x] Adicionar CI e release automation
    - `.github/workflows/ci.yml`.
    - `.github/workflows/release.yml`.
    - Validacao: workflow YAML revisado e scripts locais equivalentes executados.
