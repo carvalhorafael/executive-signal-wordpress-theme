@@ -22,12 +22,12 @@ Este plano transforma a decisao arquitetural inicial em uma sequencia executavel
    - Templates PHP minimos: `index.php`, `front-page.php`, `header.php`, `footer.php`, `page.php`, `single.php`, `archive.php`, `404.php`, `search.php`.
    - Validacao: `php -l` nos arquivos PHP criados.
 
-3. [ ] Criar bootstrap modular
+3. [x] Criar bootstrap modular
    - `functions.php` com constantes e requires.
    - `inc/setup.php`, `inc/assets.php`, `inc/vite.php`, `inc/patterns.php`, `inc/template-tags.php`.
    - Validacao: sintaxe PHP e teste PHP inicial para supports/menus.
 
-4. [ ] Criar camada inicial de templates e patterns
+4. [x] Criar camada inicial de templates e patterns
    - `template-parts/content*.php`.
    - `patterns/hero.php`, `patterns/signal-grid.php`, `patterns/report-preview.php`, `patterns/cta.php`, `patterns/landing-page.php`.
    - Validacao: patterns registrados via PHPUnit.

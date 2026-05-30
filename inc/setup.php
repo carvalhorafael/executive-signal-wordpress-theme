@@ -1,0 +1,66 @@
+<?php
+/**
+ * Theme setup.
+ *
+ * @package ExecutiveSignal
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Register theme supports and navigation areas.
+ *
+ * @return void
+ */
+function executive_signal_theme_setup() {
+	load_theme_textdomain( 'executive-signal-wordpress-theme', EXECUTIVE_SIGNAL_THEME_DIR . '/languages' );
+
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'custom-logo' );
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'editor-styles' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support(
+		'html5',
+		array(
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'search-form',
+			'script',
+			'style',
+		)
+	);
+
+	add_editor_style( executive_signal_get_editor_stylesheets() );
+
+	register_nav_menus(
+		array(
+			'primary' => esc_html__( 'Primary menu', 'executive-signal-wordpress-theme' ),
+			'footer'  => esc_html__( 'Footer menu', 'executive-signal-wordpress-theme' ),
+		)
+	);
+}
+add_action( 'after_setup_theme', 'executive_signal_theme_setup' );
+
+/**
+ * Get stylesheets loaded in the block editor canvas.
+ *
+ * @return string[]
+ */
+function executive_signal_get_editor_stylesheets() {
+	if ( function_exists( 'executive_signal_vite_manifest_entry' ) && function_exists( 'executive_signal_vite_asset_uri' ) ) {
+		$entry = executive_signal_vite_manifest_entry( 'src/editor.js' );
+
+		if ( ! empty( $entry['css'] ) && is_array( $entry['css'] ) ) {
+			return array_map( 'executive_signal_vite_asset_uri', $entry['css'] );
+		}
+	}
+
+	return array( get_stylesheet_uri() );
+}
