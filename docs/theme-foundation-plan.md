@@ -37,7 +37,7 @@ Este plano transforma a decisao arquitetural inicial em uma sequencia executavel
    - Scripts npm para `dev`, `build`, `wp:start`, `wp:stop`.
    - Validacao: `npm run build`.
 
-6. [ ] Adicionar qualidade PHP
+6. [x] Adicionar qualidade PHP
    - `composer.json`, `phpcs.xml.dist`, `phpunit.xml.dist`, `tests/php/bootstrap.php`.
    - Testes para setup, patterns e escaping de helpers.
    - Validacao: `npm run lint:php:syntax`, `npm run lint:php`, `npm run test:php`.

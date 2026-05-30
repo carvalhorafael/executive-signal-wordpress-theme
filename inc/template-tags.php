@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function executive_signal_render_badge( $label, $variant = 'signal' ) {
-	$variant_class = sanitize_html_class( $variant );
+	$variant_class = sanitize_html_class( str_replace( ' ', '-', $variant ) );
 	?>
 	<span class="es-badge es-badge--<?php echo esc_attr( $variant_class ); ?>">
 		<?php echo esc_html( $label ); ?>
