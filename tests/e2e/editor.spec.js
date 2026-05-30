@@ -10,6 +10,7 @@ const runWpCli = (args) => {
 
 test.beforeAll(() => {
   runWpCli(["theme", "activate", "executive-signal-wordpress-theme"]);
+  runWpCli(["user", "update", "admin", "--role=administrator", "--user_pass=password"]);
 });
 
 async function loginAsAdmin(page) {
@@ -25,7 +26,17 @@ async function loginAsAdmin(page) {
   await page.locator("#user_pass").fill("password");
   await page.locator("#wp-submit").click();
   await page.waitForLoadState("domcontentloaded");
+
+  if (await page.locator("#login_error").isVisible()) {
+    throw new Error(await page.locator("#login_error").innerText());
+  }
+
   await page.goto("/wp-admin/", { waitUntil: "domcontentloaded" });
+
+  if (await page.locator("#user_login").isVisible()) {
+    throw new Error("WordPress redirected back to the login form after admin login.");
+  }
+
   await expect(page.locator("#wpadminbar")).toBeVisible();
 }
 
