@@ -17,7 +17,7 @@ Este plano transforma a decisao arquitetural inicial em uma sequencia executavel
    - Este plano versionado em `docs/theme-foundation-plan.md`.
    - Validacao: `git status` e commit isolado.
 
-2. [ ] Criar metadados e estrutura base do tema
+2. [x] Criar metadados e estrutura base do tema
    - `style.css`, `readme.txt`, `LICENSE.md`, `screenshot.png` placeholder e `theme.json`.
    - Templates PHP minimos: `index.php`, `front-page.php`, `header.php`, `footer.php`, `page.php`, `single.php`, `archive.php`, `404.php`, `search.php`.
    - Validacao: `php -l` nos arquivos PHP criados.

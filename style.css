@@ -1,0 +1,26 @@
+/*
+Theme Name: Executive Signal WordPress Theme
+Theme URI: https://github.com/carvalhorafael/executive-signal-wordpress-theme
+Update URI: https://github.com/carvalhorafael/executive-signal-wordpress-theme
+Author: Rafael Carvalho
+Author URI: https://github.com/carvalhorafael
+Description: Tema WordPress do Executive Signal.
+Version: 0.1.0
+Requires at least: 6.5
+Tested up to: 6.5
+Requires PHP: 8.2
+License: Proprietary
+License URI: LICENSE.md
+Text Domain: executive-signal-wordpress-theme
+Domain Path: /languages
+Tags: blog, block-patterns, custom-logo, editor-style, full-site-editing
+*/
+
+/*
+ * Runtime styles are generated from src/ into assets/dist.
+ * This file is intentionally kept as theme metadata plus a safe fallback.
+ */
+
+body {
+	margin: 0;
+}
