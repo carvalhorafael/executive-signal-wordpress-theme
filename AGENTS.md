@@ -37,6 +37,8 @@ Regra padrao:
 
 - nao desenvolver diretamente em `main`;
 - usar `develop` como branch auxiliar de integracao;
+- antes de criar branch de trabalho, buscar `origin` e sincronizar `develop` com `origin/develop`;
+- toda branch de trabalho deve partir de `origin/develop` atualizado;
 - criar uma branch de trabalho antes de alterar codigo;
 - usar prefixo `codex/` para branches criadas por agentes;
 - fazer commits pequenos e intencionais;
@@ -51,7 +53,7 @@ git status --short --branch
 git branch -vv
 ```
 
-Se o checkout estiver em `main`, sincronizar `develop` e criar a branch de trabalho a partir de `develop`, salvo quando a tarefa for explicitamente uma preparacao de release para `main`.
+Se o checkout estiver em `main`, sincronizar `develop` com `origin/develop` e criar a branch de trabalho a partir de `develop`, salvo quando a tarefa for explicitamente uma preparacao de release para `main`. Nao criar branch de trabalho a partir de `main`, `master` ou branch antiga.
 
 ## Internacionalizacao
 
