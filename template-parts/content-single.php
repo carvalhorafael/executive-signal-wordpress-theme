@@ -19,11 +19,6 @@
 			</div>
 		</div>
 
-		<?php if ( has_post_thumbnail() ) : ?>
-			<figure class="es-article-hero__media">
-				<?php the_post_thumbnail( 'large' ); ?>
-			</figure>
-		<?php endif; ?>
 	</header>
 
 	<div class="entry__content es-article-prose">
