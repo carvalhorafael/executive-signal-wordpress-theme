@@ -20,34 +20,34 @@
       "gradients": [],
       "palette": [
         {
-          "color": "#101820",
-          "name": "Ink",
-          "slug": "ink"
+          "color": "var(--es-text-primary)",
+          "name": "Text primary",
+          "slug": "text-primary"
         },
         {
-          "color": "#f7f5ef",
-          "name": "Canvas",
-          "slug": "canvas"
+          "color": "var(--es-background)",
+          "name": "Background",
+          "slug": "background"
         },
         {
-          "color": "#ffffff",
-          "name": "Surface",
-          "slug": "surface"
+          "color": "var(--es-panel)",
+          "name": "Panel",
+          "slug": "panel"
         },
         {
-          "color": "#0f766e",
-          "name": "Signal",
-          "slug": "signal"
+          "color": "var(--es-accent)",
+          "name": "Accent",
+          "slug": "accent"
         },
         {
-          "color": "#b45309",
-          "name": "Attention",
-          "slug": "attention"
+          "color": "var(--es-warning)",
+          "name": "Warning",
+          "slug": "warning"
         },
         {
-          "color": "#64748b",
-          "name": "Muted",
-          "slug": "muted"
+          "color": "var(--es-text-tertiary)",
+          "name": "Text tertiary",
+          "slug": "text-tertiary"
         }
       ]
     },
@@ -92,14 +92,14 @@
       "fluid": true,
       "fontFamilies": [
         {
-          "fontFamily": "Avenir Next, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
-          "name": "Sans",
-          "slug": "sans"
+          "fontFamily": "var(--es-font-sans)",
+          "name": "Executive Signal Sans",
+          "slug": "executive-signal-sans"
         },
         {
-          "fontFamily": "\"IBM Plex Mono\", \"SFMono-Regular\", Consolas, monospace",
-          "name": "Mono",
-          "slug": "mono"
+          "fontFamily": "var(--es-font-mono)",
+          "name": "Executive Signal Mono",
+          "slug": "executive-signal-mono"
         }
       ],
       "fontSizes": [
@@ -139,14 +139,14 @@
   },
   "styles": {
     "color": {
-      "background": "#f7f5ef",
-      "text": "#101820"
+      "background": "var(--es-background)",
+      "text": "var(--es-text-primary)"
     },
     "spacing": {
       "blockGap": "1.5rem"
     },
     "typography": {
-      "fontFamily": "var(--wp--preset--font-family--sans)",
+      "fontFamily": "var(--es-font-sans)",
       "fontSize": "1rem",
       "lineHeight": "1.55"
     }

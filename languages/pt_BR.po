@@ -200,33 +200,33 @@ msgstr "Try a different search or return to the homepage."
 
 #: theme.json
 msgctxt "Color name"
-msgid "Ink"
-msgstr "Ink"
+msgid "Text primary"
+msgstr "Text primary"
 
 #: theme.json
 msgctxt "Color name"
-msgid "Canvas"
-msgstr "Canvas"
+msgid "Background"
+msgstr "Background"
 
 #: theme.json
 msgctxt "Color name"
-msgid "Surface"
-msgstr "Surface"
+msgid "Panel"
+msgstr "Panel"
 
 #: theme.json
 msgctxt "Color name"
-msgid "Signal"
-msgstr "Signal"
+msgid "Accent"
+msgstr "Accent"
 
 #: theme.json
 msgctxt "Color name"
-msgid "Attention"
-msgstr "Attention"
+msgid "Warning"
+msgstr "Warning"
 
 #: theme.json
 msgctxt "Color name"
-msgid "Muted"
-msgstr "Muted"
+msgid "Text tertiary"
+msgstr "Text tertiary"
 
 #: theme.json
 msgctxt "Space size name"
@@ -250,13 +250,13 @@ msgstr "XL"
 
 #: theme.json
 msgctxt "Font family name"
-msgid "Sans"
-msgstr "Sans"
+msgid "Executive Signal Sans"
+msgstr "Executive Signal Sans"
 
 #: theme.json
 msgctxt "Font family name"
-msgid "Mono"
-msgstr "Mono"
+msgid "Executive Signal Mono"
+msgstr "Executive Signal Mono"
 
 #: theme.json
 msgctxt "Font size name"
