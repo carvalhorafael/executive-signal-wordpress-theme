@@ -1,0 +1,10 @@
+/.wp-env/
+/assets/dist/
+/coverage/
+/dist/
+/node_modules/
+/vendor/
+/.phpunit.result.cache
+/.npmrc
+/test-results/
+/playwright-report/

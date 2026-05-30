@@ -32,7 +32,7 @@ Este plano transforma a decisao arquitetural inicial em uma sequencia executavel
    - `patterns/hero.php`, `patterns/signal-grid.php`, `patterns/report-preview.php`, `patterns/cta.php`, `patterns/landing-page.php`.
    - Validacao: patterns registrados via PHPUnit.
 
-5. [ ] Adicionar pipeline de assets
+5. [x] Adicionar pipeline de assets
    - `src/main.js`, `src/editor.js`, CSS inicial e `vite.config.js`.
    - Scripts npm para `dev`, `build`, `wp:start`, `wp:stop`.
    - Validacao: `npm run build`.
