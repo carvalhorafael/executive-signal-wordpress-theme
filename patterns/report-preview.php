@@ -3,6 +3,8 @@
  * Title: Report preview
  * Slug: executive-signal/report-preview
  * Categories: executive-signal-wordpress-theme
+ *
+ * @package ExecutiveSignal
  */
 
 ?>

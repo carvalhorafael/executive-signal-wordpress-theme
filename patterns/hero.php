@@ -3,6 +3,8 @@
  * Title: Executive Signal hero
  * Slug: executive-signal/hero
  * Categories: executive-signal-wordpress-theme
+ *
+ * @package ExecutiveSignal
  */
 
 ?>

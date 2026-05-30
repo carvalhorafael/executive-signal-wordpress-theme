@@ -3,6 +3,8 @@
  * Title: Signal grid
  * Slug: executive-signal/signal-grid
  * Categories: executive-signal-wordpress-theme
+ *
+ * @package ExecutiveSignal
  */
 
 ?>

@@ -3,6 +3,8 @@
  * Title: Executive Signal CTA
  * Slug: executive-signal/cta
  * Categories: executive-signal-wordpress-theme
+ *
+ * @package ExecutiveSignal
  */
 
 ?>

@@ -63,7 +63,7 @@ msgid "Primary menu"
 msgstr "Primary menu"
 
 #: inc/patterns.php:25
-#: patterns/hero.php:12
+#: patterns/hero.php:14
 msgid "Executive Signal"
 msgstr "Executive Signal"
 
@@ -120,11 +120,11 @@ msgctxt "Pattern title"
 msgid "Executive Signal CTA"
 msgstr "Executive Signal CTA"
 
-#: patterns/cta.php:12
+#: patterns/cta.php:14
 msgid "Turn signal into decision."
 msgstr "Turn signal into decision."
 
-#: patterns/cta.php:16
+#: patterns/cta.php:18
 msgid "Use this section for a newsletter, briefing request or executive workflow call to action."
 msgstr "Use this section for a newsletter, briefing request or executive workflow call to action."
 
@@ -133,11 +133,11 @@ msgctxt "Pattern title"
 msgid "Executive Signal hero"
 msgstr "Executive Signal hero"
 
-#: patterns/hero.php:16
+#: patterns/hero.php:18
 msgid "Decisions, signals and briefings with executive clarity."
 msgstr "Decisions, signals and briefings with executive clarity."
 
-#: patterns/hero.php:20
+#: patterns/hero.php:22
 msgid "A focused WordPress surface for publishing high-signal operational intelligence."
 msgstr "A focused WordPress surface for publishing high-signal operational intelligence."
 
@@ -151,11 +151,11 @@ msgctxt "Pattern title"
 msgid "Report preview"
 msgstr "Report preview"
 
-#: patterns/report-preview.php:12
+#: patterns/report-preview.php:14
 msgid "Weekly brief"
 msgstr "Weekly brief"
 
-#: patterns/report-preview.php:16
+#: patterns/report-preview.php:18
 msgid "A concise view of what changed and what matters next."
 msgstr "A concise view of what changed and what matters next."
 
@@ -164,23 +164,23 @@ msgctxt "Pattern title"
 msgid "Signal grid"
 msgstr "Signal grid"
 
-#: patterns/signal-grid.php:12
+#: patterns/signal-grid.php:14
 msgid "Signals worth attention"
 msgstr "Signals worth attention"
 
-#: patterns/signal-grid.php:18
+#: patterns/signal-grid.php:20
 msgid "Market"
 msgstr "Market"
 
-#: patterns/signal-grid.php:18
+#: patterns/signal-grid.php:20
 msgid "Track shifts before they become obvious."
 msgstr "Track shifts before they become obvious."
 
-#: patterns/signal-grid.php:22
+#: patterns/signal-grid.php:24
 msgid "Operation"
 msgstr "Operation"
 
-#: patterns/signal-grid.php:22
+#: patterns/signal-grid.php:24
 msgid "Connect execution signals to decisions."
 msgstr "Connect execution signals to decisions."
 
