@@ -62,9 +62,30 @@ msgstr ""
 msgid "Primary menu"
 msgstr ""
 
+#: home.php:15
 #: inc/patterns.php:25
 #: patterns/hero.php:14
 msgid "Executive Signal"
+msgstr ""
+
+#: home.php:16
+msgid "Briefings for sharper decisions."
+msgstr ""
+
+#: home.php:18
+msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
+msgstr ""
+
+#. translators: %s: Number of published posts.
+#: home.php:25
+#, php-format
+msgid "%s published article"
+msgid_plural "%s published articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: home.php:33
+msgid "Latest articles"
 msgstr ""
 
 #: inc/patterns.php:59
@@ -113,6 +134,32 @@ msgstr ""
 
 #: inc/template-tags.php:41
 msgid "Post information"
+msgstr ""
+
+#: inc/template-tags.php:92
+msgid "Article information"
+msgstr ""
+
+#: inc/template-tags.php:94
+msgid "Date"
+msgstr ""
+
+#: inc/template-tags.php:101
+msgid "By"
+msgstr ""
+
+#: inc/template-tags.php:117
+#: inc/template-tags.php:156
+msgid "Previous"
+msgstr ""
+
+#: inc/template-tags.php:118
+#: inc/template-tags.php:170
+msgid "Next"
+msgstr ""
+
+#: inc/template-tags.php:151
+msgid "Posts pagination"
 msgstr ""
 
 #: patterns/cta.php
@@ -196,6 +243,10 @@ msgstr ""
 
 #: template-parts/content-none.php:15
 msgid "Try a different search or return to the homepage."
+msgstr ""
+
+#: template-parts/content.php:29
+msgid "Read article"
 msgstr ""
 
 #: theme.json

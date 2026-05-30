@@ -62,10 +62,31 @@ msgstr "Skip to content"
 msgid "Primary menu"
 msgstr "Primary menu"
 
+#: home.php:15
 #: inc/patterns.php:25
 #: patterns/hero.php:14
 msgid "Executive Signal"
 msgstr "Executive Signal"
+
+#: home.php:16
+msgid "Briefings for sharper decisions."
+msgstr "Briefings for sharper decisions."
+
+#: home.php:18
+msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
+msgstr "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
+
+#. translators: %s: Number of published posts.
+#: home.php:25
+#, php-format
+msgid "%s published article"
+msgid_plural "%s published articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: home.php:33
+msgid "Latest articles"
+msgstr "Latest articles"
 
 #: inc/patterns.php:59
 msgid "Executive Signal hero"
@@ -114,6 +135,32 @@ msgstr "Footer menu"
 #: inc/template-tags.php:41
 msgid "Post information"
 msgstr "Post information"
+
+#: inc/template-tags.php:92
+msgid "Article information"
+msgstr "Article information"
+
+#: inc/template-tags.php:94
+msgid "Date"
+msgstr "Date"
+
+#: inc/template-tags.php:101
+msgid "By"
+msgstr "By"
+
+#: inc/template-tags.php:117
+#: inc/template-tags.php:156
+msgid "Previous"
+msgstr "Previous"
+
+#: inc/template-tags.php:118
+#: inc/template-tags.php:170
+msgid "Next"
+msgstr "Next"
+
+#: inc/template-tags.php:151
+msgid "Posts pagination"
+msgstr "Posts pagination"
 
 #: patterns/cta.php
 msgctxt "Pattern title"
@@ -197,6 +244,10 @@ msgstr "Nothing found"
 #: template-parts/content-none.php:15
 msgid "Try a different search or return to the homepage."
 msgstr "Try a different search or return to the homepage."
+
+#: template-parts/content.php:29
+msgid "Read article"
+msgstr "Read article"
 
 #: theme.json
 msgctxt "Color name"
