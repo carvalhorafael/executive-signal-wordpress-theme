@@ -56,7 +56,7 @@ Este plano transforma a decisao arquitetural inicial em uma sequencia executavel
    - `.github/workflows/release.yml`.
    - Validacao: workflow YAML revisado e scripts locais equivalentes executados.
 
-10. [ ] Adicionar smoke tests e documentacao operacional
+10. [x] Adicionar smoke tests e documentacao operacional
     - `playwright.config.js`, smoke de homepage/editor quando aplicavel.
     - `docs/architecture.md`, `docs/development.md`, `docs/release.md`, `docs/theme-decisions.md`.
     - Validacao: `npm test` ou, se dependencias externas impedirem, registrar exatamente o bloqueio e os comandos pendentes.
