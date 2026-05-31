@@ -78,6 +78,8 @@ msgstr ""
 #. translators: %s: Number of posts found in the current archive.
 #: archive.php:36
 #: author.php:33
+#: category.php:44
+#: tag.php:44
 #, php-format
 msgid "%s article found"
 msgid_plural "%s articles found"
@@ -111,6 +113,20 @@ msgstr ""
 
 #: author.php:74
 msgid "Author articles"
+msgstr ""
+
+#: category.php:22
+msgid "Category"
+msgstr ""
+
+#. translators: %s: Category name.
+#: category.php:33
+#, php-format
+msgid "Articles grouped under %s."
+msgstr ""
+
+#: category.php:52
+msgid "Category articles"
 msgstr ""
 
 #: comments.php:20
@@ -459,6 +475,20 @@ msgstr[1] ""
 
 #: search.php:58
 msgid "Search results"
+msgstr ""
+
+#: tag.php:22
+msgid "Tag"
+msgstr ""
+
+#. translators: %s: Tag name.
+#: tag.php:33
+#, php-format
+msgid "Signals tagged with %s."
+msgstr ""
+
+#: tag.php:52
+msgid "Tag articles"
 msgstr ""
 
 #: template-parts/content-none.php:11

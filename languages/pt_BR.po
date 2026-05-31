@@ -80,6 +80,8 @@ msgstr "Navegue por artigos agrupados por tema, autor ou período."
 #. translators: %s: Number of posts found in the current archive.
 #: archive.php:36
 #: author.php:33
+#: category.php:44
+#: tag.php:44
 #, php-format
 msgid "%s article found"
 msgid_plural "%s articles found"
@@ -114,6 +116,20 @@ msgstr "Site do autor"
 #: author.php:74
 msgid "Author articles"
 msgstr "Artigos do autor"
+
+#: category.php:22
+msgid "Category"
+msgstr "Categoria"
+
+#. translators: %s: Category name.
+#: category.php:33
+#, php-format
+msgid "Articles grouped under %s."
+msgstr "Artigos agrupados em %s."
+
+#: category.php:52
+msgid "Category articles"
+msgstr "Artigos da categoria"
 
 #: comments.php:20
 msgid "1 comment"
@@ -462,6 +478,20 @@ msgstr[1] "%s resultados encontrados"
 #: search.php:58
 msgid "Search results"
 msgstr "Resultados de busca"
+
+#: tag.php:22
+msgid "Tag"
+msgstr "Tag"
+
+#. translators: %s: Tag name.
+#: tag.php:33
+#, php-format
+msgid "Signals tagged with %s."
+msgstr "Sinais marcados com %s."
+
+#: tag.php:52
+msgid "Tag articles"
+msgstr "Artigos da tag"
 
 #: template-parts/content-none.php:11
 msgid "No results"

@@ -31,6 +31,12 @@ const translations = new Map([
     "Um arquivo contínuo de sinais estratégicos, notas operacionais e contexto de mercado para líderes que precisam da parte útil primeiro.",
   ],
   ["Archive", "Arquivo"],
+  ["Category", "Categoria"],
+  ["Tag", "Tag"],
+  ["Category articles", "Artigos da categoria"],
+  ["Tag articles", "Artigos da tag"],
+  ["Articles grouped under %s.", "Artigos agrupados em %s."],
+  ["Signals tagged with %s.", "Sinais marcados com %s."],
   ["Author", "Autor"],
   [
     "Articles, notes and strategic signals published by this author.",
