@@ -30,6 +30,20 @@ const translations = new Map([
     "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first.",
     "Um arquivo contínuo de sinais estratégicos, notas operacionais e contexto de mercado para líderes que precisam da parte útil primeiro.",
   ],
+  ["Archive", "Arquivo"],
+  [
+    "Browse articles grouped by topic, author or period.",
+    "Navegue por artigos agrupados por tema, autor ou período.",
+  ],
+  ["Archive articles", "Artigos do arquivo"],
+  ["Search", "Busca"],
+  [
+    "Find briefings, operational notes and strategic signals across the archive.",
+    "Encontre briefings, notas operacionais e sinais estratégicos em todo o arquivo.",
+  ],
+  ["Search results", "Resultados de busca"],
+  ["Error 404", "Erro 404"],
+  ["No results", "Sem resultados"],
   ["Latest articles", "Artigos mais recentes"],
   ["Executive Signal hero", "Hero do Executive Signal"],
   [
@@ -93,6 +107,20 @@ const pluralTranslations = new Map([
     {
       one: "%s artigo publicado",
       other: "%s artigos publicados",
+    },
+  ],
+  [
+    "%s article found",
+    {
+      one: "%s artigo encontrado",
+      other: "%s artigos encontrados",
+    },
+  ],
+  [
+    "%s result found",
+    {
+      one: "%s resultado encontrado",
+      other: "%s resultados encontrados",
     },
   ],
 ]);

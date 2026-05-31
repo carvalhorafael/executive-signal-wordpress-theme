@@ -40,11 +40,35 @@ msgid "https://github.com/carvalhorafael"
 msgstr ""
 
 #: 404.php:14
+msgid "Error 404"
+msgstr ""
+
+#: 404.php:15
 msgid "Page not found"
 msgstr ""
 
-#: 404.php:18
+#: 404.php:19
 msgid "The requested page could not be found. Try searching for what you need."
+msgstr ""
+
+#: archive.php:20
+msgid "Archive"
+msgstr ""
+
+#: archive.php:28
+msgid "Browse articles grouped by topic, author or period."
+msgstr ""
+
+#. translators: %s: Number of posts found in the current archive.
+#: archive.php:36
+#, php-format
+msgid "%s article found"
+msgid_plural "%s articles found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: archive.php:44
+msgid "Archive articles"
 msgstr ""
 
 #. translators: %s: Current year.
@@ -251,17 +275,41 @@ msgstr ""
 msgid "Connect execution signals to decisions."
 msgstr ""
 
+#: search.php:20
+msgid "Search"
+msgstr ""
+
 #. translators: %s: Search query.
-#: search.php:17
+#: search.php:25
 #, php-format
 msgid "Search results for: %s"
 msgstr ""
 
+#: search.php:31
+msgid "Find briefings, operational notes and strategic signals across the archive."
+msgstr ""
+
+#. translators: %s: Number of posts found in the current search.
+#: search.php:38
+#, php-format
+msgid "%s result found"
+msgid_plural "%s results found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.php:46
+msgid "Search results"
+msgstr ""
+
 #: template-parts/content-none.php:11
+msgid "No results"
+msgstr ""
+
+#: template-parts/content-none.php:12
 msgid "Nothing found"
 msgstr ""
 
-#: template-parts/content-none.php:15
+#: template-parts/content-none.php:16
 msgid "Try a different search or return to the homepage."
 msgstr ""
 

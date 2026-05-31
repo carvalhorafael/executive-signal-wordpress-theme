@@ -42,12 +42,36 @@ msgid "https://github.com/carvalhorafael"
 msgstr "https://github.com/carvalhorafael"
 
 #: 404.php:14
+msgid "Error 404"
+msgstr "Erro 404"
+
+#: 404.php:15
 msgid "Page not found"
 msgstr "Página não encontrada"
 
-#: 404.php:18
+#: 404.php:19
 msgid "The requested page could not be found. Try searching for what you need."
 msgstr "A página solicitada não foi encontrada. Tente buscar pelo que você precisa."
+
+#: archive.php:20
+msgid "Archive"
+msgstr "Arquivo"
+
+#: archive.php:28
+msgid "Browse articles grouped by topic, author or period."
+msgstr "Navegue por artigos agrupados por tema, autor ou período."
+
+#. translators: %s: Number of posts found in the current archive.
+#: archive.php:36
+#, php-format
+msgid "%s article found"
+msgid_plural "%s articles found"
+msgstr[0] "%s artigo encontrado"
+msgstr[1] "%s artigos encontrados"
+
+#: archive.php:44
+msgid "Archive articles"
+msgstr "Artigos do arquivo"
 
 #. translators: %s: Current year.
 #: footer.php:15
@@ -253,17 +277,41 @@ msgstr "Operação"
 msgid "Connect execution signals to decisions."
 msgstr "Conecte sinais de execução a decisões."
 
+#: search.php:20
+msgid "Search"
+msgstr "Busca"
+
 #. translators: %s: Search query.
-#: search.php:17
+#: search.php:25
 #, php-format
 msgid "Search results for: %s"
 msgstr "Resultados de busca para: %s"
 
+#: search.php:31
+msgid "Find briefings, operational notes and strategic signals across the archive."
+msgstr "Encontre briefings, notas operacionais e sinais estratégicos em todo o arquivo."
+
+#. translators: %s: Number of posts found in the current search.
+#: search.php:38
+#, php-format
+msgid "%s result found"
+msgid_plural "%s results found"
+msgstr[0] "%s resultado encontrado"
+msgstr[1] "%s resultados encontrados"
+
+#: search.php:46
+msgid "Search results"
+msgstr "Resultados de busca"
+
 #: template-parts/content-none.php:11
+msgid "No results"
+msgstr "Sem resultados"
+
+#: template-parts/content-none.php:12
 msgid "Nothing found"
 msgstr "Nada encontrado"
 
-#: template-parts/content-none.php:15
+#: template-parts/content-none.php:16
 msgid "Try a different search or return to the homepage."
 msgstr "Tente uma busca diferente ou volte para a página inicial."
 

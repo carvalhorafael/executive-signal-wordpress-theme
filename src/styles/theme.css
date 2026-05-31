@@ -152,8 +152,92 @@ a {
   margin-block: clamp(2rem, 6vw, 4rem);
 }
 
+.es-article-archive-grid__empty--plain {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.es-empty-state {
+  background: var(--es-panel);
+  border: 1px solid var(--es-border-soft);
+  border-radius: var(--es-radius-panel);
+  box-sizing: border-box;
+  box-shadow: var(--es-shadow-sm);
+  display: grid;
+  gap: 1.5rem;
+  margin-inline: auto;
+  max-width: 760px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  width: 100%;
+}
+
+.es-empty-state__eyebrow {
+  color: var(--es-accent);
+  font-size: 0.8125rem;
+  font-weight: var(--es-font-weight-title);
+  letter-spacing: var(--es-letter-spacing-label);
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.es-empty-state__title {
+  color: var(--es-text-primary);
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  letter-spacing: var(--es-letter-spacing-title);
+  line-height: var(--es-line-height-tight);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.es-empty-state__content {
+  color: var(--es-text-secondary);
+  display: grid;
+  font-size: 1.125rem;
+  gap: 1.25rem;
+}
+
+.es-empty-state__content p {
+  margin: 0;
+}
+
+.es-empty-state .search-form {
+  align-items: end;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.es-empty-state .search-field {
+  background: var(--es-background);
+  border: 1px solid var(--es-border-soft);
+  border-radius: var(--es-radius-sm);
+  color: var(--es-text-primary);
+  font: inherit;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+
+.es-empty-state .search-submit {
+  background: var(--es-accent);
+  border: 1px solid var(--es-accent);
+  border-radius: var(--es-radius-sm);
+  color: var(--es-background);
+  cursor: pointer;
+  font: inherit;
+  font-weight: var(--es-font-weight-title);
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+}
+
 @media (max-width: 780px) {
   .es-article-archive-grid[data-columns="two"] .es-article-archive-grid__items {
+    grid-template-columns: 1fr;
+  }
+
+  .es-empty-state .search-form {
     grid-template-columns: 1fr;
   }
 }

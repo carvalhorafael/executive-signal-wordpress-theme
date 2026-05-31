@@ -44,7 +44,7 @@ get_header();
 
 			<?php executive_signal_render_posts_pagination(); ?>
 		<?php else : ?>
-			<div class="es-article-archive-grid__empty">
+			<div class="es-article-archive-grid__empty es-article-archive-grid__empty--plain">
 				<?php get_template_part( 'template-parts/content', 'none' ); ?>
 			</div>
 		<?php endif; ?>
