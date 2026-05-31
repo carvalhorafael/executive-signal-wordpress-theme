@@ -24,6 +24,8 @@ const translations = new Map([
   ["Blog description", "Descrição do blog"],
   ["Skip to content", "Pular para o conteúdo"],
   ["Primary menu", "Menu principal"],
+  ["Open menu", "Abrir menu"],
+  ["Close menu", "Fechar menu"],
   ["Executive Signal", "Executive Signal"],
   ["Briefings for sharper decisions.", "Briefings para decisões mais claras."],
   [

@@ -186,7 +186,16 @@ msgstr "Copyright © %s - Desenvolvido por Rafael Carvalho®"
 msgid "Skip to content"
 msgstr "Pular para o conteúdo"
 
-#: header.php:51
+#: header.php:53
+#: header.php:57
+msgid "Open menu"
+msgstr "Abrir menu"
+
+#: header.php:54
+msgid "Close menu"
+msgstr "Fechar menu"
+
+#: header.php:64
 msgid "RSS feed"
 msgstr "Feed RSS"
 

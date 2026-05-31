@@ -44,6 +44,19 @@
 				?>
 			</div>
 
+			<button
+				class="es-blog-site-header__menu-toggle"
+				type="button"
+				aria-controls="primary-navigation"
+				aria-expanded="false"
+				data-mobile-nav-toggle
+				data-open-label="<?php esc_attr_e( 'Open menu', 'executive-signal-wordpress-theme' ); ?>"
+				data-close-label="<?php esc_attr_e( 'Close menu', 'executive-signal-wordpress-theme' ); ?>"
+			>
+				<span class="es-blog-site-header__menu-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text" data-mobile-nav-label><?php esc_html_e( 'Open menu', 'executive-signal-wordpress-theme' ); ?></span>
+			</button>
+
 			<?php executive_signal_render_header_navigation(); ?>
 
 			<div class="es-blog-site-header__actions">

@@ -122,4 +122,47 @@ document.addEventListener("click", (event) => {
   });
 });
 
+const mobileNavToggle = document.querySelector("[data-mobile-nav-toggle]");
+const mobileNav = document.querySelector("[data-mobile-nav]");
+
+if (header && mobileNavToggle && mobileNav) {
+  const mobileNavLabel = mobileNavToggle.querySelector("[data-mobile-nav-label]");
+  const setMobileNavigation = (isOpen) => {
+    header.dataset.mobileOpen = isOpen ? "true" : "false";
+    mobileNavToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+    const label = isOpen ? mobileNavToggle.dataset.closeLabel : mobileNavToggle.dataset.openLabel;
+
+    if (mobileNavLabel && label) {
+      mobileNavLabel.textContent = label;
+    }
+
+    if (!isOpen) {
+      document.querySelectorAll("[data-nav-submenu]").forEach((submenu) => {
+        submenu.dataset.open = "false";
+        submenu.querySelector(".es-blog-site-header__submenu-toggle")?.setAttribute("aria-expanded", "false");
+      });
+    }
+  };
+
+  mobileNavToggle.addEventListener("click", () => {
+    setMobileNavigation(header.dataset.mobileOpen !== "true");
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && header.dataset.mobileOpen === "true") {
+      setMobileNavigation(false);
+      mobileNavToggle.focus();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (header.contains(event.target)) {
+      return;
+    }
+
+    setMobileNavigation(false);
+  });
+}
+
 enhanceArticleFAQ();

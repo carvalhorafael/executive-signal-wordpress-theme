@@ -184,7 +184,16 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:51
+#: header.php:53
+#: header.php:57
+msgid "Open menu"
+msgstr ""
+
+#: header.php:54
+msgid "Close menu"
+msgstr ""
+
+#: header.php:64
 msgid "RSS feed"
 msgstr ""
 

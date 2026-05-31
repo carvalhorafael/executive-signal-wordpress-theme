@@ -129,7 +129,7 @@ function executive_signal_render_header_navigation() {
 	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '/';
 	$current_url = home_url( $request_uri );
 	?>
-	<nav class="primary-navigation es-blog-site-header__nav" aria-label="<?php esc_attr_e( 'Primary menu', 'executive-signal-wordpress-theme' ); ?>">
+	<nav id="primary-navigation" class="primary-navigation es-blog-site-header__nav" aria-label="<?php esc_attr_e( 'Primary menu', 'executive-signal-wordpress-theme' ); ?>" data-mobile-nav>
 		<?php foreach ( $menu_tree as $menu_node ) : ?>
 			<?php
 			$item       = $menu_node['item'];
