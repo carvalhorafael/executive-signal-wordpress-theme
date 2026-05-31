@@ -17,31 +17,45 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'executive-signal-wordpress-theme' ); ?></a>
 
-	<header class="site-header" data-site-header>
-		<div class="site-header__inner">
-			<div class="site-branding">
+	<header class="site-header es-blog-site-header" data-site-header>
+		<div class="site-header__inner es-blog-site-header__inner">
+			<div class="site-branding es-blog-site-header__brand">
 				<?php
 				if ( has_custom_logo() ) {
 					the_custom_logo();
 				} else {
 					?>
-					<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					<a class="site-title es-blog-site-header__brand-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 					<?php
 				}
 				?>
 			</div>
 
-			<nav class="primary-navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'executive-signal-wordpress-theme' ); ?>">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'primary',
-						'menu_id'        => 'primary-menu',
-						'container'      => false,
-						'fallback_cb'    => false,
-					)
-				);
-				?>
-			</nav>
+			<button
+				class="es-blog-site-header__menu-toggle"
+				type="button"
+				aria-controls="primary-navigation"
+				aria-expanded="false"
+				data-mobile-nav-toggle
+				data-open-label="<?php esc_attr_e( 'Open menu', 'executive-signal-wordpress-theme' ); ?>"
+				data-close-label="<?php esc_attr_e( 'Close menu', 'executive-signal-wordpress-theme' ); ?>"
+			>
+				<span class="es-blog-site-header__menu-icon" aria-hidden="true"></span>
+				<span class="screen-reader-text" data-mobile-nav-label><?php esc_html_e( 'Open menu', 'executive-signal-wordpress-theme' ); ?></span>
+			</button>
+
+			<?php executive_signal_render_header_navigation(); ?>
+
+			<div class="es-blog-site-header__actions">
+				<?php executive_signal_render_header_search(); ?>
+				<a class="es-header-icon-link" href="<?php echo esc_url( get_feed_link() ); ?>" aria-label="<?php esc_attr_e( 'RSS feed', 'executive-signal-wordpress-theme' ); ?>">
+					<svg class="es-header-icon-link__svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+						<path d="M5 5.5C12.45 5.5 18.5 11.55 18.5 19" />
+						<path d="M5 11C9.42 11 13 14.58 13 19" />
+						<circle cx="6" cy="18" r="1.5" />
+					</svg>
+				</a>
+				<?php executive_signal_render_theme_switcher(); ?>
+			</div>
 		</div>
 	</header>

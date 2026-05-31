@@ -1,6 +1,7 @@
 <?php
 /**
- * Page template.
+ * Template Name: Wide page
+ * Template Post Type: page
  *
  * @package ExecutiveSignal
  */
@@ -8,7 +9,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main site-main--page">
+<main id="primary" class="site-main site-main--page site-main--page-wide">
 	<?php
 	while ( have_posts() ) :
 		the_post();

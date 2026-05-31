@@ -6,6 +6,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,193 +42,631 @@ msgid "https://github.com/carvalhorafael"
 msgstr "https://github.com/carvalhorafael"
 
 #: 404.php:14
-msgid "Page not found"
-msgstr "Page not found"
+msgid "Error 404"
+msgstr "Erro 404"
 
-#: 404.php:18
+#: 404.php:15
+msgid "Page not found"
+msgstr "Página não encontrada"
+
+#: 404.php:19
 msgid "The requested page could not be found. Try searching for what you need."
-msgstr "The requested page could not be found. Try searching for what you need."
+msgstr "A página solicitada não foi encontrada. Tente buscar pelo que você precisa."
+
+#: 404.php:22
+msgid "Helpful links"
+msgstr "Links úteis"
+
+#: 404.php:23
+#: template-parts/content-none.php:43
+msgid "Return to homepage"
+msgstr "Voltar para a página inicial"
+
+#: 404.php:30
+msgid "Browse the blog"
+msgstr "Ver o blog"
+
+#: 404.php:46
+msgid "Popular topics"
+msgstr "Temas populares"
+
+#: archive.php:20
+#: index.php:19
+msgid "Archive"
+msgstr "Arquivo"
+
+#: archive.php:28
+msgid "Browse articles grouped by topic, author or period."
+msgstr "Navegue por artigos agrupados por tema, autor ou período."
+
+#. translators: %s: Number of posts found in the current archive.
+#: archive.php:36
+#: author.php:33
+#: category.php:44
+#: index.php:29
+#: tag.php:44
+#, php-format
+msgid "%s article found"
+msgid_plural "%s articles found"
+msgstr[0] "%s artigo encontrado"
+msgstr[1] "%s artigos encontrados"
+
+#: archive.php:44
+#: index.php:37
+msgid "Archive articles"
+msgstr "Artigos do arquivo"
+
+#: author.php:23
+#: author.php:48
+msgid "Author"
+msgstr "Autor"
+
+#: author.php:26
+msgid "Articles, notes and strategic signals published by this author."
+msgstr "Artigos, notas e sinais estratégicos publicados por este autor."
+
+#. translators: %s: Number of posts found in the current author archive.
+#: author.php:55
+#, php-format
+msgid "%s article"
+msgid_plural "%s articles"
+msgstr[0] "%s artigo"
+msgstr[1] "%s artigos"
+
+#: author.php:68
+msgid "Author website"
+msgstr "Site do autor"
+
+#: author.php:74
+msgid "Author articles"
+msgstr "Artigos do autor"
+
+#: category.php:22
+msgid "Category"
+msgstr "Categoria"
+
+#. translators: %s: Category name.
+#: category.php:33
+#, php-format
+msgid "Articles grouped under %s."
+msgstr "Artigos agrupados em %s."
+
+#: category.php:52
+msgid "Category articles"
+msgstr "Artigos da categoria"
+
+#: comments.php:20
+msgid "1 comment"
+msgstr "1 comentário"
+
+#. translators: %s: Number of comments.
+#: comments.php:24
+#, php-format
+msgid "%s comments"
+msgstr "%s comentários"
+
+#: comments.php:30
+msgid "Join the conversation with context, questions or practical notes."
+msgstr "Participe da conversa com contexto, perguntas ou notas práticas."
+
+#: comments.php:47
+msgid "Comments pagination"
+msgstr "Paginação de comentários"
+
+#: comments.php:51
+msgid "Previous comments"
+msgstr "Comentários anteriores"
+
+#: comments.php:52
+msgid "Next comments"
+msgstr "Próximos comentários"
+
+#: comments.php:59
+msgid "No comments yet. Be the first to add a useful signal."
+msgstr "Ainda não há comentários. Seja a primeira pessoa a adicionar um sinal útil."
+
+#: comments.php:69
+msgid "Add a clear comment that helps the next reader decide what matters."
+msgstr "Adicione um comentário claro que ajude a próxima pessoa a decidir o que importa."
+
+#: comments.php:70
+msgid "Publish comment"
+msgstr "Publicar comentário"
+
+#. translators: %d: Footer column number.
+#: footer.php:13
+#, php-format
+msgid "Footer column %d"
+msgstr "Coluna %d do rodapé"
 
 #. translators: %s: Current year.
-#: footer.php:15
+#: footer.php:28
 #, php-format
-msgid "Executive Signal %s"
-msgstr "Executive Signal %s"
+msgid "Copyright © %s - Developed by Rafael Carvalho®"
+msgstr "Copyright © %s - Desenvolvido por Rafael Carvalho®"
 
 #: header.php:18
 msgid "Skip to content"
-msgstr "Skip to content"
+msgstr "Pular para o conteúdo"
 
-#: header.php:34
-#: inc/setup.php:44
-msgid "Primary menu"
-msgstr "Primary menu"
+#: header.php:40
+#: header.php:44
+msgid "Open menu"
+msgstr "Abrir menu"
+
+#: header.php:41
+msgid "Close menu"
+msgstr "Fechar menu"
+
+#: header.php:51
+msgid "RSS feed"
+msgstr "Feed RSS"
+
+#. translators: %s: Number of published posts.
+#: home.php:25
+#, php-format
+msgid "%s published article"
+msgid_plural "%s published articles"
+msgstr[0] "%s artigo publicado"
+msgstr[1] "%s artigos publicados"
+
+#: home.php:33
+msgid "Latest articles"
+msgstr "Artigos mais recentes"
+
+#: inc/customizer.php:22
+msgid "Blog"
+msgstr "Blog"
+
+#: inc/customizer.php:23
+msgid "Controls the introductory copy shown on the posts page."
+msgstr "Controla os textos introdutórios exibidos na página de posts."
+
+#: inc/customizer.php:40
+msgid "Blog eyebrow"
+msgstr "Texto superior do blog"
+
+#: inc/customizer.php:58
+msgid "Blog title"
+msgstr "Título do blog"
+
+#: inc/customizer.php:76
+msgid "Blog description"
+msgstr "Descrição do blog"
 
 #: inc/patterns.php:25
+#: inc/template-tags.php:57
 #: patterns/hero.php:14
 msgid "Executive Signal"
 msgstr "Executive Signal"
 
 #: inc/patterns.php:59
 msgid "Executive Signal hero"
-msgstr "Executive Signal hero"
+msgstr "Hero do Executive Signal"
 
 #: inc/patterns.php:60
 msgid "Hero section for the Executive Signal homepage."
-msgstr "Hero section for the Executive Signal homepage."
+msgstr "Seção hero para a página inicial do Executive Signal."
 
 #: inc/patterns.php:63
 msgid "Signal grid"
-msgstr "Signal grid"
+msgstr "Grade de sinais"
 
 #: inc/patterns.php:64
 msgid "Grid for editorial or operational signals."
-msgstr "Grid for editorial or operational signals."
+msgstr "Grade para sinais editoriais ou operacionais."
 
 #: inc/patterns.php:67
 msgid "Report preview"
-msgstr "Report preview"
+msgstr "Prévia de relatório"
 
 #: inc/patterns.php:68
 msgid "Preview band for a report or briefing."
-msgstr "Preview band for a report or briefing."
+msgstr "Faixa de prévia para relatório ou briefing."
 
 #: inc/patterns.php:71
 msgid "Executive Signal CTA"
-msgstr "Executive Signal CTA"
+msgstr "CTA do Executive Signal"
 
 #: inc/patterns.php:72
 msgid "Focused call to action section."
-msgstr "Focused call to action section."
+msgstr "Seção de chamada para ação focada."
 
 #: inc/patterns.php:75
 msgid "Executive Signal landing page"
-msgstr "Executive Signal landing page"
+msgstr "Landing page do Executive Signal"
 
 #: inc/patterns.php:76
 msgid "Initial homepage composition."
-msgstr "Initial homepage composition."
+msgstr "Composição inicial da página inicial."
+
+#: inc/setup.php:44
+#: inc/template-tags.php:132
+msgid "Primary menu"
+msgstr "Menu principal"
 
 #: inc/setup.php:45
 msgid "Footer menu"
-msgstr "Footer menu"
+msgstr "Menu do rodapé"
+
+#: inc/setup.php:61
+msgid "Executive solid"
+msgstr "Executive sólido"
+
+#: inc/setup.php:69
+msgid "Executive panel"
+msgstr "Executive painel"
+
+#: inc/setup.php:77
+msgid "Executive accent"
+msgstr "Executive destaque"
+
+#: inc/setup.php:90
+msgid "Footer column 1"
+msgstr "Coluna 1 do rodapé"
+
+#: inc/setup.php:91
+msgid "Footer column 2"
+msgstr "Coluna 2 do rodapé"
+
+#: inc/setup.php:92
+msgid "Footer column 3"
+msgstr "Coluna 3 do rodapé"
+
+#: inc/setup.php:93
+msgid "Footer column 4"
+msgstr "Coluna 4 do rodapé"
+
+#: inc/setup.php:94
+msgid "Footer bottom"
+msgstr "Linha final do rodapé"
+
+#. translators: %s: Footer widget area name.
+#: inc/setup.php:103
+#, php-format
+msgid "Widgets added here appear in %s."
+msgstr "Widgets adicionados aqui aparecem em %s."
 
 #: inc/template-tags.php:41
 msgid "Post information"
-msgstr "Post information"
+msgstr "Informações do post"
+
+#: inc/template-tags.php:66
+msgid "Briefings for sharper decisions."
+msgstr "Briefings para decisões mais claras."
+
+#: inc/template-tags.php:75
+msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
+msgstr "Um arquivo contínuo de sinais estratégicos, notas operacionais e contexto de mercado para líderes que precisam da parte útil primeiro."
+
+#. translators: %s: Menu item title.
+#: inc/template-tags.php:155
+#, php-format
+msgid "Open submenu for %s"
+msgstr "Abrir submenu de %s"
+
+#: inc/template-tags.php:247
+#: inc/template-tags.php:250
+#: search.php:19
+#: search.php:46
+#: search.php:49
+#: searchform.php:11
+#: searchform.php:13
+msgid "Search"
+msgstr "Busca"
+
+#: inc/template-tags.php:263
+#: inc/template-tags.php:277
+msgid "Light"
+msgstr "Claro"
+
+#: inc/template-tags.php:264
+msgid "Dark"
+msgstr "Escuro"
+
+#: inc/template-tags.php:265
+msgid "System"
+msgstr "Sistema"
+
+#: inc/template-tags.php:269
+msgid "Change theme"
+msgstr "Mudar tema"
+
+#: inc/template-tags.php:280
+msgid "Theme mode"
+msgstr "Modo do tema"
+
+#: inc/template-tags.php:334
+msgid "Article information"
+msgstr "Informações do artigo"
+
+#: inc/template-tags.php:336
+msgid "Date"
+msgstr "Data"
+
+#: inc/template-tags.php:343
+msgid "By"
+msgstr "Por"
+
+#: inc/template-tags.php:371
+msgid "Article tags"
+msgstr "Tags do artigo"
+
+#: inc/template-tags.php:372
+msgid "Tagged in"
+msgstr "Tags"
+
+#: inc/template-tags.php:409
+msgid "Your comment is awaiting moderation."
+msgstr "Seu comentário está aguardando moderação."
+
+#: inc/template-tags.php:426
+msgid "Reply"
+msgstr "Responder"
+
+#: inc/template-tags.php:450
+#: inc/template-tags.php:503
+msgid "Previous"
+msgstr "Anterior"
+
+#: inc/template-tags.php:451
+#: inc/template-tags.php:517
+msgid "Next"
+msgstr "Próxima"
+
+#: inc/template-tags.php:487
+msgid "Posts pagination"
+msgstr "Paginação de posts"
+
+#. translators: 1: Current page number. 2: Total number of pages.
+#: inc/template-tags.php:493
+#, php-format
+msgid "Page %1$s of %2$s"
+msgstr "Página %1$s de %2$s"
+
+#: index.php:20
+msgid "Latest briefings"
+msgstr "Briefings mais recentes"
+
+#: index.php:22
+msgid "Browse the latest signals, notes and articles available in this archive."
+msgstr "Navegue pelos sinais, notas e artigos mais recentes disponíveis neste arquivo."
+
+#. Template Name of the theme
+msgid "Centered page"
+msgstr "Página centralizada"
+
+#. Template Name of the theme
+msgid "Wide page"
+msgstr "Página ampla"
 
 #: patterns/cta.php
 msgctxt "Pattern title"
 msgid "Executive Signal CTA"
-msgstr "Executive Signal CTA"
+msgstr "CTA do Executive Signal"
 
 #: patterns/cta.php:14
 msgid "Turn signal into decision."
-msgstr "Turn signal into decision."
+msgstr "Transforme sinal em decisão."
 
 #: patterns/cta.php:18
 msgid "Use this section for a newsletter, briefing request or executive workflow call to action."
-msgstr "Use this section for a newsletter, briefing request or executive workflow call to action."
+msgstr "Use esta seção para newsletter, solicitação de briefing ou chamada para ação de um fluxo executivo."
 
 #: patterns/hero.php
 msgctxt "Pattern title"
 msgid "Executive Signal hero"
-msgstr "Executive Signal hero"
+msgstr "Hero do Executive Signal"
 
 #: patterns/hero.php:18
 msgid "Decisions, signals and briefings with executive clarity."
-msgstr "Decisions, signals and briefings with executive clarity."
+msgstr "Decisões, sinais e briefings com clareza executiva."
 
 #: patterns/hero.php:22
 msgid "A focused WordPress surface for publishing high-signal operational intelligence."
-msgstr "A focused WordPress surface for publishing high-signal operational intelligence."
+msgstr "Uma superfície WordPress focada para publicar inteligência operacional de alto sinal."
 
 #: patterns/landing-page.php
 msgctxt "Pattern title"
 msgid "Executive Signal landing page"
-msgstr "Executive Signal landing page"
+msgstr "Landing page do Executive Signal"
 
 #: patterns/report-preview.php
 msgctxt "Pattern title"
 msgid "Report preview"
-msgstr "Report preview"
+msgstr "Prévia de relatório"
 
 #: patterns/report-preview.php:14
 msgid "Weekly brief"
-msgstr "Weekly brief"
+msgstr "Brief semanal"
 
 #: patterns/report-preview.php:18
 msgid "A concise view of what changed and what matters next."
-msgstr "A concise view of what changed and what matters next."
+msgstr "Uma visão concisa do que mudou e do que importa agora."
 
 #: patterns/signal-grid.php
 msgctxt "Pattern title"
 msgid "Signal grid"
-msgstr "Signal grid"
+msgstr "Grade de sinais"
 
 #: patterns/signal-grid.php:14
 msgid "Signals worth attention"
-msgstr "Signals worth attention"
+msgstr "Sinais que merecem atenção"
 
 #: patterns/signal-grid.php:20
 msgid "Market"
-msgstr "Market"
+msgstr "Mercado"
 
 #: patterns/signal-grid.php:20
 msgid "Track shifts before they become obvious."
-msgstr "Track shifts before they become obvious."
+msgstr "Acompanhe mudanças antes que elas fiquem óbvias."
 
 #: patterns/signal-grid.php:24
 msgid "Operation"
-msgstr "Operation"
+msgstr "Operação"
 
 #: patterns/signal-grid.php:24
 msgid "Connect execution signals to decisions."
-msgstr "Connect execution signals to decisions."
+msgstr "Conecte sinais de execução a decisões."
 
 #. translators: %s: Search query.
-#: search.php:17
+#: search.php:24
 #, php-format
 msgid "Search results for: %s"
-msgstr "Search results for: %s"
+msgstr "Resultados de busca para: %s"
 
-#: template-parts/content-none.php:11
+#: search.php:30
+msgid "Find briefings, operational notes and strategic signals across the archive."
+msgstr "Encontre briefings, notas operacionais e sinais estratégicos em todo o arquivo."
+
+#. translators: %s: Number of posts found in the current search.
+#: search.php:36
+#, php-format
+msgid "%s result found"
+msgid_plural "%s results found"
+msgstr[0] "%s resultado encontrado"
+msgstr[1] "%s resultados encontrados"
+
+#: search.php:57
+msgid "Search results"
+msgstr "Resultados de busca"
+
+#: searchform.php:26
+msgid "Search..."
+msgstr "Buscar..."
+
+#: tag.php:22
+msgid "Tag"
+msgstr "Tag"
+
+#. translators: %s: Tag name.
+#: tag.php:33
+#, php-format
+msgid "Signals tagged with %s."
+msgstr "Sinais marcados com %s."
+
+#: tag.php:52
+msgid "Tag articles"
+msgstr "Artigos da tag"
+
+#: template-parts/content-none.php:14
+msgid "No results"
+msgstr "Sem resultados"
+
+#: template-parts/content-none.php:16
+msgid "Empty archive"
+msgstr "Arquivo vazio"
+
+#: template-parts/content-none.php:23
 msgid "Nothing found"
-msgstr "Nothing found"
+msgstr "Nada encontrado"
 
-#: template-parts/content-none.php:15
+#: template-parts/content-none.php:25
+msgid "No articles yet"
+msgstr "Ainda não há artigos"
+
+#: template-parts/content-none.php:33
 msgid "Try a different search or return to the homepage."
-msgstr "Try a different search or return to the homepage."
+msgstr "Tente uma busca diferente ou volte para a página inicial."
+
+#: template-parts/content-none.php:36
+msgid "This archive does not have published articles yet. Browse the latest briefings instead."
+msgstr "Este arquivo ainda não tem artigos publicados. Veja os briefings mais recentes."
+
+#: template-parts/content-none.php:37
+msgid "Archive recovery links"
+msgstr "Links de recuperação do arquivo"
+
+#: template-parts/content-none.php:42
+msgid "Browse latest articles"
+msgstr "Ver artigos mais recentes"
+
+#: template-parts/content-page.php:24
+msgid "Page navigation"
+msgstr "Navegação da página"
+
+#: template-parts/content.php:29
+msgid "Read article"
+msgstr "Ler artigo"
+
+#: template-parts/post-navigation.php:16
+msgid "Article navigation"
+msgstr "Navegação do artigo"
+
+#: template-parts/post-navigation.php:19
+msgid "Previous article"
+msgstr "Artigo anterior"
+
+#: template-parts/post-navigation.php:28
+msgid "Next article"
+msgstr "Próximo artigo"
+
+#: template-parts/related-posts.php:39
+msgid "Read next"
+msgstr "Leia também"
+
+#: template-parts/related-posts.php:40
+msgid "Related articles"
+msgstr "Artigos relacionados"
+
+#: template-parts/related-posts.php:41
+msgid "Continue with articles from the same editorial context."
+msgstr "Continue com artigos do mesmo contexto editorial."
+
+#: template-parts/share-post.php:19
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: template-parts/share-post.php:23
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: template-parts/share-post.php:27
+msgid "X"
+msgstr "X"
+
+#: template-parts/share-post.php:34
+msgid "Share article"
+msgstr "Compartilhar artigo"
+
+#: template-parts/share-post.php:50
+#: template-parts/share-post.php:54
+msgid "Copy link"
+msgstr "Copiar link"
+
+#: template-parts/share-post.php:51
+msgid "Copied"
+msgstr "Copiado"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Text primary"
-msgstr "Text primary"
+msgstr "Texto principal"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Background"
-msgstr "Background"
+msgstr "Fundo"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Panel"
-msgstr "Panel"
+msgstr "Painel"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Accent"
-msgstr "Accent"
+msgstr "Destaque"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Warning"
-msgstr "Warning"
+msgstr "Aviso"
 
 #: theme.json
 msgctxt "Color name"
 msgid "Text tertiary"
-msgstr "Text tertiary"
+msgstr "Texto terciário"
 
 #: theme.json
 msgctxt "Space size name"

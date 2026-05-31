@@ -30,6 +30,8 @@ const required = [
   `${themeName}/header.php`,
   `${themeName}/index.php`,
   `${themeName}/page.php`,
+  `${themeName}/page-centered.php`,
+  `${themeName}/page-wide.php`,
   `${themeName}/search.php`,
   `${themeName}/single.php`,
   `${themeName}/theme.json`,

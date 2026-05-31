@@ -22,6 +22,8 @@ function executive_signal_enqueue_assets() {
 		EXECUTIVE_SIGNAL_THEME_VERSION
 	);
 
+	executive_signal_enqueue_theme_bootstrap();
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -61,6 +63,36 @@ function executive_signal_enqueue_assets() {
 	wp_script_add_data( 'executive-signal-theme', 'type', 'module' );
 }
 add_action( 'wp_enqueue_scripts', 'executive_signal_enqueue_assets' );
+
+/**
+ * Enqueue the stored theme mode bootstrap before the page paints.
+ *
+ * @return void
+ */
+function executive_signal_enqueue_theme_bootstrap() {
+	wp_register_script(
+		'executive-signal-theme-bootstrap',
+		'',
+		array(),
+		EXECUTIVE_SIGNAL_THEME_VERSION,
+		false
+	);
+	wp_enqueue_script( 'executive-signal-theme-bootstrap' );
+	wp_add_inline_script(
+		'executive-signal-theme-bootstrap',
+		'(() => {
+			try {
+				const theme = window.localStorage.getItem("executive-signal-theme");
+
+				if (theme === "light" || theme === "dark" || theme === "system") {
+					document.documentElement.dataset.esTheme = theme;
+				}
+			} catch (error) {
+				document.documentElement.dataset.esTheme = "light";
+			}
+		})();'
+	);
+}
 
 /**
  * Enqueue block editor assets.

@@ -40,29 +40,200 @@ msgid "https://github.com/carvalhorafael"
 msgstr ""
 
 #: 404.php:14
+msgid "Error 404"
+msgstr ""
+
+#: 404.php:15
 msgid "Page not found"
 msgstr ""
 
-#: 404.php:18
+#: 404.php:19
 msgid "The requested page could not be found. Try searching for what you need."
 msgstr ""
 
-#. translators: %s: Current year.
-#: footer.php:15
+#: 404.php:22
+msgid "Helpful links"
+msgstr ""
+
+#: 404.php:23
+#: template-parts/content-none.php:43
+msgid "Return to homepage"
+msgstr ""
+
+#: 404.php:30
+msgid "Browse the blog"
+msgstr ""
+
+#: 404.php:46
+msgid "Popular topics"
+msgstr ""
+
+#: archive.php:20
+#: index.php:19
+msgid "Archive"
+msgstr ""
+
+#: archive.php:28
+msgid "Browse articles grouped by topic, author or period."
+msgstr ""
+
+#. translators: %s: Number of posts found in the current archive.
+#: archive.php:36
+#: author.php:33
+#: category.php:44
+#: index.php:29
+#: tag.php:44
 #, php-format
-msgid "Executive Signal %s"
+msgid "%s article found"
+msgid_plural "%s articles found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: archive.php:44
+#: index.php:37
+msgid "Archive articles"
+msgstr ""
+
+#: author.php:23
+#: author.php:48
+msgid "Author"
+msgstr ""
+
+#: author.php:26
+msgid "Articles, notes and strategic signals published by this author."
+msgstr ""
+
+#. translators: %s: Number of posts found in the current author archive.
+#: author.php:55
+#, php-format
+msgid "%s article"
+msgid_plural "%s articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: author.php:68
+msgid "Author website"
+msgstr ""
+
+#: author.php:74
+msgid "Author articles"
+msgstr ""
+
+#: category.php:22
+msgid "Category"
+msgstr ""
+
+#. translators: %s: Category name.
+#: category.php:33
+#, php-format
+msgid "Articles grouped under %s."
+msgstr ""
+
+#: category.php:52
+msgid "Category articles"
+msgstr ""
+
+#: comments.php:20
+msgid "1 comment"
+msgstr ""
+
+#. translators: %s: Number of comments.
+#: comments.php:24
+#, php-format
+msgid "%s comments"
+msgstr ""
+
+#: comments.php:30
+msgid "Join the conversation with context, questions or practical notes."
+msgstr ""
+
+#: comments.php:47
+msgid "Comments pagination"
+msgstr ""
+
+#: comments.php:51
+msgid "Previous comments"
+msgstr ""
+
+#: comments.php:52
+msgid "Next comments"
+msgstr ""
+
+#: comments.php:59
+msgid "No comments yet. Be the first to add a useful signal."
+msgstr ""
+
+#: comments.php:69
+msgid "Add a clear comment that helps the next reader decide what matters."
+msgstr ""
+
+#: comments.php:70
+msgid "Publish comment"
+msgstr ""
+
+#. translators: %d: Footer column number.
+#: footer.php:13
+#, php-format
+msgid "Footer column %d"
+msgstr ""
+
+#. translators: %s: Current year.
+#: footer.php:28
+#, php-format
+msgid "Copyright © %s - Developed by Rafael Carvalho®"
 msgstr ""
 
 #: header.php:18
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:34
-#: inc/setup.php:44
-msgid "Primary menu"
+#: header.php:40
+#: header.php:44
+msgid "Open menu"
+msgstr ""
+
+#: header.php:41
+msgid "Close menu"
+msgstr ""
+
+#: header.php:51
+msgid "RSS feed"
+msgstr ""
+
+#. translators: %s: Number of published posts.
+#: home.php:25
+#, php-format
+msgid "%s published article"
+msgid_plural "%s published articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: home.php:33
+msgid "Latest articles"
+msgstr ""
+
+#: inc/customizer.php:22
+msgid "Blog"
+msgstr ""
+
+#: inc/customizer.php:23
+msgid "Controls the introductory copy shown on the posts page."
+msgstr ""
+
+#: inc/customizer.php:40
+msgid "Blog eyebrow"
+msgstr ""
+
+#: inc/customizer.php:58
+msgid "Blog title"
+msgstr ""
+
+#: inc/customizer.php:76
+msgid "Blog description"
 msgstr ""
 
 #: inc/patterns.php:25
+#: inc/template-tags.php:57
 #: patterns/hero.php:14
 msgid "Executive Signal"
 msgstr ""
@@ -107,12 +278,164 @@ msgstr ""
 msgid "Initial homepage composition."
 msgstr ""
 
+#: inc/setup.php:44
+#: inc/template-tags.php:132
+msgid "Primary menu"
+msgstr ""
+
 #: inc/setup.php:45
 msgid "Footer menu"
 msgstr ""
 
+#: inc/setup.php:61
+msgid "Executive solid"
+msgstr ""
+
+#: inc/setup.php:69
+msgid "Executive panel"
+msgstr ""
+
+#: inc/setup.php:77
+msgid "Executive accent"
+msgstr ""
+
+#: inc/setup.php:90
+msgid "Footer column 1"
+msgstr ""
+
+#: inc/setup.php:91
+msgid "Footer column 2"
+msgstr ""
+
+#: inc/setup.php:92
+msgid "Footer column 3"
+msgstr ""
+
+#: inc/setup.php:93
+msgid "Footer column 4"
+msgstr ""
+
+#: inc/setup.php:94
+msgid "Footer bottom"
+msgstr ""
+
+#. translators: %s: Footer widget area name.
+#: inc/setup.php:103
+#, php-format
+msgid "Widgets added here appear in %s."
+msgstr ""
+
 #: inc/template-tags.php:41
 msgid "Post information"
+msgstr ""
+
+#: inc/template-tags.php:66
+msgid "Briefings for sharper decisions."
+msgstr ""
+
+#: inc/template-tags.php:75
+msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
+msgstr ""
+
+#. translators: %s: Menu item title.
+#: inc/template-tags.php:155
+#, php-format
+msgid "Open submenu for %s"
+msgstr ""
+
+#: inc/template-tags.php:247
+#: inc/template-tags.php:250
+#: search.php:19
+#: search.php:46
+#: search.php:49
+#: searchform.php:11
+#: searchform.php:13
+msgid "Search"
+msgstr ""
+
+#: inc/template-tags.php:263
+#: inc/template-tags.php:277
+msgid "Light"
+msgstr ""
+
+#: inc/template-tags.php:264
+msgid "Dark"
+msgstr ""
+
+#: inc/template-tags.php:265
+msgid "System"
+msgstr ""
+
+#: inc/template-tags.php:269
+msgid "Change theme"
+msgstr ""
+
+#: inc/template-tags.php:280
+msgid "Theme mode"
+msgstr ""
+
+#: inc/template-tags.php:334
+msgid "Article information"
+msgstr ""
+
+#: inc/template-tags.php:336
+msgid "Date"
+msgstr ""
+
+#: inc/template-tags.php:343
+msgid "By"
+msgstr ""
+
+#: inc/template-tags.php:371
+msgid "Article tags"
+msgstr ""
+
+#: inc/template-tags.php:372
+msgid "Tagged in"
+msgstr ""
+
+#: inc/template-tags.php:409
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags.php:426
+msgid "Reply"
+msgstr ""
+
+#: inc/template-tags.php:450
+#: inc/template-tags.php:503
+msgid "Previous"
+msgstr ""
+
+#: inc/template-tags.php:451
+#: inc/template-tags.php:517
+msgid "Next"
+msgstr ""
+
+#: inc/template-tags.php:487
+msgid "Posts pagination"
+msgstr ""
+
+#. translators: 1: Current page number. 2: Total number of pages.
+#: inc/template-tags.php:493
+#, php-format
+msgid "Page %1$s of %2$s"
+msgstr ""
+
+#: index.php:20
+msgid "Latest briefings"
+msgstr ""
+
+#: index.php:22
+msgid "Browse the latest signals, notes and articles available in this archive."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Centered page"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Wide page"
 msgstr ""
 
 #: patterns/cta.php
@@ -185,17 +508,132 @@ msgid "Connect execution signals to decisions."
 msgstr ""
 
 #. translators: %s: Search query.
-#: search.php:17
+#: search.php:24
 #, php-format
 msgid "Search results for: %s"
 msgstr ""
 
-#: template-parts/content-none.php:11
+#: search.php:30
+msgid "Find briefings, operational notes and strategic signals across the archive."
+msgstr ""
+
+#. translators: %s: Number of posts found in the current search.
+#: search.php:36
+#, php-format
+msgid "%s result found"
+msgid_plural "%s results found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.php:57
+msgid "Search results"
+msgstr ""
+
+#: searchform.php:26
+msgid "Search..."
+msgstr ""
+
+#: tag.php:22
+msgid "Tag"
+msgstr ""
+
+#. translators: %s: Tag name.
+#: tag.php:33
+#, php-format
+msgid "Signals tagged with %s."
+msgstr ""
+
+#: tag.php:52
+msgid "Tag articles"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "No results"
+msgstr ""
+
+#: template-parts/content-none.php:16
+msgid "Empty archive"
+msgstr ""
+
+#: template-parts/content-none.php:23
 msgid "Nothing found"
 msgstr ""
 
-#: template-parts/content-none.php:15
+#: template-parts/content-none.php:25
+msgid "No articles yet"
+msgstr ""
+
+#: template-parts/content-none.php:33
 msgid "Try a different search or return to the homepage."
+msgstr ""
+
+#: template-parts/content-none.php:36
+msgid "This archive does not have published articles yet. Browse the latest briefings instead."
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid "Archive recovery links"
+msgstr ""
+
+#: template-parts/content-none.php:42
+msgid "Browse latest articles"
+msgstr ""
+
+#: template-parts/content-page.php:24
+msgid "Page navigation"
+msgstr ""
+
+#: template-parts/content.php:29
+msgid "Read article"
+msgstr ""
+
+#: template-parts/post-navigation.php:16
+msgid "Article navigation"
+msgstr ""
+
+#: template-parts/post-navigation.php:19
+msgid "Previous article"
+msgstr ""
+
+#: template-parts/post-navigation.php:28
+msgid "Next article"
+msgstr ""
+
+#: template-parts/related-posts.php:39
+msgid "Read next"
+msgstr ""
+
+#: template-parts/related-posts.php:40
+msgid "Related articles"
+msgstr ""
+
+#: template-parts/related-posts.php:41
+msgid "Continue with articles from the same editorial context."
+msgstr ""
+
+#: template-parts/share-post.php:19
+msgid "WhatsApp"
+msgstr ""
+
+#: template-parts/share-post.php:23
+msgid "LinkedIn"
+msgstr ""
+
+#: template-parts/share-post.php:27
+msgid "X"
+msgstr ""
+
+#: template-parts/share-post.php:34
+msgid "Share article"
+msgstr ""
+
+#: template-parts/share-post.php:50
+#: template-parts/share-post.php:54
+msgid "Copy link"
+msgstr ""
+
+#: template-parts/share-post.php:51
+msgid "Copied"
 msgstr ""
 
 #: theme.json
