@@ -71,6 +71,7 @@ msgid "Popular topics"
 msgstr "Temas populares"
 
 #: archive.php:20
+#: index.php:19
 msgid "Archive"
 msgstr "Arquivo"
 
@@ -82,6 +83,7 @@ msgstr "Navegue por artigos agrupados por tema, autor ou período."
 #: archive.php:36
 #: author.php:33
 #: category.php:44
+#: index.php:29
 #: tag.php:44
 #, php-format
 msgid "%s article found"
@@ -90,6 +92,7 @@ msgstr[0] "%s artigo encontrado"
 msgstr[1] "%s artigos encontrados"
 
 #: archive.php:44
+#: index.php:37
 msgid "Archive articles"
 msgstr "Artigos do arquivo"
 
@@ -408,6 +411,14 @@ msgstr "Paginação de posts"
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr "Página %1$s de %2$s"
+
+#: index.php:20
+msgid "Latest briefings"
+msgstr "Briefings mais recentes"
+
+#: index.php:22
+msgid "Browse the latest signals, notes and articles available in this archive."
+msgstr "Navegue pelos sinais, notas e artigos mais recentes disponíveis neste arquivo."
 
 #. Template Name of the theme
 msgid "Centered page"

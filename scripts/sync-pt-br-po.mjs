@@ -51,6 +51,11 @@ const translations = new Map([
     "Navegue por artigos agrupados por tema, autor ou período.",
   ],
   ["Archive articles", "Artigos do arquivo"],
+  ["Latest briefings", "Briefings mais recentes"],
+  [
+    "Browse the latest signals, notes and articles available in this archive.",
+    "Navegue pelos sinais, notas e artigos mais recentes disponíveis neste arquivo.",
+  ],
   ["Search", "Busca"],
   ["Search...", "Buscar..."],
   ["RSS feed", "Feed RSS"],
