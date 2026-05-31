@@ -10,19 +10,6 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script>
-		(() => {
-			try {
-				const theme = window.localStorage.getItem("executive-signal-theme");
-
-				if (theme === "light" || theme === "dark" || theme === "system") {
-					document.documentElement.dataset.esTheme = theme;
-				}
-			} catch (error) {
-				document.documentElement.dataset.esTheme = "light";
-			}
-		})();
-	</script>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
