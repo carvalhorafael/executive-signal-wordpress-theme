@@ -73,6 +73,44 @@ msgstr[1] "%s artigos encontrados"
 msgid "Archive articles"
 msgstr "Artigos do arquivo"
 
+#: comments.php:20
+msgid "1 comment"
+msgstr "1 comentário"
+
+#. translators: %s: Number of comments.
+#: comments.php:24
+#, php-format
+msgid "%s comments"
+msgstr "%s comentários"
+
+#: comments.php:30
+msgid "Join the conversation with context, questions or practical notes."
+msgstr "Participe da conversa com contexto, perguntas ou notas práticas."
+
+#: comments.php:47
+msgid "Comments pagination"
+msgstr "Paginação de comentários"
+
+#: comments.php:51
+msgid "Previous comments"
+msgstr "Comentários anteriores"
+
+#: comments.php:52
+msgid "Next comments"
+msgstr "Próximos comentários"
+
+#: comments.php:59
+msgid "No comments yet. Be the first to add a useful signal."
+msgstr "Ainda não há comentários. Seja a primeira pessoa a adicionar um sinal útil."
+
+#: comments.php:69
+msgid "Add a clear comment that helps the next reader decide what matters."
+msgstr "Adicione um comentário claro que ajude a próxima pessoa a decidir o que importa."
+
+#: comments.php:70
+msgid "Publish comment"
+msgstr "Publicar comentário"
+
 #. translators: %d: Footer column number.
 #: footer.php:13
 #, php-format
@@ -267,17 +305,25 @@ msgstr "Data"
 msgid "By"
 msgstr "Por"
 
-#: inc/template-tags.php:365
-#: inc/template-tags.php:404
+#: inc/template-tags.php:381
+msgid "Your comment is awaiting moderation."
+msgstr "Seu comentário está aguardando moderação."
+
+#: inc/template-tags.php:398
+msgid "Reply"
+msgstr "Responder"
+
+#: inc/template-tags.php:420
+#: inc/template-tags.php:459
 msgid "Previous"
 msgstr "Anterior"
 
-#: inc/template-tags.php:366
-#: inc/template-tags.php:418
+#: inc/template-tags.php:421
+#: inc/template-tags.php:473
 msgid "Next"
 msgstr "Próxima"
 
-#: inc/template-tags.php:399
+#: inc/template-tags.php:454
 msgid "Posts pagination"
 msgstr "Paginação de posts"
 

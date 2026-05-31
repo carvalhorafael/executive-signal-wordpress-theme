@@ -354,6 +354,61 @@ function executive_signal_render_article_meta_row( $post_id = null ) {
 }
 
 /**
+ * Render a single comment with design-system comment thread classes.
+ *
+ * @param WP_Comment $comment Comment object.
+ * @param array      $args Comment list arguments.
+ * @param int        $depth Comment depth.
+ * @return void
+ */
+function executive_signal_render_comment( $comment, $args, $depth ) {
+	?>
+	<article id="comment-<?php comment_ID(); ?>" <?php comment_class( 'es-comment-thread__comment', $comment ); ?>>
+		<div class="es-comment-thread__avatar">
+			<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
+		</div>
+		<div class="es-comment-thread__body">
+			<div class="es-comment-thread__meta-row">
+				<p class="es-comment-thread__author"><?php echo wp_kses_post( get_comment_author_link( $comment ) ); ?></p>
+				<a class="es-comment-thread__meta" href="<?php echo esc_url( get_comment_link( $comment ) ); ?>">
+					<time datetime="<?php echo esc_attr( get_comment_time( DATE_W3C, false, $comment ) ); ?>">
+						<?php echo esc_html( get_comment_date( '', $comment ) ); ?>
+					</time>
+				</a>
+			</div>
+
+			<?php if ( '0' === $comment->comment_approved ) : ?>
+				<p class="es-comment-thread__meta"><?php esc_html_e( 'Your comment is awaiting moderation.', 'executive-signal-wordpress-theme' ); ?></p>
+			<?php endif; ?>
+
+			<div class="es-comment-thread__content">
+				<?php comment_text( $comment ); ?>
+			</div>
+
+			<div class="es-comment-thread__actions">
+				<?php
+				echo wp_kses_post(
+					get_comment_reply_link(
+						array_merge(
+							$args,
+							array(
+								'add_below'  => 'comment',
+								'depth'      => $depth,
+								'max_depth'  => $args['max_depth'],
+								'reply_text' => esc_html__( 'Reply', 'executive-signal-wordpress-theme' ),
+							)
+						),
+						$comment
+					)
+				);
+				?>
+			</div>
+		</div>
+	</article>
+	<?php
+}
+
+/**
  * Render pagination markup using the design-system blog contract.
  *
  * @return void

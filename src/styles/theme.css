@@ -512,6 +512,60 @@ a {
   font-size: 1.125rem;
 }
 
+.comments-area {
+  margin-inline: auto;
+  width: min(100%, 72ch);
+}
+
+.comments-area .children {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 0;
+  padding-left: clamp(1rem, 4vw, 2.5rem);
+}
+
+.comments-area .comment-reply-link {
+  color: var(--es-accent);
+  font-size: 0.875rem;
+  font-weight: var(--es-font-weight-title);
+  text-decoration-color: color-mix(in srgb, var(--es-accent) 50%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.es-comment-form :where(input:not([type="submit"]), textarea) {
+  background: var(--es-background);
+  border: 1px solid var(--es-border-soft);
+  border-radius: var(--es-radius-sm);
+  box-sizing: border-box;
+  color: var(--es-text-primary);
+  font: inherit;
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+
+.es-comment-form :where(input:not([type="submit"]), textarea):focus-visible {
+  border-color: var(--es-border-interactive);
+  box-shadow: 0 0 0 2px var(--es-ring);
+  outline: none;
+}
+
+.es-comment-form :where(label) {
+  color: var(--es-text-secondary);
+  font-size: 0.875rem;
+  font-weight: var(--es-font-weight-title);
+}
+
+.es-comment-form :where(.logged-in-as, .comment-notes, .comment-form-cookies-consent) {
+  color: var(--es-text-tertiary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.es-comment-form .form-submit {
+  margin: 0;
+}
+
 .page-links {
   color: var(--es-text-tertiary);
   display: flex;
