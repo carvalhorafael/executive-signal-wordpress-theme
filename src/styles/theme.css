@@ -933,6 +933,15 @@ a {
   padding: 0;
 }
 
+.es-blog-pagination__status {
+  color: var(--es-text-tertiary);
+  font-size: 0.8125rem;
+  font-weight: var(--es-font-weight-title);
+  letter-spacing: var(--es-letter-spacing-label);
+  margin: 0;
+  text-transform: uppercase;
+}
+
 @media (max-width: 780px) {
   .es-article-archive-grid[data-columns="two"] .es-article-archive-grid__items {
     grid-template-columns: 1fr;

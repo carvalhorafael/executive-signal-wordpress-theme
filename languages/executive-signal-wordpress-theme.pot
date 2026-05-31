@@ -56,6 +56,7 @@ msgid "Helpful links"
 msgstr ""
 
 #: 404.php:23
+#: template-parts/content-none.php:43
 msgid "Return to homepage"
 msgstr ""
 
@@ -372,18 +373,24 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: inc/template-tags.php:420
-#: inc/template-tags.php:459
+#: inc/template-tags.php:422
+#: inc/template-tags.php:475
 msgid "Previous"
 msgstr ""
 
-#: inc/template-tags.php:421
-#: inc/template-tags.php:473
+#: inc/template-tags.php:423
+#: inc/template-tags.php:489
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags.php:454
+#: inc/template-tags.php:459
 msgid "Posts pagination"
+msgstr ""
+
+#. translators: 1: Current page number. 2: Total number of pages.
+#: inc/template-tags.php:465
+#, php-format
+msgid "Page %1$s of %2$s"
 msgstr ""
 
 #: patterns/cta.php
@@ -491,16 +498,36 @@ msgstr ""
 msgid "Tag articles"
 msgstr ""
 
-#: template-parts/content-none.php:11
+#: template-parts/content-none.php:14
 msgid "No results"
 msgstr ""
 
-#: template-parts/content-none.php:12
+#: template-parts/content-none.php:16
+msgid "Empty archive"
+msgstr ""
+
+#: template-parts/content-none.php:23
 msgid "Nothing found"
 msgstr ""
 
-#: template-parts/content-none.php:16
+#: template-parts/content-none.php:25
+msgid "No articles yet"
+msgstr ""
+
+#: template-parts/content-none.php:33
 msgid "Try a different search or return to the homepage."
+msgstr ""
+
+#: template-parts/content-none.php:36
+msgid "This archive does not have published articles yet. Browse the latest briefings instead."
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid "Archive recovery links"
+msgstr ""
+
+#: template-parts/content-none.php:42
+msgid "Browse latest articles"
 msgstr ""
 
 #: template-parts/content-page.php:24

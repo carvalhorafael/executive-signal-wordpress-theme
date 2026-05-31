@@ -414,6 +414,8 @@ function executive_signal_render_comment( $comment, $args, $depth ) {
  * @return void
  */
 function executive_signal_render_posts_pagination() {
+	global $wp_query;
+
 	$links = paginate_links(
 		array(
 			'type'      => 'array',
@@ -450,9 +452,23 @@ function executive_signal_render_posts_pagination() {
 
 		$page_links[] = $link;
 	}
+
+	$current_page = max( 1, (int) get_query_var( 'paged' ) );
+	$total_pages  = isset( $wp_query->max_num_pages ) ? (int) $wp_query->max_num_pages : 1;
 	?>
 	<nav class="es-article-archive-grid__pagination" aria-label="<?php esc_attr_e( 'Posts pagination', 'executive-signal-wordpress-theme' ); ?>">
 		<div class="es-blog-pagination">
+			<p class="es-blog-pagination__status">
+				<?php
+				printf(
+					/* translators: 1: Current page number. 2: Total number of pages. */
+					esc_html__( 'Page %1$s of %2$s', 'executive-signal-wordpress-theme' ),
+					esc_html( number_format_i18n( $current_page ) ),
+					esc_html( number_format_i18n( $total_pages ) )
+				);
+				?>
+			</p>
+
 			<?php if ( $previous_link ) : ?>
 				<?php echo wp_kses_post( $previous_link ); ?>
 			<?php else : ?>

@@ -58,6 +58,7 @@ msgid "Helpful links"
 msgstr "Links úteis"
 
 #: 404.php:23
+#: template-parts/content-none.php:43
 msgid "Return to homepage"
 msgstr "Voltar para a página inicial"
 
@@ -374,19 +375,25 @@ msgstr "Seu comentário está aguardando moderação."
 msgid "Reply"
 msgstr "Responder"
 
-#: inc/template-tags.php:420
-#: inc/template-tags.php:459
+#: inc/template-tags.php:422
+#: inc/template-tags.php:475
 msgid "Previous"
 msgstr "Anterior"
 
-#: inc/template-tags.php:421
-#: inc/template-tags.php:473
+#: inc/template-tags.php:423
+#: inc/template-tags.php:489
 msgid "Next"
 msgstr "Próxima"
 
-#: inc/template-tags.php:454
+#: inc/template-tags.php:459
 msgid "Posts pagination"
 msgstr "Paginação de posts"
+
+#. translators: 1: Current page number. 2: Total number of pages.
+#: inc/template-tags.php:465
+#, php-format
+msgid "Page %1$s of %2$s"
+msgstr "Página %1$s de %2$s"
 
 #: patterns/cta.php
 msgctxt "Pattern title"
@@ -493,17 +500,37 @@ msgstr "Sinais marcados com %s."
 msgid "Tag articles"
 msgstr "Artigos da tag"
 
-#: template-parts/content-none.php:11
+#: template-parts/content-none.php:14
 msgid "No results"
 msgstr "Sem resultados"
 
-#: template-parts/content-none.php:12
+#: template-parts/content-none.php:16
+msgid "Empty archive"
+msgstr "Arquivo vazio"
+
+#: template-parts/content-none.php:23
 msgid "Nothing found"
 msgstr "Nada encontrado"
 
-#: template-parts/content-none.php:16
+#: template-parts/content-none.php:25
+msgid "No articles yet"
+msgstr "Ainda não há artigos"
+
+#: template-parts/content-none.php:33
 msgid "Try a different search or return to the homepage."
 msgstr "Tente uma busca diferente ou volte para a página inicial."
+
+#: template-parts/content-none.php:36
+msgid "This archive does not have published articles yet. Browse the latest briefings instead."
+msgstr "Este arquivo ainda não tem artigos publicados. Veja os briefings mais recentes."
+
+#: template-parts/content-none.php:37
+msgid "Archive recovery links"
+msgstr "Links de recuperação do arquivo"
+
+#: template-parts/content-none.php:42
+msgid "Browse latest articles"
+msgstr "Ver artigos mais recentes"
 
 #: template-parts/content-page.php:24
 msgid "Page navigation"

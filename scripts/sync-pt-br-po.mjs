@@ -123,6 +123,15 @@ const translations = new Map([
   ["Previous", "Anterior"],
   ["Next", "Próxima"],
   ["Posts pagination", "Paginação de posts"],
+  ["Page %1$s of %2$s", "Página %1$s de %2$s"],
+  ["Empty archive", "Arquivo vazio"],
+  ["No articles yet", "Ainda não há artigos"],
+  [
+    "This archive does not have published articles yet. Browse the latest briefings instead.",
+    "Este arquivo ainda não tem artigos publicados. Veja os briefings mais recentes.",
+  ],
+  ["Archive recovery links", "Links de recuperação do arquivo"],
+  ["Browse latest articles", "Ver artigos mais recentes"],
   ["Turn signal into decision.", "Transforme sinal em decisão."],
   [
     "Use this section for a newsletter, briefing request or executive workflow call to action.",
