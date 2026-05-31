@@ -185,20 +185,20 @@ msgstr "Coluna %d do rodapé"
 msgid "Copyright © %s - Developed by Rafael Carvalho®"
 msgstr "Copyright © %s - Desenvolvido por Rafael Carvalho®"
 
-#: header.php:31
+#: header.php:18
 msgid "Skip to content"
 msgstr "Pular para o conteúdo"
 
-#: header.php:53
-#: header.php:57
+#: header.php:40
+#: header.php:44
 msgid "Open menu"
 msgstr "Abrir menu"
 
-#: header.php:54
+#: header.php:41
 msgid "Close menu"
 msgstr "Fechar menu"
 
-#: header.php:64
+#: header.php:51
 msgid "RSS feed"
 msgstr "Feed RSS"
 
@@ -289,28 +289,40 @@ msgstr "Menu principal"
 msgid "Footer menu"
 msgstr "Menu do rodapé"
 
-#: inc/setup.php:58
+#: inc/setup.php:61
+msgid "Executive solid"
+msgstr "Executive sólido"
+
+#: inc/setup.php:69
+msgid "Executive panel"
+msgstr "Executive painel"
+
+#: inc/setup.php:77
+msgid "Executive accent"
+msgstr "Executive destaque"
+
+#: inc/setup.php:90
 msgid "Footer column 1"
 msgstr "Coluna 1 do rodapé"
 
-#: inc/setup.php:59
+#: inc/setup.php:91
 msgid "Footer column 2"
 msgstr "Coluna 2 do rodapé"
 
-#: inc/setup.php:60
+#: inc/setup.php:92
 msgid "Footer column 3"
 msgstr "Coluna 3 do rodapé"
 
-#: inc/setup.php:61
+#: inc/setup.php:93
 msgid "Footer column 4"
 msgstr "Coluna 4 do rodapé"
 
-#: inc/setup.php:62
+#: inc/setup.php:94
 msgid "Footer bottom"
 msgstr "Linha final do rodapé"
 
 #. translators: %s: Footer widget area name.
-#: inc/setup.php:71
+#: inc/setup.php:103
 #, php-format
 msgid "Widgets added here appear in %s."
 msgstr "Widgets adicionados aqui aparecem em %s."

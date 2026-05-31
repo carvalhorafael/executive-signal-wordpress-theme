@@ -101,6 +101,16 @@
   padding: 1rem 1.25rem;
 }
 
+.editor-styles-wrapper .is-root-container .wp-block-quote.is-style-executive-signal-panel {
+  background: var(--es-panel);
+  box-shadow: var(--es-shadow-sm);
+}
+
+.editor-styles-wrapper .is-root-container .wp-block-separator.is-style-executive-signal-accent {
+  border-top-color: var(--es-accent);
+  width: min(100%, 12rem);
+}
+
 .editor-styles-wrapper .is-root-container :where(code, pre) {
   font-family: var(--es-font-mono);
 }

@@ -49,6 +49,38 @@ function executive_signal_theme_setup() {
 add_action( 'after_setup_theme', 'executive_signal_theme_setup' );
 
 /**
+ * Register editor block styles aligned with Executive Signal prose.
+ *
+ * @return void
+ */
+function executive_signal_register_block_styles() {
+	register_block_style(
+		'core/button',
+		array(
+			'name'  => 'executive-signal-solid',
+			'label' => __( 'Executive solid', 'executive-signal-wordpress-theme' ),
+		)
+	);
+
+	register_block_style(
+		'core/quote',
+		array(
+			'name'  => 'executive-signal-panel',
+			'label' => __( 'Executive panel', 'executive-signal-wordpress-theme' ),
+		)
+	);
+
+	register_block_style(
+		'core/separator',
+		array(
+			'name'  => 'executive-signal-accent',
+			'label' => __( 'Executive accent', 'executive-signal-wordpress-theme' ),
+		)
+	);
+}
+add_action( 'init', 'executive_signal_register_block_styles' );
+
+/**
  * Register footer widget areas.
  *
  * @return void
