@@ -73,11 +73,17 @@ msgstr[1] "%s artigos encontrados"
 msgid "Archive articles"
 msgstr "Artigos do arquivo"
 
-#. translators: %s: Current year.
-#: footer.php:15
+#. translators: %d: Footer column number.
+#: footer.php:13
 #, php-format
-msgid "Executive Signal %s"
-msgstr "Executive Signal %s"
+msgid "Footer column %d"
+msgstr "Coluna %d do rodapé"
+
+#. translators: %s: Current year.
+#: footer.php:28
+#, php-format
+msgid "Copyright © %s - Developed by Rafael Carvalho®"
+msgstr "Copyright © %s - Desenvolvido por Rafael Carvalho®"
 
 #: header.php:31
 msgid "Skip to content"
@@ -169,6 +175,32 @@ msgstr "Menu principal"
 #: inc/setup.php:45
 msgid "Footer menu"
 msgstr "Menu do rodapé"
+
+#: inc/setup.php:58
+msgid "Footer column 1"
+msgstr "Coluna 1 do rodapé"
+
+#: inc/setup.php:59
+msgid "Footer column 2"
+msgstr "Coluna 2 do rodapé"
+
+#: inc/setup.php:60
+msgid "Footer column 3"
+msgstr "Coluna 3 do rodapé"
+
+#: inc/setup.php:61
+msgid "Footer column 4"
+msgstr "Coluna 4 do rodapé"
+
+#: inc/setup.php:62
+msgid "Footer bottom"
+msgstr "Linha final do rodapé"
+
+#. translators: %s: Footer widget area name.
+#: inc/setup.php:71
+#, php-format
+msgid "Widgets added here appear in %s."
+msgstr "Widgets adicionados aqui aparecem em %s."
 
 #: inc/template-tags.php:41
 msgid "Post information"

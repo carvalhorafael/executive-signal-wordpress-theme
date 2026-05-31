@@ -24,6 +24,80 @@ a {
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
+.site-footer.es-blog-site-footer {
+  background: var(--es-surface);
+  border-block: 0;
+  border-top: 1px solid var(--es-border-soft);
+}
+
+.site-footer__inner.es-blog-site-footer__inner {
+  box-sizing: border-box;
+}
+
+.site-footer__widgets {
+  min-height: 8rem;
+}
+
+.site-footer__widget-area {
+  min-width: 0;
+}
+
+.site-footer__widget-area .widget {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+}
+
+.site-footer__widget-area .widget + .widget {
+  margin-top: 1.25rem;
+}
+
+.site-footer__widget-area :where(p, ul, ol) {
+  margin-block: 0;
+}
+
+.site-footer__widget-area :where(ul, ol) {
+  display: grid;
+  gap: 0.45rem;
+  list-style: none;
+  padding: 0;
+}
+
+.site-footer__widget-area :where(a) {
+  color: var(--es-text-secondary);
+  text-decoration: none;
+}
+
+.site-footer__widget-area :where(a:hover, a:focus-visible) {
+  color: var(--es-text-primary);
+}
+
+.site-footer__widget-area :where(.wp-block-heading, h1, h2, h3, h4, h5, h6) {
+  color: var(--es-accent);
+  font-size: 0.75rem;
+  font-weight: var(--es-font-weight-title);
+  letter-spacing: var(--es-letter-spacing-label);
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.site-footer__bottom.es-blog-site-footer__bottom {
+  grid-template-columns: 1fr;
+}
+
+.site-footer__legal {
+  text-align: center;
+}
+
+.site-footer__legal p {
+  margin: 0;
+}
+
+.site-footer__legal :where(a) {
+  color: var(--es-text-secondary);
+}
+
 .site-title {
   color: var(--es-text-primary);
   font-weight: var(--es-font-weight-heading);
