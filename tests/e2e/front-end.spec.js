@@ -19,12 +19,18 @@ const tryWpCli = (args) => {
 
 const fixture = {
   categorySlug: "e2e-theme",
+  menuName: "E2E Primary",
   postSlug: "e2e-theme-article",
   siblingSlug: "e2e-theme-related",
 };
 
 test.beforeAll(() => {
   runWpCli(["theme", "activate", "executive-signal-wordpress-theme"]);
+  tryWpCli(["language", "core", "install", "pt_BR"]);
+  runWpCli(["option", "update", "WPLANG", "pt_BR"]);
+  runWpCli(["rewrite", "structure", "/%postname%/", "--hard"]);
+  runWpCli(["rewrite", "flush", "--hard"]);
+
   tryWpCli(["term", "create", "category", "E2E Theme", "--slug=e2e-theme"]);
   tryWpCli(["term", "create", "post_tag", "E2E Tag", "--slug=e2e-tag"]);
 
@@ -46,6 +52,41 @@ test.beforeAll(() => {
     ]);
 
   tryWpCli(["post", "term", "add", postId, "post_tag", "e2e-tag"]);
+
+  const existingMenuId = tryWpCli(["term", "list", "nav_menu", `--name=${fixture.menuName}`, "--field=term_id"]);
+
+  if (existingMenuId) {
+    tryWpCli(["menu", "delete", existingMenuId]);
+  }
+
+  runWpCli(["menu", "create", fixture.menuName]);
+
+  const menuId = runWpCli(["term", "list", "nav_menu", `--name=${fixture.menuName}`, "--field=term_id"]);
+  runWpCli(["menu", "item", "add-custom", menuId, "Início", "/", "--porcelain"]);
+  runWpCli(["menu", "item", "add-custom", menuId, "Blog", "/blog/", "--porcelain"]);
+
+  const parentMenuItemId = runWpCli([
+    "menu",
+    "item",
+    "add-custom",
+    menuId,
+    "Gestão",
+    `/category/${fixture.categorySlug}/`,
+    "--porcelain",
+  ]);
+
+  runWpCli([
+    "menu",
+    "item",
+    "add-custom",
+    menuId,
+    "Negócios",
+    `/category/${fixture.categorySlug}/`,
+    `--parent-id=${parentMenuItemId}`,
+    "--porcelain",
+  ]);
+
+  runWpCli(["menu", "location", "assign", menuId, "primary"]);
 
   const existingSiblingId = tryWpCli(["post", "list", "--post_type=post", `--name=${fixture.siblingSlug}`, "--field=ID"]);
 
