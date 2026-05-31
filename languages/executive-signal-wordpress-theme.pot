@@ -51,6 +51,22 @@ msgstr ""
 msgid "The requested page could not be found. Try searching for what you need."
 msgstr ""
 
+#: 404.php:22
+msgid "Helpful links"
+msgstr ""
+
+#: 404.php:23
+msgid "Return to homepage"
+msgstr ""
+
+#: 404.php:30
+msgid "Browse the blog"
+msgstr ""
+
+#: 404.php:46
+msgid "Popular topics"
+msgstr ""
+
 #: archive.php:20
 msgid "Archive"
 msgstr ""

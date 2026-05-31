@@ -882,6 +882,57 @@ a {
   padding: 0.75rem 1rem;
 }
 
+.es-empty-state__links,
+.es-empty-state__topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.es-empty-state__link,
+.es-empty-state__topic {
+  align-items: center;
+  border: 1px solid var(--es-border-soft);
+  border-radius: var(--es-radius-sm);
+  color: var(--es-text-secondary);
+  display: inline-flex;
+  font-size: 0.9375rem;
+  font-weight: var(--es-font-weight-title);
+  min-height: 2.5rem;
+  padding: 0.55rem 0.85rem;
+  text-decoration: none;
+}
+
+.es-empty-state__link:hover,
+.es-empty-state__link:focus-visible,
+.es-empty-state__topic:hover,
+.es-empty-state__topic:focus-visible {
+  background: var(--es-surface-hover);
+  color: var(--es-text-primary);
+  outline: none;
+}
+
+.es-empty-state__topics {
+  border-top: 1px solid var(--es-border-soft);
+  display: grid;
+  gap: 0.85rem;
+  padding-top: 1.25rem;
+}
+
+.es-empty-state__topics-title {
+  color: var(--es-text-tertiary);
+  font-size: 0.8125rem;
+  font-weight: var(--es-font-weight-title);
+  letter-spacing: var(--es-letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.es-empty-state__topic-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 @media (max-width: 780px) {
   .es-article-archive-grid[data-columns="two"] .es-article-archive-grid__items {
     grid-template-columns: 1fr;

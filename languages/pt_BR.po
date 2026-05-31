@@ -53,6 +53,22 @@ msgstr "Página não encontrada"
 msgid "The requested page could not be found. Try searching for what you need."
 msgstr "A página solicitada não foi encontrada. Tente buscar pelo que você precisa."
 
+#: 404.php:22
+msgid "Helpful links"
+msgstr "Links úteis"
+
+#: 404.php:23
+msgid "Return to homepage"
+msgstr "Voltar para a página inicial"
+
+#: 404.php:30
+msgid "Browse the blog"
+msgstr "Ver o blog"
+
+#: 404.php:46
+msgid "Popular topics"
+msgstr "Temas populares"
+
 #: archive.php:20
 msgid "Archive"
 msgstr "Arquivo"
