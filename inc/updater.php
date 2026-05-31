@@ -10,8 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'EXECUTIVE_SIGNAL_THEME_SLUG', basename( EXECUTIVE_SIGNAL_THEME_DIR ) );
+define( 'EXECUTIVE_SIGNAL_THEME_REPOSITORY', 'carvalhorafael/executive-signal-wordpress-theme' );
 define( 'EXECUTIVE_SIGNAL_THEME_UPDATE_URI', 'https://github.com/carvalhorafael/executive-signal-wordpress-theme' );
-define( 'EXECUTIVE_SIGNAL_THEME_RELEASE_API', 'https://api.github.com/repos/carvalhorafael/executive-signal-wordpress-theme/releases/latest' );
+define( 'EXECUTIVE_SIGNAL_THEME_RELEASE_API', 'https://api.github.com/repos/' . EXECUTIVE_SIGNAL_THEME_REPOSITORY . '/releases/latest' );
 define( 'EXECUTIVE_SIGNAL_THEME_RELEASE_ASSET', 'executive-signal-wordpress-theme.zip' );
 define( 'EXECUTIVE_SIGNAL_THEME_RELEASE_CACHE_KEY', 'executive_signal_theme_latest_release' );
 
@@ -39,10 +40,11 @@ function executive_signal_find_github_release_asset_url( $release ) {
 	foreach ( $release['assets'] as $asset ) {
 		if (
 			is_array( $asset )
-			&& EXECUTIVE_SIGNAL_THEME_RELEASE_ASSET === ( $asset['name'] ?? '' )
-			&& ! empty( $asset['browser_download_url'] )
+			&& isset( $asset['name'], $asset['browser_download_url'] )
+			&& EXECUTIVE_SIGNAL_THEME_RELEASE_ASSET === $asset['name']
+			&& is_string( $asset['browser_download_url'] )
 		) {
-			return (string) $asset['browser_download_url'];
+			return $asset['browser_download_url'];
 		}
 	}
 
@@ -69,11 +71,14 @@ function executive_signal_theme_update_from_release( $release, $current_version 
 	}
 
 	return array(
-		'theme'       => EXECUTIVE_SIGNAL_THEME_SLUG,
-		'version'     => $new_version,
-		'new_version' => $new_version,
-		'url'         => isset( $release['html_url'] ) ? (string) $release['html_url'] : EXECUTIVE_SIGNAL_THEME_UPDATE_URI,
-		'package'     => $package,
+		'theme'        => EXECUTIVE_SIGNAL_THEME_SLUG,
+		'version'      => $new_version,
+		'new_version'  => $new_version,
+		'url'          => isset( $release['html_url'] ) && is_string( $release['html_url'] ) ? $release['html_url'] : EXECUTIVE_SIGNAL_THEME_UPDATE_URI,
+		'package'      => $package,
+		'requires'     => '6.5',
+		'tested'       => '6.5',
+		'requires_php' => '8.2',
 	);
 }
 
@@ -93,9 +98,11 @@ function executive_signal_get_latest_github_release() {
 		EXECUTIVE_SIGNAL_THEME_RELEASE_API,
 		array(
 			'headers' => array(
-				'Accept' => 'application/vnd.github+json',
+				'Accept'               => 'application/vnd.github+json',
+				'User-Agent'           => EXECUTIVE_SIGNAL_THEME_SLUG . '/' . EXECUTIVE_SIGNAL_THEME_VERSION,
+				'X-GitHub-Api-Version' => '2022-11-28',
 			),
-			'timeout' => 5,
+			'timeout' => 10,
 		)
 	);
 
@@ -119,11 +126,18 @@ function executive_signal_get_latest_github_release() {
  *
  * @param mixed                $update Existing update payload.
  * @param array<string, mixed> $theme_data Installed theme data.
- * @param string               $theme_slug Theme slug.
+ * @param string               $theme_slug Theme stylesheet directory.
+ * @param string[]             $locales Installed locales.
  * @return mixed
  */
-function executive_signal_filter_github_theme_update( $update, $theme_data, $theme_slug ) {
-	if ( EXECUTIVE_SIGNAL_THEME_SLUG !== $theme_slug || EXECUTIVE_SIGNAL_THEME_UPDATE_URI !== ( $theme_data['UpdateURI'] ?? '' ) ) {
+function executive_signal_filter_github_theme_update( $update, $theme_data, $theme_slug, $locales = array() ) {
+	unset( $locales );
+
+	if ( EXECUTIVE_SIGNAL_THEME_SLUG !== $theme_slug ) {
+		return $update;
+	}
+
+	if ( empty( $theme_data['UpdateURI'] ) || EXECUTIVE_SIGNAL_THEME_UPDATE_URI !== $theme_data['UpdateURI'] ) {
 		return $update;
 	}
 
@@ -137,4 +151,4 @@ function executive_signal_filter_github_theme_update( $update, $theme_data, $the
 
 	return $release_update ? $release_update : $update;
 }
-add_filter( 'update_themes_github.com', 'executive_signal_filter_github_theme_update', 10, 3 );
+add_filter( 'update_themes_github.com', 'executive_signal_filter_github_theme_update', 10, 4 );

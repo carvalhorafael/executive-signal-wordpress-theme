@@ -14,6 +14,13 @@ get_header();
 		the_post();
 
 		get_template_part( 'template-parts/content', 'single' );
+		get_template_part( 'template-parts/share-post' );
+		get_template_part( 'template-parts/post-navigation' );
+		get_template_part( 'template-parts/related-posts' );
+
+		if ( comments_open() || get_comments_number() ) {
+			comments_template();
+		}
 	endwhile;
 	?>
 </main>

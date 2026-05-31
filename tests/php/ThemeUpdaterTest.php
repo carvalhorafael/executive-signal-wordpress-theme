@@ -35,8 +35,12 @@ final class ThemeUpdaterTest extends TestCase {
 
 		$this->assertIsArray( $update );
 		$this->assertSame( EXECUTIVE_SIGNAL_THEME_SLUG, $update['theme'] );
+		$this->assertSame( $new_version, $update['version'] );
 		$this->assertSame( $new_version, $update['new_version'] );
 		$this->assertSame( $release['assets'][0]['browser_download_url'], $update['package'] );
+		$this->assertSame( '6.5', $update['requires'] );
+		$this->assertSame( '6.5', $update['tested'] );
+		$this->assertSame( '8.2', $update['requires_php'] );
 	}
 
 	/**
@@ -54,5 +58,43 @@ final class ThemeUpdaterTest extends TestCase {
 		);
 
 		$this->assertFalse( executive_signal_theme_update_from_release( $release, EXECUTIVE_SIGNAL_THEME_VERSION ) );
+	}
+
+	/**
+	 * Releases without the packaged theme ZIP should not produce update data.
+	 */
+	public function test_release_without_expected_asset_does_not_produce_theme_update(): void {
+		$release = array(
+			'tag_name' => 'v99.0.0',
+			'assets'   => array(
+				array(
+					'name'                 => 'source.zip',
+					'browser_download_url' => 'https://example.com/source.zip',
+				),
+			),
+		);
+
+		$this->assertFalse( executive_signal_theme_update_from_release( $release, EXECUTIVE_SIGNAL_THEME_VERSION ) );
+	}
+
+	/**
+	 * The Update URI filter should ignore unrelated themes.
+	 */
+	public function test_update_filter_ignores_unrelated_themes(): void {
+		$update = array(
+			'theme' => 'another-theme',
+		);
+
+		$this->assertSame(
+			$update,
+			executive_signal_filter_github_theme_update(
+				$update,
+				array(
+					'UpdateURI' => EXECUTIVE_SIGNAL_THEME_UPDATE_URI,
+				),
+				'another-theme',
+				array()
+			)
+		);
 	}
 }
