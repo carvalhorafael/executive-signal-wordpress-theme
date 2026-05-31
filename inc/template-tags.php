@@ -87,6 +87,87 @@ function executive_signal_get_blog_setting( $setting, $default_value ) {
 }
 
 /**
+ * Render the WordPress primary menu inside the design-system blog header nav.
+ *
+ * @return void
+ */
+function executive_signal_render_header_navigation() {
+	$locations = get_nav_menu_locations();
+
+	if ( empty( $locations['primary'] ) ) {
+		return;
+	}
+
+	$menu_items = wp_get_nav_menu_items( $locations['primary'] );
+
+	if ( empty( $menu_items ) || is_wp_error( $menu_items ) ) {
+		return;
+	}
+
+	$menu_items = array_filter(
+		$menu_items,
+		static function ( $item ) {
+			return '0' === (string) $item->menu_item_parent;
+		}
+	);
+
+	if ( empty( $menu_items ) ) {
+		return;
+	}
+
+	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '/';
+	$current_url = home_url( $request_uri );
+	?>
+	<nav class="primary-navigation es-blog-site-header__nav" aria-label="<?php esc_attr_e( 'Primary menu', 'executive-signal-wordpress-theme' ); ?>">
+		<?php foreach ( $menu_items as $item ) : ?>
+			<?php
+			$is_current_by_class = ! empty(
+				array_intersect(
+					array(
+						'current-menu-item',
+						'current-menu-parent',
+						'current-menu-ancestor',
+					),
+					(array) $item->classes
+				)
+			);
+			$is_current          = $is_current_by_class || executive_signal_normalize_url_for_comparison( $current_url ) === executive_signal_normalize_url_for_comparison( $item->url );
+			?>
+			<a
+				class="es-blog-site-header__nav-link"
+				href="<?php echo esc_url( $item->url ); ?>"
+				<?php if ( $is_current ) : ?>
+					aria-current="page"
+					data-current="true"
+				<?php endif; ?>
+			>
+				<?php echo esc_html( $item->title ); ?>
+			</a>
+		<?php endforeach; ?>
+	</nav>
+	<?php
+}
+
+/**
+ * Normalize a URL before comparing menu item targets with the current request.
+ *
+ * @param string $url URL to normalize.
+ * @return string
+ */
+function executive_signal_normalize_url_for_comparison( $url ) {
+	$parts = wp_parse_url( $url );
+
+	if ( empty( $parts ) || ! is_array( $parts ) ) {
+		return untrailingslashit( $url );
+	}
+
+	$path  = isset( $parts['path'] ) ? untrailingslashit( $parts['path'] ) : '';
+	$query = isset( $parts['query'] ) ? '?' . $parts['query'] : '';
+
+	return ( '' === $path ? '/' : $path ) . $query;
+}
+
+/**
  * Render the primary category label for an article.
  *
  * @param string   $class_name Class name for the label element.

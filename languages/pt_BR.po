@@ -83,11 +83,6 @@ msgstr "Executive Signal %s"
 msgid "Skip to content"
 msgstr "Pular para o conteúdo"
 
-#: header.php:34
-#: inc/setup.php:44
-msgid "Primary menu"
-msgstr "Menu principal"
-
 #. translators: %s: Number of published posts.
 #: home.php:25
 #, php-format
@@ -166,6 +161,11 @@ msgstr "Landing page do Executive Signal"
 msgid "Initial homepage composition."
 msgstr "Composição inicial da página inicial."
 
+#: inc/setup.php:44
+#: inc/template-tags.php:121
+msgid "Primary menu"
+msgstr "Menu principal"
+
 #: inc/setup.php:45
 msgid "Footer menu"
 msgstr "Menu do rodapé"
@@ -182,29 +182,29 @@ msgstr "Briefings para decisões mais claras."
 msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
 msgstr "Um arquivo contínuo de sinais estratégicos, notas operacionais e contexto de mercado para líderes que precisam da parte útil primeiro."
 
-#: inc/template-tags.php:130
+#: inc/template-tags.php:211
 msgid "Article information"
 msgstr "Informações do artigo"
 
-#: inc/template-tags.php:132
+#: inc/template-tags.php:213
 msgid "Date"
 msgstr "Data"
 
-#: inc/template-tags.php:139
+#: inc/template-tags.php:220
 msgid "By"
 msgstr "Por"
 
-#: inc/template-tags.php:155
-#: inc/template-tags.php:194
+#: inc/template-tags.php:236
+#: inc/template-tags.php:275
 msgid "Previous"
 msgstr "Anterior"
 
-#: inc/template-tags.php:156
-#: inc/template-tags.php:208
+#: inc/template-tags.php:237
+#: inc/template-tags.php:289
 msgid "Next"
 msgstr "Próxima"
 
-#: inc/template-tags.php:189
+#: inc/template-tags.php:270
 msgid "Posts pagination"
 msgstr "Paginação de posts"
 

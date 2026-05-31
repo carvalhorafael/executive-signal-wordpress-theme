@@ -17,31 +17,20 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'executive-signal-wordpress-theme' ); ?></a>
 
-	<header class="site-header" data-site-header>
-		<div class="site-header__inner">
-			<div class="site-branding">
+	<header class="site-header es-blog-site-header" data-site-header>
+		<div class="site-header__inner es-blog-site-header__inner">
+			<div class="site-branding es-blog-site-header__brand">
 				<?php
 				if ( has_custom_logo() ) {
 					the_custom_logo();
 				} else {
 					?>
-					<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					<a class="site-title es-blog-site-header__brand-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 					<?php
 				}
 				?>
 			</div>
 
-			<nav class="primary-navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'executive-signal-wordpress-theme' ); ?>">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'primary',
-						'menu_id'        => 'primary-menu',
-						'container'      => false,
-						'fallback_cb'    => false,
-					)
-				);
-				?>
-			</nav>
+			<?php executive_signal_render_header_navigation(); ?>
 		</div>
 	</header>
