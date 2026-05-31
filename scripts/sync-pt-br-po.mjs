@@ -124,6 +124,8 @@ const translations = new Map([
   ["Article information", "Informações do artigo"],
   ["Date", "Data"],
   ["By", "Por"],
+  ["Article tags", "Tags do artigo"],
+  ["Tagged in", "Tags"],
   ["Previous", "Anterior"],
   ["Next", "Próxima"],
   ["Posts pagination", "Paginação de posts"],

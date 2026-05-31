@@ -357,6 +357,38 @@ function executive_signal_render_article_meta_row( $post_id = null ) {
 }
 
 /**
+ * Render post tags for single article navigation.
+ *
+ * @param int|null $post_id Post ID.
+ * @return void
+ */
+function executive_signal_render_article_tags( $post_id = null ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+
+	if ( ! $post_id ) {
+		return;
+	}
+
+	$tags = get_the_tags( $post_id );
+
+	if ( empty( $tags ) || is_wp_error( $tags ) ) {
+		return;
+	}
+	?>
+	<nav class="es-article-tags" aria-label="<?php esc_attr_e( 'Article tags', 'executive-signal-wordpress-theme' ); ?>">
+		<p class="es-article-tags__title"><?php esc_html_e( 'Tagged in', 'executive-signal-wordpress-theme' ); ?></p>
+		<ul class="es-article-tags__list">
+			<?php foreach ( $tags as $tag ) : ?>
+				<li>
+					<a class="es-article-tags__link" href="<?php echo esc_url( get_tag_link( $tag ) ); ?>"><?php echo esc_html( $tag->name ); ?></a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</nav>
+	<?php
+}
+
+/**
  * Render a single comment with design-system comment thread classes.
  *
  * @param WP_Comment $comment Comment object.

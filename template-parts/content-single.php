@@ -29,4 +29,8 @@
 		wp_link_pages();
 		?>
 	</div>
+
+	<footer class="entry__footer">
+		<?php executive_signal_render_article_tags(); ?>
+	</footer>
 </article>
