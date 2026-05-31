@@ -14,24 +14,22 @@ $found_posts  = isset( $wp_query->found_posts ) ? (int) $wp_query->found_posts :
 ?>
 
 <main id="primary" class="site-main site-main--blog">
-	<header class="es-blog-archive-header">
-		<div class="es-blog-archive-header__main">
-			<div class="es-blog-archive-header__copy">
-				<p class="es-blog-archive-header__eyebrow"><?php esc_html_e( 'Search', 'executive-signal-wordpress-theme' ); ?></p>
-				<h1 class="es-blog-archive-header__title">
-					<?php
-					printf(
-						/* translators: %s: Search query. */
-						esc_html__( 'Search results for: %s', 'executive-signal-wordpress-theme' ),
-						esc_html( $search_query )
-					);
-					?>
-				</h1>
-				<p class="es-blog-archive-header__description">
-					<?php esc_html_e( 'Find briefings, operational notes and strategic signals across the archive.', 'executive-signal-wordpress-theme' ); ?>
-				</p>
-			</div>
-			<div class="es-blog-archive-header__meta">
+	<header class="es-search-results-header">
+		<div class="es-search-results-header__copy">
+			<p class="es-search-results-header__eyebrow"><?php esc_html_e( 'Search', 'executive-signal-wordpress-theme' ); ?></p>
+			<h1 class="es-search-results-header__title">
+				<?php
+				printf(
+					/* translators: %s: Search query. */
+					esc_html__( 'Search results for: %s', 'executive-signal-wordpress-theme' ),
+					esc_html( $search_query )
+				);
+				?>
+			</h1>
+			<p class="es-search-results-header__description">
+				<?php esc_html_e( 'Find briefings, operational notes and strategic signals across the archive.', 'executive-signal-wordpress-theme' ); ?>
+			</p>
+			<p class="es-search-results-header__count">
 				<?php
 				printf(
 					/* translators: %s: Number of posts found in the current search. */
@@ -39,7 +37,21 @@ $found_posts  = isset( $wp_query->found_posts ) ? (int) $wp_query->found_posts :
 					esc_html( number_format_i18n( $found_posts ) )
 				);
 				?>
-			</div>
+			</p>
+		</div>
+		<div class="es-search-results-header__controls">
+			<form class="es-search-results-header__search es-header-search es-header-search--results" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<label class="screen-reader-text" for="search-results-field"><?php esc_html_e( 'Search', 'executive-signal-wordpress-theme' ); ?></label>
+				<input
+					id="search-results-field"
+					class="es-header-search__field"
+					type="search"
+					name="s"
+					value="<?php echo esc_attr( $search_query ); ?>"
+					placeholder="<?php esc_attr_e( 'Search...', 'executive-signal-wordpress-theme' ); ?>"
+				>
+				<button class="es-header-search__submit" type="submit"><?php esc_html_e( 'Search', 'executive-signal-wordpress-theme' ); ?></button>
+			</form>
 		</div>
 	</header>
 

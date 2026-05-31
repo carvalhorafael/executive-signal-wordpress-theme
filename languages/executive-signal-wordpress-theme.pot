@@ -262,11 +262,14 @@ msgstr ""
 
 #: inc/template-tags.php:247
 #: inc/template-tags.php:256
-#: search.php:20
+#: search.php:19
+#: search.php:44
+#: search.php:53
 msgid "Search"
 msgstr ""
 
 #: inc/template-tags.php:254
+#: search.php:51
 msgid "Search..."
 msgstr ""
 
@@ -395,24 +398,24 @@ msgid "Connect execution signals to decisions."
 msgstr ""
 
 #. translators: %s: Search query.
-#: search.php:25
+#: search.php:24
 #, php-format
 msgid "Search results for: %s"
 msgstr ""
 
-#: search.php:31
+#: search.php:30
 msgid "Find briefings, operational notes and strategic signals across the archive."
 msgstr ""
 
 #. translators: %s: Number of posts found in the current search.
-#: search.php:38
+#: search.php:36
 #, php-format
 msgid "%s result found"
 msgid_plural "%s results found"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.php:46
+#: search.php:58
 msgid "Search results"
 msgstr ""
 
