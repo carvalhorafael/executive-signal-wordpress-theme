@@ -364,42 +364,42 @@ msgstr "Mudar tema"
 msgid "Theme mode"
 msgstr "Modo do tema"
 
-#: inc/template-tags.php:340
+#: inc/template-tags.php:341
 msgid "Article information"
 msgstr "Informações do artigo"
 
-#: inc/template-tags.php:342
+#: inc/template-tags.php:343
 msgid "Date"
 msgstr "Data"
 
-#: inc/template-tags.php:349
+#: inc/template-tags.php:350
 msgid "By"
 msgstr "Por"
 
-#: inc/template-tags.php:381
+#: inc/template-tags.php:384
 msgid "Your comment is awaiting moderation."
 msgstr "Seu comentário está aguardando moderação."
 
-#: inc/template-tags.php:398
+#: inc/template-tags.php:401
 msgid "Reply"
 msgstr "Responder"
 
-#: inc/template-tags.php:422
-#: inc/template-tags.php:475
+#: inc/template-tags.php:425
+#: inc/template-tags.php:478
 msgid "Previous"
 msgstr "Anterior"
 
-#: inc/template-tags.php:423
-#: inc/template-tags.php:489
+#: inc/template-tags.php:426
+#: inc/template-tags.php:492
 msgid "Next"
 msgstr "Próxima"
 
-#: inc/template-tags.php:459
+#: inc/template-tags.php:462
 msgid "Posts pagination"
 msgstr "Paginação de posts"
 
 #. translators: 1: Current page number. 2: Total number of pages.
-#: inc/template-tags.php:465
+#: inc/template-tags.php:468
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr "Página %1$s de %2$s"

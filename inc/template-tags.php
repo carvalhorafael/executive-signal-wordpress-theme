@@ -336,18 +336,21 @@ function executive_signal_render_article_meta_row( $post_id = null ) {
 	}
 
 	$author_name = get_the_author_meta( 'display_name', (int) get_post_field( 'post_author', $post_id ) );
+	$author_url  = get_author_posts_url( (int) get_post_field( 'post_author', $post_id ) );
 	?>
 	<div class="es-article-meta-row" aria-label="<?php esc_attr_e( 'Article information', 'executive-signal-wordpress-theme' ); ?>">
 		<span class="es-article-meta-row__item">
 			<span class="es-article-meta-row__label"><?php esc_html_e( 'Date', 'executive-signal-wordpress-theme' ); ?></span>
-			<time class="es-article-meta-row__value" datetime="<?php echo esc_attr( get_the_date( DATE_W3C, $post_id ) ); ?>">
+			<time class="es-article-meta-row__value" datetime="<?php echo esc_attr( get_the_date( DATE_W3C, $post_id ) ); ?>" itemprop="datePublished">
 				<?php echo esc_html( get_the_date( '', $post_id ) ); ?>
 			</time>
 		</span>
 		<span class="es-article-meta-row__separator" aria-hidden="true">/</span>
-		<span class="es-article-meta-row__item">
+		<span class="es-article-meta-row__item" itemprop="author" itemscope itemtype="https://schema.org/Person">
 			<span class="es-article-meta-row__label"><?php esc_html_e( 'By', 'executive-signal-wordpress-theme' ); ?></span>
-			<span class="es-article-meta-row__value"><?php echo esc_html( $author_name ); ?></span>
+			<a class="es-article-meta-row__value" href="<?php echo esc_url( $author_url ); ?>" rel="author" itemprop="url">
+				<span itemprop="name"><?php echo esc_html( $author_name ); ?></span>
+			</a>
 		</span>
 	</div>
 	<?php

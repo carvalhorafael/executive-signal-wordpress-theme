@@ -549,6 +549,17 @@ a {
   text-transform: uppercase;
 }
 
+.es-article-meta-row a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.es-article-meta-row a:hover,
+.es-article-meta-row a:focus-visible {
+  color: var(--es-text-primary);
+  outline: none;
+}
+
 .entry__title,
 .entry-card__title,
 .es-hero__title {
