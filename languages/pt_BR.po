@@ -557,6 +557,18 @@ msgstr "Navegação da página"
 msgid "Read article"
 msgstr "Ler artigo"
 
+#: template-parts/related-posts.php:39
+msgid "Read next"
+msgstr "Leia também"
+
+#: template-parts/related-posts.php:40
+msgid "Related articles"
+msgstr "Artigos relacionados"
+
+#: template-parts/related-posts.php:41
+msgid "Continue with articles from the same editorial context."
+msgstr "Continue com artigos do mesmo contexto editorial."
+
 #: theme.json
 msgctxt "Color name"
 msgid "Text primary"

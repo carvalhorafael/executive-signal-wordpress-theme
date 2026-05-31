@@ -555,6 +555,18 @@ msgstr ""
 msgid "Read article"
 msgstr ""
 
+#: template-parts/related-posts.php:39
+msgid "Read next"
+msgstr ""
+
+#: template-parts/related-posts.php:40
+msgid "Related articles"
+msgstr ""
+
+#: template-parts/related-posts.php:41
+msgid "Continue with articles from the same editorial context."
+msgstr ""
+
 #: theme.json
 msgctxt "Color name"
 msgid "Text primary"

@@ -163,6 +163,12 @@ const translations = new Map([
   ["Nothing found", "Nada encontrado"],
   ["Try a different search or return to the homepage.", "Tente uma busca diferente ou volte para a página inicial."],
   ["Read article", "Ler artigo"],
+  ["Read next", "Leia também"],
+  ["Related articles", "Artigos relacionados"],
+  [
+    "Continue with articles from the same editorial context.",
+    "Continue com artigos do mesmo contexto editorial.",
+  ],
   ["Text primary", "Texto principal"],
   ["Background", "Fundo"],
   ["Panel", "Painel"],

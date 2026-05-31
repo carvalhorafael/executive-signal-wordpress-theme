@@ -588,6 +588,11 @@ a {
   font-size: 1.125rem;
 }
 
+.single-post .es-related-articles {
+  margin-inline: auto;
+  width: min(100%, 1180px);
+}
+
 .site-main--page-wide .entry__content,
 .site-main--page-wide .es-article-prose {
   max-width: 92ch;
