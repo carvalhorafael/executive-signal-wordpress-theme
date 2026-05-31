@@ -47,6 +47,14 @@
 			<?php executive_signal_render_header_navigation(); ?>
 
 			<div class="es-blog-site-header__actions">
+				<?php executive_signal_render_header_search(); ?>
+				<a class="es-header-icon-link" href="<?php echo esc_url( get_feed_link() ); ?>" aria-label="<?php esc_attr_e( 'RSS feed', 'executive-signal-wordpress-theme' ); ?>">
+					<svg class="es-header-icon-link__svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+						<path d="M5 5.5C12.45 5.5 18.5 11.55 18.5 19" />
+						<path d="M5 11C9.42 11 13 14.58 13 19" />
+						<circle cx="6" cy="18" r="1.5" />
+					</svg>
+				</a>
 				<?php executive_signal_render_theme_switcher(); ?>
 			</div>
 		</div>

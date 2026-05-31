@@ -72,6 +72,25 @@ if (themeSwitcher) {
   });
 }
 
+const headerSearchField = document.querySelector(".es-header-search__field");
+
+if (headerSearchField) {
+  document.addEventListener("keydown", (event) => {
+    const target = event.target;
+    const isEditableTarget =
+      target instanceof HTMLElement &&
+      (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName));
+
+    if (isEditableTarget || event.key.toLowerCase() !== "k" || (!event.metaKey && !event.ctrlKey)) {
+      return;
+    }
+
+    event.preventDefault();
+    headerSearchField.focus();
+    headerSearchField.select();
+  });
+}
+
 document.querySelectorAll("[data-nav-submenu]").forEach((submenu) => {
   const toggle = submenu.querySelector(".es-blog-site-header__submenu-toggle");
 

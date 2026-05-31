@@ -115,6 +115,105 @@ a {
   box-sizing: border-box;
 }
 
+.es-blog-site-header__actions {
+  min-width: 0;
+}
+
+.es-header-search {
+  align-items: center;
+  background: var(--es-surface-inset);
+  border: 1px solid transparent;
+  border-radius: var(--es-radius-panel);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto;
+  min-height: 2.75rem;
+  min-width: min(18rem, 32vw);
+  padding: 0.25rem;
+}
+
+.es-header-search:focus-within {
+  border-color: var(--es-border-interactive);
+  box-shadow: 0 0 0 2px var(--es-ring);
+}
+
+.es-header-search__field {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--es-text-primary);
+  font: inherit;
+  font-size: 0.9375rem;
+  min-width: 0;
+  outline: 0;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+}
+
+.es-header-search__field::placeholder {
+  color: var(--es-text-tertiary);
+  opacity: 1;
+}
+
+.es-header-search__submit {
+  align-items: center;
+  background: var(--es-panel);
+  border: 1px solid var(--es-border-soft);
+  border-radius: var(--es-radius-sm);
+  color: var(--es-text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  height: 2rem;
+  justify-content: center;
+  min-width: 2.75rem;
+  padding: 0 0.55rem;
+}
+
+.es-header-search__submit:hover,
+.es-header-search__submit:focus-visible {
+  color: var(--es-text-primary);
+  outline: none;
+}
+
+.es-header-search__shortcut {
+  font-size: 0.75rem;
+  font-weight: var(--es-font-weight-medium);
+  line-height: 1;
+}
+
+.es-header-icon-link {
+  align-items: center;
+  border-radius: var(--es-radius-sm);
+  color: var(--es-text-primary);
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  text-decoration: none;
+  width: 2.75rem;
+}
+
+.es-header-icon-link:hover,
+.es-header-icon-link:focus-visible {
+  background: var(--es-surface-hover);
+  color: var(--es-text-primary);
+  outline: none;
+}
+
+.es-header-icon-link:focus-visible {
+  box-shadow: 0 0 0 2px var(--es-ring);
+}
+
+.es-header-icon-link__svg {
+  fill: none;
+  height: 1.35rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  width: 1.35rem;
+}
+
 .es-blog-site-header__nav-item {
   align-items: center;
   display: inline-flex;
@@ -503,6 +602,11 @@ a {
   .es-theme-switcher__menu {
     left: 0;
     right: auto;
+  }
+
+  .es-header-search {
+    min-width: min(100%, 22rem);
+    width: 100%;
   }
 }
 

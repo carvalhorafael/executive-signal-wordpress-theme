@@ -87,6 +87,10 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
+#: header.php:51
+msgid "RSS feed"
+msgstr ""
+
 #. translators: %s: Number of published posts.
 #: home.php:25
 #, php-format
@@ -218,50 +222,60 @@ msgstr ""
 msgid "Open submenu for %s"
 msgstr ""
 
-#: inc/template-tags.php:246
-#: inc/template-tags.php:260
+#: inc/template-tags.php:247
+#: inc/template-tags.php:256
+#: search.php:20
+msgid "Search"
+msgstr ""
+
+#: inc/template-tags.php:254
+msgid "Search..."
+msgstr ""
+
+#: inc/template-tags.php:270
+#: inc/template-tags.php:284
 msgid "Light"
 msgstr ""
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:271
 msgid "Dark"
 msgstr ""
 
-#: inc/template-tags.php:248
+#: inc/template-tags.php:272
 msgid "System"
 msgstr ""
 
-#: inc/template-tags.php:252
+#: inc/template-tags.php:276
 msgid "Change theme"
 msgstr ""
 
-#: inc/template-tags.php:263
+#: inc/template-tags.php:287
 msgid "Theme mode"
 msgstr ""
 
-#: inc/template-tags.php:316
+#: inc/template-tags.php:340
 msgid "Article information"
 msgstr ""
 
-#: inc/template-tags.php:318
+#: inc/template-tags.php:342
 msgid "Date"
 msgstr ""
 
-#: inc/template-tags.php:325
+#: inc/template-tags.php:349
 msgid "By"
 msgstr ""
 
-#: inc/template-tags.php:341
-#: inc/template-tags.php:380
+#: inc/template-tags.php:365
+#: inc/template-tags.php:404
 msgid "Previous"
 msgstr ""
 
-#: inc/template-tags.php:342
-#: inc/template-tags.php:394
+#: inc/template-tags.php:366
+#: inc/template-tags.php:418
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags.php:375
+#: inc/template-tags.php:399
 msgid "Posts pagination"
 msgstr ""
 
@@ -332,10 +346,6 @@ msgstr ""
 
 #: patterns/signal-grid.php:24
 msgid "Connect execution signals to decisions."
-msgstr ""
-
-#: search.php:20
-msgid "Search"
 msgstr ""
 
 #. translators: %s: Search query.

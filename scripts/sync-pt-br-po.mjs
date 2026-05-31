@@ -37,6 +37,8 @@ const translations = new Map([
   ],
   ["Archive articles", "Artigos do arquivo"],
   ["Search", "Busca"],
+  ["Search...", "Buscar..."],
+  ["RSS feed", "Feed RSS"],
   [
     "Find briefings, operational notes and strategic signals across the archive.",
     "Encontre briefings, notas operacionais e sinais estratégicos em todo o arquivo.",
