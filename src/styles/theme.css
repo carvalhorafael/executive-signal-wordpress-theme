@@ -666,6 +666,13 @@ a {
   font: inherit;
 }
 
+.es-social-share-bar__link:focus-visible {
+  border-color: var(--es-border-interactive);
+  box-shadow: 0 0 0 2px var(--es-ring);
+  color: var(--es-text-primary);
+  outline: none;
+}
+
 .single-post .es-post-navigation {
   margin-inline: auto;
   width: min(100%, 72ch);

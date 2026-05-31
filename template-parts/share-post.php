@@ -45,6 +45,7 @@ $share_links   = array(
 			<button
 				class="es-social-share-bar__link es-social-share-bar__button"
 				type="button"
+				aria-live="polite"
 				data-copy-link="<?php echo esc_url( $post_url ); ?>"
 				data-copy-label="<?php esc_attr_e( 'Copy link', 'executive-signal-wordpress-theme' ); ?>"
 				data-copied-label="<?php esc_attr_e( 'Copied', 'executive-signal-wordpress-theme' ); ?>"
