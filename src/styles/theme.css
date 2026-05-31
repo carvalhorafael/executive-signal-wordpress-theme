@@ -971,6 +971,50 @@ a {
   text-decoration: none;
 }
 
+.alignleft {
+  float: left;
+  margin: 0.35rem 1.5rem 1rem 0;
+}
+
+.alignright {
+  float: right;
+  margin: 0.35rem 0 1rem 1.5rem;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-inline: auto;
+}
+
+.wp-caption {
+  max-width: 100%;
+}
+
+.wp-caption img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.wp-caption-text,
+.gallery-caption {
+  color: var(--es-text-tertiary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0.65rem 0 0;
+  text-align: center;
+}
+
+.sticky.es-article-card {
+  border-color: color-mix(in srgb, var(--es-accent) 46%, var(--es-border-soft));
+  box-shadow: var(--es-shadow-md), 0 0 0 0.2rem color-mix(in srgb, var(--es-accent) 10%, transparent);
+}
+
+.bypostauthor > .es-comment-thread__body {
+  border-color: color-mix(in srgb, var(--es-accent) 38%, var(--es-border-soft));
+}
+
 .es-article-card__action {
   color: var(--es-accent);
   font-size: 0.9375rem;
