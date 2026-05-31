@@ -617,12 +617,12 @@ msgstr "X"
 msgid "Share article"
 msgstr "Compartilhar artigo"
 
-#: template-parts/share-post.php:49
-#: template-parts/share-post.php:53
+#: template-parts/share-post.php:50
+#: template-parts/share-post.php:54
 msgid "Copy link"
 msgstr "Copiar link"
 
-#: template-parts/share-post.php:50
+#: template-parts/share-post.php:51
 msgid "Copied"
 msgstr "Copiado"
 
