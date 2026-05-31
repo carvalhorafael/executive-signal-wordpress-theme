@@ -588,6 +588,32 @@ a {
   font-size: 1.125rem;
 }
 
+.site-main--page-wide .entry__content,
+.site-main--page-wide .es-article-prose {
+  max-width: 92ch;
+  width: min(100%, 92ch);
+}
+
+.site-main--page-wide .entry--page .es-article-hero__title {
+  max-width: none;
+}
+
+.site-main--page-centered {
+  max-width: 900px;
+}
+
+.site-main--page-centered .entry--page .es-article-hero {
+  text-align: center;
+}
+
+.site-main--page-centered .entry--page .es-article-hero__title {
+  margin-inline: auto;
+}
+
+.site-main--page-centered .entry--page .es-article-hero__description {
+  margin-inline: auto;
+}
+
 .comments-area {
   margin-inline: auto;
   width: min(100%, 72ch);

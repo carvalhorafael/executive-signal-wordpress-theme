@@ -19,6 +19,8 @@ const includePaths = [
   "header.php",
   "index.php",
   "page.php",
+  "page-centered.php",
+  "page-wide.php",
   "search.php",
   "single.php",
   "theme.json",

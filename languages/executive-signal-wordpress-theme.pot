@@ -402,6 +402,14 @@ msgstr ""
 msgid "Page %1$s of %2$s"
 msgstr ""
 
+#. Template Name of the theme
+msgid "Centered page"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Wide page"
+msgstr ""
+
 #: patterns/cta.php
 msgctxt "Pattern title"
 msgid "Executive Signal CTA"

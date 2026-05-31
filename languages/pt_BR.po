@@ -404,6 +404,14 @@ msgstr "Paginação de posts"
 msgid "Page %1$s of %2$s"
 msgstr "Página %1$s de %2$s"
 
+#. Template Name of the theme
+msgid "Centered page"
+msgstr "Página centralizada"
+
+#. Template Name of the theme
+msgid "Wide page"
+msgstr "Página ampla"
+
 #: patterns/cta.php
 msgctxt "Pattern title"
 msgid "Executive Signal CTA"
