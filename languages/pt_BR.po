@@ -569,6 +569,31 @@ msgstr "Artigos relacionados"
 msgid "Continue with articles from the same editorial context."
 msgstr "Continue com artigos do mesmo contexto editorial."
 
+#: template-parts/share-post.php:19
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: template-parts/share-post.php:23
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: template-parts/share-post.php:27
+msgid "X"
+msgstr "X"
+
+#: template-parts/share-post.php:34
+msgid "Share article"
+msgstr "Compartilhar artigo"
+
+#: template-parts/share-post.php:49
+#: template-parts/share-post.php:53
+msgid "Copy link"
+msgstr "Copiar link"
+
+#: template-parts/share-post.php:50
+msgid "Copied"
+msgstr "Copiado"
+
 #: theme.json
 msgctxt "Color name"
 msgid "Text primary"

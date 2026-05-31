@@ -593,6 +593,18 @@ a {
   width: min(100%, 1180px);
 }
 
+.es-social-share-bar--article {
+  border-block: 1px solid var(--es-border-soft);
+  margin-inline: auto;
+  padding-block: 1rem;
+  width: min(100%, 72ch);
+}
+
+.es-social-share-bar__button {
+  cursor: pointer;
+  font: inherit;
+}
+
 .site-main--page-wide .entry__content,
 .site-main--page-wide .es-article-prose {
   max-width: 92ch;
