@@ -666,6 +666,16 @@ a {
   font: inherit;
 }
 
+.single-post .es-post-navigation {
+  margin-inline: auto;
+  width: min(100%, 72ch);
+}
+
+.es-post-navigation__link--empty {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .site-main--page-wide .entry__content,
 .site-main--page-wide .es-article-prose {
   max-width: 92ch;

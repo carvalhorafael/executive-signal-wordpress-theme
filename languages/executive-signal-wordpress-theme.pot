@@ -563,6 +563,18 @@ msgstr ""
 msgid "Read article"
 msgstr ""
 
+#: template-parts/post-navigation.php:16
+msgid "Article navigation"
+msgstr ""
+
+#: template-parts/post-navigation.php:19
+msgid "Previous article"
+msgstr ""
+
+#: template-parts/post-navigation.php:28
+msgid "Next article"
+msgstr ""
+
 #: template-parts/related-posts.php:39
 msgid "Read next"
 msgstr ""
