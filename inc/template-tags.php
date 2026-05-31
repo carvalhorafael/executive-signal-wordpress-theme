@@ -104,14 +104,25 @@ function executive_signal_render_header_navigation() {
 		return;
 	}
 
-	$menu_items = array_filter(
-		$menu_items,
-		static function ( $item ) {
-			return '0' === (string) $item->menu_item_parent;
-		}
-	);
+	$menu_tree = array();
 
-	if ( empty( $menu_items ) ) {
+	foreach ( $menu_items as $item ) {
+		$parent_id = (string) $item->menu_item_parent;
+
+		if ( '0' === $parent_id ) {
+			$menu_tree[ $item->ID ] = array(
+				'item'     => $item,
+				'children' => array(),
+			);
+			continue;
+		}
+
+		if ( isset( $menu_tree[ (int) $parent_id ] ) ) {
+			$menu_tree[ (int) $parent_id ]['children'][] = $item;
+		}
+	}
+
+	if ( empty( $menu_tree ) ) {
 		return;
 	}
 
@@ -119,33 +130,91 @@ function executive_signal_render_header_navigation() {
 	$current_url = home_url( $request_uri );
 	?>
 	<nav class="primary-navigation es-blog-site-header__nav" aria-label="<?php esc_attr_e( 'Primary menu', 'executive-signal-wordpress-theme' ); ?>">
-		<?php foreach ( $menu_items as $item ) : ?>
+		<?php foreach ( $menu_tree as $menu_node ) : ?>
 			<?php
-			$is_current_by_class = ! empty(
-				array_intersect(
-					array(
-						'current-menu-item',
-						'current-menu-parent',
-						'current-menu-ancestor',
-					),
-					(array) $item->classes
-				)
-			);
-			$is_current          = $is_current_by_class || executive_signal_normalize_url_for_comparison( $current_url ) === executive_signal_normalize_url_for_comparison( $item->url );
+			$item       = $menu_node['item'];
+			$children   = $menu_node['children'];
+			$is_current = executive_signal_is_menu_item_current( $item, $current_url );
 			?>
-			<a
-				class="es-blog-site-header__nav-link"
-				href="<?php echo esc_url( $item->url ); ?>"
-				<?php if ( $is_current ) : ?>
-					aria-current="page"
-					data-current="true"
-				<?php endif; ?>
-			>
-				<?php echo esc_html( $item->title ); ?>
-			</a>
+			<?php if ( empty( $children ) ) : ?>
+				<a
+					class="es-blog-site-header__nav-link"
+					href="<?php echo esc_url( $item->url ); ?>"
+					<?php if ( $is_current ) : ?>
+						aria-current="page"
+						data-current="true"
+					<?php endif; ?>
+				>
+					<?php echo esc_html( $item->title ); ?>
+				</a>
+			<?php else : ?>
+				<div class="es-blog-site-header__nav-item" data-nav-submenu>
+					<?php
+					$submenu_id = 'primary-submenu-' . (int) $item->ID;
+					/* translators: %s: Menu item title. */
+					$submenu_label = sprintf( __( 'Open submenu for %s', 'executive-signal-wordpress-theme' ), $item->title );
+					?>
+					<a
+						class="es-blog-site-header__nav-link"
+						href="<?php echo esc_url( $item->url ); ?>"
+						<?php if ( $is_current ) : ?>
+							aria-current="page"
+							data-current="true"
+						<?php endif; ?>
+					>
+						<?php echo esc_html( $item->title ); ?>
+					</a>
+					<button
+						class="es-blog-site-header__submenu-toggle"
+						type="button"
+						aria-expanded="false"
+						aria-controls="<?php echo esc_attr( $submenu_id ); ?>"
+						aria-label="<?php echo esc_attr( $submenu_label ); ?>"
+					>
+						<span aria-hidden="true">⌄</span>
+					</button>
+					<div class="es-blog-site-header__submenu" id="<?php echo esc_attr( $submenu_id ); ?>">
+						<?php foreach ( $children as $child ) : ?>
+							<?php $is_child_current = executive_signal_is_menu_item_current( $child, $current_url ); ?>
+							<a
+								class="es-blog-site-header__submenu-link"
+								href="<?php echo esc_url( $child->url ); ?>"
+								<?php if ( $is_child_current ) : ?>
+									aria-current="page"
+									data-current="true"
+								<?php endif; ?>
+							>
+								<?php echo esc_html( $child->title ); ?>
+							</a>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			<?php endif; ?>
 		<?php endforeach; ?>
 	</nav>
 	<?php
+}
+
+/**
+ * Check whether a menu item points to the current request.
+ *
+ * @param WP_Post $item Menu item object.
+ * @param string  $current_url Current URL.
+ * @return bool
+ */
+function executive_signal_is_menu_item_current( $item, $current_url ) {
+	$is_current_by_class = ! empty(
+		array_intersect(
+			array(
+				'current-menu-item',
+				'current-menu-parent',
+				'current-menu-ancestor',
+			),
+			(array) $item->classes
+		)
+	);
+
+	return $is_current_by_class || executive_signal_normalize_url_for_comparison( $current_url ) === executive_signal_normalize_url_for_comparison( $item->url );
 }
 
 /**
@@ -165,6 +234,42 @@ function executive_signal_normalize_url_for_comparison( $url ) {
 	$query = isset( $parts['query'] ) ? '?' . $parts['query'] : '';
 
 	return ( '' === $path ? '/' : $path ) . $query;
+}
+
+/**
+ * Render the theme mode switcher for the public header.
+ *
+ * @return void
+ */
+function executive_signal_render_theme_switcher() {
+	$options = array(
+		'light'  => __( 'Light', 'executive-signal-wordpress-theme' ),
+		'dark'   => __( 'Dark', 'executive-signal-wordpress-theme' ),
+		'system' => __( 'System', 'executive-signal-wordpress-theme' ),
+	);
+	?>
+	<details class="es-theme-switcher" data-theme-switcher>
+		<summary class="es-theme-switcher__trigger" aria-label="<?php esc_attr_e( 'Change theme', 'executive-signal-wordpress-theme' ); ?>">
+			<span class="es-theme-switcher__icon" aria-hidden="true">
+				<svg class="es-theme-switcher__icon-svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+					<path d="M12 4.5V2.5M12 21.5V19.5M17.3 6.7L18.7 5.3M5.3 18.7L6.7 17.3M19.5 12H21.5M2.5 12H4.5M17.3 17.3L18.7 18.7M5.3 5.3L6.7 6.7" />
+					<circle cx="12" cy="12" r="4.25" />
+				</svg>
+			</span>
+			<span class="screen-reader-text" data-theme-switcher-current>
+				<?php esc_html_e( 'Light', 'executive-signal-wordpress-theme' ); ?>
+			</span>
+		</summary>
+		<div class="es-theme-switcher__menu" role="menu" aria-label="<?php esc_attr_e( 'Theme mode', 'executive-signal-wordpress-theme' ); ?>">
+			<?php foreach ( $options as $value => $label ) : ?>
+				<button class="es-theme-switcher__option" type="button" role="menuitemradio" data-theme-option="<?php echo esc_attr( $value ); ?>" aria-checked="<?php echo 'light' === $value ? 'true' : 'false'; ?>">
+					<span><?php echo esc_html( $label ); ?></span>
+					<span class="es-theme-switcher__check" aria-hidden="true">✓</span>
+				</button>
+			<?php endforeach; ?>
+		</div>
+	</details>
+	<?php
 }
 
 /**

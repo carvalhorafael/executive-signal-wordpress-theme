@@ -79,7 +79,7 @@ msgstr "Artigos do arquivo"
 msgid "Executive Signal %s"
 msgstr "Executive Signal %s"
 
-#: header.php:18
+#: header.php:31
 msgid "Skip to content"
 msgstr "Pular para o conteúdo"
 
@@ -162,7 +162,7 @@ msgid "Initial homepage composition."
 msgstr "Composição inicial da página inicial."
 
 #: inc/setup.php:44
-#: inc/template-tags.php:121
+#: inc/template-tags.php:132
 msgid "Primary menu"
 msgstr "Menu principal"
 
@@ -182,29 +182,56 @@ msgstr "Briefings para decisões mais claras."
 msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
 msgstr "Um arquivo contínuo de sinais estratégicos, notas operacionais e contexto de mercado para líderes que precisam da parte útil primeiro."
 
-#: inc/template-tags.php:211
+#. translators: %s: Menu item title.
+#: inc/template-tags.php:155
+#, php-format
+msgid "Open submenu for %s"
+msgstr "Abrir submenu de %s"
+
+#: inc/template-tags.php:246
+#: inc/template-tags.php:260
+msgid "Light"
+msgstr "Claro"
+
+#: inc/template-tags.php:247
+msgid "Dark"
+msgstr "Escuro"
+
+#: inc/template-tags.php:248
+msgid "System"
+msgstr "Sistema"
+
+#: inc/template-tags.php:252
+msgid "Change theme"
+msgstr "Mudar tema"
+
+#: inc/template-tags.php:263
+msgid "Theme mode"
+msgstr "Modo do tema"
+
+#: inc/template-tags.php:316
 msgid "Article information"
 msgstr "Informações do artigo"
 
-#: inc/template-tags.php:213
+#: inc/template-tags.php:318
 msgid "Date"
 msgstr "Data"
 
-#: inc/template-tags.php:220
+#: inc/template-tags.php:325
 msgid "By"
 msgstr "Por"
 
-#: inc/template-tags.php:236
-#: inc/template-tags.php:275
+#: inc/template-tags.php:341
+#: inc/template-tags.php:380
 msgid "Previous"
 msgstr "Anterior"
 
-#: inc/template-tags.php:237
-#: inc/template-tags.php:289
+#: inc/template-tags.php:342
+#: inc/template-tags.php:394
 msgid "Next"
 msgstr "Próxima"
 
-#: inc/template-tags.php:270
+#: inc/template-tags.php:375
 msgid "Posts pagination"
 msgstr "Paginação de posts"
 

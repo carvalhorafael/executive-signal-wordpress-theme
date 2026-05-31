@@ -44,6 +44,12 @@ const translations = new Map([
   ["Search results", "Resultados de busca"],
   ["Error 404", "Erro 404"],
   ["No results", "Sem resultados"],
+  ["Light", "Claro"],
+  ["Dark", "Escuro"],
+  ["System", "Sistema"],
+  ["Change theme", "Mudar tema"],
+  ["Theme mode", "Modo do tema"],
+  ["Open submenu for %s", "Abrir submenu de %s"],
   ["Latest articles", "Artigos mais recentes"],
   ["Executive Signal hero", "Hero do Executive Signal"],
   [
