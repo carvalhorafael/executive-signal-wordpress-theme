@@ -445,6 +445,7 @@ a {
   padding: clamp(1.25rem, 3vw, 2rem);
 }
 
+.entry--page,
 .entry--single {
   display: grid;
   gap: clamp(2rem, 5vw, 4rem);
@@ -496,6 +497,48 @@ a {
 .entry--single .es-article-hero__title {
   font-size: clamp(3rem, 6vw, 4.5rem);
   max-width: none;
+}
+
+.entry--page .es-article-hero {
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+
+.entry--page .es-article-hero__title {
+  font-size: clamp(3rem, 7vw, 5rem);
+  max-width: 14ch;
+}
+
+.entry--page .es-article-prose {
+  font-size: 1.125rem;
+}
+
+.page-links {
+  color: var(--es-text-tertiary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block-start: 2rem;
+}
+
+.page-links a,
+.page-links .post-page-numbers {
+  align-items: center;
+  border: 1px solid var(--es-border-soft);
+  border-radius: var(--es-radius-sm);
+  color: var(--es-text-secondary);
+  display: inline-flex;
+  min-height: 2rem;
+  min-width: 2rem;
+  justify-content: center;
+  padding-inline: 0.65rem;
+  text-decoration: none;
+}
+
+.page-links a:hover,
+.page-links a:focus-visible,
+.page-links .current {
+  background: var(--es-surface-hover);
+  color: var(--es-text-primary);
 }
 
 .es-article-card__action {

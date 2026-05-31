@@ -382,6 +382,10 @@ msgstr ""
 msgid "Try a different search or return to the homepage."
 msgstr ""
 
+#: template-parts/content-page.php:24
+msgid "Page navigation"
+msgstr ""
+
 #: template-parts/content.php:29
 msgid "Read article"
 msgstr ""

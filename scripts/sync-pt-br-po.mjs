@@ -74,6 +74,7 @@ const translations = new Map([
   ["Footer bottom", "Linha final do rodapé"],
   ["Widgets added here appear in %s.", "Widgets adicionados aqui aparecem em %s."],
   ["Footer column %d", "Coluna %d do rodapé"],
+  ["Page navigation", "Navegação da página"],
   [
     "Copyright © %s - Developed by Rafael Carvalho®",
     "Copyright © %s - Desenvolvido por Rafael Carvalho®",
