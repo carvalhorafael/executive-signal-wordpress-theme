@@ -242,22 +242,15 @@ function executive_signal_normalize_url_for_comparison( $url ) {
  * @return void
  */
 function executive_signal_render_header_search() {
-	?>
-	<form class="es-header-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<label class="screen-reader-text" for="header-search-field"><?php esc_html_e( 'Search', 'executive-signal-wordpress-theme' ); ?></label>
-		<input
-			id="header-search-field"
-			class="es-header-search__field"
-			type="search"
-			name="s"
-			value="<?php echo esc_attr( get_search_query() ); ?>"
-			placeholder="<?php esc_attr_e( 'Search...', 'executive-signal-wordpress-theme' ); ?>"
-		>
-		<button class="es-header-search__submit" type="submit" aria-label="<?php esc_attr_e( 'Search', 'executive-signal-wordpress-theme' ); ?>">
-			<span class="es-header-search__shortcut" aria-hidden="true">⌘ K</span>
-		</button>
-	</form>
-	<?php
+	get_search_form(
+		array(
+			'aria_label'     => __( 'Search', 'executive-signal-wordpress-theme' ),
+			'id'             => 'header-search-field',
+			'class'          => 'es-header-search',
+			'submit_label'   => __( 'Search', 'executive-signal-wordpress-theme' ),
+			'button_content' => '<span class="es-header-search__shortcut" aria-hidden="true">⌘ K</span>',
+		)
+	);
 }
 
 /**

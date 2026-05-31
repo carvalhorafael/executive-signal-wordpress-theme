@@ -329,83 +329,80 @@ msgid "Open submenu for %s"
 msgstr ""
 
 #: inc/template-tags.php:247
-#: inc/template-tags.php:256
+#: inc/template-tags.php:250
 #: search.php:19
-#: search.php:44
-#: search.php:53
+#: search.php:46
+#: search.php:49
+#: searchform.php:11
+#: searchform.php:13
 msgid "Search"
 msgstr ""
 
-#: inc/template-tags.php:254
-#: search.php:51
-msgid "Search..."
-msgstr ""
-
-#: inc/template-tags.php:270
-#: inc/template-tags.php:284
+#: inc/template-tags.php:263
+#: inc/template-tags.php:277
 msgid "Light"
 msgstr ""
 
-#: inc/template-tags.php:271
+#: inc/template-tags.php:264
 msgid "Dark"
 msgstr ""
 
-#: inc/template-tags.php:272
+#: inc/template-tags.php:265
 msgid "System"
 msgstr ""
 
-#: inc/template-tags.php:276
+#: inc/template-tags.php:269
 msgid "Change theme"
 msgstr ""
 
-#: inc/template-tags.php:287
+#: inc/template-tags.php:280
 msgid "Theme mode"
 msgstr ""
 
-#: inc/template-tags.php:341
+#: inc/template-tags.php:334
 msgid "Article information"
 msgstr ""
 
-#: inc/template-tags.php:343
+#: inc/template-tags.php:336
 msgid "Date"
 msgstr ""
 
-#: inc/template-tags.php:350
+#: inc/template-tags.php:343
 msgid "By"
 msgstr ""
 
-#: inc/template-tags.php:378
+#: inc/template-tags.php:371
 msgid "Article tags"
 msgstr ""
 
-#: inc/template-tags.php:379
+#: inc/template-tags.php:372
 msgid "Tagged in"
 msgstr ""
 
-#: inc/template-tags.php:416
+#: inc/template-tags.php:409
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:433
+#: inc/template-tags.php:426
 msgid "Reply"
 msgstr ""
 
-#: inc/template-tags.php:457
-#: inc/template-tags.php:510
+#: inc/template-tags.php:450
+#: inc/template-tags.php:503
 msgid "Previous"
 msgstr ""
 
-#: inc/template-tags.php:458
-#: inc/template-tags.php:524
+#: inc/template-tags.php:451
+#: inc/template-tags.php:517
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags.php:494
+#: inc/template-tags.php:487
 msgid "Posts pagination"
 msgstr ""
 
 #. translators: 1: Current page number. 2: Total number of pages.
-#: inc/template-tags.php:500
+#: inc/template-tags.php:493
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr ""
@@ -505,8 +502,12 @@ msgid_plural "%s results found"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.php:58
+#: search.php:57
 msgid "Search results"
+msgstr ""
+
+#: searchform.php:26
+msgid "Search..."
 msgstr ""
 
 #: tag.php:22

@@ -40,18 +40,17 @@ $found_posts  = isset( $wp_query->found_posts ) ? (int) $wp_query->found_posts :
 			</p>
 		</div>
 		<div class="es-search-results-header__controls">
-			<form class="es-search-results-header__search es-header-search es-header-search--results" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<label class="screen-reader-text" for="search-results-field"><?php esc_html_e( 'Search', 'executive-signal-wordpress-theme' ); ?></label>
-				<input
-					id="search-results-field"
-					class="es-header-search__field"
-					type="search"
-					name="s"
-					value="<?php echo esc_attr( $search_query ); ?>"
-					placeholder="<?php esc_attr_e( 'Search...', 'executive-signal-wordpress-theme' ); ?>"
-				>
-				<button class="es-header-search__submit" type="submit"><?php esc_html_e( 'Search', 'executive-signal-wordpress-theme' ); ?></button>
-			</form>
+			<?php
+			get_search_form(
+				array(
+					'aria_label'   => __( 'Search', 'executive-signal-wordpress-theme' ),
+					'id'           => 'search-results-field',
+					'class'        => 'es-search-results-header__search es-header-search es-header-search--results',
+					'submit_label' => __( 'Search', 'executive-signal-wordpress-theme' ),
+					'value'        => $search_query,
+				)
+			);
+			?>
 		</div>
 	</header>
 
