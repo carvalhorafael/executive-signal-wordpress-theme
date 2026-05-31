@@ -31,6 +31,13 @@ const translations = new Map([
     "Um arquivo contínuo de sinais estratégicos, notas operacionais e contexto de mercado para líderes que precisam da parte útil primeiro.",
   ],
   ["Archive", "Arquivo"],
+  ["Author", "Autor"],
+  [
+    "Articles, notes and strategic signals published by this author.",
+    "Artigos, notas e sinais estratégicos publicados por este autor.",
+  ],
+  ["Author website", "Site do autor"],
+  ["Author articles", "Artigos do autor"],
   [
     "Browse articles grouped by topic, author or period.",
     "Navegue por artigos agrupados por tema, autor ou período.",
@@ -154,6 +161,13 @@ const pluralTranslations = new Map([
     {
       one: "%s artigo encontrado",
       other: "%s artigos encontrados",
+    },
+  ],
+  [
+    "%s article",
+    {
+      one: "%s artigo",
+      other: "%s artigos",
     },
   ],
   [

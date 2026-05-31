@@ -61,6 +61,7 @@ msgstr ""
 
 #. translators: %s: Number of posts found in the current archive.
 #: archive.php:36
+#: author.php:33
 #, php-format
 msgid "%s article found"
 msgid_plural "%s articles found"
@@ -69,6 +70,31 @@ msgstr[1] ""
 
 #: archive.php:44
 msgid "Archive articles"
+msgstr ""
+
+#: author.php:23
+#: author.php:48
+msgid "Author"
+msgstr ""
+
+#: author.php:26
+msgid "Articles, notes and strategic signals published by this author."
+msgstr ""
+
+#. translators: %s: Number of posts found in the current author archive.
+#: author.php:55
+#, php-format
+msgid "%s article"
+msgid_plural "%s articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: author.php:68
+msgid "Author website"
+msgstr ""
+
+#: author.php:74
+msgid "Author articles"
 msgstr ""
 
 #: comments.php:20
