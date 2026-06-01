@@ -14,30 +14,30 @@ test.beforeAll(() => {
 });
 
 async function loginAsAdmin(page) {
-  await page.goto("/wp-login.php", { waitUntil: "domcontentloaded" });
+  const loginPath = "/wp-login.php";
+  const adminPath = "/wp-admin/";
 
-  if (!(await page.locator("#user_login").isVisible())) {
-    await page.goto("/wp-admin/", { waitUntil: "domcontentloaded" });
-    await expect(page.locator("#wpadminbar")).toBeVisible();
-    return;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    await page.context().clearCookies();
+    await page.goto(loginPath, { waitUntil: "domcontentloaded" });
+    const credentials = {
+      log: "admin",
+      pwd: "password",
+      "wp-submit": "Log In",
+      redirect_to: new URL(adminPath, page.url()).toString(),
+      testcookie: "1",
+    };
+
+    await page.request.post(loginPath, { form: credentials });
+    await page.goto(adminPath, { waitUntil: "domcontentloaded" });
+
+    if (!(await page.locator("#user_login").isVisible())) {
+      await expect(page.locator("#wpadminbar")).toBeVisible();
+      return;
+    }
   }
 
-  await page.locator("#user_login").fill("admin");
-  await page.locator("#user_pass").fill("password");
-  await page.locator("#wp-submit").click();
-  await page.waitForLoadState("domcontentloaded");
-
-  if (await page.locator("#login_error").isVisible()) {
-    throw new Error(await page.locator("#login_error").innerText());
-  }
-
-  await page.goto("/wp-admin/", { waitUntil: "domcontentloaded" });
-
-  if (await page.locator("#user_login").isVisible()) {
-    throw new Error("WordPress redirected back to the login form after admin login.");
-  }
-
-  await expect(page.locator("#wpadminbar")).toBeVisible();
+  throw new Error("WordPress redirected back to the login form after repeated admin login attempts.");
 }
 
 test.describe("Executive Signal theme editor contracts", () => {
