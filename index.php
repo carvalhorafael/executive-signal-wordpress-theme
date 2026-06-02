@@ -16,10 +16,10 @@ $found_posts = isset( $wp_query->found_posts ) ? (int) $wp_query->found_posts : 
 	<header class="es-blog-archive-header">
 		<div class="es-blog-archive-header__main">
 			<div class="es-blog-archive-header__copy">
-				<p class="es-blog-archive-header__eyebrow"><?php esc_html_e( 'Archive', 'executive-signal-wordpress-theme' ); ?></p>
-				<h1 class="es-blog-archive-header__title"><?php esc_html_e( 'Latest briefings', 'executive-signal-wordpress-theme' ); ?></h1>
+				<p class="es-blog-archive-header__eyebrow"><?php echo esc_html( executive_signal_get_blog_setting( 'eyebrow', executive_signal_get_blog_eyebrow_default() ) ); ?></p>
+				<h1 class="es-blog-archive-header__title"><?php echo esc_html( executive_signal_get_blog_setting( 'title', executive_signal_get_blog_title_default() ) ); ?></h1>
 				<p class="es-blog-archive-header__description">
-					<?php esc_html_e( 'Browse the latest signals, notes and articles available in this archive.', 'executive-signal-wordpress-theme' ); ?>
+					<?php echo esc_html( executive_signal_get_blog_setting( 'description', executive_signal_get_blog_description_default() ) ); ?>
 				</p>
 			</div>
 			<div class="es-blog-archive-header__meta">

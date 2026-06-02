@@ -199,7 +199,25 @@ a {
   padding: 0.25rem;
 }
 
+.es-blog-site-header__actions .search-form {
+  align-items: center;
+  background: var(--es-surface-inset);
+  border: 1px solid transparent;
+  border-radius: var(--es-radius-panel);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto;
+  min-height: 2.75rem;
+  min-width: min(18rem, 32vw);
+  padding: 0.25rem;
+}
+
 .es-header-search:focus-within {
+  border-color: var(--es-border-interactive);
+  box-shadow: 0 0 0 2px var(--es-ring);
+}
+
+.es-blog-site-header__actions .search-form:focus-within {
   border-color: var(--es-border-interactive);
   box-shadow: 0 0 0 2px var(--es-ring);
 }
@@ -217,7 +235,25 @@ a {
   width: 100%;
 }
 
+.es-blog-site-header__actions .search-field {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--es-text-primary);
+  font: inherit;
+  font-size: 0.9375rem;
+  min-width: 0;
+  outline: 0;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+}
+
 .es-header-search__field::placeholder {
+  color: var(--es-text-tertiary);
+  opacity: 1;
+}
+
+.es-blog-site-header__actions .search-field::placeholder {
   color: var(--es-text-tertiary);
   opacity: 1;
 }
@@ -237,8 +273,29 @@ a {
   padding: 0 0.55rem;
 }
 
+.es-blog-site-header__actions .search-submit {
+  align-items: center;
+  background: var(--es-panel);
+  border: 1px solid var(--es-border-soft);
+  border-radius: var(--es-radius-sm);
+  color: var(--es-text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  height: 2rem;
+  justify-content: center;
+  min-width: 2.75rem;
+  padding: 0 0.55rem;
+}
+
 .es-header-search__submit:hover,
 .es-header-search__submit:focus-visible {
+  color: var(--es-text-primary);
+  outline: none;
+}
+
+.es-blog-site-header__actions .search-submit:hover,
+.es-blog-site-header__actions .search-submit:focus-visible {
   color: var(--es-text-primary);
   outline: none;
 }
@@ -537,6 +594,23 @@ a {
 
 .site-main > .es-article-card + .es-article-card {
   margin-block-start: 1rem;
+}
+
+.es-article-card__media {
+  background: var(--es-surface-page);
+}
+
+.es-article-card__media > picture {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.es-article-card__media > img,
+.es-article-card__media > picture > img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
 }
 
 .entry-meta,
