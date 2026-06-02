@@ -69,7 +69,6 @@ msgid "Popular topics"
 msgstr ""
 
 #: archive.php:20
-#: index.php:19
 msgid "Archive"
 msgstr ""
 
@@ -420,14 +419,6 @@ msgstr ""
 #: inc/template-tags.php:493
 #, php-format
 msgid "Page %1$s of %2$s"
-msgstr ""
-
-#: index.php:20
-msgid "Latest briefings"
-msgstr ""
-
-#: index.php:22
-msgid "Browse the latest signals, notes and articles available in this archive."
 msgstr ""
 
 #. Template Name of the theme

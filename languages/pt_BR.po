@@ -71,7 +71,6 @@ msgid "Popular topics"
 msgstr "Temas populares"
 
 #: archive.php:20
-#: index.php:19
 msgid "Archive"
 msgstr "Arquivo"
 
@@ -423,14 +422,6 @@ msgstr "Paginação de posts"
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr "Página %1$s de %2$s"
-
-#: index.php:20
-msgid "Latest briefings"
-msgstr "Briefings mais recentes"
-
-#: index.php:22
-msgid "Browse the latest signals, notes and articles available in this archive."
-msgstr "Navegue pelos sinais, notas e artigos mais recentes disponíveis neste arquivo."
 
 #. Template Name of the theme
 msgid "Centered page"

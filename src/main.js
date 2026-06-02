@@ -72,7 +72,7 @@ if (themeSwitcher) {
   });
 }
 
-const headerSearchField = document.querySelector(".es-header-search__field");
+const headerSearchField = document.querySelector(".es-header-search__field, .es-blog-site-header__actions .search-field");
 
 if (headerSearchField) {
   document.addEventListener("keydown", (event) => {
