@@ -427,9 +427,11 @@ a {
 }
 
 .entry__widget-area .es-table-of-contents {
+  box-sizing: border-box;
   grid-template-rows: auto minmax(0, 1fr);
   max-height: calc(100vh - clamp(6rem, 10vw, 8rem));
   overflow: hidden;
+  width: 100%;
 }
 
 .entry__widget-area .es-table-of-contents[data-sticky="true"] {
