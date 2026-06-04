@@ -3,6 +3,8 @@
 /coverage/
 /dist/
 /node_modules/
+/.vite/
+/node_modules/.vite/
 /vendor/
 /.phpunit.result.cache
 /.npmrc
