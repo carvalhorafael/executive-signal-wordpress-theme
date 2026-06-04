@@ -124,10 +124,11 @@ test.describe("Executive Signal theme front end", () => {
 
     await page.goto("/");
 
-    await expect(page.locator("[data-site-header]")).toBeVisible();
+    await expect(page.locator("[data-es-blog-site-header]")).toBeVisible();
     await expect(page.locator("html")).toHaveAttribute("data-es-theme", "light");
     await expect(page.locator("html")).toHaveAttribute("data-es-palette", "signal");
-    await expect(page.locator("[data-site-header]")).toHaveAttribute("data-enhanced", "true");
+    await expect(page.locator("[data-es-theme-switcher]")).toBeVisible();
+    await expect(page.locator("[data-es-header-search]")).toBeVisible();
     await expect(page.locator('link[href*="assets/dist/assets/main-"]')).toHaveCount(1);
     await expect(page.locator('script[src*="assets/dist/assets/main-"]')).toHaveCount(1);
     expect(consoleErrors).toEqual([]);
@@ -160,12 +161,16 @@ test.describe("Executive Signal theme front end", () => {
     await page.setViewportSize({ width: 390, height: 900 });
     await page.goto("/");
 
-    await expect(page.locator("[data-mobile-nav-toggle]")).toBeVisible();
-    await expect(page.locator("[data-mobile-nav]")).toBeHidden();
+    const header = page.locator("[data-es-blog-site-header]");
+    const mobileToggle = page.locator(".es-blog-site-header__menu-toggle");
+    const mobileNav = page.locator(".es-blog-site-header__nav");
 
-    await page.locator("[data-mobile-nav-toggle]").click();
-    await expect(page.locator("[data-site-header]")).toHaveAttribute("data-mobile-open", "true");
-    await expect(page.locator("[data-mobile-nav]")).toBeVisible();
+    await expect(mobileToggle).toBeVisible();
+    await expect(mobileNav).toBeHidden();
+
+    await mobileToggle.click();
+    await expect(header).toHaveAttribute("data-mobile-open", "true");
+    await expect(mobileNav).toBeVisible();
 
     const submenuToggle = page.locator(".es-blog-site-header__submenu-toggle").first();
 
