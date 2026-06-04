@@ -115,6 +115,7 @@ msgid "Author articles"
 msgstr ""
 
 #: category.php:22
+#: inc/free-materials.php:318
 msgid "Category"
 msgstr ""
 
@@ -216,6 +217,180 @@ msgstr ""
 
 #: inc/customizer.php:76
 msgid "Blog description"
+msgstr ""
+
+#: inc/free-materials.php:30
+msgctxt "Post type general name"
+msgid "Free materials"
+msgstr ""
+
+#: inc/free-materials.php:31
+msgctxt "Post type singular name"
+msgid "Free material"
+msgstr ""
+
+#: inc/free-materials.php:32
+msgctxt "Admin menu text"
+msgid "Free materials"
+msgstr ""
+
+#: inc/free-materials.php:33
+msgctxt "Add new on toolbar"
+msgid "Free material"
+msgstr ""
+
+#: inc/free-materials.php:34
+msgid "Add new"
+msgstr ""
+
+#: inc/free-materials.php:35
+msgid "Add free material"
+msgstr ""
+
+#: inc/free-materials.php:36
+msgid "All materials"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/free-materials.php:37
+#: page-materiais-gratuitos.php:46
+msgid "Free materials"
+msgstr ""
+
+#: inc/free-materials.php:38
+msgid "Edit free material"
+msgstr ""
+
+#: inc/free-materials.php:39
+msgid "Material image"
+msgstr ""
+
+#: inc/free-materials.php:40
+msgid "Filter materials"
+msgstr ""
+
+#: inc/free-materials.php:41
+msgid "Materials list"
+msgstr ""
+
+#: inc/free-materials.php:42
+msgid "Materials list navigation"
+msgstr ""
+
+#: inc/free-materials.php:43
+msgid "New free material"
+msgstr ""
+
+#: inc/free-materials.php:44
+msgid "No materials found."
+msgstr ""
+
+#: inc/free-materials.php:45
+msgid "No materials found in Trash."
+msgstr ""
+
+#: inc/free-materials.php:46
+msgid "Remove material image"
+msgstr ""
+
+#: inc/free-materials.php:47
+msgid "Search materials"
+msgstr ""
+
+#: inc/free-materials.php:48
+msgid "Set material image"
+msgstr ""
+
+#: inc/free-materials.php:49
+msgid "Uploaded to this material"
+msgstr ""
+
+#: inc/free-materials.php:50
+msgid "Use as material image"
+msgstr ""
+
+#: inc/free-materials.php:51
+msgid "View free material"
+msgstr ""
+
+#: inc/free-materials.php:72
+msgctxt "taxonomy general name"
+msgid "Material categories"
+msgstr ""
+
+#: inc/free-materials.php:73
+msgctxt "taxonomy singular name"
+msgid "Material category"
+msgstr ""
+
+#: inc/free-materials.php:74
+msgid "Add material category"
+msgstr ""
+
+#: inc/free-materials.php:75
+msgid "All categories"
+msgstr ""
+
+#: inc/free-materials.php:76
+msgid "Back to categories"
+msgstr ""
+
+#: inc/free-materials.php:77
+msgid "Edit category"
+msgstr ""
+
+#: inc/free-materials.php:78
+msgid "Categories"
+msgstr ""
+
+#: inc/free-materials.php:79
+msgid "New category name"
+msgstr ""
+
+#: inc/free-materials.php:80
+msgid "No categories found."
+msgstr ""
+
+#: inc/free-materials.php:81
+msgid "Parent category"
+msgstr ""
+
+#: inc/free-materials.php:82
+msgid "Parent category:"
+msgstr ""
+
+#: inc/free-materials.php:83
+msgid "Search categories"
+msgstr ""
+
+#: inc/free-materials.php:84
+msgid "Update category"
+msgstr ""
+
+#: inc/free-materials.php:85
+msgid "View category"
+msgstr ""
+
+#: inc/free-materials.php:154
+msgid "Material capture"
+msgstr ""
+
+#: inc/free-materials.php:176
+msgid "Button URL"
+msgstr ""
+
+#: inc/free-materials.php:187
+msgid "Button text"
+msgstr ""
+
+#: inc/free-materials.php:194
+#: inc/free-materials.php:276
+msgid "Download free material"
+msgstr ""
+
+#: inc/free-materials.php:310
+msgctxt "free material category list separator"
+msgid ", "
 msgstr ""
 
 #: inc/patterns.php:25
@@ -420,6 +595,43 @@ msgstr ""
 msgid "Centered page"
 msgstr ""
 
+#: page-materiais-gratuitos.php:54
+msgid "Guides, checklists and working notes for leaders who want clearer operating signals."
+msgstr ""
+
+#. translators: %s: Number of free materials found in an archive.
+#: page-materiais-gratuitos.php:62
+#: taxonomy-material_categoria.php:36
+#, php-format
+msgid "%s material found"
+msgid_plural "%s materials found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: page-materiais-gratuitos.php:72
+msgid "Material categories"
+msgstr ""
+
+#: page-materiais-gratuitos.php:77
+msgid "Filter by topic"
+msgstr ""
+
+#: page-materiais-gratuitos.php:92
+msgid "Clear filters"
+msgstr ""
+
+#: page-materiais-gratuitos.php:96
+msgid "No material categories found."
+msgstr ""
+
+#: page-materiais-gratuitos.php:100
+msgid "Material listing"
+msgstr ""
+
+#: page-materiais-gratuitos.php:114
+msgid "No materials match the selected categories."
+msgstr ""
+
 #. Template Name of the theme
 msgid "Wide page"
 msgstr ""
@@ -534,6 +746,95 @@ msgstr ""
 msgid "Tag articles"
 msgstr ""
 
+#: taxonomy-material_categoria.php:20
+msgid "Free material category"
+msgstr ""
+
+#: taxonomy-material_categoria.php:28
+msgid "Browse practical resources grouped by decision context."
+msgstr ""
+
+#: taxonomy-material_categoria.php:44
+msgid "View all materials"
+msgstr ""
+
+#: taxonomy-material_categoria.php:49
+msgid "Free materials in category"
+msgstr ""
+
+#: template-parts/content-free-material-card.php:30
+msgid "Material"
+msgstr ""
+
+#: template-parts/content-free-material-card.php:31
+msgid "Free"
+msgstr ""
+
+#: template-parts/content-free-material-card.php:50
+msgid "View material"
+msgstr ""
+
+#: template-parts/content-free-material.php:15
+msgid "Free material"
+msgstr ""
+
+#: template-parts/content-free-material.php:29
+msgid "Immediate access"
+msgstr ""
+
+#: template-parts/content-free-material.php:30
+msgid "Complete the form"
+msgstr ""
+
+#: template-parts/content-free-material.php:33
+msgid "To receive the material."
+msgstr ""
+
+#: template-parts/content-free-material.php:37
+msgid "Name"
+msgstr ""
+
+#: template-parts/content-free-material.php:38
+msgid "Your full name"
+msgstr ""
+
+#: template-parts/content-free-material.php:41
+msgid "Email"
+msgstr ""
+
+#: template-parts/content-free-material.php:42
+msgid "you@example.com"
+msgstr ""
+
+#: template-parts/content-free-material.php:45
+#: template-parts/share-post.php:19
+msgid "WhatsApp"
+msgstr ""
+
+#: template-parts/content-free-material.php:46
+msgid "(00) 00000-0000"
+msgstr ""
+
+#: template-parts/content-free-material.php:53
+msgid "No payment required. Keep the material for future reference."
+msgstr ""
+
+#: template-parts/content-free-material.php:59
+msgid "What you will find"
+msgstr ""
+
+#: template-parts/content-free-material.php:60
+msgid "Applied knowledge to accelerate your journey and avoid costly mistakes."
+msgstr ""
+
+#: template-parts/content-free-material.php:73
+msgid "Ready to use"
+msgstr ""
+
+#: template-parts/content-free-material.php:74
+msgid "Access the content and apply the ideas today."
+msgstr ""
+
 #: template-parts/content-none.php:13
 msgid "No results"
 msgstr ""
@@ -592,10 +893,6 @@ msgstr ""
 
 #: template-parts/related-posts.php:41
 msgid "Continue with articles from the same editorial context."
-msgstr ""
-
-#: template-parts/share-post.php:19
-msgid "WhatsApp"
 msgstr ""
 
 #: template-parts/share-post.php:23
