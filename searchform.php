@@ -5,16 +5,33 @@
  * @package ExecutiveSignal
  */
 
-$executive_signal_search_args    = isset( $args ) && is_array( $args ) ? $args : array();
-$executive_signal_search_id      = $executive_signal_search_args['id'] ?? wp_unique_id( 'search-field-' );
-$executive_signal_search_class   = $executive_signal_search_args['class'] ?? '';
-$executive_signal_search_submit  = $executive_signal_search_args['submit_label'] ?? __( 'Search', 'executive-signal-wordpress-theme' );
-$executive_signal_search_button  = $executive_signal_search_args['button_content'] ?? esc_html( $executive_signal_search_submit );
-$executive_signal_search_label   = $executive_signal_search_args['aria_label'] ?? ( $executive_signal_search_args['label'] ?? __( 'Search', 'executive-signal-wordpress-theme' ) );
-$executive_signal_search_value   = $executive_signal_search_args['value'] ?? get_search_query();
-$executive_signal_search_classes = trim( 'search-form ' . $executive_signal_search_class );
+$executive_signal_search_args      = isset( $args ) && is_array( $args ) ? $args : array();
+$executive_signal_search_id        = $executive_signal_search_args['id'] ?? wp_unique_id( 'search-field-' );
+$executive_signal_search_class     = $executive_signal_search_args['class'] ?? '';
+$executive_signal_search_submit    = $executive_signal_search_args['submit_label'] ?? __( 'Search', 'executive-signal-wordpress-theme' );
+$executive_signal_search_button    = $executive_signal_search_args['button_content'] ?? esc_html( $executive_signal_search_submit );
+$executive_signal_search_label     = $executive_signal_search_args['aria_label'] ?? ( $executive_signal_search_args['label'] ?? __( 'Search', 'executive-signal-wordpress-theme' ) );
+$executive_signal_search_value     = $executive_signal_search_args['value'] ?? get_search_query();
+$executive_signal_search_classes   = trim( 'search-form ' . $executive_signal_search_class );
+$executive_signal_is_header_search = false !== strpos( $executive_signal_search_classes, 'es-blog-site-header-search' );
 ?>
 
+<?php if ( $executive_signal_is_header_search ) : ?>
+	<form class="<?php echo esc_attr( $executive_signal_search_classes ); ?>" role="search" data-es-header-search method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<label class="es-blog-site-header-search__label">
+			<span class="es-blog-site-header-search__text"><?php echo esc_html( $executive_signal_search_label ); ?></span>
+			<input
+				id="<?php echo esc_attr( $executive_signal_search_id ); ?>"
+				class="search-field es-blog-site-header-search__input"
+				type="search"
+				name="s"
+				value="<?php echo esc_attr( $executive_signal_search_value ); ?>"
+				placeholder="<?php esc_attr_e( 'Search...', 'executive-signal-wordpress-theme' ); ?>"
+			>
+		</label>
+		<kbd class="es-blog-site-header-search__shortcut" aria-hidden="true"><?php echo esc_html( $executive_signal_search_args['shortcut_label'] ?? __( 'Cmd K', 'executive-signal-wordpress-theme' ) ); ?></kbd>
+	</form>
+<?php else : ?>
 <form class="<?php echo esc_attr( $executive_signal_search_classes ); ?>" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<label class="screen-reader-text" for="<?php echo esc_attr( $executive_signal_search_id ); ?>"><?php echo esc_html( $executive_signal_search_label ); ?></label>
 	<input
@@ -29,3 +46,4 @@ $executive_signal_search_classes = trim( 'search-form ' . $executive_signal_sear
 		<?php echo wp_kses_post( $executive_signal_search_button ); ?>
 	</button>
 </form>
+<?php endif; ?>

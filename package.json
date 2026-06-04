@@ -1,6 +1,6 @@
 {
   "name": "executive-signal-wordpress-theme",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "type": "module",
   "scripts": {
@@ -29,10 +29,10 @@
     "wp:destroy": "wp-env destroy"
   },
   "dependencies": {
-    "@carvalhorafael/executive-signal-css": "0.3.0",
-    "@carvalhorafael/executive-signal-patterns": "0.2.0",
+    "@carvalhorafael/executive-signal-css": "^0.3.1",
+    "@carvalhorafael/executive-signal-patterns": "^0.2.1",
     "@carvalhorafael/executive-signal-tokens": "0.2.0",
-    "@carvalhorafael/executive-signal-web": "0.2.0"
+    "@carvalhorafael/executive-signal-web": "^0.2.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",

@@ -7,7 +7,7 @@
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry entry--single' ); ?> itemscope itemtype="https://schema.org/BlogPosting">
-	<header class="es-article-hero">
+	<header class="es-article-hero" data-layout="text-only">
 		<div class="es-article-hero__content">
 			<?php executive_signal_render_primary_category( 'es-article-hero__eyebrow' ); ?>
 			<?php the_title( '<h1 class="es-article-hero__title" itemprop="headline">', '</h1>' ); ?>
