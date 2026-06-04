@@ -286,27 +286,37 @@ msgid "Executive accent"
 msgstr ""
 
 #: inc/setup.php:90
-msgid "Footer column 1"
+#: template-parts/content-single.php:32
+msgid "Post left rail"
 msgstr ""
 
 #: inc/setup.php:91
-msgid "Footer column 2"
+#: template-parts/content-single.php:45
+msgid "Post right rail"
 msgstr ""
 
 #: inc/setup.php:92
-msgid "Footer column 3"
+msgid "Footer column 1"
 msgstr ""
 
 #: inc/setup.php:93
-msgid "Footer column 4"
+msgid "Footer column 2"
 msgstr ""
 
 #: inc/setup.php:94
+msgid "Footer column 3"
+msgstr ""
+
+#: inc/setup.php:95
+msgid "Footer column 4"
+msgstr ""
+
+#: inc/setup.php:96
 msgid "Footer bottom"
 msgstr ""
 
 #. translators: %s: Footer widget area name.
-#: inc/setup.php:103
+#: inc/setup.php:105
 #, php-format
 msgid "Widgets added here appear in %s."
 msgstr ""
@@ -347,10 +357,6 @@ msgstr ""
 msgid "RSS feed"
 msgstr ""
 
-#: inc/template-tags.php:254
-msgid "RSS"
-msgstr ""
-
 #: inc/template-tags.php:267
 msgid "Light"
 msgstr ""
@@ -364,54 +370,62 @@ msgid "System"
 msgstr ""
 
 #: inc/template-tags.php:272
-#: inc/template-tags.php:274
+#: inc/template-tags.php:275
 msgid "Theme"
 msgstr ""
 
-#: inc/template-tags.php:329
+#: inc/template-tags.php:358
 msgid "Article information"
 msgstr ""
 
-#: inc/template-tags.php:331
+#: inc/template-tags.php:360
 msgid "Date"
 msgstr ""
 
-#: inc/template-tags.php:338
+#: inc/template-tags.php:367
 msgid "By"
 msgstr ""
 
-#: inc/template-tags.php:366
+#: inc/template-tags.php:395
 msgid "Article tags"
 msgstr ""
 
-#: inc/template-tags.php:367
+#: inc/template-tags.php:396
 msgid "Tagged in"
 msgstr ""
 
-#: inc/template-tags.php:404
+#: inc/template-tags.php:499
+msgid "Article contents"
+msgstr ""
+
+#: inc/template-tags.php:500
+msgid "On this page"
+msgstr ""
+
+#: inc/template-tags.php:539
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:421
+#: inc/template-tags.php:556
 msgid "Reply"
 msgstr ""
 
-#: inc/template-tags.php:445
-#: inc/template-tags.php:498
+#: inc/template-tags.php:580
+#: inc/template-tags.php:633
 msgid "Previous"
 msgstr ""
 
-#: inc/template-tags.php:446
-#: inc/template-tags.php:512
+#: inc/template-tags.php:581
+#: inc/template-tags.php:647
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags.php:482
+#: inc/template-tags.php:617
 msgid "Posts pagination"
 msgstr ""
 
 #. translators: 1: Current page number. 2: Total number of pages.
-#: inc/template-tags.php:488
+#: inc/template-tags.php:623
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr ""
