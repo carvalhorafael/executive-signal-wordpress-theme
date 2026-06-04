@@ -41,32 +41,28 @@ msgstr "Rafael Carvalho"
 msgid "https://github.com/carvalhorafael"
 msgstr "https://github.com/carvalhorafael"
 
-#: 404.php:14
+#: 404.php:13
 msgid "Error 404"
 msgstr "Erro 404"
 
-#: 404.php:15
+#: 404.php:14
 msgid "Page not found"
 msgstr "Página não encontrada"
 
-#: 404.php:19
+#: 404.php:15
 msgid "The requested page could not be found. Try searching for what you need."
 msgstr "A página solicitada não foi encontrada. Tente buscar pelo que você precisa."
 
 #: 404.php:22
-msgid "Helpful links"
-msgstr "Links úteis"
-
-#: 404.php:23
-#: template-parts/content-none.php:43
+#: template-parts/content-none.php:49
 msgid "Return to homepage"
 msgstr "Voltar para a página inicial"
 
-#: 404.php:30
+#: 404.php:29
 msgid "Browse the blog"
 msgstr "Ver o blog"
 
-#: 404.php:46
+#: 404.php:45
 msgid "Popular topics"
 msgstr "Temas populares"
 
@@ -188,18 +184,9 @@ msgstr "Copyright © %s - Desenvolvido por Rafael Carvalho®"
 msgid "Skip to content"
 msgstr "Pular para o conteúdo"
 
-#: header.php:40
-#: header.php:44
+#: header.php:41
 msgid "Open menu"
 msgstr "Abrir menu"
-
-#: header.php:41
-msgid "Close menu"
-msgstr "Fechar menu"
-
-#: header.php:51
-msgid "RSS feed"
-msgstr "Feed RSS"
 
 #. translators: %s: Number of published posts.
 #: home.php:25
@@ -338,14 +325,12 @@ msgstr "Briefings para decisões mais claras."
 msgid "A running archive of strategic signals, operating notes and market context for leaders who need the useful part first."
 msgstr "Um arquivo contínuo de sinais estratégicos, notas operacionais e contexto de mercado para líderes que precisam da parte útil primeiro."
 
-#. translators: %s: Menu item title.
-#: inc/template-tags.php:155
-#, php-format
-msgid "Open submenu for %s"
-msgstr "Abrir submenu de %s"
+#: inc/template-tags.php:160
+msgid "Open submenu"
+msgstr "Abrir submenu"
 
-#: inc/template-tags.php:247
-#: inc/template-tags.php:250
+#: inc/template-tags.php:237
+#: inc/template-tags.php:240
 #: search.php:19
 #: search.php:46
 #: search.php:49
@@ -354,71 +339,81 @@ msgstr "Abrir submenu de %s"
 msgid "Search"
 msgstr "Busca"
 
-#: inc/template-tags.php:263
-#: inc/template-tags.php:277
+#: inc/template-tags.php:241
+#: searchform.php:32
+msgid "Cmd K"
+msgstr "Cmd K"
+
+#: inc/template-tags.php:253
+#: inc/template-tags.php:255
+msgid "RSS feed"
+msgstr "Feed RSS"
+
+#: inc/template-tags.php:254
+msgid "RSS"
+msgstr "RSS"
+
+#: inc/template-tags.php:267
 msgid "Light"
 msgstr "Claro"
 
-#: inc/template-tags.php:264
+#: inc/template-tags.php:268
 msgid "Dark"
 msgstr "Escuro"
 
-#: inc/template-tags.php:265
+#: inc/template-tags.php:269
 msgid "System"
 msgstr "Sistema"
 
-#: inc/template-tags.php:269
-msgid "Change theme"
-msgstr "Mudar tema"
+#: inc/template-tags.php:272
+#: inc/template-tags.php:274
+msgid "Theme"
+msgstr "Tema"
 
-#: inc/template-tags.php:280
-msgid "Theme mode"
-msgstr "Modo do tema"
-
-#: inc/template-tags.php:334
+#: inc/template-tags.php:329
 msgid "Article information"
 msgstr "Informações do artigo"
 
-#: inc/template-tags.php:336
+#: inc/template-tags.php:331
 msgid "Date"
 msgstr "Data"
 
-#: inc/template-tags.php:343
+#: inc/template-tags.php:338
 msgid "By"
 msgstr "Por"
 
-#: inc/template-tags.php:371
+#: inc/template-tags.php:366
 msgid "Article tags"
 msgstr "Tags do artigo"
 
-#: inc/template-tags.php:372
+#: inc/template-tags.php:367
 msgid "Tagged in"
 msgstr "Tags"
 
-#: inc/template-tags.php:409
+#: inc/template-tags.php:404
 msgid "Your comment is awaiting moderation."
 msgstr "Seu comentário está aguardando moderação."
 
-#: inc/template-tags.php:426
+#: inc/template-tags.php:421
 msgid "Reply"
 msgstr "Responder"
 
-#: inc/template-tags.php:450
-#: inc/template-tags.php:503
+#: inc/template-tags.php:445
+#: inc/template-tags.php:498
 msgid "Previous"
 msgstr "Anterior"
 
-#: inc/template-tags.php:451
-#: inc/template-tags.php:517
+#: inc/template-tags.php:446
+#: inc/template-tags.php:512
 msgid "Next"
 msgstr "Próxima"
 
-#: inc/template-tags.php:487
+#: inc/template-tags.php:482
 msgid "Posts pagination"
 msgstr "Paginação de posts"
 
 #. translators: 1: Current page number. 2: Total number of pages.
-#: inc/template-tags.php:493
+#: inc/template-tags.php:488
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr "Página %1$s de %2$s"
@@ -522,7 +517,8 @@ msgstr[1] "%s resultados encontrados"
 msgid "Search results"
 msgstr "Resultados de busca"
 
-#: searchform.php:26
+#: searchform.php:29
+#: searchform.php:43
 msgid "Search..."
 msgstr "Buscar..."
 
@@ -540,35 +536,31 @@ msgstr "Sinais marcados com %s."
 msgid "Tag articles"
 msgstr "Artigos da tag"
 
-#: template-parts/content-none.php:14
+#: template-parts/content-none.php:13
 msgid "No results"
 msgstr "Sem resultados"
 
-#: template-parts/content-none.php:16
+#: template-parts/content-none.php:15
 msgid "Empty archive"
 msgstr "Arquivo vazio"
 
-#: template-parts/content-none.php:23
+#: template-parts/content-none.php:22
 msgid "Nothing found"
 msgstr "Nada encontrado"
 
-#: template-parts/content-none.php:25
+#: template-parts/content-none.php:24
 msgid "No articles yet"
 msgstr "Ainda não há artigos"
 
-#: template-parts/content-none.php:33
+#: template-parts/content-none.php:31
 msgid "Try a different search or return to the homepage."
 msgstr "Tente uma busca diferente ou volte para a página inicial."
 
-#: template-parts/content-none.php:36
+#: template-parts/content-none.php:33
 msgid "This archive does not have published articles yet. Browse the latest briefings instead."
 msgstr "Este arquivo ainda não tem artigos publicados. Veja os briefings mais recentes."
 
-#: template-parts/content-none.php:37
-msgid "Archive recovery links"
-msgstr "Links de recuperação do arquivo"
-
-#: template-parts/content-none.php:42
+#: template-parts/content-none.php:48
 msgid "Browse latest articles"
 msgstr "Ver artigos mais recentes"
 
