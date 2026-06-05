@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
  * @covers ::executive_signal_get_free_materials_page_url
  * @covers ::executive_signal_get_primary_free_material_category
  * @covers ::executive_signal_register_free_material_content_type
+ * @covers ::executive_signal_render_free_material_meta_box
  * @covers ::executive_signal_render_free_material_terms
  */
 final class FreeMaterialsTest extends TestCase {
@@ -48,9 +49,54 @@ final class FreeMaterialsTest extends TestCase {
 	}
 
 	/**
-	 * Capture CTA should use explicit metadata with a safe fallback.
+	 * Brevo capture settings should be registered as explicit post metadata.
 	 */
-	public function test_free_material_cta_uses_metadata_and_fallback(): void {
+	public function test_free_material_brevo_metadata_is_registered(): void {
+		$registered_meta = get_registered_meta_keys( 'post', EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE );
+
+		$this->assertArrayHasKey( EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID, $registered_meta );
+		$this->assertArrayHasKey( EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL, $registered_meta );
+		$this->assertSame( 'sanitize_text_field', $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID ]['sanitize_callback'] );
+		$this->assertSame( 'esc_url_raw', $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL ]['sanitize_callback'] );
+		$this->assertTrue( $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID ]['show_in_rest'] );
+		$this->assertTrue( $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL ]['show_in_rest'] );
+	}
+
+	/**
+	 * Capture meta box should expose the Brevo fields for editors.
+	 */
+	public function test_free_material_meta_box_renders_brevo_fields(): void {
+		$post_id = wp_insert_post(
+			array(
+				'post_title'  => 'Brevo material',
+				'post_status' => 'publish',
+				'post_type'   => EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
+			),
+			true
+		);
+
+		$this->assertIsInt( $post_id );
+
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID, '42' );
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL, 'https://example.com/delivery' );
+
+		ob_start();
+		executive_signal_render_free_material_meta_box( get_post( $post_id ) );
+		$output = ob_get_clean();
+
+		$this->assertStringContainsString( 'name="executive_signal_free_material_brevo_list_id"', $output );
+		$this->assertStringContainsString( 'name="executive_signal_free_material_brevo_delivery_url"', $output );
+		$this->assertStringNotContainsString( 'name="executive_signal_free_material_cta_url"', $output );
+		$this->assertStringContainsString( 'value="42"', $output );
+		$this->assertStringContainsString( 'value="https://example.com/delivery"', $output );
+
+		wp_delete_post( $post_id, true );
+	}
+
+	/**
+	 * Capture CTA should use explicit button text metadata with a safe fallback.
+	 */
+	public function test_free_material_cta_uses_button_text_metadata_and_fallback(): void {
 		$post_id = wp_insert_post(
 			array(
 				'post_title'  => 'Decision checklist',
@@ -65,15 +111,12 @@ final class FreeMaterialsTest extends TestCase {
 		$fallback = executive_signal_get_free_material_cta( $post_id );
 
 		$this->assertSame( 'Download free material', $fallback['label'] );
-		$this->assertSame( '#capture', $fallback['url'] );
 
-		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL, 'https://example.com/capture' );
 		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL, 'Receive checklist' );
 
 		$cta = executive_signal_get_free_material_cta( $post_id );
 
 		$this->assertSame( 'Receive checklist', $cta['label'] );
-		$this->assertSame( 'https://example.com/capture', $cta['url'] );
 
 		wp_delete_post( $post_id, true );
 	}

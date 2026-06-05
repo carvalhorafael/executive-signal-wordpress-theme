@@ -8,5 +8,6 @@
 /vendor/
 /.phpunit.result.cache
 /.npmrc
+/.wp-env.override.json
 /test-results/
 /playwright-report/
