@@ -251,7 +251,7 @@ function executive_signal_render_header_search() {
 function executive_signal_render_header_feed_link() {
 	?>
 	<a class="es-blog-site-header-feed-link" href="<?php echo esc_url( get_feed_link() ); ?>" aria-label="<?php esc_attr_e( 'RSS feed', 'executive-signal-wordpress-theme' ); ?>">
-		<span aria-hidden="true"><?php esc_html_e( 'RSS', 'executive-signal-wordpress-theme' ); ?></span>
+		<?php executive_signal_render_icon( 'rss' ); ?>
 		<span class="es-blog-site-header-feed-link__label"><?php esc_html_e( 'RSS feed', 'executive-signal-wordpress-theme' ); ?></span>
 	</a>
 	<?php
@@ -271,7 +271,8 @@ function executive_signal_render_theme_switcher() {
 	?>
 	<div class="es-blog-theme-switcher" role="group" aria-label="<?php esc_attr_e( 'Theme', 'executive-signal-wordpress-theme' ); ?>" data-es-theme-switcher>
 		<button class="es-blog-theme-switcher__trigger" type="button" aria-expanded="false">
-			<span><?php esc_html_e( 'Theme', 'executive-signal-wordpress-theme' ); ?></span>
+			<?php executive_signal_render_icon( 'sun' ); ?>
+			<span class="screen-reader-text"><?php esc_html_e( 'Theme', 'executive-signal-wordpress-theme' ); ?></span>
 		</button>
 		<div class="es-blog-theme-switcher__menu">
 			<?php foreach ( $options as $value => $label ) : ?>
@@ -282,6 +283,34 @@ function executive_signal_render_theme_switcher() {
 		</div>
 	</div>
 	<?php
+}
+
+/**
+ * Render small inline icons used by theme-only WordPress adapters.
+ *
+ * @param string $name Icon name.
+ * @return void
+ */
+function executive_signal_render_icon( $name ) {
+	if ( 'rss' === $name ) {
+		?>
+		<svg class="executive-signal-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+			<path d="M5 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" fill="currentColor"/>
+			<path d="M3.75 11.25a9 9 0 0 1 9 9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.25"/>
+			<path d="M3.75 5.25A15 15 0 0 1 18.75 20.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.25"/>
+		</svg>
+		<?php
+		return;
+	}
+
+	if ( 'sun' === $name ) {
+		?>
+		<svg class="executive-signal-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+			<circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+			<path d="M12 2.75v2.25M12 19v2.25M4.75 4.75l1.6 1.6M17.65 17.65l1.6 1.6M2.75 12h2.25M19 12h2.25M4.75 19.25l1.6-1.6M17.65 6.35l1.6-1.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
+		</svg>
+		<?php
+	}
 }
 
 /**
@@ -372,6 +401,112 @@ function executive_signal_render_article_tags( $post_id = null ) {
 				</li>
 			<?php endforeach; ?>
 		</ul>
+	</nav>
+	<?php
+}
+
+/**
+ * Add heading anchors to article content and collect a table of contents.
+ *
+ * @param string $content Post content after WordPress content filters.
+ * @return array{content:string,table_of_contents:array<int,array{level:int,href:string,label:string}>}
+ */
+function executive_signal_prepare_article_content( $content ) {
+	$table_of_contents = array();
+	$used_ids          = array();
+
+	$prepared_content = preg_replace_callback(
+		'/<h([23])([^>]*)>(.*?)<\/h\1>/is',
+		function ( $matches ) use ( &$table_of_contents, &$used_ids ) {
+			$level       = (int) $matches[1];
+			$attributes  = $matches[2];
+			$heading_raw = $matches[3];
+			$label       = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( $heading_raw ) ) );
+
+			if ( '' === $label ) {
+				return $matches[0];
+			}
+
+			$existing_id = '';
+
+			if ( preg_match( '/\s+id\s*=\s*([\'"])(.*?)\1/i', $attributes, $id_match ) ) {
+				$existing_id = $id_match[2];
+			}
+
+			$id = executive_signal_get_unique_article_heading_id( '' !== $existing_id ? $existing_id : $label, $used_ids );
+
+			if ( '' !== $existing_id ) {
+				$attributes = preg_replace( '/\s+id\s*=\s*([\'"])(.*?)\1/i', ' id="' . esc_attr( $id ) . '"', $attributes, 1 );
+			} else {
+				$attributes .= ' id="' . esc_attr( $id ) . '"';
+			}
+
+			$table_of_contents[] = array(
+				'level' => $level,
+				'href'  => '#' . $id,
+				'label' => $label,
+			);
+
+			return '<h' . $level . $attributes . '>' . $heading_raw . '</h' . $level . '>';
+		},
+		$content
+	);
+
+	return array(
+		'content'           => null === $prepared_content ? $content : $prepared_content,
+		'table_of_contents' => $table_of_contents,
+	);
+}
+
+/**
+ * Build a unique anchor id for an article heading.
+ *
+ * @param string   $seed Source label or existing id.
+ * @param string[] $used_ids IDs already used in this article.
+ * @return string
+ */
+function executive_signal_get_unique_article_heading_id( $seed, &$used_ids ) {
+	$base = sanitize_title( $seed );
+
+	if ( '' === $base ) {
+		$base = 'section';
+	}
+
+	$id     = $base;
+	$suffix = 2;
+
+	while ( in_array( $id, $used_ids, true ) ) {
+		$id = $base . '-' . $suffix;
+		++$suffix;
+	}
+
+	$used_ids[] = $id;
+
+	return $id;
+}
+
+/**
+ * Render the article table of contents using the design-system contract.
+ *
+ * @param array<int,array{level:int,href:string,label:string}> $items Table of contents items.
+ * @return void
+ */
+function executive_signal_render_article_table_of_contents( $items ) {
+	if ( empty( $items ) ) {
+		return;
+	}
+	?>
+	<nav class="es-table-of-contents" data-sticky="true" aria-label="<?php esc_attr_e( 'Article contents', 'executive-signal-wordpress-theme' ); ?>">
+		<p class="es-table-of-contents__title"><?php esc_html_e( 'On this page', 'executive-signal-wordpress-theme' ); ?></p>
+		<ol class="es-table-of-contents__list">
+			<?php foreach ( $items as $item ) : ?>
+				<li class="es-table-of-contents__item" data-level="<?php echo esc_attr( (string) $item['level'] ); ?>">
+					<a class="es-table-of-contents__link" href="<?php echo esc_url( $item['href'] ); ?>">
+						<?php echo esc_html( $item['label'] ); ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ol>
 	</nav>
 	<?php
 }
