@@ -9,11 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE  = 'material_gratuito';
-const EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY   = 'material_categoria';
-const EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL    = '_executive_signal_material_capture_url';
-const EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL  = '_executive_signal_material_capture_label';
-const EXECUTIVE_SIGNAL_FREE_MATERIALS_PAGE_PATH = 'materiais-gratuitos';
+const EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE          = 'material_gratuito';
+const EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY           = 'material_categoria';
+const EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL            = '_executive_signal_material_capture_url';
+const EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL          = '_executive_signal_material_capture_label';
+const EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID      = '_brevo_leads_capture_list_id';
+const EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL = '_brevo_leads_capture_delivery_url';
+const EXECUTIVE_SIGNAL_FREE_MATERIALS_PAGE_PATH         = 'materiais-gratuitos';
 
 /**
  * Register free material post type, taxonomy and metadata.
@@ -124,6 +126,34 @@ function executive_signal_register_free_material_content_type() {
 		)
 	);
 
+	register_post_meta(
+		EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
+		EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID,
+		array(
+			'auth_callback'     => static function () {
+				return current_user_can( 'edit_posts' );
+			},
+			'sanitize_callback' => 'sanitize_text_field',
+			'show_in_rest'      => true,
+			'single'            => true,
+			'type'              => 'string',
+		)
+	);
+
+	register_post_meta(
+		EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
+		EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL,
+		array(
+			'auth_callback'     => static function () {
+				return current_user_can( 'edit_posts' );
+			},
+			'sanitize_callback' => 'esc_url_raw',
+			'show_in_rest'      => true,
+			'single'            => true,
+			'type'              => 'string',
+		)
+	);
+
 	add_rewrite_rule(
 		'^materiais-gratuitos/categoria/([^/]+)/?$',
 		'index.php?' . EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY . '=$matches[1]',
@@ -167,8 +197,10 @@ add_action( 'add_meta_boxes', 'executive_signal_register_free_material_meta_box'
  * @return void
  */
 function executive_signal_render_free_material_meta_box( $post ) {
-	$cta_url   = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL, true );
-	$cta_label = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL, true );
+	$cta_url            = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL, true );
+	$cta_label          = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL, true );
+	$brevo_list_id      = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID, true );
+	$brevo_delivery_url = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL, true );
 
 	wp_nonce_field( 'executive_signal_save_free_material_capture', 'executive_signal_free_material_capture_nonce' );
 	?>
@@ -192,6 +224,27 @@ function executive_signal_render_free_material_meta_box( $post ) {
 			type="text"
 			value="<?php echo esc_attr( $cta_label ); ?>"
 			placeholder="<?php esc_attr_e( 'Download free material', 'executive-signal-wordpress-theme' ); ?>"
+		>
+	</p>
+	<p>
+		<label for="executive-signal-free-material-brevo-list-id"><?php esc_html_e( 'Brevo list ID', 'executive-signal-wordpress-theme' ); ?></label>
+		<input
+			class="widefat"
+			id="executive-signal-free-material-brevo-list-id"
+			name="executive_signal_free_material_brevo_list_id"
+			type="text"
+			value="<?php echo esc_attr( $brevo_list_id ); ?>"
+		>
+	</p>
+	<p>
+		<label for="executive-signal-free-material-brevo-delivery-url"><?php esc_html_e( 'Delivery redirect URL', 'executive-signal-wordpress-theme' ); ?></label>
+		<input
+			class="widefat"
+			id="executive-signal-free-material-brevo-delivery-url"
+			name="executive_signal_free_material_brevo_delivery_url"
+			type="url"
+			value="<?php echo esc_attr( $brevo_delivery_url ); ?>"
+			placeholder="https://"
 		>
 	</p>
 	<?php
@@ -218,8 +271,10 @@ function executive_signal_save_free_material_meta( $post_id ) {
 		return;
 	}
 
-	$cta_url   = isset( $_POST['executive_signal_free_material_cta_url'] ) ? esc_url_raw( wp_unslash( $_POST['executive_signal_free_material_cta_url'] ) ) : '';
-	$cta_label = isset( $_POST['executive_signal_free_material_cta_label'] ) ? sanitize_text_field( wp_unslash( $_POST['executive_signal_free_material_cta_label'] ) ) : '';
+	$cta_url            = isset( $_POST['executive_signal_free_material_cta_url'] ) ? esc_url_raw( wp_unslash( $_POST['executive_signal_free_material_cta_url'] ) ) : '';
+	$cta_label          = isset( $_POST['executive_signal_free_material_cta_label'] ) ? sanitize_text_field( wp_unslash( $_POST['executive_signal_free_material_cta_label'] ) ) : '';
+	$brevo_list_id      = isset( $_POST['executive_signal_free_material_brevo_list_id'] ) ? sanitize_text_field( wp_unslash( $_POST['executive_signal_free_material_brevo_list_id'] ) ) : '';
+	$brevo_delivery_url = isset( $_POST['executive_signal_free_material_brevo_delivery_url'] ) ? esc_url_raw( wp_unslash( $_POST['executive_signal_free_material_brevo_delivery_url'] ) ) : '';
 
 	if ( $cta_url ) {
 		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL, $cta_url );
@@ -231,6 +286,18 @@ function executive_signal_save_free_material_meta( $post_id ) {
 		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL, $cta_label );
 	} else {
 		delete_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL );
+	}
+
+	if ( $brevo_list_id ) {
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID, $brevo_list_id );
+	} else {
+		delete_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID );
+	}
+
+	if ( $brevo_delivery_url ) {
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL, $brevo_delivery_url );
+	} else {
+		delete_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL );
 	}
 }
 add_action( 'save_post_' . EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE, 'executive_signal_save_free_material_meta' );
