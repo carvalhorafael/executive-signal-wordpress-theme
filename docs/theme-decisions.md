@@ -47,3 +47,17 @@ Motivo: o tema consome tokens e contratos visuais do Executive Signal Design Sys
 Decisao: formularios de busca devem passar por `get_search_form()` e `searchform.php`.
 
 Motivo: isso preserva os filtros do WordPress, reduz duplicacao entre header, busca e estados vazios, e elimina formularios de busca hardcoded nos templates principais.
+
+## 2026-06-04: Materiais gratuitos acoplados inicialmente ao tema
+
+Decisao: registrar o tipo de conteudo `material_gratuito`, a taxonomia `material_categoria` e os metadados de captura dentro do tema nesta fase inicial.
+
+Motivo: embora tipos de conteudo duraveis devam preferencialmente viver em plugin, o site sera operado por uma unica pessoa e criar um plugin isolado agora adicionaria custo de desenvolvimento, CI, release e integracao maior que o beneficio imediato.
+
+Limites da excecao:
+
+- manter registro, metadados, helpers e filtros concentrados em `inc/free-materials.php`;
+- manter templates e estilos em arquivos claramente identificaveis para facilitar extracao futura;
+- preservar nomes estaveis de post type, taxonomia e metadados;
+- nao colocar regras de captura, CRM, e-mail marketing ou automacoes de negocio dentro do tema;
+- reavaliar extracao para plugin quando houver outro consumidor, troca de tema planejada ou regras de captura mais complexas.
