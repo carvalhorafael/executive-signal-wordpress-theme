@@ -11,7 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 const EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE          = 'material_gratuito';
 const EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY           = 'material_categoria';
-const EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL            = '_executive_signal_material_capture_url';
 const EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL          = '_executive_signal_material_capture_label';
 const EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID      = '_brevo_leads_capture_list_id';
 const EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL = '_brevo_leads_capture_delivery_url';
@@ -100,20 +99,6 @@ function executive_signal_register_free_material_content_type() {
 
 	register_post_meta(
 		EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
-		EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL,
-		array(
-			'auth_callback'     => static function () {
-				return current_user_can( 'edit_posts' );
-			},
-			'sanitize_callback' => 'esc_url_raw',
-			'show_in_rest'      => true,
-			'single'            => true,
-			'type'              => 'string',
-		)
-	);
-
-	register_post_meta(
-		EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
 		EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL,
 		array(
 			'auth_callback'     => static function () {
@@ -197,24 +182,12 @@ add_action( 'add_meta_boxes', 'executive_signal_register_free_material_meta_box'
  * @return void
  */
 function executive_signal_render_free_material_meta_box( $post ) {
-	$cta_url            = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL, true );
 	$cta_label          = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL, true );
 	$brevo_list_id      = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID, true );
 	$brevo_delivery_url = get_post_meta( $post->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL, true );
 
 	wp_nonce_field( 'executive_signal_save_free_material_capture', 'executive_signal_free_material_capture_nonce' );
 	?>
-	<p>
-		<label for="executive-signal-free-material-cta-url"><?php esc_html_e( 'Button URL', 'executive-signal-wordpress-theme' ); ?></label>
-		<input
-			class="widefat"
-			id="executive-signal-free-material-cta-url"
-			name="executive_signal_free_material_cta_url"
-			type="url"
-			value="<?php echo esc_attr( $cta_url ); ?>"
-			placeholder="https://"
-		>
-	</p>
 	<p>
 		<label for="executive-signal-free-material-cta-label"><?php esc_html_e( 'Button text', 'executive-signal-wordpress-theme' ); ?></label>
 		<input
@@ -271,16 +244,9 @@ function executive_signal_save_free_material_meta( $post_id ) {
 		return;
 	}
 
-	$cta_url            = isset( $_POST['executive_signal_free_material_cta_url'] ) ? esc_url_raw( wp_unslash( $_POST['executive_signal_free_material_cta_url'] ) ) : '';
 	$cta_label          = isset( $_POST['executive_signal_free_material_cta_label'] ) ? sanitize_text_field( wp_unslash( $_POST['executive_signal_free_material_cta_label'] ) ) : '';
 	$brevo_list_id      = isset( $_POST['executive_signal_free_material_brevo_list_id'] ) ? sanitize_text_field( wp_unslash( $_POST['executive_signal_free_material_brevo_list_id'] ) ) : '';
 	$brevo_delivery_url = isset( $_POST['executive_signal_free_material_brevo_delivery_url'] ) ? esc_url_raw( wp_unslash( $_POST['executive_signal_free_material_brevo_delivery_url'] ) ) : '';
-
-	if ( $cta_url ) {
-		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL, $cta_url );
-	} else {
-		delete_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL );
-	}
 
 	if ( $cta_label ) {
 		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL, $cta_label );
@@ -332,16 +298,14 @@ function executive_signal_get_free_materials_page_url() {
  * Get capture CTA data for a free material.
  *
  * @param int|null $post_id Post ID.
- * @return array{label:string,url:string}
+ * @return array{label:string}
  */
 function executive_signal_get_free_material_cta( $post_id = null ) {
 	$post_id   = $post_id ? (int) $post_id : get_the_ID();
-	$cta_url   = $post_id ? get_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_URL, true ) : '';
 	$cta_label = $post_id ? get_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL, true ) : '';
 
 	return array(
 		'label' => $cta_label ? $cta_label : __( 'Download free material', 'executive-signal-wordpress-theme' ),
-		'url'   => $cta_url ? $cta_url : '#capture',
 	);
 }
 

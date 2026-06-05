@@ -171,7 +171,6 @@ test.beforeAll(() => {
     "eval",
     `wp_set_object_terms(${Number(materialId)}, array(${Number(materialCategoryId)}), 'material_categoria', false);`,
   ]);
-  runWpCli(["post", "meta", "update", materialId, "_executive_signal_material_capture_url", "https://example.com/material"]);
   runWpCli(["post", "meta", "update", materialId, "_executive_signal_material_capture_label", "Receive material"]);
 
   if (!tryWpCli(["post", "meta", "get", materialId, "_thumbnail_id"])) {
@@ -409,6 +408,14 @@ test.describe("Executive Signal theme front end", () => {
   });
 
   test("renders free material archive, category and single capture surfaces", async ({ page }) => {
+    const expectedMaterialId = runWpCli([
+      "post",
+      "list",
+      "--post_type=material_gratuito",
+      `--name=${fixture.materialSlug}`,
+      "--field=ID",
+    ]);
+
     await page.goto("/materiais-gratuitos/");
     await expect(page.locator(".es-blog-archive-header__eyebrow")).toHaveText("Materiais gratuitos");
     await expect(page.locator(".es-blog-archive-header__title")).toHaveText("Materiais Gratuitos");
@@ -447,7 +454,15 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".free-material-capture-panel")).toContainText(
       "para receber o material.",
     );
-    await expect(page.locator('.free-material-capture-panel form[action="https://example.com/material"]')).toBeVisible();
+    const captureForm = page.locator('.free-material-capture-panel form[action$="/wp-admin/admin-post.php"]');
+
+    await expect(captureForm).toBeVisible();
+    await expect(captureForm).toHaveAttribute("method", "post");
+    await expect(captureForm.locator('input[name="action"]')).toHaveValue(
+      "brevo_leads_capture_free_material",
+    );
+    await expect(captureForm.locator('input[name="_wpnonce"]')).toHaveCount(1);
+    await expect(captureForm.locator('input[name="material_id"]')).toHaveValue(expectedMaterialId);
     await expect(page.locator("#free-material-capture-name")).toBeVisible();
     await expect(page.locator("#free-material-capture-email")).toBeVisible();
     await expect(page.locator("#free-material-capture-whatsapp")).toBeVisible();

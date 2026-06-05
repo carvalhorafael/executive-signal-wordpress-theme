@@ -6,7 +6,7 @@
  */
 
 $material_cta        = executive_signal_get_free_material_cta();
-$capture_form_action = '#' === $material_cta['url'] ? '#capture' : $material_cta['url'];
+$capture_form_action = admin_url( 'admin-post.php' );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry entry--single free-material-single' ); ?> itemscope itemtype="https://schema.org/CreativeWork">
@@ -32,7 +32,10 @@ $capture_form_action = '#' === $material_cta['url'] ? '#capture' : $material_cta
 
 			<p class="free-material-capture-panel__description"><?php esc_html_e( 'To receive the material.', 'executive-signal-wordpress-theme' ); ?></p>
 
-			<form class="free-material-capture-panel__form" action="<?php echo esc_url( $capture_form_action ); ?>" method="get">
+			<form class="free-material-capture-panel__form" action="<?php echo esc_url( $capture_form_action ); ?>" method="post">
+				<input type="hidden" name="action" value="brevo_leads_capture_free_material">
+				<?php wp_nonce_field( 'brevo_leads_capture_free_material' ); ?>
+				<input type="hidden" name="material_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
 				<p class="free-material-capture-panel__field">
 					<label for="free-material-capture-name"><?php esc_html_e( 'Name', 'executive-signal-wordpress-theme' ); ?></label>
 					<input id="free-material-capture-name" name="name" type="text" autocomplete="name" required placeholder="<?php esc_attr_e( 'Your full name', 'executive-signal-wordpress-theme' ); ?>">

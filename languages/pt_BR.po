@@ -117,7 +117,7 @@ msgid "Author articles"
 msgstr "Artigos do autor"
 
 #: category.php:22
-#: inc/free-materials.php:385
+#: inc/free-materials.php:349
 msgid "Category"
 msgstr "Categoria"
 
@@ -221,184 +221,180 @@ msgstr "Título do blog"
 msgid "Blog description"
 msgstr "Descrição do blog"
 
-#: inc/free-materials.php:32
+#: inc/free-materials.php:31
 msgctxt "Post type general name"
 msgid "Free materials"
 msgstr "Materiais gratuitos"
 
-#: inc/free-materials.php:33
+#: inc/free-materials.php:32
 msgctxt "Post type singular name"
 msgid "Free material"
 msgstr "Material gratuito"
 
-#: inc/free-materials.php:34
+#: inc/free-materials.php:33
 msgctxt "Admin menu text"
 msgid "Free materials"
 msgstr "Materiais gratuitos"
 
-#: inc/free-materials.php:35
+#: inc/free-materials.php:34
 msgctxt "Add new on toolbar"
 msgid "Free material"
 msgstr "Material gratuito"
 
-#: inc/free-materials.php:36
+#: inc/free-materials.php:35
 msgid "Add new"
 msgstr "Adicionar novo"
 
-#: inc/free-materials.php:37
+#: inc/free-materials.php:36
 msgid "Add free material"
 msgstr "Adicionar material gratuito"
 
-#: inc/free-materials.php:38
+#: inc/free-materials.php:37
 msgid "All materials"
 msgstr "Todos os materiais"
 
 #. Template Name of the theme
-#: inc/free-materials.php:39
+#: inc/free-materials.php:38
 #: page-materiais-gratuitos.php:46
 msgid "Free materials"
 msgstr "Materiais gratuitos"
 
-#: inc/free-materials.php:40
+#: inc/free-materials.php:39
 msgid "Edit free material"
 msgstr "Editar material gratuito"
 
-#: inc/free-materials.php:41
+#: inc/free-materials.php:40
 msgid "Material image"
 msgstr "Imagem do material"
 
-#: inc/free-materials.php:42
+#: inc/free-materials.php:41
 msgid "Filter materials"
 msgstr "Filtrar materiais"
 
-#: inc/free-materials.php:43
+#: inc/free-materials.php:42
 msgid "Materials list"
 msgstr "Lista de materiais"
 
-#: inc/free-materials.php:44
+#: inc/free-materials.php:43
 msgid "Materials list navigation"
 msgstr "Navegação da lista de materiais"
 
-#: inc/free-materials.php:45
+#: inc/free-materials.php:44
 msgid "New free material"
 msgstr "Novo material gratuito"
 
-#: inc/free-materials.php:46
+#: inc/free-materials.php:45
 msgid "No materials found."
 msgstr "Nenhum material encontrado."
 
-#: inc/free-materials.php:47
+#: inc/free-materials.php:46
 msgid "No materials found in Trash."
 msgstr "Nenhum material encontrado na lixeira."
 
-#: inc/free-materials.php:48
+#: inc/free-materials.php:47
 msgid "Remove material image"
 msgstr "Remover imagem do material"
 
-#: inc/free-materials.php:49
+#: inc/free-materials.php:48
 msgid "Search materials"
 msgstr "Buscar materiais"
 
-#: inc/free-materials.php:50
+#: inc/free-materials.php:49
 msgid "Set material image"
 msgstr "Definir imagem do material"
 
-#: inc/free-materials.php:51
+#: inc/free-materials.php:50
 msgid "Uploaded to this material"
 msgstr "Enviado para este material"
 
-#: inc/free-materials.php:52
+#: inc/free-materials.php:51
 msgid "Use as material image"
 msgstr "Usar como imagem do material"
 
-#: inc/free-materials.php:53
+#: inc/free-materials.php:52
 msgid "View free material"
 msgstr "Ver material gratuito"
 
-#: inc/free-materials.php:74
+#: inc/free-materials.php:73
 msgctxt "taxonomy general name"
 msgid "Material categories"
 msgstr "Categorias de materiais"
 
-#: inc/free-materials.php:75
+#: inc/free-materials.php:74
 msgctxt "taxonomy singular name"
 msgid "Material category"
 msgstr "Categoria de material"
 
-#: inc/free-materials.php:76
+#: inc/free-materials.php:75
 msgid "Add material category"
 msgstr "Adicionar categoria de material"
 
-#: inc/free-materials.php:77
+#: inc/free-materials.php:76
 msgid "All categories"
 msgstr "Todas as categorias"
 
-#: inc/free-materials.php:78
+#: inc/free-materials.php:77
 msgid "Back to categories"
 msgstr "Voltar para categorias"
 
-#: inc/free-materials.php:79
+#: inc/free-materials.php:78
 msgid "Edit category"
 msgstr "Editar categoria"
 
-#: inc/free-materials.php:80
+#: inc/free-materials.php:79
 msgid "Categories"
 msgstr "Categorias"
 
-#: inc/free-materials.php:81
+#: inc/free-materials.php:80
 msgid "New category name"
 msgstr "Nome da nova categoria"
 
-#: inc/free-materials.php:82
+#: inc/free-materials.php:81
 msgid "No categories found."
 msgstr "Nenhuma categoria encontrada."
 
-#: inc/free-materials.php:83
+#: inc/free-materials.php:82
 msgid "Parent category"
 msgstr "Categoria ascendente"
 
-#: inc/free-materials.php:84
+#: inc/free-materials.php:83
 msgid "Parent category:"
 msgstr "Categoria ascendente:"
 
-#: inc/free-materials.php:85
+#: inc/free-materials.php:84
 msgid "Search categories"
 msgstr "Buscar categorias"
 
-#: inc/free-materials.php:86
+#: inc/free-materials.php:85
 msgid "Update category"
 msgstr "Atualizar categoria"
 
-#: inc/free-materials.php:87
+#: inc/free-materials.php:86
 msgid "View category"
 msgstr "Ver categoria"
 
-#: inc/free-materials.php:184
+#: inc/free-materials.php:169
 msgid "Material capture"
 msgstr "Captura do material"
 
-#: inc/free-materials.php:208
-msgid "Button URL"
-msgstr "URL do botão"
-
-#: inc/free-materials.php:219
+#: inc/free-materials.php:192
 msgid "Button text"
 msgstr "Texto do botão"
 
-#: inc/free-materials.php:226
-#: inc/free-materials.php:343
+#: inc/free-materials.php:199
+#: inc/free-materials.php:308
 msgid "Download free material"
 msgstr "Baixar material gratuito"
 
-#: inc/free-materials.php:230
+#: inc/free-materials.php:203
 msgid "Brevo list ID"
 msgstr "ID da lista Brevo"
 
-#: inc/free-materials.php:240
+#: inc/free-materials.php:213
 msgid "Delivery redirect URL"
 msgstr "URL de redirecionamento da entrega"
 
-#: inc/free-materials.php:377
+#: inc/free-materials.php:341
 msgctxt "free material category list separator"
 msgid ", "
 msgstr ", "
@@ -814,48 +810,48 @@ msgstr "Complete o formulário"
 msgid "To receive the material."
 msgstr "para receber o material."
 
-#: template-parts/content-free-material.php:37
+#: template-parts/content-free-material.php:40
 msgid "Name"
 msgstr "Nome"
 
-#: template-parts/content-free-material.php:38
+#: template-parts/content-free-material.php:41
 msgid "Your full name"
 msgstr "Seu nome completo"
 
-#: template-parts/content-free-material.php:41
+#: template-parts/content-free-material.php:44
 msgid "Email"
 msgstr "Email"
 
-#: template-parts/content-free-material.php:42
+#: template-parts/content-free-material.php:45
 msgid "you@example.com"
 msgstr "voce@exemplo.com"
 
-#: template-parts/content-free-material.php:45
+#: template-parts/content-free-material.php:48
 #: template-parts/share-post.php:19
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: template-parts/content-free-material.php:46
+#: template-parts/content-free-material.php:49
 msgid "(00) 00000-0000"
 msgstr "(00) 00000-0000"
 
-#: template-parts/content-free-material.php:53
+#: template-parts/content-free-material.php:56
 msgid "No payment required. Keep the material for future reference."
 msgstr "Sem pagamento. Guarde o material para consultar depois."
 
-#: template-parts/content-free-material.php:59
+#: template-parts/content-free-material.php:62
 msgid "What you will find"
 msgstr "O que você vai encontrar"
 
-#: template-parts/content-free-material.php:60
+#: template-parts/content-free-material.php:63
 msgid "Applied knowledge to accelerate your journey and avoid costly mistakes."
 msgstr "Conhecimento aplicado para acelerar sua jornada e evitar erros caros."
 
-#: template-parts/content-free-material.php:73
+#: template-parts/content-free-material.php:76
 msgid "Ready to use"
 msgstr "Pronto para usar"
 
-#: template-parts/content-free-material.php:74
+#: template-parts/content-free-material.php:77
 msgid "Access the content and apply the ideas today."
 msgstr "Acesse o conteúdo e aplique as ideias hoje mesmo."
 
