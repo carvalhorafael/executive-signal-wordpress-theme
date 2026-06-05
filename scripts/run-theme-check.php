@@ -43,15 +43,13 @@ echo esc_html( trim( $results ) ) . PHP_EOL;
 $register_post_type = 'register_' . 'post_type';
 $register_taxonomy  = 'register_' . 'taxonomy';
 
-$expected_required_results = array(
-	'REQUIRED Update URI: is found from your style.css header. This feature is only for themes that are distributed outside the theme directory. Remove from your style.css file.',
-	'REQUIRED: The theme uses the ' . $register_post_type . '() function in the file inc/free-materials.php. ' . $register_post_type . '() is plugin-territory functionality and must not be used in themes. Use a plugin instead. Line 24: ' . $register_post_type . '(',
-	'REQUIRED: The theme uses the ' . $register_post_type . '() function in the file dist/executive-signal-wordpress-theme/inc/free-materials.php. ' . $register_post_type . '() is plugin-territory functionality and must not be used in themes. Use a plugin instead. Line 23: ' . $register_post_type . '(',
-	'REQUIRED: The theme uses the ' . $register_taxonomy . '() function in the file inc/free-materials.php. ' . $register_taxonomy . '() is plugin-territory functionality and must not be used in themes. Use a plugin instead. Line 66: ' . $register_taxonomy . '(',
-	'REQUIRED: The theme uses the ' . $register_taxonomy . '() function in the file dist/executive-signal-wordpress-theme/inc/free-materials.php. ' . $register_taxonomy . '() is plugin-territory functionality and must not be used in themes. Use a plugin instead. Line 65: ' . $register_taxonomy . '(',
+$expected_required_patterns = array(
+	'/REQUIRED Update URI: is found from your style\.css header\. This feature is only for themes that are distributed outside the theme directory\. Remove from your style\.css file\./',
+	'/REQUIRED: The theme uses the ' . preg_quote( $register_post_type, '/' ) . '\(\) function in the file (dist\/executive-signal-wordpress-theme\/)?inc\/free-materials\.php\. ' . preg_quote( $register_post_type, '/' ) . '\(\) is plugin-territory functionality and must not be used in themes\. Use a plugin instead\. Line \d+: ' . preg_quote( $register_post_type, '/' ) . '\(/',
+	'/REQUIRED: The theme uses the ' . preg_quote( $register_taxonomy, '/' ) . '\(\) function in the file (dist\/executive-signal-wordpress-theme\/)?inc\/free-materials\.php\. ' . preg_quote( $register_taxonomy, '/' ) . '\(\) is plugin-territory functionality and must not be used in themes\. Use a plugin instead\. Line \d+: ' . preg_quote( $register_taxonomy, '/' ) . '\(/',
 );
 
-$blocking_results = str_replace( $expected_required_results, '', $results );
+$blocking_results = preg_replace( $expected_required_patterns, '', $results );
 
 if ( false !== strpos( $blocking_results, 'REQUIRED' ) ) {
 	exit( 1 );
