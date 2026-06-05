@@ -81,12 +81,14 @@ function executive_signal_register_block_styles() {
 add_action( 'init', 'executive_signal_register_block_styles' );
 
 /**
- * Register footer widget areas.
+ * Register widget areas.
  *
  * @return void
  */
 function executive_signal_register_widget_areas() {
-	$footer_widget_areas = array(
+	$widget_areas = array(
+		'post-left'     => __( 'Post left rail', 'executive-signal-wordpress-theme' ),
+		'post-right'    => __( 'Post right rail', 'executive-signal-wordpress-theme' ),
 		'footer-1'      => __( 'Footer column 1', 'executive-signal-wordpress-theme' ),
 		'footer-2'      => __( 'Footer column 2', 'executive-signal-wordpress-theme' ),
 		'footer-3'      => __( 'Footer column 3', 'executive-signal-wordpress-theme' ),
@@ -94,7 +96,7 @@ function executive_signal_register_widget_areas() {
 		'footer-bottom' => __( 'Footer bottom', 'executive-signal-wordpress-theme' ),
 	);
 
-	foreach ( $footer_widget_areas as $id => $name ) {
+	foreach ( $widget_areas as $id => $name ) {
 		register_sidebar(
 			array(
 				'id'            => $id,

@@ -46,6 +46,20 @@ final class ThemeSetupTest extends TestCase {
 	}
 
 	/**
+	 * Widget areas should include the post rails and footer surfaces.
+	 */
+	public function test_widget_areas_are_registered(): void {
+		global $wp_registered_sidebars;
+
+		$sidebars = array_keys( $wp_registered_sidebars );
+
+		$this->assertContains( 'post-left', $sidebars );
+		$this->assertContains( 'post-right', $sidebars );
+		$this->assertContains( 'footer-1', $sidebars );
+		$this->assertContains( 'footer-bottom', $sidebars );
+	}
+
+	/**
 	 * Runtime asset version should match public theme version.
 	 */
 	public function test_runtime_theme_version_matches_stylesheet_header(): void {
