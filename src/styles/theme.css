@@ -379,6 +379,7 @@ a {
 
 .entry__widget-area--right {
   grid-area: post-right;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .entry__widget-area .widget {
