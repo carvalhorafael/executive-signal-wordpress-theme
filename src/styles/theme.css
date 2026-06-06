@@ -883,15 +883,19 @@ a {
 
 .free-material-detail__title {
   color: var(--es-text-primary);
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  font-weight: var(--es-font-weight-heading);
+  font-size: clamp(1.45rem, 2.35vw, 2.1rem);
+  font-weight: var(--es-font-weight-body);
   letter-spacing: 0;
   line-height: 1.08;
   margin: 0;
 }
 
 .free-material-single__content {
+  align-self: start;
+  grid-area: auto;
+  justify-self: start;
   max-width: 72ch;
+  width: min(100%, 72ch);
 }
 
 .free-material-final-cta {
