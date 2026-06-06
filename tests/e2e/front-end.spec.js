@@ -64,6 +64,7 @@ const articleContent = [
 ].join("");
 
 test.beforeAll(() => {
+  tryWpCli(["plugin", "activate", "free-materials"]);
   runWpCli(["theme", "activate", "executive-signal-wordpress-theme"]);
   tryWpCli(["language", "core", "install", "pt_BR"]);
   runWpCli(["option", "update", "WPLANG", "pt_BR"]);

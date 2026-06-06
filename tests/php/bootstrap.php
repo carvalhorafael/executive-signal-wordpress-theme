@@ -14,6 +14,12 @@ if ( ! file_exists( $wp_load ) ) {
 
 require_once $wp_load;
 
+require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+if ( function_exists( 'activate_plugin' ) && ! is_plugin_active( 'free-materials/free-materials.php' ) ) {
+	activate_plugin( 'free-materials/free-materials.php' );
+}
+
 if ( ! defined( 'EXECUTIVE_SIGNAL_THEME_DIR' ) ) {
 	$theme = wp_get_theme( 'executive-signal-wordpress-theme' );
 

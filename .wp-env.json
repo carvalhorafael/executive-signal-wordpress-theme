@@ -1,6 +1,7 @@
 {
   "core": null,
   "plugins": [
+    "../plugins-wordpress/free-materials",
     "https://downloads.wordpress.org/plugin/theme-check.latest-stable.zip"
   ],
   "themes": [

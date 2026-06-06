@@ -8,14 +8,12 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * Verifies the free material content contract.
+ * Verifies the theme's Free Materials plugin integration.
  *
  * @covers ::executive_signal_get_free_material_cta
  * @covers ::executive_signal_get_free_materials_page
  * @covers ::executive_signal_get_free_materials_page_url
  * @covers ::executive_signal_get_primary_free_material_category
- * @covers ::executive_signal_register_free_material_content_type
- * @covers ::executive_signal_render_free_material_meta_box
  * @covers ::executive_signal_render_free_material_terms
  */
 final class FreeMaterialsTest extends TestCase {
@@ -23,6 +21,9 @@ final class FreeMaterialsTest extends TestCase {
 	 * Free material post type should be public and editor friendly.
 	 */
 	public function test_free_material_post_type_is_registered(): void {
+		$this->assertTrue( function_exists( 'free_materials' ) );
+		$this->assertTrue( executive_signal_free_materials_plugin_is_available() );
+
 		$post_type = get_post_type_object( EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE );
 
 		$this->assertNotNull( $post_type );
@@ -60,37 +61,6 @@ final class FreeMaterialsTest extends TestCase {
 		$this->assertSame( 'esc_url_raw', $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL ]['sanitize_callback'] );
 		$this->assertTrue( $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID ]['show_in_rest'] );
 		$this->assertTrue( $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL ]['show_in_rest'] );
-	}
-
-	/**
-	 * Capture meta box should expose the Brevo fields for editors.
-	 */
-	public function test_free_material_meta_box_renders_brevo_fields(): void {
-		$post_id = wp_insert_post(
-			array(
-				'post_title'  => 'Brevo material',
-				'post_status' => 'publish',
-				'post_type'   => EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
-			),
-			true
-		);
-
-		$this->assertIsInt( $post_id );
-
-		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID, '42' );
-		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL, 'https://example.com/delivery' );
-
-		ob_start();
-		executive_signal_render_free_material_meta_box( get_post( $post_id ) );
-		$output = ob_get_clean();
-
-		$this->assertStringContainsString( 'name="executive_signal_free_material_brevo_list_id"', $output );
-		$this->assertStringContainsString( 'name="executive_signal_free_material_brevo_delivery_url"', $output );
-		$this->assertStringNotContainsString( 'name="executive_signal_free_material_cta_url"', $output );
-		$this->assertStringContainsString( 'value="42"', $output );
-		$this->assertStringContainsString( 'value="https://example.com/delivery"', $output );
-
-		wp_delete_post( $post_id, true );
 	}
 
 	/**
