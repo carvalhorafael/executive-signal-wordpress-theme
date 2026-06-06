@@ -74,7 +74,7 @@ O tema deve continuar dono de:
 - [x] O tema renderiza materiais gratuitos com o plugin ativo.
 - [ ] O tema falha de forma controlada com o plugin ausente.
 - [x] Os slugs e metadados existentes continuam identicos, sem migracao destrutiva de dados.
-- [ ] `npm test` e `npm run validate` passam no tema.
+- [x] `npm test` e `npm run validate` passam no tema.
 - [x] O plugin tem suite minima propria para CPT, taxonomia, metadados e rewrite.
 
 ### Decisoes em aberto
