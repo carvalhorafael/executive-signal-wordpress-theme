@@ -77,4 +77,4 @@ Contrato preservado:
 - meta key `_brevo_leads_capture_delivery_url`;
 - slug publico `materiais-gratuitos`.
 
-O tema consome as funcoes publicas do plugin quando disponiveis e mantem fallbacks de constantes apenas para evitar erros fatais quando o plugin estiver ausente.
+O tema consome as funcoes publicas do plugin quando disponiveis e mantem fallbacks de constantes apenas para evitar erros fatais quando o plugin estiver ausente. Sem o plugin instalado e ativo, o tema nao registra nem emula o dominio de materiais gratuitos.

@@ -42,7 +42,7 @@ O tema deve continuar dono de:
 - templates `single-material_gratuito.php`, `taxonomy-material_categoria.php` e `page-materiais-gratuitos.php`;
 - markup, classes, layout e adaptacao ao Executive Signal Design System;
 - helpers estritamente de apresentacao, como renderizacao de termos e CTA;
-- fallback visual quando o plugin estiver ausente ou desativado.
+- fallbacks defensivos de constantes apenas para evitar erro fatal quando o plugin estiver ausente.
 
 ### Como funcionaria em runtime
 
@@ -50,7 +50,7 @@ O tema deve continuar dono de:
 2. No hook `init`, o plugin registra `material_gratuito`, `material_categoria`, metadados e rewrites.
 3. O tema detecta se o plugin ou o post type estao disponiveis.
 4. Se estiverem disponiveis, o tema renderiza os templates especializados normalmente.
-5. Se nao estiverem disponiveis, o tema nao tenta registrar o dominio por conta propria; ele mostra uma ausencia controlada ou cai para templates genericos do WordPress.
+5. Se nao estiverem disponiveis, o tema nao tenta registrar nem emular o dominio por conta propria; materiais gratuitos simplesmente nao existem como superficie funcional ate que o plugin esteja instalado e ativo.
 
 ### Plano de migracao
 
@@ -61,7 +61,7 @@ O tema deve continuar dono de:
 5. Manter no tema apenas helpers de leitura e renderizacao, usando constantes do plugin quando existirem e fallbacks seguros quando nao existirem.
 6. Atualizar testes:
    - testes do plugin cobrem registro de CPT/taxonomia/metadados/meta box/rewrite;
-   - testes do tema cobrem consumo do contrato e ausencia controlada do plugin;
+   - testes do tema cobrem consumo do contrato com o plugin ativo;
    - E2E continua validando as superficies publicas com o plugin ativo.
 7. Atualizar `wp-env`/CI para instalar e ativar o plugin durante testes do tema.
 8. Remover as excecoes de plugin territory em `scripts/run-theme-check.php`.
@@ -72,7 +72,7 @@ O tema deve continuar dono de:
 - [x] `npm run theme:check` no tema nao precisa mais ignorar `register_post_type()` nem `register_taxonomy()`.
 - [x] Desativar o tema nao remove a disponibilidade administrativa dos materiais gratuitos quando o plugin continua ativo.
 - [x] O tema renderiza materiais gratuitos com o plugin ativo.
-- [ ] O tema falha de forma controlada com o plugin ausente.
+- [x] O tema nao registra nem tenta emular materiais gratuitos quando o plugin esta ausente.
 - [x] Os slugs e metadados existentes continuam identicos, sem migracao destrutiva de dados.
 - [x] `npm test` e `npm run validate` passam no tema.
 - [x] O plugin tem suite minima propria para CPT, taxonomia, metadados e rewrite.
@@ -82,7 +82,7 @@ O tema deve continuar dono de:
 - Repositorio do plugin: criado em `/Users/rafaelcarvalho/Development/plugins-wordpress/free-materials`.
 - Distribuicao do plugin: estrutura criada para release propria via GitHub.
 - Captura/Brevo: o plugin `free-materials` nao processa submissao; a captura continua como decisao separada.
-- Falha controlada no tema: ocultar superficies de materiais, mostrar mensagem administrativa, ou redirecionar para pagina generica?
+- Dependencia administrativa: avaliar se o tema deve exibir apenas um aviso discreto no admin recomendando instalar/ativar `free-materials`.
 
 ## 2. Fechar contrato de captura/Brevo
 
