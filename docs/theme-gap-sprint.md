@@ -86,7 +86,19 @@ O tema deve continuar dono de:
 
 ## 2. Fechar contrato de captura/Brevo
 
-O template de material gratuito envia para `admin-post.php` com action `brevo_leads_capture_free_material`, mas o tema nao registra o handler. Precisamos decidir se o processamento pertence ao plugin de materiais, a um plugin separado de captura/leads ou a uma integracao externa ja existente.
+Status: resolvido no tema. O processamento pertence ao plugin `brevo-leads-capture`; o tema apenas renderiza o formulario conforme o contrato publico desse plugin.
+
+Contrato no tema:
+
+- postar para `admin_url( 'admin-post.php' )`;
+- enviar `action=brevo_leads_capture_free_material`;
+- gerar nonce para `brevo_leads_capture_free_material`;
+- enviar `material_id`;
+- renderizar campos `name`, `email` e `whatsapp`;
+- renderizar honeypot vazio `brevo_leads_capture_website`;
+- encaminhar UTMs suportadas quando existirem;
+- renderizar a mensagem publica do plugin perto do formulario quando `brevo-leads-capture` estiver ativo;
+- nao registrar handler, nao falar com Brevo e nao mapear codigos de erro dentro do tema.
 
 ## 3. Aprofundar `theme.json`
 

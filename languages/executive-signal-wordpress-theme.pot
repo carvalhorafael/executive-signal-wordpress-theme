@@ -115,7 +115,7 @@ msgid "Author articles"
 msgstr ""
 
 #: category.php:22
-#: inc/free-materials.php:106
+#: inc/free-materials.php:136
 msgid "Category"
 msgstr ""
 
@@ -239,7 +239,7 @@ msgstr ""
 msgid "Download free material"
 msgstr ""
 
-#: inc/free-materials.php:98
+#: inc/free-materials.php:128
 msgctxt "free material category list separator"
 msgid ", "
 msgstr ""
@@ -660,48 +660,52 @@ msgstr ""
 msgid "To receive the material."
 msgstr ""
 
-#: template-parts/content-free-material.php:40
+#: template-parts/content-free-material.php:53
 msgid "Name"
 msgstr ""
 
-#: template-parts/content-free-material.php:41
+#: template-parts/content-free-material.php:54
 msgid "Your full name"
 msgstr ""
 
-#: template-parts/content-free-material.php:44
+#: template-parts/content-free-material.php:57
 msgid "Email"
 msgstr ""
 
-#: template-parts/content-free-material.php:45
+#: template-parts/content-free-material.php:58
 msgid "you@example.com"
 msgstr ""
 
-#: template-parts/content-free-material.php:48
+#: template-parts/content-free-material.php:61
 #: template-parts/share-post.php:19
 msgid "WhatsApp"
 msgstr ""
 
-#: template-parts/content-free-material.php:49
+#: template-parts/content-free-material.php:62
 msgid "(00) 00000-0000"
 msgstr ""
 
-#: template-parts/content-free-material.php:56
+#: template-parts/content-free-material.php:65
+msgid "Website"
+msgstr ""
+
+#: template-parts/content-free-material.php:80
 msgid "No payment required. Keep the material for future reference."
 msgstr ""
 
-#: template-parts/content-free-material.php:62
+#: template-parts/content-free-material.php:86
 msgid "What you will find"
 msgstr ""
 
-#: template-parts/content-free-material.php:63
+#: template-parts/content-free-material.php:87
 msgid "Applied knowledge to accelerate your journey and avoid costly mistakes."
 msgstr ""
 
-#: template-parts/content-free-material.php:76
+#: template-parts/content-free-material.php:100
 msgid "Ready to use"
 msgstr ""
 
-#: template-parts/content-free-material.php:77
+#: template-parts/content-free-material.php:101
 msgid "Access the content and apply the ideas today."
 msgstr ""
 

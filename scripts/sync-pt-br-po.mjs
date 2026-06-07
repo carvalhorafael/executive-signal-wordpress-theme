@@ -284,6 +284,7 @@ const translations = new Map([
   ["you@example.com", "voce@exemplo.com"],
   ["WhatsApp", "WhatsApp"],
   ["(00) 00000-0000", "(00) 00000-0000"],
+  ["Website", "Site"],
   ["No payment required. Keep the material for future reference.", "Sem pagamento. Guarde o material para consultar depois."],
   ["What you will find", "O que você vai encontrar"],
   [

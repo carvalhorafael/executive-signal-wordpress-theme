@@ -442,7 +442,9 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".es-blog-archive-header__eyebrow")).toHaveText("Categoria de material gratuito");
     await expect(page.locator(".free-material-card").first()).toContainText("E2E Free Material");
 
-    await page.goto(`/materiais-gratuitos/${fixture.materialSlug}/`);
+    await page.goto(
+      `/materiais-gratuitos/${fixture.materialSlug}/?utm_source=e2e&utm_medium=playwright&utm_campaign=gap-2`,
+    );
     await expect(page.locator('article[itemtype="https://schema.org/CreativeWork"]')).toBeVisible();
     await expect(page.locator(".free-material-terms")).toHaveCount(0);
     await expect(page.locator(".free-material-capture-hero__media")).toBeVisible();
@@ -464,6 +466,16 @@ test.describe("Executive Signal theme front end", () => {
     );
     await expect(captureForm.locator('input[name="_wpnonce"]')).toHaveCount(1);
     await expect(captureForm.locator('input[name="material_id"]')).toHaveValue(expectedMaterialId);
+    await expect(captureForm.locator('input[name="brevo_leads_capture_website"]')).toHaveValue("");
+    await expect(captureForm.locator('input[name="brevo_leads_capture_website"]')).toHaveAttribute(
+      "tabindex",
+      "-1",
+    );
+    await expect(captureForm.locator('input[name="utm_source"]')).toHaveValue("e2e");
+    await expect(captureForm.locator('input[name="utm_medium"]')).toHaveValue("playwright");
+    await expect(captureForm.locator('input[name="utm_campaign"]')).toHaveValue("gap-2");
+    await expect(captureForm.locator('input[name="utm_term"]')).toHaveValue("");
+    await expect(captureForm.locator('input[name="utm_content"]')).toHaveValue("");
     await expect(page.locator("#free-material-capture-name")).toBeVisible();
     await expect(page.locator("#free-material-capture-email")).toBeVisible();
     await expect(page.locator("#free-material-capture-whatsapp")).toBeVisible();

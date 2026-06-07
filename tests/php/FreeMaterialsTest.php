@@ -92,6 +92,23 @@ final class FreeMaterialsTest extends TestCase {
 	}
 
 	/**
+	 * Capture UTM helpers should only forward supported fields.
+	 */
+	public function test_free_material_capture_utm_helpers_sanitize_supported_fields(): void {
+		$_GET['utm_source'] = 'Newsletter <strong>VIP</strong>';
+		$_GET['unexpected'] = 'Do not forward';
+
+		$this->assertSame(
+			array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content' ),
+			executive_signal_get_free_material_capture_utm_fields()
+		);
+		$this->assertSame( 'Newsletter VIP', executive_signal_get_free_material_capture_utm_value( 'utm_source' ) );
+		$this->assertSame( '', executive_signal_get_free_material_capture_utm_value( 'unexpected' ) );
+
+		unset( $_GET['utm_source'], $_GET['unexpected'] );
+	}
+
+	/**
 	 * Landing page helper should prefer an editable WordPress page.
 	 */
 	public function test_free_material_landing_page_helpers_prefer_page(): void {

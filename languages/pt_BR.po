@@ -117,7 +117,7 @@ msgid "Author articles"
 msgstr "Artigos do autor"
 
 #: category.php:22
-#: inc/free-materials.php:106
+#: inc/free-materials.php:136
 msgid "Category"
 msgstr "Categoria"
 
@@ -241,7 +241,7 @@ msgstr "Descrição do blog"
 msgid "Download free material"
 msgstr "Baixar material gratuito"
 
-#: inc/free-materials.php:98
+#: inc/free-materials.php:128
 msgctxt "free material category list separator"
 msgid ", "
 msgstr ", "
@@ -662,48 +662,52 @@ msgstr "Complete o formulário"
 msgid "To receive the material."
 msgstr "para receber o material."
 
-#: template-parts/content-free-material.php:40
+#: template-parts/content-free-material.php:53
 msgid "Name"
 msgstr "Nome"
 
-#: template-parts/content-free-material.php:41
+#: template-parts/content-free-material.php:54
 msgid "Your full name"
 msgstr "Seu nome completo"
 
-#: template-parts/content-free-material.php:44
+#: template-parts/content-free-material.php:57
 msgid "Email"
 msgstr "Email"
 
-#: template-parts/content-free-material.php:45
+#: template-parts/content-free-material.php:58
 msgid "you@example.com"
 msgstr "voce@exemplo.com"
 
-#: template-parts/content-free-material.php:48
+#: template-parts/content-free-material.php:61
 #: template-parts/share-post.php:19
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: template-parts/content-free-material.php:49
+#: template-parts/content-free-material.php:62
 msgid "(00) 00000-0000"
 msgstr "(00) 00000-0000"
 
-#: template-parts/content-free-material.php:56
+#: template-parts/content-free-material.php:65
+msgid "Website"
+msgstr "Site"
+
+#: template-parts/content-free-material.php:80
 msgid "No payment required. Keep the material for future reference."
 msgstr "Sem pagamento. Guarde o material para consultar depois."
 
-#: template-parts/content-free-material.php:62
+#: template-parts/content-free-material.php:86
 msgid "What you will find"
 msgstr "O que você vai encontrar"
 
-#: template-parts/content-free-material.php:63
+#: template-parts/content-free-material.php:87
 msgid "Applied knowledge to accelerate your journey and avoid costly mistakes."
 msgstr "Conhecimento aplicado para acelerar sua jornada e evitar erros caros."
 
-#: template-parts/content-free-material.php:76
+#: template-parts/content-free-material.php:100
 msgid "Ready to use"
 msgstr "Pronto para usar"
 
-#: template-parts/content-free-material.php:77
+#: template-parts/content-free-material.php:101
 msgid "Access the content and apply the ideas today."
 msgstr "Acesse o conteúdo e aplique as ideias hoje mesmo."
 

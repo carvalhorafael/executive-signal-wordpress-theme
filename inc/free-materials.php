@@ -67,6 +67,36 @@ function executive_signal_get_free_material_cta( $post_id = null ) {
 }
 
 /**
+ * Get the UTM fields forwarded by the free material capture form.
+ *
+ * @return array<int, string>
+ */
+function executive_signal_get_free_material_capture_utm_fields() {
+	return array(
+		'utm_source',
+		'utm_medium',
+		'utm_campaign',
+		'utm_term',
+		'utm_content',
+	);
+}
+
+/**
+ * Get a sanitized request value for a free material capture UTM field.
+ *
+ * @param string $field UTM field name.
+ * @return string
+ */
+function executive_signal_get_free_material_capture_utm_value( $field ) {
+	if ( ! in_array( $field, executive_signal_get_free_material_capture_utm_fields(), true ) ) {
+		return '';
+	}
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public UTM passthrough; value is allowlisted and sanitized before output.
+	return isset( $_GET[ $field ] ) ? sanitize_text_field( wp_unslash( $_GET[ $field ] ) ) : '';
+}
+
+/**
  * Get the primary free material category.
  *
  * @param int|null $post_id Post ID.
