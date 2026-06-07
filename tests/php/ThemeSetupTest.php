@@ -46,6 +46,20 @@ final class ThemeSetupTest extends TestCase {
 	}
 
 	/**
+	 * Widget areas should include the post rails and footer surfaces.
+	 */
+	public function test_widget_areas_are_registered(): void {
+		global $wp_registered_sidebars;
+
+		$sidebars = array_keys( $wp_registered_sidebars );
+
+		$this->assertContains( 'post-left', $sidebars );
+		$this->assertContains( 'post-right', $sidebars );
+		$this->assertContains( 'footer-1', $sidebars );
+		$this->assertContains( 'footer-bottom', $sidebars );
+	}
+
+	/**
 	 * Runtime asset version should match public theme version.
 	 */
 	public function test_runtime_theme_version_matches_stylesheet_header(): void {
@@ -60,5 +74,23 @@ final class ThemeSetupTest extends TestCase {
 
 		$this->assertNotEmpty( $stylesheets );
 		$this->assertContainsOnly( 'string', $stylesheets );
+	}
+
+	/**
+	 * Theme JSON should own reusable editor element and block defaults.
+	 */
+	public function test_theme_json_contains_editorial_element_and_block_styles(): void {
+		$theme_json = wp_json_file_decode(
+			EXECUTIVE_SIGNAL_THEME_DIR . '/theme.json',
+			array( 'associative' => true )
+		);
+
+		$this->assertIsArray( $theme_json );
+		$this->assertArrayHasKey( 'link', $theme_json['styles']['elements'] );
+		$this->assertArrayHasKey( 'h2', $theme_json['styles']['elements'] );
+		$this->assertArrayHasKey( 'caption', $theme_json['styles']['elements'] );
+		$this->assertArrayHasKey( 'core/quote', $theme_json['styles']['blocks'] );
+		$this->assertArrayHasKey( 'core/button', $theme_json['styles']['blocks'] );
+		$this->assertArrayHasKey( 'core/separator', $theme_json['styles']['blocks'] );
 	}
 }

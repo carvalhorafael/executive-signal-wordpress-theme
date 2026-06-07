@@ -216,7 +216,7 @@ a {
 }
 
 .es-article-card__media {
-  background: var(--es-surface-page);
+  background: var(--es-background);
 }
 
 .es-article-card__media > picture {
@@ -315,9 +315,89 @@ a {
   color: var(--es-text-secondary);
 }
 
+.entry__body-layout {
+  column-gap: clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns:
+    minmax(10rem, 0.75fr)
+    minmax(0, 72ch)
+    minmax(16rem, 1fr);
+  grid-template-areas: "post-left post-content post-right";
+  margin-inline: auto;
+  max-width: 1180px;
+  row-gap: clamp(1.5rem, 4vw, 2.5rem);
+  width: 100%;
+}
+
 .entry__content {
+  grid-area: post-content;
   margin-inline: auto;
   width: min(100%, 72ch);
+}
+
+.entry__widget-area {
+  color: var(--es-text-secondary);
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.entry__widget-area--left {
+  grid-area: post-left;
+}
+
+.entry__widget-area--right {
+  grid-area: post-right;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.entry__widget-area .widget {
+  border-top: 1px solid var(--es-border-soft);
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-block-start: 1rem;
+}
+
+.entry__widget-area .widget + .widget {
+  margin-block-start: 1rem;
+}
+
+.entry__widget-area :where(.widget-title, .wp-block-heading, h1, h2, h3, h4, h5, h6) {
+  color: var(--es-accent);
+  font-size: 0.75rem;
+  font-weight: var(--es-font-weight-title);
+  letter-spacing: var(--es-letter-spacing-label);
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.entry__widget-area :where(p, ul, ol) {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin-block: 0;
+}
+
+.entry__widget-area :where(ul, ol) {
+  display: grid;
+  gap: 0.5rem;
+  padding-inline-start: 1rem;
+}
+
+.entry__widget-area :where(a) {
+  color: var(--es-text-secondary);
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.entry__widget-area :where(a:hover, a:focus-visible) {
+  color: var(--es-text-primary);
+  outline: none;
+}
+
+.entry__widget-area .es-table-of-contents[data-sticky="true"] {
+  position: static;
 }
 
 .entry--page .es-article-hero {
@@ -368,9 +448,122 @@ a {
   width: min(100%, 72ch);
 }
 
+@media (min-width: 1025px) {
+  .entry__widget-area {
+    align-self: start;
+    position: sticky;
+    top: clamp(5rem, 8vw, 7rem);
+  }
+}
+
+@media (max-width: 1024px) {
+  .entry__body-layout {
+    grid-template-columns: minmax(0, 72ch);
+    grid-template-areas:
+      "post-content"
+      "post-left"
+      "post-right";
+    justify-content: center;
+  }
+}
+
 .es-post-navigation__link--empty {
   opacity: 0;
   pointer-events: none;
+}
+
+.site-main--free-materials,
+.site-main--free-material-single {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.free-material-card__media {
+  text-decoration: none;
+}
+
+.free-material-card__media--placeholder {
+  align-content: end;
+  aspect-ratio: 16 / 10;
+  display: grid;
+  gap: 0.35rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.free-material-card__placeholder-kicker {
+  color: var(--es-accent);
+  font-size: 0.75rem;
+  font-weight: var(--es-font-weight-title);
+  letter-spacing: var(--es-letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.free-material-card__placeholder-title {
+  color: var(--es-text-primary);
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: var(--es-font-weight-heading);
+  letter-spacing: var(--es-letter-spacing-title);
+  line-height: 0.9;
+}
+
+.free-material-card .es-article-card__action a {
+  color: inherit;
+}
+
+.free-material-terms {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.6rem;
+}
+
+.free-material-terms__label {
+  color: var(--es-text-tertiary);
+  font-size: 0.75rem;
+  font-weight: var(--es-font-weight-title);
+  letter-spacing: var(--es-letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.free-material-terms__links {
+  color: var(--es-text-secondary);
+  font-size: 0.9375rem;
+  font-weight: var(--es-font-weight-title);
+}
+
+.free-material-terms__links a {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--es-text-secondary) 42%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.free-material-terms__links a:hover,
+.free-material-terms__links a:focus-visible {
+  color: var(--es-text-primary);
+  outline: none;
+}
+
+.free-material-capture-honeypot {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+}
+
+.free-material-capture-note {
+  color: var(--es-text-tertiary);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.free-material-single__content {
+  align-self: start;
+  grid-area: auto;
+  justify-self: start;
+  max-width: 72ch;
+  width: min(100%, 72ch);
 }
 
 .site-main--page-wide .entry__content,

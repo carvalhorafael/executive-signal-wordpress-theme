@@ -2,7 +2,7 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: Executive Signal WordPress Theme 0.1.2\n"
+"Project-Id-Version: Executive Signal WordPress Theme 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
@@ -115,6 +115,7 @@ msgid "Author articles"
 msgstr ""
 
 #: category.php:22
+#: inc/free-materials.php:136
 msgid "Category"
 msgstr ""
 
@@ -198,6 +199,22 @@ msgstr[1] ""
 msgid "Latest articles"
 msgstr ""
 
+#: inc/admin-notices.php:23
+msgid "enables the free materials content domain."
+msgstr ""
+
+#: inc/admin-notices.php:29
+msgid "handles free material capture forms and Brevo delivery."
+msgstr ""
+
+#: inc/admin-notices.php:89
+msgid "Executive Signal recommended plugins"
+msgstr ""
+
+#: inc/admin-notices.php:91
+msgid "For the complete materials workflow, install and activate:"
+msgstr ""
+
 #: inc/customizer.php:22
 msgid "Blog"
 msgstr ""
@@ -216,6 +233,15 @@ msgstr ""
 
 #: inc/customizer.php:76
 msgid "Blog description"
+msgstr ""
+
+#: inc/free-materials.php:65
+msgid "Download free material"
+msgstr ""
+
+#: inc/free-materials.php:128
+msgctxt "free material category list separator"
+msgid ", "
 msgstr ""
 
 #: inc/patterns.php:25
@@ -286,27 +312,37 @@ msgid "Executive accent"
 msgstr ""
 
 #: inc/setup.php:90
-msgid "Footer column 1"
+#: template-parts/content-single.php:32
+msgid "Post left rail"
 msgstr ""
 
 #: inc/setup.php:91
-msgid "Footer column 2"
+#: template-parts/content-single.php:45
+msgid "Post right rail"
 msgstr ""
 
 #: inc/setup.php:92
-msgid "Footer column 3"
+msgid "Footer column 1"
 msgstr ""
 
 #: inc/setup.php:93
-msgid "Footer column 4"
+msgid "Footer column 2"
 msgstr ""
 
 #: inc/setup.php:94
+msgid "Footer column 3"
+msgstr ""
+
+#: inc/setup.php:95
+msgid "Footer column 4"
+msgstr ""
+
+#: inc/setup.php:96
 msgid "Footer bottom"
 msgstr ""
 
 #. translators: %s: Footer widget area name.
-#: inc/setup.php:103
+#: inc/setup.php:105
 #, php-format
 msgid "Widgets added here appear in %s."
 msgstr ""
@@ -343,81 +379,128 @@ msgid "Cmd K"
 msgstr ""
 
 #: inc/template-tags.php:253
-#: inc/template-tags.php:255
+#: inc/template-tags.php:261
 msgid "RSS feed"
 msgstr ""
 
-#: inc/template-tags.php:254
-msgid "RSS"
-msgstr ""
-
-#: inc/template-tags.php:267
+#: inc/template-tags.php:273
 msgid "Light"
 msgstr ""
 
-#: inc/template-tags.php:268
+#: inc/template-tags.php:274
 msgid "Dark"
 msgstr ""
 
-#: inc/template-tags.php:269
+#: inc/template-tags.php:275
 msgid "System"
 msgstr ""
 
-#: inc/template-tags.php:272
-#: inc/template-tags.php:274
+#: inc/template-tags.php:278
+#: inc/template-tags.php:287
 msgid "Theme"
 msgstr ""
 
-#: inc/template-tags.php:329
+#: inc/template-tags.php:342
 msgid "Article information"
 msgstr ""
 
-#: inc/template-tags.php:331
+#: inc/template-tags.php:344
 msgid "Date"
 msgstr ""
 
-#: inc/template-tags.php:338
+#: inc/template-tags.php:351
 msgid "By"
 msgstr ""
 
-#: inc/template-tags.php:366
+#: inc/template-tags.php:379
 msgid "Article tags"
 msgstr ""
 
-#: inc/template-tags.php:367
+#: inc/template-tags.php:380
 msgid "Tagged in"
 msgstr ""
 
-#: inc/template-tags.php:404
+#: inc/template-tags.php:483
+msgid "Article contents"
+msgstr ""
+
+#: inc/template-tags.php:484
+msgid "On this page"
+msgstr ""
+
+#: inc/template-tags.php:523
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:421
+#: inc/template-tags.php:540
 msgid "Reply"
 msgstr ""
 
-#: inc/template-tags.php:445
-#: inc/template-tags.php:498
+#: inc/template-tags.php:564
+#: inc/template-tags.php:617
 msgid "Previous"
 msgstr ""
 
-#: inc/template-tags.php:446
-#: inc/template-tags.php:512
+#: inc/template-tags.php:565
+#: inc/template-tags.php:631
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags.php:482
+#: inc/template-tags.php:601
 msgid "Posts pagination"
 msgstr ""
 
 #. translators: 1: Current page number. 2: Total number of pages.
-#: inc/template-tags.php:488
+#: inc/template-tags.php:607
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr ""
 
 #. Template Name of the theme
 msgid "Centered page"
+msgstr ""
+
+#. Template Name of the theme
+#: page-materiais-gratuitos.php:46
+msgid "Free materials"
+msgstr ""
+
+#: page-materiais-gratuitos.php:54
+msgid "Guides, checklists and working notes for leaders who want clearer operating signals."
+msgstr ""
+
+#. translators: %s: Number of free materials found in an archive.
+#: page-materiais-gratuitos.php:62
+#: taxonomy-material_categoria.php:36
+#, php-format
+msgid "%s material found"
+msgid_plural "%s materials found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: page-materiais-gratuitos.php:71
+#: page-materiais-gratuitos.php:73
+msgid "Material categories"
+msgstr ""
+
+#: page-materiais-gratuitos.php:75
+msgid "Clear filters"
+msgstr ""
+
+#: page-materiais-gratuitos.php:82
+msgid "Filter by topic"
+msgstr ""
+
+#: page-materiais-gratuitos.php:101
+msgid "No material categories found."
+msgstr ""
+
+#: page-materiais-gratuitos.php:105
+msgid "Material listing"
+msgstr ""
+
+#: page-materiais-gratuitos.php:119
+msgid "No materials match the selected categories."
 msgstr ""
 
 #. Template Name of the theme
@@ -534,6 +617,91 @@ msgstr ""
 msgid "Tag articles"
 msgstr ""
 
+#: taxonomy-material_categoria.php:20
+msgid "Free material category"
+msgstr ""
+
+#: taxonomy-material_categoria.php:28
+msgid "Browse practical resources grouped by decision context."
+msgstr ""
+
+#: taxonomy-material_categoria.php:44
+msgid "View all materials"
+msgstr ""
+
+#: taxonomy-material_categoria.php:49
+msgid "Free materials in category"
+msgstr ""
+
+#: template-parts/content-free-material-card.php:29
+msgid "Material"
+msgstr ""
+
+#: template-parts/content-free-material-card.php:30
+msgid "Free"
+msgstr ""
+
+#: template-parts/content-free-material-card.php:49
+msgid "View material"
+msgstr ""
+
+#: template-parts/content-free-material.php:15
+msgid "Free material"
+msgstr ""
+
+#: template-parts/content-free-material.php:29
+msgid "Immediate access"
+msgstr ""
+
+#: template-parts/content-free-material.php:30
+msgid "Complete the form"
+msgstr ""
+
+#: template-parts/content-free-material.php:32
+msgid "To receive the material."
+msgstr ""
+
+#: template-parts/content-free-material.php:53
+msgid "Name"
+msgstr ""
+
+#: template-parts/content-free-material.php:54
+msgid "Your full name"
+msgstr ""
+
+#: template-parts/content-free-material.php:57
+msgid "Email"
+msgstr ""
+
+#: template-parts/content-free-material.php:58
+msgid "you@example.com"
+msgstr ""
+
+#: template-parts/content-free-material.php:61
+#: template-parts/share-post.php:19
+msgid "WhatsApp"
+msgstr ""
+
+#: template-parts/content-free-material.php:62
+msgid "(00) 00000-0000"
+msgstr ""
+
+#: template-parts/content-free-material.php:65
+msgid "Website"
+msgstr ""
+
+#: template-parts/content-free-material.php:81
+msgid "No payment required. Keep the material for future reference."
+msgstr ""
+
+#: template-parts/content-free-material.php:88
+msgid "Applied knowledge to accelerate your journey and avoid costly mistakes."
+msgstr ""
+
+#: template-parts/content-free-material.php:102
+msgid "Access the content and apply the ideas today."
+msgstr ""
+
 #: template-parts/content-none.php:13
 msgid "No results"
 msgstr ""
@@ -592,10 +760,6 @@ msgstr ""
 
 #: template-parts/related-posts.php:41
 msgid "Continue with articles from the same editorial context."
-msgstr ""
-
-#: template-parts/share-post.php:19
-msgid "WhatsApp"
 msgstr ""
 
 #: template-parts/share-post.php:23

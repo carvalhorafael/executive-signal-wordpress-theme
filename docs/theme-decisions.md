@@ -47,3 +47,40 @@ Motivo: o tema consome tokens e contratos visuais do Executive Signal Design Sys
 Decisao: formularios de busca devem passar por `get_search_form()` e `searchform.php`.
 
 Motivo: isso preserva os filtros do WordPress, reduz duplicacao entre header, busca e estados vazios, e elimina formularios de busca hardcoded nos templates principais.
+
+## 2026-06-04: Materiais gratuitos acoplados inicialmente ao tema
+
+Decisao: registrar o tipo de conteudo `material_gratuito`, a taxonomia `material_categoria` e os metadados de captura dentro do tema nesta fase inicial.
+
+Motivo: embora tipos de conteudo duraveis devam preferencialmente viver em plugin, o site sera operado por uma unica pessoa e criar um plugin isolado agora adicionaria custo de desenvolvimento, CI, release e integracao maior que o beneficio imediato.
+
+Limites da excecao:
+
+- manter registro, metadados, helpers e filtros concentrados em `inc/free-materials.php`;
+- manter templates e estilos em arquivos claramente identificaveis para facilitar extracao futura;
+- preservar nomes estaveis de post type, taxonomia e metadados;
+- nao colocar regras de captura, CRM, e-mail marketing ou automacoes de negocio dentro do tema;
+- reavaliar extracao para plugin quando houver outro consumidor, troca de tema planejada ou regras de captura mais complexas.
+
+## 2026-06-06: Materiais gratuitos extraidos para plugin
+
+Decisao: mover o registro do dominio persistente de materiais gratuitos para o plugin `free-materials`, localizado em `/Users/rafaelcarvalho/Development/plugins-wordpress/free-materials`.
+
+Motivo: `material_gratuito`, `material_categoria` e os metadados de captura precisam sobreviver a troca de tema. O tema deve continuar responsavel apenas pela apresentacao publica, templates e adaptacao ao Executive Signal Design System.
+
+Contrato preservado:
+
+- post type `material_gratuito`;
+- taxonomia `material_categoria`;
+- meta key `_executive_signal_material_capture_label`;
+- meta key `_brevo_leads_capture_list_id`;
+- meta key `_brevo_leads_capture_delivery_url`;
+- slug publico `materiais-gratuitos`.
+
+O tema consome as funcoes publicas do plugin quando disponiveis e mantem fallbacks de constantes apenas para evitar erros fatais quando o plugin estiver ausente. Sem o plugin instalado e ativo, o tema nao registra nem emula o dominio de materiais gratuitos.
+
+## 2026-06-06: Submissao de captura testada no plugin
+
+Decisao: o tema valida apenas o contrato renderizado do formulario de captura de materiais gratuitos. Testes de submissao, sucesso, falha controlada, nonce, validacao de lead e integracao com Brevo pertencem ao plugin `brevo-leads-capture`.
+
+Motivo: exigir o plugin de captura no E2E obrigatorio do tema criaria acoplamento desnecessario entre repositorios. O tema deve garantir que entrega a superficie esperada para o plugin: `admin-post.php`, action `brevo_leads_capture_free_material`, nonce, `material_id`, campos publicos, honeypot e UTMs suportadas. O plugin deve ser dono do processamento e da cobertura do resultado da submissao.

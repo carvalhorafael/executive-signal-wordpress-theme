@@ -250,8 +250,14 @@ function executive_signal_render_header_search() {
  */
 function executive_signal_render_header_feed_link() {
 	?>
-	<a class="es-blog-site-header-feed-link" href="<?php echo esc_url( get_feed_link() ); ?>" aria-label="<?php esc_attr_e( 'RSS feed', 'executive-signal-wordpress-theme' ); ?>">
-		<span aria-hidden="true"><?php esc_html_e( 'RSS', 'executive-signal-wordpress-theme' ); ?></span>
+	<a class="es-blog-site-header-feed-link" data-variant="icon" href="<?php echo esc_url( get_feed_link() ); ?>" aria-label="<?php esc_attr_e( 'RSS feed', 'executive-signal-wordpress-theme' ); ?>">
+		<span aria-hidden="true">
+			<svg class="es-blog-site-header-feed-link__icon" aria-hidden="true" viewBox="0 0 20 20" focusable="false">
+				<path d="M5.25 14.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Z" fill="currentColor"></path>
+				<path d="M2.75 8.25A9 9 0 0 1 11.75 17h-2A7 7 0 0 0 2.75 10v-1.75Z" fill="currentColor"></path>
+				<path d="M2.75 3.25C10.48 3.25 16.75 9.52 16.75 17h-2c0-6.38-5.37-11.75-12-11.75v-2Z" fill="currentColor"></path>
+			</svg>
+		</span>
 		<span class="es-blog-site-header-feed-link__label"><?php esc_html_e( 'RSS feed', 'executive-signal-wordpress-theme' ); ?></span>
 	</a>
 	<?php
@@ -269,9 +275,16 @@ function executive_signal_render_theme_switcher() {
 		'system' => __( 'System', 'executive-signal-wordpress-theme' ),
 	);
 	?>
-	<div class="es-blog-theme-switcher" role="group" aria-label="<?php esc_attr_e( 'Theme', 'executive-signal-wordpress-theme' ); ?>" data-es-theme-switcher>
+	<div class="es-blog-theme-switcher" role="group" aria-label="<?php esc_attr_e( 'Theme', 'executive-signal-wordpress-theme' ); ?>" data-variant="icon" data-es-theme-switcher>
 		<button class="es-blog-theme-switcher__trigger" type="button" aria-expanded="false">
-			<span><?php esc_html_e( 'Theme', 'executive-signal-wordpress-theme' ); ?></span>
+			<span aria-hidden="true">
+				<svg class="es-blog-theme-switcher__trigger-icon" aria-hidden="true" viewBox="0 0 20 20" focusable="false">
+					<path d="M10 2.5a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 10 2.5Z" fill="currentColor"></path>
+					<path d="M10 15a5 5 0 1 0 0-10v10Z" fill="currentColor"></path>
+					<path d="M10 16.75a.75.75 0 0 1 .75.75v.25a.75.75 0 0 1-1.5 0v-.25a.75.75 0 0 1 .75-.75ZM16.75 9.25h.25a.75.75 0 0 1 0 1.5h-.25a.75.75 0 0 1 0-1.5ZM3 9.25h.25a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5ZM14.6 4.34a.75.75 0 0 1 1.06 1.06l-.18.18a.75.75 0 1 1-1.06-1.06l.18-.18ZM4.52 14.42a.75.75 0 1 1 1.06 1.06l-.18.18a.75.75 0 0 1-1.06-1.06l.18-.18ZM15.48 14.42l.18.18a.75.75 0 1 1-1.06 1.06l-.18-.18a.75.75 0 0 1 1.06-1.06ZM5.4 4.34l.18.18A.75.75 0 1 1 4.52 5.58L4.34 5.4A.75.75 0 0 1 5.4 4.34Z" fill="currentColor"></path>
+				</svg>
+			</span>
+			<span class="es-blog-theme-switcher__trigger-label"><?php esc_html_e( 'Theme', 'executive-signal-wordpress-theme' ); ?></span>
 		</button>
 		<div class="es-blog-theme-switcher__menu">
 			<?php foreach ( $options as $value => $label ) : ?>
@@ -372,6 +385,112 @@ function executive_signal_render_article_tags( $post_id = null ) {
 				</li>
 			<?php endforeach; ?>
 		</ul>
+	</nav>
+	<?php
+}
+
+/**
+ * Add heading anchors to article content and collect a table of contents.
+ *
+ * @param string $content Post content after WordPress content filters.
+ * @return array{content:string,table_of_contents:array<int,array{level:int,href:string,label:string}>}
+ */
+function executive_signal_prepare_article_content( $content ) {
+	$table_of_contents = array();
+	$used_ids          = array();
+
+	$prepared_content = preg_replace_callback(
+		'/<h([23])([^>]*)>(.*?)<\/h\1>/is',
+		function ( $matches ) use ( &$table_of_contents, &$used_ids ) {
+			$level       = (int) $matches[1];
+			$attributes  = $matches[2];
+			$heading_raw = $matches[3];
+			$label       = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( $heading_raw ) ) );
+
+			if ( '' === $label ) {
+				return $matches[0];
+			}
+
+			$existing_id = '';
+
+			if ( preg_match( '/\s+id\s*=\s*([\'"])(.*?)\1/i', $attributes, $id_match ) ) {
+				$existing_id = $id_match[2];
+			}
+
+			$id = executive_signal_get_unique_article_heading_id( '' !== $existing_id ? $existing_id : $label, $used_ids );
+
+			if ( '' !== $existing_id ) {
+				$attributes = preg_replace( '/\s+id\s*=\s*([\'"])(.*?)\1/i', ' id="' . esc_attr( $id ) . '"', $attributes, 1 );
+			} else {
+				$attributes .= ' id="' . esc_attr( $id ) . '"';
+			}
+
+			$table_of_contents[] = array(
+				'level' => $level,
+				'href'  => '#' . $id,
+				'label' => $label,
+			);
+
+			return '<h' . $level . $attributes . '>' . $heading_raw . '</h' . $level . '>';
+		},
+		$content
+	);
+
+	return array(
+		'content'           => null === $prepared_content ? $content : $prepared_content,
+		'table_of_contents' => $table_of_contents,
+	);
+}
+
+/**
+ * Build a unique anchor id for an article heading.
+ *
+ * @param string   $seed Source label or existing id.
+ * @param string[] $used_ids IDs already used in this article.
+ * @return string
+ */
+function executive_signal_get_unique_article_heading_id( $seed, &$used_ids ) {
+	$base = sanitize_title( $seed );
+
+	if ( '' === $base ) {
+		$base = 'section';
+	}
+
+	$id     = $base;
+	$suffix = 2;
+
+	while ( in_array( $id, $used_ids, true ) ) {
+		$id = $base . '-' . $suffix;
+		++$suffix;
+	}
+
+	$used_ids[] = $id;
+
+	return $id;
+}
+
+/**
+ * Render the article table of contents using the design-system contract.
+ *
+ * @param array<int,array{level:int,href:string,label:string}> $items Table of contents items.
+ * @return void
+ */
+function executive_signal_render_article_table_of_contents( $items ) {
+	if ( empty( $items ) ) {
+		return;
+	}
+	?>
+	<nav class="es-table-of-contents" data-sticky="true" data-density="compact" data-scrollable="true" aria-label="<?php esc_attr_e( 'Article contents', 'executive-signal-wordpress-theme' ); ?>">
+		<p class="es-table-of-contents__title"><?php esc_html_e( 'On this page', 'executive-signal-wordpress-theme' ); ?></p>
+		<ol class="es-table-of-contents__list">
+			<?php foreach ( $items as $item ) : ?>
+				<li class="es-table-of-contents__item" data-level="<?php echo esc_attr( (string) $item['level'] ); ?>">
+					<a class="es-table-of-contents__link" href="<?php echo esc_url( $item['href'] ); ?>">
+						<?php echo esc_html( $item['label'] ); ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ol>
 	</nav>
 	<?php
 }
