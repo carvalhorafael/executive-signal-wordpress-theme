@@ -6,7 +6,7 @@ Este documento acompanha as principais lacunas identificadas na varredura do tem
 
 - [x] Extrair o dominio de materiais gratuitos para um plugin dedicado.
 - [ ] Fechar o contrato de captura/Brevo usado pelo formulario de materiais gratuitos.
-- [ ] Aprofundar `theme.json` para cobrir estilos padrao de blocos e elementos que hoje vivem apenas em CSS.
+- [x] Aprofundar `theme.json` para cobrir estilos padrao de blocos e elementos que hoje vivem apenas em CSS.
 - [ ] Ampliar o smoke de captura para testar submissao ou falha controlada.
 
 ## 1. Extrair materiais gratuitos para plugin
@@ -102,7 +102,21 @@ Contrato no tema:
 
 ## 3. Aprofundar `theme.json`
 
-O tema ja usa `theme.json` v3 para paleta, tipografia, spacing e layout. O proximo passo e revisar `src/styles/theme.css` e mover estilos padrao de blocos/elementos para `theme.json` quando isso reduzir especificidade e melhorar a experiencia no editor.
+Status: resolvido no tema para o recorte editorial reutilizavel.
+
+O tema agora usa `theme.json` para defaults de elementos e blocos editoriais que antes dependiam de CSS local do editor:
+
+- links;
+- headings `h2`, `h3` e `h4`;
+- captions;
+- `core/button`;
+- `core/quote`;
+- `core/separator`;
+- `core/code`;
+- `core/preformatted`;
+- `core/pullquote`.
+
+O CSS continua responsavel por layout estrutural de templates, widgets, areas do tema e ajustes que pertencem ao Design System ou a superficies especificas do WordPress.
 
 ## 4. Ampliar smoke de captura
 
