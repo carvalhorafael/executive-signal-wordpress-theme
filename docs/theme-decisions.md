@@ -78,3 +78,9 @@ Contrato preservado:
 - slug publico `materiais-gratuitos`.
 
 O tema consome as funcoes publicas do plugin quando disponiveis e mantem fallbacks de constantes apenas para evitar erros fatais quando o plugin estiver ausente. Sem o plugin instalado e ativo, o tema nao registra nem emula o dominio de materiais gratuitos.
+
+## 2026-06-06: Submissao de captura testada no plugin
+
+Decisao: o tema valida apenas o contrato renderizado do formulario de captura de materiais gratuitos. Testes de submissao, sucesso, falha controlada, nonce, validacao de lead e integracao com Brevo pertencem ao plugin `brevo-leads-capture`.
+
+Motivo: exigir o plugin de captura no E2E obrigatorio do tema criaria acoplamento desnecessario entre repositorios. O tema deve garantir que entrega a superficie esperada para o plugin: `admin-post.php`, action `brevo_leads_capture_free_material`, nonce, `material_id`, campos publicos, honeypot e UTMs suportadas. O plugin deve ser dono do processamento e da cobertura do resultado da submissao.
