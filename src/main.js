@@ -1,5 +1,5 @@
 import "./styles/main.css";
-import { enhanceArticleFAQ, enhanceBlogSiteHeader } from "@carvalhorafael/executive-signal-web/behavior";
+import { enhanceArticleFAQ, enhanceBlogSiteHeader, enhanceResourceBrowser } from "@carvalhorafael/executive-signal-web/behavior";
 
 enhanceBlogSiteHeader({ storageKey: "executive-signal-theme" });
 
@@ -51,45 +51,5 @@ document.querySelectorAll("[data-copy-link]").forEach((button) => {
   });
 });
 
-document.querySelectorAll("[data-free-material-browser]").forEach((browser) => {
-  const filters = Array.from(browser.querySelectorAll("[data-free-material-filter]"));
-  const cards = Array.from(browser.querySelectorAll("[data-free-material-card]"));
-  const empty = browser.querySelector("[data-free-material-empty]");
-  const clear = browser.querySelector("[data-free-material-clear]");
-
-  const applyFilters = () => {
-    const selected = filters.filter((filter) => filter.checked).map((filter) => filter.value);
-    let visibleCount = 0;
-
-    cards.forEach((card) => {
-      const categories = (card.dataset.categories ?? "").split(/\s+/).filter(Boolean);
-      const isVisible = selected.length === 0 || selected.some((category) => categories.includes(category));
-
-      card.hidden = !isVisible;
-
-      if (isVisible) {
-        visibleCount += 1;
-      }
-    });
-
-    if (empty) {
-      empty.hidden = visibleCount !== 0;
-    }
-  };
-
-  filters.forEach((filter) => {
-    filter.addEventListener("change", applyFilters);
-  });
-
-  clear?.addEventListener("click", () => {
-    filters.forEach((filter) => {
-      filter.checked = false;
-    });
-
-    applyFilters();
-  });
-
-  applyFilters();
-});
-
 enhanceArticleFAQ();
+enhanceResourceBrowser();
