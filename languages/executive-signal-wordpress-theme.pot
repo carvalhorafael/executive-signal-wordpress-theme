@@ -379,79 +379,79 @@ msgid "Cmd K"
 msgstr ""
 
 #: inc/template-tags.php:253
-#: inc/template-tags.php:255
+#: inc/template-tags.php:261
 msgid "RSS feed"
 msgstr ""
 
-#: inc/template-tags.php:267
+#: inc/template-tags.php:273
 msgid "Light"
 msgstr ""
 
-#: inc/template-tags.php:268
+#: inc/template-tags.php:274
 msgid "Dark"
 msgstr ""
 
-#: inc/template-tags.php:269
+#: inc/template-tags.php:275
 msgid "System"
 msgstr ""
 
-#: inc/template-tags.php:272
-#: inc/template-tags.php:275
+#: inc/template-tags.php:278
+#: inc/template-tags.php:287
 msgid "Theme"
 msgstr ""
 
-#: inc/template-tags.php:358
+#: inc/template-tags.php:342
 msgid "Article information"
 msgstr ""
 
-#: inc/template-tags.php:360
+#: inc/template-tags.php:344
 msgid "Date"
 msgstr ""
 
-#: inc/template-tags.php:367
+#: inc/template-tags.php:351
 msgid "By"
 msgstr ""
 
-#: inc/template-tags.php:395
+#: inc/template-tags.php:379
 msgid "Article tags"
 msgstr ""
 
-#: inc/template-tags.php:396
+#: inc/template-tags.php:380
 msgid "Tagged in"
 msgstr ""
 
-#: inc/template-tags.php:499
+#: inc/template-tags.php:483
 msgid "Article contents"
 msgstr ""
 
-#: inc/template-tags.php:500
+#: inc/template-tags.php:484
 msgid "On this page"
 msgstr ""
 
-#: inc/template-tags.php:539
+#: inc/template-tags.php:523
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:556
+#: inc/template-tags.php:540
 msgid "Reply"
 msgstr ""
 
-#: inc/template-tags.php:580
-#: inc/template-tags.php:633
+#: inc/template-tags.php:564
+#: inc/template-tags.php:617
 msgid "Previous"
 msgstr ""
 
-#: inc/template-tags.php:581
-#: inc/template-tags.php:647
+#: inc/template-tags.php:565
+#: inc/template-tags.php:631
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags.php:617
+#: inc/template-tags.php:601
 msgid "Posts pagination"
 msgstr ""
 
 #. translators: 1: Current page number. 2: Total number of pages.
-#: inc/template-tags.php:623
+#: inc/template-tags.php:607
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr ""
@@ -478,27 +478,28 @@ msgid_plural "%s materials found"
 msgstr[0] ""
 msgstr[1] ""
 
-#: page-materiais-gratuitos.php:72
+#: page-materiais-gratuitos.php:71
+#: page-materiais-gratuitos.php:73
 msgid "Material categories"
 msgstr ""
 
-#: page-materiais-gratuitos.php:77
-msgid "Filter by topic"
-msgstr ""
-
-#: page-materiais-gratuitos.php:92
+#: page-materiais-gratuitos.php:75
 msgid "Clear filters"
 msgstr ""
 
-#: page-materiais-gratuitos.php:96
+#: page-materiais-gratuitos.php:82
+msgid "Filter by topic"
+msgstr ""
+
+#: page-materiais-gratuitos.php:101
 msgid "No material categories found."
 msgstr ""
 
-#: page-materiais-gratuitos.php:100
+#: page-materiais-gratuitos.php:105
 msgid "Material listing"
 msgstr ""
 
-#: page-materiais-gratuitos.php:114
+#: page-materiais-gratuitos.php:119
 msgid "No materials match the selected categories."
 msgstr ""
 
@@ -632,15 +633,15 @@ msgstr ""
 msgid "Free materials in category"
 msgstr ""
 
-#: template-parts/content-free-material-card.php:30
+#: template-parts/content-free-material-card.php:29
 msgid "Material"
 msgstr ""
 
-#: template-parts/content-free-material-card.php:31
+#: template-parts/content-free-material-card.php:30
 msgid "Free"
 msgstr ""
 
-#: template-parts/content-free-material-card.php:50
+#: template-parts/content-free-material-card.php:49
 msgid "View material"
 msgstr ""
 
@@ -656,7 +657,7 @@ msgstr ""
 msgid "Complete the form"
 msgstr ""
 
-#: template-parts/content-free-material.php:33
+#: template-parts/content-free-material.php:32
 msgid "To receive the material."
 msgstr ""
 
@@ -689,23 +690,15 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: template-parts/content-free-material.php:80
+#: template-parts/content-free-material.php:81
 msgid "No payment required. Keep the material for future reference."
 msgstr ""
 
-#: template-parts/content-free-material.php:86
-msgid "What you will find"
-msgstr ""
-
-#: template-parts/content-free-material.php:87
+#: template-parts/content-free-material.php:88
 msgid "Applied knowledge to accelerate your journey and avoid costly mistakes."
 msgstr ""
 
-#: template-parts/content-free-material.php:100
-msgid "Ready to use"
-msgstr ""
-
-#: template-parts/content-free-material.php:101
+#: template-parts/content-free-material.php:102
 msgid "Access the content and apply the ideas today."
 msgstr ""
 

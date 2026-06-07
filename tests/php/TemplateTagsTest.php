@@ -106,6 +106,8 @@ final class TemplateTagsTest extends TestCase {
 
 		$this->assertStringContainsString( 'class="es-table-of-contents"', $output );
 		$this->assertStringContainsString( 'data-sticky="true"', $output );
+		$this->assertStringContainsString( 'data-density="compact"', $output );
+		$this->assertStringContainsString( 'data-scrollable="true"', $output );
 		$this->assertStringContainsString( 'class="es-table-of-contents__item" data-level="2"', $output );
 		$this->assertStringContainsString( 'href="#overview"', $output );
 	}

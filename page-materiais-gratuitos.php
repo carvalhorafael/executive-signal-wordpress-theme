@@ -67,39 +67,44 @@ $found_posts                  = (int) $free_materials_query->found_posts;
 		</div>
 	</header>
 
-	<div class="free-materials-browser" data-free-material-browser>
-		<aside class="free-materials-browser__filters" aria-labelledby="free-material-filters-title">
-			<h2 id="free-material-filters-title" class="free-materials-browser__filters-title"><?php esc_html_e( 'Material categories', 'executive-signal-wordpress-theme' ); ?></h2>
+	<section class="es-resource-browser" data-es-resource-browser="true">
+		<aside class="es-resource-browser__filters" aria-label="<?php esc_attr_e( 'Material categories', 'executive-signal-wordpress-theme' ); ?>">
+			<div class="es-resource-browser__filters-header">
+				<p id="free-material-filters-title" class="es-resource-browser__filters-title"><?php esc_html_e( 'Material categories', 'executive-signal-wordpress-theme' ); ?></p>
+				<button class="es-resource-browser__clear" type="button" data-es-resource-clear="true">
+					<?php esc_html_e( 'Clear filters', 'executive-signal-wordpress-theme' ); ?>
+				</button>
+			</div>
 
 			<?php if ( $has_free_material_categories ) : ?>
-				<form class="free-materials-browser__filters-form">
-					<fieldset class="free-materials-browser__fieldset">
-						<legend><?php esc_html_e( 'Filter by topic', 'executive-signal-wordpress-theme' ); ?></legend>
+				<form>
+					<fieldset class="es-resource-browser__facet-group">
+						<legend class="es-resource-browser__facet-legend"><?php esc_html_e( 'Filter by topic', 'executive-signal-wordpress-theme' ); ?></legend>
+						<div class="es-resource-browser__facet-options">
 						<?php foreach ( $free_material_categories as $free_material_category ) : ?>
-							<label class="free-materials-browser__filter-option">
+							<label class="es-resource-browser__facet-option">
 								<input
+									class="es-resource-browser__facet-input"
+									name="<?php echo esc_attr( EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY ); ?>"
 									type="checkbox"
 									value="<?php echo esc_attr( $free_material_category->slug ); ?>"
-									data-free-material-filter
+									data-es-resource-filter="true"
 								>
-								<span class="free-materials-browser__filter-name"><?php echo esc_html( $free_material_category->name ); ?></span>
-								<span class="free-materials-browser__filter-count"><?php echo esc_html( number_format_i18n( (int) $free_material_category->count ) ); ?></span>
+								<span class="es-resource-browser__facet-label"><?php echo esc_html( $free_material_category->name ); ?></span>
+								<span class="es-resource-browser__facet-count"><?php echo esc_html( number_format_i18n( (int) $free_material_category->count ) ); ?></span>
 							</label>
 						<?php endforeach; ?>
+						</div>
 					</fieldset>
-
-					<button class="free-materials-browser__clear" type="button" data-free-material-clear>
-						<?php esc_html_e( 'Clear filters', 'executive-signal-wordpress-theme' ); ?>
-					</button>
 				</form>
 			<?php else : ?>
-				<p class="free-materials-browser__empty-filter"><?php esc_html_e( 'No material categories found.', 'executive-signal-wordpress-theme' ); ?></p>
+				<p><?php esc_html_e( 'No material categories found.', 'executive-signal-wordpress-theme' ); ?></p>
 			<?php endif; ?>
 		</aside>
 
-		<section class="free-materials-browser__results es-article-archive-grid free-material-archive-grid" data-columns="two" aria-label="<?php esc_attr_e( 'Material listing', 'executive-signal-wordpress-theme' ); ?>">
+		<section class="es-resource-browser__results" aria-label="<?php esc_attr_e( 'Material listing', 'executive-signal-wordpress-theme' ); ?>" aria-live="polite" data-es-resource-results="true">
 			<?php if ( $free_materials_query->have_posts() ) : ?>
-				<div class="es-article-archive-grid__items free-materials-browser__grid" data-free-material-grid>
+				<div class="es-resource-browser__items">
 					<?php
 					while ( $free_materials_query->have_posts() ) :
 						$free_materials_query->the_post();
@@ -110,7 +115,7 @@ $found_posts                  = (int) $free_materials_query->found_posts;
 					?>
 				</div>
 
-				<p class="es-article-archive-grid__empty free-materials-browser__empty" hidden data-free-material-empty>
+				<p class="es-resource-browser__empty" hidden data-es-resource-empty="true">
 					<?php esc_html_e( 'No materials match the selected categories.', 'executive-signal-wordpress-theme' ); ?>
 				</p>
 			<?php else : ?>
@@ -119,7 +124,7 @@ $found_posts                  = (int) $free_materials_query->found_posts;
 				</div>
 			<?php endif; ?>
 		</section>
-	</div>
+	</section>
 </main>
 
 <?php

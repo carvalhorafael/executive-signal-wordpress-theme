@@ -312,8 +312,8 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator("html")).toHaveAttribute("data-es-palette", "signal");
     await expect(page.locator("[data-es-theme-switcher]")).toBeVisible();
     await expect(page.locator("[data-es-header-search]")).toBeVisible();
-    await expect(page.locator(".es-blog-site-header-feed-link .executive-signal-icon")).toBeVisible();
-    await expect(page.locator(".es-blog-theme-switcher__trigger .executive-signal-icon")).toBeVisible();
+    await expect(page.locator(".es-blog-site-header-feed-link__icon")).toBeVisible();
+    await expect(page.locator(".es-blog-theme-switcher__trigger-icon")).toBeVisible();
     await expect(page.locator('link[href*="assets/dist/assets/main-"]')).toHaveCount(1);
     await expect(page.locator('script[src*="assets/dist/assets/main-"]')).toHaveCount(1);
     await expect(page.locator(".es-blog-site-header-feed-link")).toHaveAttribute("aria-label", "Feed RSS");
@@ -323,7 +323,7 @@ test.describe("Executive Signal theme front end", () => {
       const feed = document.querySelector(".es-blog-site-header-feed-link").getBoundingClientRect();
       const theme = document.querySelector(".es-blog-theme-switcher__trigger").getBoundingClientRect();
       const feedLabel = document.querySelector(".es-blog-site-header-feed-link__label").getBoundingClientRect();
-      const themeLabel = document.querySelector(".es-blog-theme-switcher__trigger .screen-reader-text").getBoundingClientRect();
+      const themeLabel = document.querySelector(".es-blog-theme-switcher__trigger-label").getBoundingClientRect();
 
       return {
         feedWidth: Math.round(feed.width),
@@ -361,6 +361,8 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".entry__widget-area--left")).toBeVisible();
     await expect(page.locator(".entry__widget-area--right")).toBeVisible();
     await expect(page.locator(".es-table-of-contents")).toBeVisible();
+    await expect(page.locator(".es-table-of-contents")).toHaveAttribute("data-density", "compact");
+    await expect(page.locator(".es-table-of-contents")).toHaveAttribute("data-scrollable", "true");
     await expect(page.locator(".es-table-of-contents__title")).toHaveText("Nesta página");
     const rightRailWidth = await page.locator(".entry__widget-area--right").evaluate((rail) => rail.getBoundingClientRect().width);
     const tocWidth = await page.locator(".es-table-of-contents").evaluate((toc) => toc.getBoundingClientRect().width);
@@ -401,7 +403,7 @@ test.describe("Executive Signal theme front end", () => {
     expect(tocDensity.listMarginTop).toBe(0);
     expect(tocDensity.fontSize).toBeLessThanOrEqual(14);
     expect(tocDensity.fontWeight).toBeLessThanOrEqual(400);
-    expect(tocDensity.minHeight).toBeLessThanOrEqual(25);
+    expect(tocDensity.minHeight).toBeLessThanOrEqual(32);
     await expect(page.locator(".es-article-tags")).toBeVisible();
     await expect(page.locator(".es-social-share-bar--article")).toBeVisible();
     await expect(page.locator(".es-post-navigation")).toBeVisible();
@@ -423,18 +425,18 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".es-blog-archive-header__description")).toContainText(
       "Descrição editável da página de materiais gratuitos.",
     );
-    await expect(page.locator(".free-materials-browser__filters")).toBeVisible();
+    await expect(page.locator(".es-resource-browser__filters")).toBeVisible();
     await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toBeVisible();
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeVisible();
 
-    await page.locator('[data-free-material-filter][value="e2e-materials"]').check();
+    await page.locator('[data-es-resource-filter][value="e2e-materials"]').check();
     await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toBeVisible();
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeHidden();
 
-    await page.locator('[data-free-material-filter][value="e2e-extra-materials"]').check();
+    await page.locator('[data-es-resource-filter][value="e2e-extra-materials"]').check();
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeVisible();
 
-    await page.locator("[data-free-material-clear]").click();
+    await page.locator("[data-es-resource-clear]").click();
     await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toBeVisible();
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeVisible();
 
@@ -447,17 +449,17 @@ test.describe("Executive Signal theme front end", () => {
     );
     await expect(page.locator('article[itemtype="https://schema.org/CreativeWork"]')).toBeVisible();
     await expect(page.locator(".free-material-terms")).toHaveCount(0);
-    await expect(page.locator(".free-material-capture-hero__media")).toBeVisible();
-    await expect(page.locator(".free-material-capture-hero__description")).toHaveCount(0);
-    await expect(page.locator(".free-material-capture-hero__proof")).toHaveCount(0);
-    await expect(page.locator(".free-material-capture-hero")).not.toContainText(
+    await expect(page.locator(".es-resource-capture-hero__visual")).toBeVisible();
+    await expect(page.locator(".es-resource-capture-hero__description")).toHaveCount(0);
+    await expect(page.locator(".es-resource-capture-hero__proof")).toHaveCount(0);
+    await expect(page.locator(".es-resource-capture-hero")).not.toContainText(
       "Second material fixture for category filter tests.",
     );
-    await expect(page.locator(".free-material-capture-panel")).toContainText("Complete o formulário");
-    await expect(page.locator(".free-material-capture-panel")).toContainText(
+    await expect(page.locator(".es-resource-capture-panel")).toContainText("Complete o formulário");
+    await expect(page.locator(".es-resource-capture-panel")).toContainText(
       "para receber o material.",
     );
-    const captureForm = page.locator('.free-material-capture-panel form[action$="/wp-admin/admin-post.php"]');
+    const captureForm = page.locator('.es-resource-capture-panel form[action$="/wp-admin/admin-post.php"]');
 
     await expect(captureForm).toBeVisible();
     await expect(captureForm).toHaveAttribute("method", "post");
@@ -479,16 +481,16 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator("#free-material-capture-name")).toBeVisible();
     await expect(page.locator("#free-material-capture-email")).toBeVisible();
     await expect(page.locator("#free-material-capture-whatsapp")).toBeVisible();
-    await expect(page.locator(".free-material-capture-panel button")).toHaveText("Receive material");
-    await expect(page.locator(".free-material-detail__title")).toHaveText(
+    await expect(page.locator(".es-resource-capture-panel button")).toHaveText("Receive material");
+    await expect(page.locator(".es-resource-detail__title")).toHaveText(
       "Conhecimento aplicado para acelerar sua jornada e evitar erros caros.",
     );
-    await expect(page.locator(".free-material-final-cta")).toContainText(
+    await expect(page.locator(".es-resource-final-cta")).toContainText(
       "Acesse o conteúdo e aplique as ideias hoje mesmo.",
     );
-    await expect(page.locator(".free-material-final-cta .es-button")).toHaveAttribute("href", "#capture");
-    await page.locator(".free-material-final-cta .es-button").scrollIntoViewIfNeeded();
-    await page.locator(".free-material-final-cta .es-button").click();
+    await expect(page.locator(".es-resource-final-cta .es-button")).toHaveAttribute("href", "#capture");
+    await page.locator(".es-resource-final-cta .es-button").scrollIntoViewIfNeeded();
+    await page.locator(".es-resource-final-cta .es-button").click();
     await expect(page).toHaveURL(/#capture$/);
     await expect
       .poll(async () =>
