@@ -201,6 +201,22 @@ msgstr[1] "%s artigos publicados"
 msgid "Latest articles"
 msgstr "Artigos mais recentes"
 
+#: inc/admin-notices.php:23
+msgid "enables the free materials content domain."
+msgstr "habilita o dominio de conteudo de materiais gratuitos."
+
+#: inc/admin-notices.php:29
+msgid "handles free material capture forms and Brevo delivery."
+msgstr "processa formularios de captura de materiais gratuitos e entrega via Brevo."
+
+#: inc/admin-notices.php:89
+msgid "Executive Signal recommended plugins"
+msgstr "Plugins recomendados do Executive Signal"
+
+#: inc/admin-notices.php:91
+msgid "For the complete materials workflow, install and activate:"
+msgstr "Para o fluxo completo de materiais, instale e ative:"
+
 #: inc/customizer.php:22
 msgid "Blog"
 msgstr "Blog"
