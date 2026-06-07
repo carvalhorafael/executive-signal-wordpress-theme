@@ -4,7 +4,7 @@ Contributors: carvalhorafael
 Requires at least: 6.5
 Tested up to: 6.5
 Requires PHP: 8.2
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: Proprietary
 License URI: LICENSE.md
 Tags: blog, block-patterns, custom-logo, editor-style
