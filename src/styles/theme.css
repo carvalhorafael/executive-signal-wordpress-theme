@@ -855,6 +855,14 @@ a {
   outline-offset: 2px;
 }
 
+.free-material-capture-panel__honeypot {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+}
+
 .free-material-capture-panel__button {
   box-sizing: border-box;
   margin-top: 0.15rem;

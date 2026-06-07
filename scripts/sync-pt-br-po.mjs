@@ -115,6 +115,19 @@ const translations = new Map([
   ["Theme mode", "Modo do tema"],
   ["Open submenu for %s", "Abrir submenu de %s"],
   ["Latest articles", "Artigos mais recentes"],
+  [
+    "enables the free materials content domain.",
+    "habilita o dominio de conteudo de materiais gratuitos.",
+  ],
+  [
+    "handles free material capture forms and Brevo delivery.",
+    "processa formularios de captura de materiais gratuitos e entrega via Brevo.",
+  ],
+  ["Executive Signal recommended plugins", "Plugins recomendados do Executive Signal"],
+  [
+    "For the complete materials workflow, install and activate:",
+    "Para o fluxo completo de materiais, instale e ative:",
+  ],
   ["Executive Signal hero", "Hero do Executive Signal"],
   [
     "Hero section for the Executive Signal homepage.",
@@ -271,6 +284,7 @@ const translations = new Map([
   ["you@example.com", "voce@exemplo.com"],
   ["WhatsApp", "WhatsApp"],
   ["(00) 00000-0000", "(00) 00000-0000"],
+  ["Website", "Site"],
   ["No payment required. Keep the material for future reference.", "Sem pagamento. Guarde o material para consultar depois."],
   ["What you will find", "O que você vai encontrar"],
   [

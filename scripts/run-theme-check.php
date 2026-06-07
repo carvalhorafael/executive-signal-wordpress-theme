@@ -40,13 +40,8 @@ $results    = wp_strip_all_tags( display_themechecks() );
 
 echo esc_html( trim( $results ) ) . PHP_EOL;
 
-$register_post_type = 'register_' . 'post_type';
-$register_taxonomy  = 'register_' . 'taxonomy';
-
 $expected_required_patterns = array(
 	'/REQUIRED Update URI: is found from your style\.css header\. This feature is only for themes that are distributed outside the theme directory\. Remove from your style\.css file\./',
-	'/REQUIRED: The theme uses the ' . preg_quote( $register_post_type, '/' ) . '\(\) function in the file (dist\/executive-signal-wordpress-theme\/)?inc\/free-materials\.php\. ' . preg_quote( $register_post_type, '/' ) . '\(\) is plugin-territory functionality and must not be used in themes\. Use a plugin instead\. Line \d+: ' . preg_quote( $register_post_type, '/' ) . '\(/',
-	'/REQUIRED: The theme uses the ' . preg_quote( $register_taxonomy, '/' ) . '\(\) function in the file (dist\/executive-signal-wordpress-theme\/)?inc\/free-materials\.php\. ' . preg_quote( $register_taxonomy, '/' ) . '\(\) is plugin-territory functionality and must not be used in themes\. Use a plugin instead\. Line \d+: ' . preg_quote( $register_taxonomy, '/' ) . '\(/',
 );
 
 $blocking_results = preg_replace( $expected_required_patterns, '', $results );

@@ -17,6 +17,7 @@ require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/setup.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/vite.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/assets.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/customizer.php';
+require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/admin-notices.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/free-materials.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/patterns.php';
 require_once EXECUTIVE_SIGNAL_THEME_DIR . '/inc/template-tags.php';

@@ -8,14 +8,12 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * Verifies the free material content contract.
+ * Verifies the theme's Free Materials plugin integration.
  *
  * @covers ::executive_signal_get_free_material_cta
  * @covers ::executive_signal_get_free_materials_page
  * @covers ::executive_signal_get_free_materials_page_url
  * @covers ::executive_signal_get_primary_free_material_category
- * @covers ::executive_signal_register_free_material_content_type
- * @covers ::executive_signal_render_free_material_meta_box
  * @covers ::executive_signal_render_free_material_terms
  */
 final class FreeMaterialsTest extends TestCase {
@@ -23,6 +21,9 @@ final class FreeMaterialsTest extends TestCase {
 	 * Free material post type should be public and editor friendly.
 	 */
 	public function test_free_material_post_type_is_registered(): void {
+		$this->assertTrue( function_exists( 'free_materials' ) );
+		$this->assertTrue( executive_signal_free_materials_plugin_is_available() );
+
 		$post_type = get_post_type_object( EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE );
 
 		$this->assertNotNull( $post_type );
@@ -63,37 +64,6 @@ final class FreeMaterialsTest extends TestCase {
 	}
 
 	/**
-	 * Capture meta box should expose the Brevo fields for editors.
-	 */
-	public function test_free_material_meta_box_renders_brevo_fields(): void {
-		$post_id = wp_insert_post(
-			array(
-				'post_title'  => 'Brevo material',
-				'post_status' => 'publish',
-				'post_type'   => EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
-			),
-			true
-		);
-
-		$this->assertIsInt( $post_id );
-
-		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID, '42' );
-		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL, 'https://example.com/delivery' );
-
-		ob_start();
-		executive_signal_render_free_material_meta_box( get_post( $post_id ) );
-		$output = ob_get_clean();
-
-		$this->assertStringContainsString( 'name="executive_signal_free_material_brevo_list_id"', $output );
-		$this->assertStringContainsString( 'name="executive_signal_free_material_brevo_delivery_url"', $output );
-		$this->assertStringNotContainsString( 'name="executive_signal_free_material_cta_url"', $output );
-		$this->assertStringContainsString( 'value="42"', $output );
-		$this->assertStringContainsString( 'value="https://example.com/delivery"', $output );
-
-		wp_delete_post( $post_id, true );
-	}
-
-	/**
 	 * Capture CTA should use explicit button text metadata with a safe fallback.
 	 */
 	public function test_free_material_cta_uses_button_text_metadata_and_fallback(): void {
@@ -119,6 +89,23 @@ final class FreeMaterialsTest extends TestCase {
 		$this->assertSame( 'Receive checklist', $cta['label'] );
 
 		wp_delete_post( $post_id, true );
+	}
+
+	/**
+	 * Capture UTM helpers should only forward supported fields.
+	 */
+	public function test_free_material_capture_utm_helpers_sanitize_supported_fields(): void {
+		$_GET['utm_source'] = 'Newsletter <strong>VIP</strong>';
+		$_GET['unexpected'] = 'Do not forward';
+
+		$this->assertSame(
+			array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content' ),
+			executive_signal_get_free_material_capture_utm_fields()
+		);
+		$this->assertSame( 'Newsletter VIP', executive_signal_get_free_material_capture_utm_value( 'utm_source' ) );
+		$this->assertSame( '', executive_signal_get_free_material_capture_utm_value( 'unexpected' ) );
+
+		unset( $_GET['utm_source'], $_GET['unexpected'] );
 	}
 
 	/**

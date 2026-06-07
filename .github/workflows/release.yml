@@ -60,6 +60,11 @@ jobs:
           TAG_NAME: ${{ steps.release.outputs.tag }}
         run: npm run release:check-version -- "${TAG_NAME}"
 
+      - name: Checkout free-materials plugin
+        run: |
+          mkdir -p ../plugins-wordpress
+          git clone --depth=1 --branch develop https://github.com/carvalhorafael/free-materials.git ../plugins-wordpress/free-materials
+
       - name: Start WordPress
         run: npm run wp:start
 

@@ -32,10 +32,23 @@ $capture_form_action = admin_url( 'admin-post.php' );
 
 			<p class="free-material-capture-panel__description"><?php esc_html_e( 'To receive the material.', 'executive-signal-wordpress-theme' ); ?></p>
 
+			<?php
+			if ( function_exists( 'brevo_leads_capture_render_free_material_error_message' ) ) {
+				brevo_leads_capture_render_free_material_error_message();
+			}
+			?>
+
 			<form class="free-material-capture-panel__form" action="<?php echo esc_url( $capture_form_action ); ?>" method="post">
 				<input type="hidden" name="action" value="brevo_leads_capture_free_material">
 				<?php wp_nonce_field( 'brevo_leads_capture_free_material' ); ?>
 				<input type="hidden" name="material_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
+				<?php foreach ( executive_signal_get_free_material_capture_utm_fields() as $utm_field ) : ?>
+					<input
+						type="hidden"
+						name="<?php echo esc_attr( $utm_field ); ?>"
+						value="<?php echo esc_attr( executive_signal_get_free_material_capture_utm_value( $utm_field ) ); ?>"
+					>
+				<?php endforeach; ?>
 				<p class="free-material-capture-panel__field">
 					<label for="free-material-capture-name"><?php esc_html_e( 'Name', 'executive-signal-wordpress-theme' ); ?></label>
 					<input id="free-material-capture-name" name="name" type="text" autocomplete="name" required placeholder="<?php esc_attr_e( 'Your full name', 'executive-signal-wordpress-theme' ); ?>">
@@ -47,6 +60,17 @@ $capture_form_action = admin_url( 'admin-post.php' );
 				<p class="free-material-capture-panel__field">
 					<label for="free-material-capture-whatsapp"><?php esc_html_e( 'WhatsApp', 'executive-signal-wordpress-theme' ); ?></label>
 					<input id="free-material-capture-whatsapp" name="whatsapp" type="tel" autocomplete="tel" required placeholder="<?php esc_attr_e( '(00) 00000-0000', 'executive-signal-wordpress-theme' ); ?>">
+				</p>
+				<p class="free-material-capture-panel__honeypot" aria-hidden="true">
+					<label for="free-material-capture-website"><?php esc_html_e( 'Website', 'executive-signal-wordpress-theme' ); ?></label>
+					<input
+						id="free-material-capture-website"
+						name="brevo_leads_capture_website"
+						type="text"
+						value=""
+						autocomplete="off"
+						tabindex="-1"
+					>
 				</p>
 				<button class="es-button free-material-capture-panel__button" data-variant="primary" data-full-width="true" type="submit">
 					<?php echo esc_html( $material_cta['label'] ); ?>
