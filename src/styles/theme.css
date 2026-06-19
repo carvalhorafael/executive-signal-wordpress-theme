@@ -551,13 +551,6 @@ a {
   width: 0;
 }
 
-.free-material-capture-note {
-  color: var(--es-text-tertiary);
-  font-size: 0.8125rem;
-  line-height: 1.55;
-  margin: 0;
-}
-
 .free-material-single__content {
   align-self: start;
   grid-area: auto;

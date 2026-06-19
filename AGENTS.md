@@ -15,6 +15,12 @@ O tema consome os pacotes publicados do Executive Signal Design System:
 
 Nao recrie tokens, componentes ou padroes visuais do zero dentro do tema. O WordPress deve ser tratado como consumer/adaptador da biblioteca.
 
+## Uso proporcional de skills de design
+
+Para ajustes visuais pequenos e objetivos, como mudar numero de colunas, espacamento, alinhamento, tamanho, estado responsivo ou cores pontuais, nao execute um fluxo completo da skill `impeccable`. Aplique a mudanca diretamente seguindo os padroes existentes do tema e valide de forma proporcional.
+
+Use `impeccable` de forma completa apenas para redesign, criacao de novas interfaces, revisao visual ampla, polish abrangente ou decisoes visuais ambiguas.
+
 ## Gaps e evolucao do Design System
 
 Quando a implementacao do tema revelar que o Executive Signal Design System nao possui um componente, token, contrato `web`, classe CSS, pattern ou comportamento necessario, siga esta politica obrigatoria. Nao deixe o gap apenas em comentario local, TODO solto ou memoria de conversa.
@@ -98,6 +104,9 @@ URLs locais:
 - Site: http://localhost:8888/
 - Admin: http://localhost:8888/wp-admin
 - Login: http://localhost:8888/wp-login.php
+- Testes: http://localhost:8889/
+
+Use `8888` para desenvolvimento manual. A porta `8889` e o container `tests-cli` sao reservados para testes automatizados; fixtures de E2E podem criar posts, paginas, midia e menus nesse ambiente.
 
 Credenciais locais padrao do `wp-env`:
 
@@ -167,11 +176,14 @@ Nao tente testar tudo. A suite deve proteger contratos, fluxos criticos e bugs r
 
 Camadas esperadas:
 
+- `npm run test:quick`: validacao curta para iteracao pequena, com build Vite e sintaxe PHP;
 - `npm run test:static`: build Vite, sintaxe PHP, PHPCS e Theme Check;
 - `npm run test:php`: PHPUnit dentro do WordPress de testes do `wp-env`;
-- `npm run test:e2e`: Playwright para smoke do front-end e do editor;
+- `npm run test:e2e`: Playwright para smoke do front-end e do editor, rodando contra a porta de testes do `wp-env`;
 - `npm test`: gate automatizado padrao para PRs;
 - `npm run validate`: gate completo de release e empacotamento.
+
+Durante iteracoes pequenas, rode apenas o menor comando que cobre o risco da mudanca. Exemplos: `npm run test:quick` para mudancas simples de asset/PHP, `npm run i18n:check` quando alterar strings traduziveis, ou um teste especifico quando tocar uma area coberta. Reserve `npm test`, `npm run test:prepush` e `npm run validate` para antes de push, PR, release ou mudancas com impacto amplo.
 
 O que deve ser testado:
 

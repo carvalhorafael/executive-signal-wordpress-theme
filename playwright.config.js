@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const testsPort = process.env.WP_ENV_TESTS_PORT || "8889";
+
 export default defineConfig({
   testDir: "tests/e2e",
   timeout: 30_000,
@@ -8,7 +10,7 @@ export default defineConfig({
     timeout: 5_000,
   },
   use: {
-    baseURL: "http://localhost:8888",
+    baseURL: `http://localhost:${testsPort}`,
     trace: "on-first-retry",
   },
   projects: [
