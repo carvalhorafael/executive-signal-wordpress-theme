@@ -74,6 +74,18 @@ const translations = new Map([
   ["Popular topics", "Temas populares"],
   ["Free materials", "Materiais gratuitos"],
   ["Free Materials", "Materiais Gratuitos"],
+  ["Courses", "Cursos"],
+  ["Course", "Curso"],
+  ["Online", "Online"],
+  ["View course", "Ver curso"],
+  [
+    "Practical courses for operators who want sharper decisions, clearer routines and better execution signals.",
+    "Cursos práticos para operadores que querem decisões mais claras, rotinas mais nítidas e melhores sinais de execução.",
+  ],
+  ["Course categories", "Categorias de cursos"],
+  ["No course categories found.", "Nenhuma categoria de curso encontrada."],
+  ["Course listing", "Listagem de cursos"],
+  ["No courses match the selected categories.", "Nenhum curso corresponde às categorias selecionadas."],
   ["Practical resources for sharper decisions.", "Recursos práticos para decisões mais claras."],
   [
     "Guides, checklists and working notes for leaders who want clearer operating signals.",
@@ -120,13 +132,17 @@ const translations = new Map([
     "habilita o dominio de conteudo de materiais gratuitos.",
   ],
   [
+    "enables the online courses content domain.",
+    "habilita o dominio de conteudo de cursos online.",
+  ],
+  [
     "handles free material capture forms and Brevo delivery.",
     "processa formularios de captura de materiais gratuitos e entrega via Brevo.",
   ],
   ["Executive Signal recommended plugins", "Plugins recomendados do Executive Signal"],
   [
-    "For the complete materials workflow, install and activate:",
-    "Para o fluxo completo de materiais, instale e ative:",
+    "For the complete content workflow, install and activate:",
+    "Para o fluxo completo de conteudo, instale e ative:",
   ],
   ["Executive Signal hero", "Hero do Executive Signal"],
   [
@@ -322,6 +338,13 @@ const pluralTranslations = new Map([
     {
       one: "%s material encontrado",
       other: "%s materiais encontrados",
+    },
+  ],
+  [
+    "%s course found",
+    {
+      one: "%s curso encontrado",
+      other: "%s cursos encontrados",
     },
   ],
   [

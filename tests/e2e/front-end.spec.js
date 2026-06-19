@@ -30,6 +30,20 @@ const deleteTermsBySlug = (taxonomy, slug) => {
 
 const fixture = {
   categorySlug: "e2e-theme",
+  coursesPageSlug: "cursos",
+  courseCategorySlugs: [
+    "e2e-course-strategy",
+    "e2e-course-operations",
+    "e2e-course-sales",
+    "e2e-course-leadership",
+  ],
+  courseSlugs: [
+    "e2e-course-signal-strategy",
+    "e2e-course-operating-rhythm",
+    "e2e-course-sales-system",
+    "e2e-course-leadership-dashboard",
+    "e2e-course-execution-review",
+  ],
   extraMaterialCategorySlug: "e2e-extra-materials",
   extraMaterialSlug: "e2e-extra-free-material",
   materialCategorySlug: "e2e-materials",
@@ -65,6 +79,7 @@ const articleContent = [
 
 test.beforeAll(() => {
   tryWpCli(["plugin", "activate", "free-materials"]);
+  tryWpCli(["plugin", "activate", "online-courses"]);
   runWpCli(["theme", "activate", "executive-signal-wordpress-theme"]);
   tryWpCli(["language", "core", "install", "pt_BR"]);
   runWpCli(["option", "update", "WPLANG", "pt_BR"]);
@@ -95,8 +110,39 @@ test.beforeAll(() => {
     ]);
   }
 
+  const existingCoursesPageId = tryWpCli(["post", "list", "--post_type=page", `--name=${fixture.coursesPageSlug}`, "--field=ID"]);
+
+  if (existingCoursesPageId) {
+    runWpCli([
+      "post",
+      "update",
+      existingCoursesPageId,
+      "--post_status=publish",
+      "--post_title=Cursos",
+      "--post_content=Programas online para transformar sinais executivos em rotina de gestão.",
+    ]);
+  } else {
+    runWpCli([
+      "post",
+      "create",
+      "--post_type=page",
+      "--post_status=publish",
+      `--post_name=${fixture.coursesPageSlug}`,
+      "--post_title=Cursos",
+      "--post_content=Programas online para transformar sinais executivos em rotina de gestão.",
+      "--porcelain",
+    ]);
+  }
+
+  const coursesPageId = runWpCli(["post", "list", "--post_type=page", `--name=${fixture.coursesPageSlug}`, "--field=ID"]);
+  runWpCli(["post", "meta", "update", coursesPageId, "_wp_page_template", "page-cursos.php"]);
+
   tryWpCli(["term", "create", "category", "E2E Theme", "--slug=e2e-theme"]);
   tryWpCli(["term", "create", "post_tag", "E2E Tag", "--slug=e2e-tag"]);
+  fixture.courseCategorySlugs.forEach((slug) => {
+    deleteTermsBySlug("course_category", slug);
+    deleteTermsBySlug("course_category", `${slug}-2`);
+  });
   deleteTermsBySlug("material_categoria", fixture.materialCategorySlug);
   deleteTermsBySlug("material_categoria", `${fixture.materialCategorySlug}-2`);
   deleteTermsBySlug("material_categoria", fixture.extraMaterialCategorySlug);
@@ -104,8 +150,18 @@ test.beforeAll(() => {
   deleteTermsBySlug("material_categoria", "80");
   tryWpCli(["term", "create", "material_categoria", "E2E Materials", "--slug=e2e-materials"]);
   tryWpCli(["term", "create", "material_categoria", "E2E Extra Materials", "--slug=e2e-extra-materials"]);
+  tryWpCli(["term", "create", "course_category", "E2E Estratégia", "--slug=e2e-course-strategy"]);
+  tryWpCli(["term", "create", "course_category", "E2E Operações", "--slug=e2e-course-operations"]);
+  tryWpCli(["term", "create", "course_category", "E2E Vendas", "--slug=e2e-course-sales"]);
+  tryWpCli(["term", "create", "course_category", "E2E Liderança", "--slug=e2e-course-leadership"]);
 
   const categoryId = runWpCli(["term", "get", "category", fixture.categorySlug, "--by=slug", "--field=term_id"]);
+  const courseCategoryIds = Object.fromEntries(
+    fixture.courseCategorySlugs.map((slug) => [
+      slug,
+      runWpCli(["term", "get", "course_category", slug, "--by=slug", "--field=term_id"]),
+    ]),
+  );
   const materialCategoryId = runWpCli([
     "term",
     "get",
@@ -146,6 +202,88 @@ test.beforeAll(() => {
   ]);
 
   tryWpCli(["post", "term", "add", postId, "post_tag", "e2e-tag"]);
+
+  const courses = [
+    {
+      slug: "e2e-course-signal-strategy",
+      title: "E2E Signal Strategy",
+      excerpt: "Curso fixture para decisões estratégicas com sinais executivos.",
+      category: "e2e-course-strategy",
+      checkout: "https://checkout.example.com/signal-strategy",
+    },
+    {
+      slug: "e2e-course-operating-rhythm",
+      title: "E2E Operating Rhythm",
+      excerpt: "Curso fixture para cadência operacional e rituais de gestão.",
+      category: "e2e-course-operations",
+      checkout: "https://checkout.example.com/operating-rhythm",
+    },
+    {
+      slug: "e2e-course-sales-system",
+      title: "E2E Sales System",
+      excerpt: "Curso fixture para gestão comercial orientada por indicadores.",
+      category: "e2e-course-sales",
+      checkout: "https://checkout.example.com/sales-system",
+    },
+    {
+      slug: "e2e-course-leadership-dashboard",
+      title: "E2E Leadership Dashboard",
+      excerpt: "Curso fixture para leitura executiva de dashboards.",
+      category: "e2e-course-leadership",
+      checkout: "https://checkout.example.com/leadership-dashboard",
+    },
+    {
+      slug: "e2e-course-execution-review",
+      title: "E2E Execution Review",
+      excerpt: "Curso fixture para revisar execução e remover ruídos de gestão.",
+      category: "e2e-course-operations",
+      checkout: "https://checkout.example.com/execution-review",
+    },
+  ];
+
+  courses.forEach((course) => {
+    const existingCourseId = tryWpCli(["post", "list", "--post_type=course", `--name=${course.slug}`, "--field=ID"]);
+    const courseId =
+      existingCourseId ||
+      runWpCli([
+        "post",
+        "create",
+        "--post_type=course",
+        "--post_status=publish",
+        `--post_name=${course.slug}`,
+        `--post_title=${course.title}`,
+        `--post_excerpt=${course.excerpt}`,
+        `--post_content=Conteúdo fixture do curso ${course.title}.`,
+        "--porcelain",
+      ]);
+
+    runWpCli([
+      "post",
+      "update",
+      courseId,
+      "--post_status=publish",
+      `--post_title=${course.title}`,
+      `--post_excerpt=${course.excerpt}`,
+      `--post_content=Conteúdo fixture do curso ${course.title}.`,
+    ]);
+    runWpCli([
+      "eval",
+      `wp_set_object_terms(${Number(courseId)}, array(${Number(courseCategoryIds[course.category])}), 'course_category', false);`,
+    ]);
+    runWpCli(["post", "meta", "update", courseId, "_online_courses_checkout_url", course.checkout]);
+
+    if (!tryWpCli(["post", "meta", "get", courseId, "_thumbnail_id"])) {
+      runWpCli([
+        "media",
+        "import",
+        "/var/www/html/wp-content/themes/executive-signal-wordpress-theme/screenshot.png",
+        `--post_id=${courseId}`,
+        `--title=${course.title} Image`,
+        "--featured_image",
+        "--porcelain",
+      ]);
+    }
+  });
 
   const existingMaterialId = tryWpCli([
     "post",
@@ -497,6 +635,36 @@ test.describe("Executive Signal theme front end", () => {
         page.locator("#capture").evaluate((element) => Math.round(element.getBoundingClientRect().top)),
       )
       .toBeLessThanOrEqual(8);
+  });
+
+  test("renders courses listing with editable page copy and category filters", async ({ page }) => {
+    await page.goto("/cursos/");
+    await expect(page.locator("body")).toHaveClass(/page-template-page-cursos/);
+    await expect(page.locator(".es-blog-archive-header__eyebrow")).toHaveText("Cursos");
+    await expect(page.locator(".es-blog-archive-header__title")).toHaveText("Cursos");
+    await expect(page.locator(".es-blog-archive-header__description")).toContainText(
+      "Programas online para transformar sinais executivos em rotina de gestão.",
+    );
+    await expect(page.locator(".es-resource-browser__filters")).toBeVisible();
+    await expect(page.locator(".course-card")).toHaveCount(5);
+    await expect(page.locator(".course-card", { hasText: "E2E Signal Strategy" })).toBeVisible();
+    await expect(page.locator(".course-card", { hasText: "E2E Operating Rhythm" })).toBeVisible();
+    await expect(page.locator(".course-card", { hasText: "E2E Sales System" })).toBeVisible();
+    await expect(page.locator(".course-card", { hasText: "E2E Leadership Dashboard" })).toBeVisible();
+    await expect(page.locator(".course-card", { hasText: "E2E Execution Review" })).toBeVisible();
+    await expect(page.locator(".course-card", { hasText: "E2E Signal Strategy" })).toContainText("Ver curso");
+    await expect(page.locator(".course-card__checkout")).toHaveCount(0);
+
+    await page.locator('[data-es-resource-filter][value="e2e-course-operations"]').check();
+    await expect(page.locator(".course-card", { hasText: "E2E Operating Rhythm" })).toBeVisible();
+    await expect(page.locator(".course-card", { hasText: "E2E Execution Review" })).toBeVisible();
+    await expect(page.locator(".course-card", { hasText: "E2E Signal Strategy" })).toBeHidden();
+
+    await page.locator('[data-es-resource-filter][value="e2e-course-sales"]').check();
+    await expect(page.locator(".course-card", { hasText: "E2E Sales System" })).toBeVisible();
+
+    await page.locator("[data-es-resource-clear]").click();
+    await expect(page.locator(".course-card")).toHaveCount(5);
   });
 
   test("opens mobile navigation and submenus", async ({ page }) => {

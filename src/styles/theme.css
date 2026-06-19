@@ -473,16 +473,19 @@ a {
 }
 
 .site-main--free-materials,
-.site-main--free-material-single {
+.site-main--free-material-single,
+.site-main--courses {
   display: grid;
   gap: clamp(2.5rem, 6vw, 4.5rem);
 }
 
-.free-material-card__media {
+.free-material-card__media,
+.course-card__media {
   text-decoration: none;
 }
 
-.free-material-card__media--placeholder {
+.free-material-card__media--placeholder,
+.course-card__media--placeholder {
   align-content: end;
   aspect-ratio: 16 / 10;
   display: grid;
@@ -490,7 +493,8 @@ a {
   padding: clamp(1rem, 3vw, 1.5rem);
 }
 
-.free-material-card__placeholder-kicker {
+.free-material-card__placeholder-kicker,
+.course-card__placeholder-kicker {
   color: var(--es-accent);
   font-size: 0.75rem;
   font-weight: var(--es-font-weight-title);
@@ -498,7 +502,8 @@ a {
   text-transform: uppercase;
 }
 
-.free-material-card__placeholder-title {
+.free-material-card__placeholder-title,
+.course-card__placeholder-title {
   color: var(--es-text-primary);
   font-size: clamp(2.25rem, 6vw, 4rem);
   font-weight: var(--es-font-weight-heading);
@@ -506,7 +511,8 @@ a {
   line-height: 0.9;
 }
 
-.free-material-card .es-article-card__action a {
+.free-material-card .es-article-card__action a,
+.course-card .es-article-card__action a {
   color: inherit;
 }
 

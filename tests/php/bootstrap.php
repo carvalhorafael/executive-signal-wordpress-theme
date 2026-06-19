@@ -20,6 +20,10 @@ if ( function_exists( 'activate_plugin' ) && ! is_plugin_active( 'free-materials
 	activate_plugin( 'free-materials/free-materials.php' );
 }
 
+if ( function_exists( 'activate_plugin' ) && ! is_plugin_active( 'online-courses/online-courses.php' ) ) {
+	activate_plugin( 'online-courses/online-courses.php' );
+}
+
 if ( ! defined( 'EXECUTIVE_SIGNAL_THEME_DIR' ) ) {
 	$theme = wp_get_theme( 'executive-signal-wordpress-theme' );
 

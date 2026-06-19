@@ -204,15 +204,19 @@ msgid "enables the free materials content domain."
 msgstr ""
 
 #: inc/admin-notices.php:29
+msgid "enables the online courses content domain."
+msgstr ""
+
+#: inc/admin-notices.php:35
 msgid "handles free material capture forms and Brevo delivery."
 msgstr ""
 
-#: inc/admin-notices.php:89
+#: inc/admin-notices.php:95
 msgid "Executive Signal recommended plugins"
 msgstr ""
 
-#: inc/admin-notices.php:91
-msgid "For the complete materials workflow, install and activate:"
+#: inc/admin-notices.php:97
+msgid "For the complete content workflow, install and activate:"
 msgstr ""
 
 #: inc/customizer.php:22
@@ -461,6 +465,12 @@ msgid "Centered page"
 msgstr ""
 
 #. Template Name of the theme
+#: template-parts/course-listing.php:10
+#: template-parts/course-listing.php:43
+msgid "Courses"
+msgstr ""
+
+#. Template Name of the theme
 #: page-materiais-gratuitos.php:46
 msgid "Free materials"
 msgstr ""
@@ -484,10 +494,12 @@ msgid "Material categories"
 msgstr ""
 
 #: page-materiais-gratuitos.php:75
+#: template-parts/course-listing.php:72
 msgid "Clear filters"
 msgstr ""
 
 #: page-materiais-gratuitos.php:82
+#: template-parts/course-listing.php:79
 msgid "Filter by topic"
 msgstr ""
 
@@ -633,6 +645,18 @@ msgstr ""
 msgid "Free materials in category"
 msgstr ""
 
+#: template-parts/content-course-card.php:29
+msgid "Course"
+msgstr ""
+
+#: template-parts/content-course-card.php:30
+msgid "Online"
+msgstr ""
+
+#: template-parts/content-course-card.php:49
+msgid "View course"
+msgstr ""
+
 #: template-parts/content-free-material-card.php:29
 msgid "Material"
 msgstr ""
@@ -744,6 +768,35 @@ msgstr ""
 
 #: template-parts/content.php:29
 msgid "Read article"
+msgstr ""
+
+#: template-parts/course-listing.php:51
+msgid "Practical courses for operators who want sharper decisions, clearer routines and better execution signals."
+msgstr ""
+
+#. translators: %s: Number of courses found in an archive.
+#: template-parts/course-listing.php:59
+#, php-format
+msgid "%s course found"
+msgid_plural "%s courses found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/course-listing.php:68
+#: template-parts/course-listing.php:70
+msgid "Course categories"
+msgstr ""
+
+#: template-parts/course-listing.php:98
+msgid "No course categories found."
+msgstr ""
+
+#: template-parts/course-listing.php:102
+msgid "Course listing"
+msgstr ""
+
+#: template-parts/course-listing.php:116
+msgid "No courses match the selected categories."
 msgstr ""
 
 #: template-parts/post-navigation.php:16
