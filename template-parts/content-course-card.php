@@ -5,10 +5,10 @@
  * @package ExecutiveSignal
  */
 
-$course_excerpt      = executive_signal_get_listing_excerpt();
-$course_category     = executive_signal_get_primary_course_category();
-$course_terms        = get_the_terms( get_the_ID(), EXECUTIVE_SIGNAL_COURSE_TAXONOMY );
-$course_slugs        = array();
+$course_excerpt  = executive_signal_get_listing_excerpt();
+$course_category = executive_signal_get_primary_course_category();
+$course_terms    = get_the_terms( get_the_ID(), EXECUTIVE_SIGNAL_COURSE_TAXONOMY );
+$course_slugs    = array();
 
 if ( is_array( $course_terms ) ) {
 	$course_slugs = wp_list_pluck( $course_terms, 'slug' );

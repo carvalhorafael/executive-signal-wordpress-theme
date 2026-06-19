@@ -474,9 +474,55 @@ a {
 
 .site-main--free-materials,
 .site-main--free-material-single,
-.site-main--courses {
+.site-main--courses,
+.site-main--course-single {
   display: grid;
   gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.course-single__hero-visual {
+  overflow: hidden;
+}
+
+.course-single__hero-visual > img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.course-single__hero-placeholder {
+  align-content: end;
+  display: grid;
+  gap: 0.35rem;
+  height: 100%;
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.course-single__hero-placeholder span {
+  color: var(--es-accent);
+  font-size: 0.75rem;
+  font-weight: var(--es-font-weight-title);
+  letter-spacing: var(--es-letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.course-single__hero-placeholder strong {
+  color: var(--es-text-primary);
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: var(--es-font-weight-heading);
+  letter-spacing: 0;
+  line-height: 0.9;
+}
+
+.course-single__topics,
+.course-single__content-section {
+  margin-inline: auto;
+  width: min(100%, 72ch);
+}
+
+.course-single__content-section .entry__content {
+  width: 100%;
 }
 
 .free-material-card__media,

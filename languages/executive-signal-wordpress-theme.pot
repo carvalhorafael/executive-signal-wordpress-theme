@@ -116,6 +116,7 @@ msgstr ""
 
 #: category.php:22
 #: inc/free-materials.php:136
+#: template-parts/content-course.php:93
 msgid "Category"
 msgstr ""
 
@@ -646,15 +647,111 @@ msgid "Free materials in category"
 msgstr ""
 
 #: template-parts/content-course-card.php:29
+#: template-parts/content-course.php:73
 msgid "Course"
 msgstr ""
 
 #: template-parts/content-course-card.php:30
+#: template-parts/content-course.php:74
+#: template-parts/content-course.php:88
 msgid "Online"
 msgstr ""
 
 #: template-parts/content-course-card.php:49
 msgid "View course"
+msgstr ""
+
+#: template-parts/content-course.php:38
+msgid "Online course"
+msgstr ""
+
+#: template-parts/content-course.php:49
+msgid "Self-paced"
+msgstr ""
+
+#: template-parts/content-course.php:55
+#: template-parts/content-course.php:118
+msgid "Go to checkout"
+msgstr ""
+
+#: template-parts/content-course.php:59
+msgid "View course details"
+msgstr ""
+
+#: template-parts/content-course.php:64
+msgid "Checkout opens in a secure external page."
+msgstr ""
+
+#: template-parts/content-course.php:68
+msgid "Course preview"
+msgstr ""
+
+#: template-parts/content-course.php:82
+msgid "Course overview"
+msgstr ""
+
+#: template-parts/content-course.php:83
+msgid "Practical context before you enroll."
+msgstr ""
+
+#: template-parts/content-course.php:87
+msgid "Format"
+msgstr ""
+
+#: template-parts/content-course.php:89
+msgid "Self-paced access"
+msgstr ""
+
+#: template-parts/content-course.php:95
+msgid "Course track"
+msgstr ""
+
+#: template-parts/content-course.php:99
+msgid "Updated"
+msgstr ""
+
+#: template-parts/content-course.php:103
+msgid "Latest course revision"
+msgstr ""
+
+#: template-parts/content-course.php:111
+msgid "Enrollment"
+msgstr ""
+
+#: template-parts/content-course.php:112
+msgid "Start this course when you are ready."
+msgstr ""
+
+#: template-parts/content-course.php:113
+msgid "Use the checkout link to complete enrollment outside WordPress."
+msgstr ""
+
+#: template-parts/content-course.php:121
+msgid "Secure checkout handled by the course platform."
+msgstr ""
+
+#: template-parts/content-course.php:127
+msgid "Course topics"
+msgstr ""
+
+#: template-parts/content-course.php:139
+msgid "Course details"
+msgstr ""
+
+#: template-parts/content-course.php:140
+msgid "About this course"
+msgstr ""
+
+#: template-parts/content-course.php:155
+msgid "Keep learning"
+msgstr ""
+
+#: template-parts/content-course.php:156
+msgid "Related courses"
+msgstr ""
+
+#: template-parts/content-course.php:157
+msgid "Continue with courses from the same track."
 msgstr ""
 
 #: template-parts/content-free-material-card.php:29

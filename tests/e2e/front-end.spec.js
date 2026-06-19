@@ -208,6 +208,8 @@ test.beforeAll(() => {
       slug: "e2e-course-signal-strategy",
       title: "E2E Signal Strategy",
       excerpt: "Curso fixture para decisões estratégicas com sinais executivos.",
+      content:
+        "<h2>O que você vai organizar</h2><p>Conteúdo fixture do curso para validar a página individual de cursos.</p><h2>Como aplicar</h2><p>Use sinais executivos para reduzir ruído e priorizar decisões.</p>",
       category: "e2e-course-strategy",
       checkout: "https://checkout.example.com/signal-strategy",
     },
@@ -215,6 +217,7 @@ test.beforeAll(() => {
       slug: "e2e-course-operating-rhythm",
       title: "E2E Operating Rhythm",
       excerpt: "Curso fixture para cadência operacional e rituais de gestão.",
+      content: "Conteúdo fixture do curso E2E Operating Rhythm.",
       category: "e2e-course-operations",
       checkout: "https://checkout.example.com/operating-rhythm",
     },
@@ -222,6 +225,7 @@ test.beforeAll(() => {
       slug: "e2e-course-sales-system",
       title: "E2E Sales System",
       excerpt: "Curso fixture para gestão comercial orientada por indicadores.",
+      content: "Conteúdo fixture do curso E2E Sales System.",
       category: "e2e-course-sales",
       checkout: "https://checkout.example.com/sales-system",
     },
@@ -229,6 +233,7 @@ test.beforeAll(() => {
       slug: "e2e-course-leadership-dashboard",
       title: "E2E Leadership Dashboard",
       excerpt: "Curso fixture para leitura executiva de dashboards.",
+      content: "Conteúdo fixture do curso E2E Leadership Dashboard.",
       category: "e2e-course-leadership",
       checkout: "https://checkout.example.com/leadership-dashboard",
     },
@@ -236,6 +241,7 @@ test.beforeAll(() => {
       slug: "e2e-course-execution-review",
       title: "E2E Execution Review",
       excerpt: "Curso fixture para revisar execução e remover ruídos de gestão.",
+      content: "Conteúdo fixture do curso E2E Execution Review.",
       category: "e2e-course-operations",
       checkout: "https://checkout.example.com/execution-review",
     },
@@ -253,7 +259,7 @@ test.beforeAll(() => {
         `--post_name=${course.slug}`,
         `--post_title=${course.title}`,
         `--post_excerpt=${course.excerpt}`,
-        `--post_content=Conteúdo fixture do curso ${course.title}.`,
+        `--post_content=${course.content}`,
         "--porcelain",
       ]);
 
@@ -264,7 +270,7 @@ test.beforeAll(() => {
       "--post_status=publish",
       `--post_title=${course.title}`,
       `--post_excerpt=${course.excerpt}`,
-      `--post_content=Conteúdo fixture do curso ${course.title}.`,
+      `--post_content=${course.content}`,
     ]);
     runWpCli([
       "eval",
@@ -665,6 +671,29 @@ test.describe("Executive Signal theme front end", () => {
 
     await page.locator("[data-es-resource-clear]").click();
     await expect(page.locator(".course-card")).toHaveCount(5);
+  });
+
+  test("renders single course page with existing design-system components", async ({ page }) => {
+    await page.goto(`/cursos/${fixture.courseSlugs[0]}/`);
+    await expect(page.locator('article[itemtype="https://schema.org/Course"]')).toBeVisible();
+    await expect(page.locator(".es-sales-hero__eyebrow")).toHaveText("Curso online");
+    await expect(page.locator(".es-sales-hero__title")).toHaveText("E2E Signal Strategy");
+    await expect(page.locator(".es-sales-hero__description")).toContainText(
+      "Curso fixture para decisões estratégicas com sinais executivos.",
+    );
+    await expect(page.locator(".course-single__hero-visual img")).toBeVisible();
+    await expect(page.locator(".es-event-info-strip")).toContainText("Visão geral do curso");
+    await expect(page.locator(".es-event-info-strip")).toContainText("E2E Estratégia");
+    await expect(page.locator(".es-offer-band")).toContainText("Comece este curso quando estiver pronto.");
+    await expect(page.locator(".es-offer-band .es-button")).toHaveAttribute(
+      "href",
+      "https://checkout.example.com/signal-strategy",
+    );
+    await expect(page.locator(".course-single__topics .es-nav-link")).toContainText("E2E Estratégia");
+    await expect(page.locator("#course-content")).toContainText("Sobre este curso");
+    await expect(page.locator(".es-article-prose h2").first()).toHaveText("O que você vai organizar");
+    await expect(page.locator(".es-course-enrollment")).toHaveCount(0);
+    await expect(page.locator(".es-course-curriculum")).toHaveCount(0);
   });
 
   test("opens mobile navigation and submenus", async ({ page }) => {

@@ -118,6 +118,7 @@ msgstr "Artigos do autor"
 
 #: category.php:22
 #: inc/free-materials.php:136
+#: template-parts/content-course.php:93
 msgid "Category"
 msgstr "Categoria"
 
@@ -648,16 +649,112 @@ msgid "Free materials in category"
 msgstr "Materiais gratuitos na categoria"
 
 #: template-parts/content-course-card.php:29
+#: template-parts/content-course.php:73
 msgid "Course"
 msgstr "Curso"
 
 #: template-parts/content-course-card.php:30
+#: template-parts/content-course.php:74
+#: template-parts/content-course.php:88
 msgid "Online"
 msgstr "Online"
 
 #: template-parts/content-course-card.php:49
 msgid "View course"
 msgstr "Ver curso"
+
+#: template-parts/content-course.php:38
+msgid "Online course"
+msgstr "Curso online"
+
+#: template-parts/content-course.php:49
+msgid "Self-paced"
+msgstr "No seu ritmo"
+
+#: template-parts/content-course.php:55
+#: template-parts/content-course.php:118
+msgid "Go to checkout"
+msgstr "Ir para checkout"
+
+#: template-parts/content-course.php:59
+msgid "View course details"
+msgstr "Ver detalhes do curso"
+
+#: template-parts/content-course.php:64
+msgid "Checkout opens in a secure external page."
+msgstr "O checkout abre em uma página externa segura."
+
+#: template-parts/content-course.php:68
+msgid "Course preview"
+msgstr "Prévia do curso"
+
+#: template-parts/content-course.php:82
+msgid "Course overview"
+msgstr "Visão geral do curso"
+
+#: template-parts/content-course.php:83
+msgid "Practical context before you enroll."
+msgstr "Contexto prático antes da inscrição."
+
+#: template-parts/content-course.php:87
+msgid "Format"
+msgstr "Formato"
+
+#: template-parts/content-course.php:89
+msgid "Self-paced access"
+msgstr "Acesso no seu ritmo"
+
+#: template-parts/content-course.php:95
+msgid "Course track"
+msgstr "Trilha do curso"
+
+#: template-parts/content-course.php:99
+msgid "Updated"
+msgstr "Atualizado"
+
+#: template-parts/content-course.php:103
+msgid "Latest course revision"
+msgstr "Última revisão do curso"
+
+#: template-parts/content-course.php:111
+msgid "Enrollment"
+msgstr "Inscrição"
+
+#: template-parts/content-course.php:112
+msgid "Start this course when you are ready."
+msgstr "Comece este curso quando estiver pronto."
+
+#: template-parts/content-course.php:113
+msgid "Use the checkout link to complete enrollment outside WordPress."
+msgstr "Use o link de checkout para concluir a inscrição fora do WordPress."
+
+#: template-parts/content-course.php:121
+msgid "Secure checkout handled by the course platform."
+msgstr "Checkout seguro processado pela plataforma do curso."
+
+#: template-parts/content-course.php:127
+msgid "Course topics"
+msgstr "Tópicos do curso"
+
+#: template-parts/content-course.php:139
+msgid "Course details"
+msgstr "Detalhes do curso"
+
+#: template-parts/content-course.php:140
+msgid "About this course"
+msgstr "Sobre este curso"
+
+#: template-parts/content-course.php:155
+msgid "Keep learning"
+msgstr "Continue aprendendo"
+
+#: template-parts/content-course.php:156
+msgid "Related courses"
+msgstr "Cursos relacionados"
+
+#: template-parts/content-course.php:157
+msgid "Continue with courses from the same track."
+msgstr "Continue com cursos da mesma trilha."
 
 #: template-parts/content-free-material-card.php:29
 msgid "Material"
