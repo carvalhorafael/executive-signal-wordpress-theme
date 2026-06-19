@@ -98,6 +98,9 @@ URLs locais:
 - Site: http://localhost:8888/
 - Admin: http://localhost:8888/wp-admin
 - Login: http://localhost:8888/wp-login.php
+- Testes: http://localhost:8889/
+
+Use `8888` para desenvolvimento manual. A porta `8889` e o container `tests-cli` sao reservados para testes automatizados; fixtures de E2E podem criar posts, paginas, midia e menus nesse ambiente.
 
 Credenciais locais padrao do `wp-env`:
 
@@ -167,11 +170,14 @@ Nao tente testar tudo. A suite deve proteger contratos, fluxos criticos e bugs r
 
 Camadas esperadas:
 
+- `npm run test:quick`: validacao curta para iteracao pequena, com build Vite e sintaxe PHP;
 - `npm run test:static`: build Vite, sintaxe PHP, PHPCS e Theme Check;
 - `npm run test:php`: PHPUnit dentro do WordPress de testes do `wp-env`;
-- `npm run test:e2e`: Playwright para smoke do front-end e do editor;
+- `npm run test:e2e`: Playwright para smoke do front-end e do editor, rodando contra a porta de testes do `wp-env`;
 - `npm test`: gate automatizado padrao para PRs;
 - `npm run validate`: gate completo de release e empacotamento.
+
+Durante iteracoes pequenas, rode apenas o menor comando que cobre o risco da mudanca. Exemplos: `npm run test:quick` para mudancas simples de asset/PHP, `npm run i18n:check` quando alterar strings traduziveis, ou um teste especifico quando tocar uma area coberta. Reserve `npm test`, `npm run test:prepush` e `npm run validate` para antes de push, PR, release ou mudancas com impacto amplo.
 
 O que deve ser testado:
 

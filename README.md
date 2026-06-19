@@ -46,6 +46,9 @@ URLs locais:
 - Site: http://localhost:8888/
 - Admin: http://localhost:8888/wp-admin
 - Login: http://localhost:8888/wp-login.php
+- Testes: http://localhost:8889/
+
+Use `8888` para desenvolvimento manual. A porta `8889` e o container `tests-cli` sao reservados para testes automatizados e podem receber fixtures descartaveis.
 
 Credenciais padrao do `wp-env`:
 
@@ -61,6 +64,12 @@ npm run build
 Compila os assets com Vite em `assets/dist`.
 
 ```bash
+npm run test:quick
+```
+
+Executa uma validacao curta para iteracoes pequenas: build Vite e sintaxe PHP.
+
+```bash
 npm test
 ```
 
@@ -71,6 +80,8 @@ npm run validate
 ```
 
 Executa a suite completa e valida o pacote distribuivel do tema.
+
+Use `npm run validate` ou `npm run test:prepush` antes de push, PR de integracao ou preparacao de release.
 
 ```bash
 npm run theme:zip

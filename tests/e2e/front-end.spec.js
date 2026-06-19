@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 import { execFileSync } from "node:child_process";
 
 const runWpCli = (args) => {
-  return execFileSync("npx", ["wp-env", "run", "cli", "wp", ...args], {
+  return execFileSync("npx", ["wp-env", "run", "tests-cli", "wp", ...args], {
     encoding: "utf8",
     stdio: "pipe",
   }).trim();
