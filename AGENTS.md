@@ -15,6 +15,12 @@ O tema consome os pacotes publicados do Executive Signal Design System:
 
 Nao recrie tokens, componentes ou padroes visuais do zero dentro do tema. O WordPress deve ser tratado como consumer/adaptador da biblioteca.
 
+## Uso proporcional de skills de design
+
+Para ajustes visuais pequenos e objetivos, como mudar numero de colunas, espacamento, alinhamento, tamanho, estado responsivo ou cores pontuais, nao execute um fluxo completo da skill `impeccable`. Aplique a mudanca diretamente seguindo os padroes existentes do tema e valide de forma proporcional.
+
+Use `impeccable` de forma completa apenas para redesign, criacao de novas interfaces, revisao visual ampla, polish abrangente ou decisoes visuais ambiguas.
+
 ## Gaps e evolucao do Design System
 
 Quando a implementacao do tema revelar que o Executive Signal Design System nao possui um componente, token, contrato `web`, classe CSS, pattern ou comportamento necessario, siga esta politica obrigatoria. Nao deixe o gap apenas em comentario local, TODO solto ou memoria de conversa.
