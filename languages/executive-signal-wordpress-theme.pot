@@ -657,7 +657,7 @@ msgstr ""
 msgid "Complete the form"
 msgstr ""
 
-#: template-parts/content-free-material.php:32
+#: template-parts/content-free-material.php:33
 msgid "To receive the material."
 msgstr ""
 
@@ -690,15 +690,23 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: template-parts/content-free-material.php:81
+#: template-parts/content-free-material.php:80
 msgid "No payment required. Keep the material for future reference."
 msgstr ""
 
-#: template-parts/content-free-material.php:88
+#: template-parts/content-free-material.php:86
+msgid "What you will find"
+msgstr ""
+
+#: template-parts/content-free-material.php:87
 msgid "Applied knowledge to accelerate your journey and avoid costly mistakes."
 msgstr ""
 
-#: template-parts/content-free-material.php:102
+#: template-parts/content-free-material.php:100
+msgid "Ready to use"
+msgstr ""
+
+#: template-parts/content-free-material.php:101
 msgid "Access the content and apply the ideas today."
 msgstr ""
 
