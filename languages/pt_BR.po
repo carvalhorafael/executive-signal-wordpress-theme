@@ -118,7 +118,8 @@ msgstr "Artigos do autor"
 
 #: category.php:22
 #: inc/free-materials.php:136
-#: template-parts/content-course.php:93
+#: template-parts/content-course.php:189
+#: template-parts/content-course.php:254
 msgid "Category"
 msgstr "Categoria"
 
@@ -649,13 +650,16 @@ msgid "Free materials in category"
 msgstr "Materiais gratuitos na categoria"
 
 #: template-parts/content-course-card.php:29
-#: template-parts/content-course.php:73
+#: template-parts/content-course.php:169
+#: template-parts/content-course.php:232
 msgid "Course"
 msgstr "Curso"
 
 #: template-parts/content-course-card.php:30
-#: template-parts/content-course.php:74
-#: template-parts/content-course.php:88
+#: template-parts/content-course.php:170
+#: template-parts/content-course.php:184
+#: template-parts/content-course.php:233
+#: template-parts/content-course.php:250
 msgid "Online"
 msgstr "Online"
 
@@ -663,96 +667,403 @@ msgstr "Online"
 msgid "View course"
 msgstr "Ver curso"
 
-#: template-parts/content-course.php:38
+#: template-parts/content-course.php:18
+msgid "Clarify the signal behind a messy business problem."
+msgstr "Clarificar o sinal por trás de um problema de negócio confuso."
+
+#: template-parts/content-course.php:19
+msgid "Turn course notes into operating routines and decision checklists."
+msgstr "Transformar anotações do curso em rotinas operacionais e checklists de decisão."
+
+#: template-parts/content-course.php:20
+msgid "Use practical prompts, reviews and examples without losing strategic context."
+msgstr "Usar prompts, revisões e exemplos práticos sem perder o contexto estratégico."
+
+#: template-parts/content-course.php:23
+msgid "No advanced technical setup is required."
+msgstr "Nenhuma configuração técnica avançada é necessária."
+
+#: template-parts/content-course.php:24
+msgid "Bring one real workflow or decision you want to improve."
+msgstr "Traga um fluxo de trabalho ou decisão real que você quer melhorar."
+
+#: template-parts/content-course.php:25
+msgid "Set aside time to apply each lesson to your own context."
+msgstr "Reserve tempo para aplicar cada aula ao seu próprio contexto."
+
+#: template-parts/content-course.php:30
+msgid "Start with the operating problem"
+msgstr "Comece pelo problema operacional"
+
+#: template-parts/content-course.php:31
+msgid "3 lessons / 12 min"
+msgstr "3 aulas / 12 min"
+
+#: template-parts/content-course.php:36
+msgid "Read the current signal"
+msgstr "Leia o sinal atual"
+
+#: template-parts/content-course.php:37
+#: template-parts/content-course.php:87
+msgid "4 min"
+msgstr "4 min"
+
+#: template-parts/content-course.php:42
+msgid "Map the decision context"
+msgstr "Mapeie o contexto da decisão"
+
+#: template-parts/content-course.php:43
+#: template-parts/content-course.php:60
+#: template-parts/content-course.php:65
+#: template-parts/content-course.php:70
+#: template-parts/content-course.php:92
+msgid "5 min"
+msgstr "5 min"
+
+#: template-parts/content-course.php:47
+msgid "Choose a practical target"
+msgstr "Escolha um alvo prático"
+
+#: template-parts/content-course.php:48
+msgid "3 min"
+msgstr "3 min"
+
+#: template-parts/content-course.php:54
+msgid "Turn notes into routines"
+msgstr "Transforme anotações em rotinas"
+
+#: template-parts/content-course.php:55
+#: template-parts/content-course.php:77
+msgid "3 lessons / 15 min"
+msgstr "3 aulas / 15 min"
+
+#: template-parts/content-course.php:59
+msgid "Create a review rhythm"
+msgstr "Crie uma cadência de revisão"
+
+#: template-parts/content-course.php:64
+msgid "Build a decision checklist"
+msgstr "Construa um checklist de decisão"
+
+#: template-parts/content-course.php:69
+msgid "Keep examples close to work"
+msgstr "Mantenha exemplos próximos do trabalho"
+
+#: template-parts/content-course.php:76
+msgid "Apply and refine"
+msgstr "Aplique e refine"
+
+#: template-parts/content-course.php:81
+msgid "Run the first review"
+msgstr "Rode a primeira revisão"
+
+#: template-parts/content-course.php:82
+msgid "6 min"
+msgstr "6 min"
+
+#: template-parts/content-course.php:86
+msgid "Adjust the operating signal"
+msgstr "Ajuste o sinal operacional"
+
+#: template-parts/content-course.php:91
+msgid "Decide the next iteration"
+msgstr "Decida a próxima iteração"
+
+#: template-parts/content-course.php:99
+msgid "Operators"
+msgstr "Operadores"
+
+#: template-parts/content-course.php:100
+msgid "For people turning strategy into weekly execution."
+msgstr "Para pessoas que transformam estratégia em execução semanal."
+
+#: template-parts/content-course.php:101
+msgid "Use the course to make priorities, routines and review moments easier to inspect."
+msgstr "Use o curso para tornar prioridades, rotinas e momentos de revisão mais fáceis de inspecionar."
+
+#: template-parts/content-course.php:104
+msgid "Leaders"
+msgstr "Líderes"
+
+#: template-parts/content-course.php:105
+msgid "For leaders who need clearer management signals."
+msgstr "Para líderes que precisam de sinais de gestão mais claros."
+
+#: template-parts/content-course.php:106
+msgid "Use the lessons to reduce noise before decisions reach meetings, dashboards or teams."
+msgstr "Use as aulas para reduzir ruído antes que decisões cheguem a reuniões, dashboards ou equipes."
+
+#: template-parts/content-course.php:134
 msgid "Online course"
 msgstr "Curso online"
 
-#: template-parts/content-course.php:49
+#: template-parts/content-course.php:145
+#: template-parts/content-course.php:260
 msgid "Self-paced"
 msgstr "No seu ritmo"
 
-#: template-parts/content-course.php:55
-#: template-parts/content-course.php:118
+#: template-parts/content-course.php:151
+#: template-parts/content-course.php:243
 msgid "Go to checkout"
 msgstr "Ir para checkout"
 
-#: template-parts/content-course.php:59
+#: template-parts/content-course.php:155
 msgid "View course details"
 msgstr "Ver detalhes do curso"
 
-#: template-parts/content-course.php:64
+#: template-parts/content-course.php:160
 msgid "Checkout opens in a secure external page."
 msgstr "O checkout abre em uma página externa segura."
 
-#: template-parts/content-course.php:68
+#: template-parts/content-course.php:164
 msgid "Course preview"
 msgstr "Prévia do curso"
 
-#: template-parts/content-course.php:82
+#: template-parts/content-course.php:178
 msgid "Course overview"
 msgstr "Visão geral do curso"
 
-#: template-parts/content-course.php:83
+#: template-parts/content-course.php:179
 msgid "Practical context before you enroll."
 msgstr "Contexto prático antes da inscrição."
 
-#: template-parts/content-course.php:87
+#: template-parts/content-course.php:183
+#: template-parts/content-course.php:249
 msgid "Format"
 msgstr "Formato"
 
-#: template-parts/content-course.php:89
+#: template-parts/content-course.php:185
 msgid "Self-paced access"
 msgstr "Acesso no seu ritmo"
 
-#: template-parts/content-course.php:95
+#: template-parts/content-course.php:191
 msgid "Course track"
 msgstr "Trilha do curso"
 
-#: template-parts/content-course.php:99
+#: template-parts/content-course.php:195
 msgid "Updated"
 msgstr "Atualizado"
 
-#: template-parts/content-course.php:103
+#: template-parts/content-course.php:199
 msgid "Latest course revision"
 msgstr "Última revisão do curso"
 
-#: template-parts/content-course.php:111
+#: template-parts/content-course.php:206
+#: template-parts/content-course.php:218
+msgid "Preview"
+msgstr "Prévia"
+
+#: template-parts/content-course.php:207
+msgid "See the course shape before enrolling."
+msgstr "Veja a estrutura do curso antes da inscrição."
+
+#: template-parts/content-course.php:208
+msgid "This preview area uses mocked copy until the course plugin exposes preview video or sample lesson data."
+msgstr "Esta área de prévia usa texto mockado até que o plugin de cursos exponha vídeo de prévia ou dados de aula de amostra."
+
+#: template-parts/content-course.php:210
+msgid "Read course details"
+msgstr "Ler detalhes do curso"
+
+#: template-parts/content-course.php:219
+msgid "Sample"
+msgstr "Amostra"
+
+#: template-parts/content-course.php:227
+msgid "Course thumbnail"
+msgstr "Imagem do curso"
+
+#: template-parts/content-course.php:239
 msgid "Enrollment"
 msgstr "Inscrição"
 
-#: template-parts/content-course.php:112
+#: template-parts/content-course.php:240
 msgid "Start this course when you are ready."
 msgstr "Comece este curso quando estiver pronto."
 
-#: template-parts/content-course.php:113
-msgid "Use the checkout link to complete enrollment outside WordPress."
-msgstr "Use o link de checkout para concluir a inscrição fora do WordPress."
-
-#: template-parts/content-course.php:121
+#: template-parts/content-course.php:246
 msgid "Secure checkout handled by the course platform."
 msgstr "Checkout seguro processado pela plataforma do curso."
 
-#: template-parts/content-course.php:127
+#: template-parts/content-course.php:259
+msgid "Access"
+msgstr "Acesso"
+
+#: template-parts/content-course.php:268
 msgid "Course topics"
 msgstr "Tópicos do curso"
 
-#: template-parts/content-course.php:139
+#: template-parts/content-course.php:279
+msgid "Learning outcomes"
+msgstr "Resultados de aprendizagem"
+
+#: template-parts/content-course.php:280
+msgid "What you will be able to apply."
+msgstr "O que você vai conseguir aplicar."
+
+#: template-parts/content-course.php:281
+msgid "Mocked outcomes show the intended section shape until structured course outcomes exist in the plugin."
+msgstr "Resultados mockados mostram o formato pretendido da seção até que resultados estruturados existam no plugin."
+
+#. translators: %d: Learning outcome number.
+#: template-parts/content-course.php:291
+#, php-format
+msgid "Outcome %d"
+msgstr "Resultado %d"
+
+#: template-parts/content-course.php:305
+msgid "Course curriculum"
+msgstr "Currículo do curso"
+
+#: template-parts/content-course.php:306
+msgid "Program structure"
+msgstr "Estrutura do programa"
+
+#: template-parts/content-course.php:307
+msgid "Mock curriculum keeps the layout available while modules and lessons are not stored by the course plugin."
+msgstr "O currículo mockado mantém o layout disponível enquanto módulos e aulas não são armazenados pelo plugin de cursos."
+
+#: template-parts/content-course.php:310
+msgid "Sections"
+msgstr "Seções"
+
+#: template-parts/content-course.php:311
+msgid "3 sections"
+msgstr "3 seções"
+
+#: template-parts/content-course.php:314
+msgid "Lessons"
+msgstr "Aulas"
+
+#: template-parts/content-course.php:315
+msgid "9 lessons"
+msgstr "9 aulas"
+
+#: template-parts/content-course.php:318
+msgid "Duration"
+msgstr "Duração"
+
+#: template-parts/content-course.php:319
+msgid "42 min"
+msgstr "42 min"
+
+#: template-parts/content-course.php:324
+msgid "Expand all sections"
+msgstr "Expandir todas as seções"
+
+#: template-parts/content-course.php:327
+msgid "Collapse all sections"
+msgstr "Recolher todas as seções"
+
+#: template-parts/content-course.php:350
+msgid "Preview lesson"
+msgstr "Aula de prévia"
+
+#: template-parts/content-course.php:364
+msgid "Requirements"
+msgstr "Requisitos"
+
+#: template-parts/content-course.php:365
+msgid "Before you begin"
+msgstr "Antes de começar"
+
+#: template-parts/content-course.php:380
 msgid "Course details"
 msgstr "Detalhes do curso"
 
-#: template-parts/content-course.php:140
+#: template-parts/content-course.php:381
 msgid "About this course"
 msgstr "Sobre este curso"
 
-#: template-parts/content-course.php:155
+#: template-parts/content-course.php:394
+msgid "Audience fit"
+msgstr "Perfil indicado"
+
+#: template-parts/content-course.php:395
+msgid "Who this course is for."
+msgstr "Para quem é este curso."
+
+#: template-parts/content-course.php:396
+msgid "Mocked audience groups keep the page structure visible until the plugin provides structured audience data."
+msgstr "Grupos de público mockados mantêm a estrutura da página visível até que o plugin forneça dados estruturados de público."
+
+#: template-parts/content-course.php:415
+msgid "Instructor"
+msgstr "Instrutor"
+
+#: template-parts/content-course.php:417
+msgid "Executive Signal course author"
+msgstr "Autor de curso do Executive Signal"
+
+#: template-parts/content-course.php:425
+msgid "Mock instructor bio shown until the course plugin exposes dedicated instructor profile fields."
+msgstr "Bio mockada do instrutor exibida até que o plugin de cursos exponha campos dedicados de perfil do instrutor."
+
+#: template-parts/content-course.php:431
+msgid "Connects course concepts to practical executive routines."
+msgstr "Conecta conceitos do curso a rotinas executivas práticas."
+
+#: template-parts/content-course.php:432
+msgid "Keeps examples focused on decisions, signals and operating rhythm."
+msgstr "Mantém exemplos focados em decisões, sinais e ritmo operacional."
+
+#: template-parts/content-course.php:437
+msgid "Course social proof"
+msgstr "Prova social do curso"
+
+#: template-parts/content-course.php:439
+msgid "Rating"
+msgstr "Avaliação"
+
+#: template-parts/content-course.php:440
+msgid "4.8/5"
+msgstr "4,8/5"
+
+#: template-parts/content-course.php:441
+msgid "Mock average rating"
+msgstr "Avaliação média mockada"
+
+#: template-parts/content-course.php:444
+msgid "Students"
+msgstr "Alunos"
+
+#: template-parts/content-course.php:446
+msgid "Mock enrollment count"
+msgstr "Contagem de inscrições mockada"
+
+#: template-parts/content-course.php:449
+msgid "Reviews"
+msgstr "Avaliações"
+
+#: template-parts/content-course.php:451
+msgid "Mock review volume"
+msgstr "Volume de avaliações mockado"
+
+#: template-parts/content-course.php:457
+msgid "7 days"
+msgstr "7 dias"
+
+#: template-parts/content-course.php:461
+msgid "Guarantee"
+msgstr "Garantia"
+
+#: template-parts/content-course.php:462
+msgid "Mock guarantee placeholder."
+msgstr "Placeholder mockado de garantia."
+
+#: template-parts/content-course.php:465
+msgid "This section uses temporary guarantee copy until the real checkout policy is defined."
+msgstr "Esta seção usa texto temporário de garantia até que a política real de checkout seja definida."
+
+#: template-parts/content-course.php:474
 msgid "Keep learning"
 msgstr "Continue aprendendo"
 
-#: template-parts/content-course.php:156
+#: template-parts/content-course.php:475
 msgid "Related courses"
 msgstr "Cursos relacionados"
 
-#: template-parts/content-course.php:157
+#: template-parts/content-course.php:476
 msgid "Continue with courses from the same track."
 msgstr "Continue com cursos da mesma trilha."
 

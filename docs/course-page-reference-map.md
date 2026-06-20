@@ -14,6 +14,8 @@ This should be treated as a structural reference, not a visual clone. Executive 
 
 ### 1. Course Hero
 
+Implementation status: implemented in `template-parts/content-course.php` using `es-sales-hero`, `es-badge` and existing course title/excerpt/category data.
+
 Purpose: introduce the course and establish conversion context above the fold.
 
 Reference elements:
@@ -32,6 +34,8 @@ Recommended Executive Signal component path:
 
 ### 2. Course Preview Media
 
+Implementation status: implemented with mocked preview copy in `template-parts/content-course.php` using `es-preview-modal-trigger` plus static featured-image media. Video/modal data is still mocked until the course plugin exposes preview video or sample lesson fields.
+
 Purpose: give visitors a quick sense of the course before checkout.
 
 Reference elements:
@@ -45,6 +49,8 @@ Recommended Executive Signal component path:
 
 ### 3. Enrollment CTA / Checkout Panel
 
+Implementation status: implemented in `template-parts/content-course.php` using `es-course-enrollment` from the updated design system packages. The component uses the checkout URL from the course plugin and current WordPress course/category data; price/offer data remains omitted until the plugin exposes it.
+
 Purpose: keep the main conversion action close to the decision-making context.
 
 Reference elements:
@@ -54,10 +60,12 @@ Reference elements:
 - Money-back/access reassurance on marketplaces.
 
 Recommended Executive Signal component path:
-- Use `es-offer-band` if the CTA appears in page flow.
-- For the course single page, a sticky sidebar enrollment panel is likely better on desktop, with an inline CTA on mobile.
+- Use `es-course-enrollment` for course-specific checkout.
+- Keep `es-offer-band` for broader in-flow promotional bands.
 
 ### 4. Course Facts Strip
+
+Implementation status: implemented in `template-parts/content-course.php` using `es-event-info-strip` with format, category and updated date.
 
 Purpose: summarize practical facts before the visitor reads the details.
 
@@ -72,6 +80,8 @@ Recommended Executive Signal component path:
 
 ### 5. Learning Outcomes
 
+Implementation status: implemented with mocked data in `template-parts/content-course.php` using `es-value-stack`. Replace the mock array when the plugin exposes structured learning outcomes.
+
 Purpose: answer "what will I be able to do after this?"
 
 Reference elements:
@@ -82,6 +92,8 @@ Recommended Executive Signal component path:
 - Use `es-value-stack` for a compact value list, or a local section using `es-content-grid` if the content is a simple checklist.
 
 ### 6. Topic Chips
+
+Implementation status: implemented in `template-parts/content-course.php` using existing `es-tabs` and `es-nav-link` contracts over `course_category` terms.
 
 Purpose: expose course taxonomy and help discovery.
 
@@ -94,6 +106,8 @@ Recommended Executive Signal component path:
 
 ### 7. Course Curriculum
 
+Implementation status: implemented in `template-parts/content-course.php` using `es-course-curriculum` from the updated design system packages, with mocked sections and lessons. Replace the mock array when the course plugin exposes a structured curriculum data model.
+
 Purpose: show the structure of the course and reduce uncertainty before checkout.
 
 Reference elements:
@@ -103,11 +117,12 @@ Reference elements:
 - Lecture rows with title, preview marker and duration.
 
 Recommended Executive Signal component path:
-- Needs a dedicated course curriculum component in the design system.
-- `es-curriculum-grid` exists, but it represents card-based curriculum blocks, not an expandable syllabus with lecture rows.
-- `es-faq-accordion` exists, but its semantics are question/answer, not course module/lesson.
+- Use `es-course-curriculum` for expandable modules and lecture rows.
+- Use the design-system behavior enhancer for expand/collapse controls.
 
 ### 8. Requirements
+
+Implementation status: implemented with mocked data in `template-parts/content-course.php` using `es-section-block` and `es-article-prose`. Replace the mock array when the plugin exposes structured requirement data.
 
 Purpose: state prerequisites and reduce bad-fit purchases.
 
@@ -118,6 +133,8 @@ Recommended Executive Signal component path:
 - Use `es-section-block` with prose/list styling, or reuse `es-value-stack` for a short list.
 
 ### 9. Course Description / Long-Form Sales Copy
+
+Implementation status: implemented in `template-parts/content-course.php` using `es-section-block` and `es-article-prose` around the WordPress course content.
 
 Purpose: explain the course, outcomes, difference, benefits and expected result.
 
@@ -131,6 +148,8 @@ Recommended Executive Signal component path:
 
 ### 10. Audience Fit
 
+Implementation status: implemented with mocked data in `template-parts/content-course.php` using `es-audience-fit` and `es-audience-fit-card`. Replace the mock array when the plugin exposes structured audience data.
+
 Purpose: clarify who the course is for.
 
 Reference elements:
@@ -141,6 +160,8 @@ Recommended Executive Signal component path:
 - Use prose/list styling if it remains a single simple list.
 
 ### 11. Instructor Bio
+
+Implementation status: implemented with mixed WordPress author data and mocked fallback copy in `template-parts/content-course.php` using `es-instructor-bio`. Replace the fallback when the plugin exposes dedicated instructor profile fields.
 
 Purpose: establish authority and trust.
 
@@ -155,6 +176,8 @@ Recommended Executive Signal component path:
 
 ### 12. Social Proof
 
+Implementation status: implemented with mocked metrics in `template-parts/content-course.php` using `es-metric-strip`. Replace the mock numbers when the plugin exposes rating, review count or student count.
+
 Purpose: support the decision with proof without turning the page into a generic marketplace.
 
 Reference elements:
@@ -168,6 +191,8 @@ Recommended Executive Signal component path:
 
 ### 13. Guarantee / Trust Callout
 
+Implementation status: implemented with mocked policy copy in `template-parts/content-course.php` using `es-guarantee-callout`. Replace the placeholder when the real checkout/guarantee policy is defined.
+
 Purpose: reduce checkout anxiety near the CTA.
 
 Reference elements:
@@ -178,6 +203,8 @@ Recommended Executive Signal component path:
 - If there is no formal guarantee, use restrained checkout microcopy instead.
 
 ### 14. Related Courses / Next Step
+
+Implementation status: implemented in `template-parts/content-course.php` using the existing related-articles/card pattern and `content-course-card.php` for courses in the same category.
 
 Purpose: provide a secondary route when this course is not the right fit.
 
@@ -192,9 +219,14 @@ Recommended Executive Signal component path:
 
 ### 1. Course Enrollment Panel
 
-Status: gap.
+Status: resolved in the updated design system packages and implemented in the theme.
 
 Design system issue: https://github.com/carvalhorafael/executive-signal-design-system/issues/57
+
+Theme implementation:
+- `@carvalhorafael/executive-signal-css@0.7.0`
+- `@carvalhorafael/executive-signal-web@0.6.0`
+- `template-parts/content-course.php`
 
 Why existing components are not enough:
 - `es-offer-band` is an in-flow promotional band.
@@ -212,9 +244,15 @@ Expected contract:
 
 ### 2. Course Curriculum Accordion
 
-Status: gap.
+Status: resolved in the updated design system packages and implemented in the theme with mocked curriculum data.
 
 Design system issue: https://github.com/carvalhorafael/executive-signal-design-system/issues/58
+
+Theme implementation:
+- `@carvalhorafael/executive-signal-css@0.7.0`
+- `@carvalhorafael/executive-signal-web@0.6.0`
+- `template-parts/content-course.php`
+- `src/main.js` initializes `enhanceCourseCurriculum()`.
 
 Why existing components are not enough:
 - `es-curriculum-grid` supports curriculum cards, not an expandable syllabus.
@@ -291,7 +329,7 @@ For the first implementation, use this order:
 
 Minimum design-system work before a polished implementation:
 
-1. Create or request `course-enrollment` in the design system.
-2. Create or request `course-curriculum` in the design system.
+1. Completed: `es-course-enrollment` is available and consumed by the theme.
+2. Completed: `es-course-curriculum` is available and consumed by the theme.
 
-Everything else can start by consuming existing Executive Signal contracts or remain local until reuse pressure appears.
+Everything else can keep consuming existing Executive Signal contracts or remain local until reuse pressure appears.

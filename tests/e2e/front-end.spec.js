@@ -673,7 +673,7 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".course-card")).toHaveCount(5);
   });
 
-  test("renders single course page with existing design-system components", async ({ page }) => {
+  test("renders single course page with design-system course components", async ({ page }) => {
     await page.goto(`/cursos/${fixture.courseSlugs[0]}/`);
     await expect(page.locator('article[itemtype="https://schema.org/Course"]')).toBeVisible();
     await expect(page.locator(".es-sales-hero__eyebrow")).toHaveText("Curso online");
@@ -684,16 +684,25 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".course-single__hero-visual img")).toBeVisible();
     await expect(page.locator(".es-event-info-strip")).toContainText("Visão geral do curso");
     await expect(page.locator(".es-event-info-strip")).toContainText("E2E Estratégia");
-    await expect(page.locator(".es-offer-band")).toContainText("Comece este curso quando estiver pronto.");
-    await expect(page.locator(".es-offer-band .es-button")).toHaveAttribute(
+    await expect(page.locator(".es-preview-modal-trigger")).toContainText("Veja a estrutura do curso antes da inscrição.");
+    await expect(page.locator(".es-course-enrollment")).toContainText("Comece este curso quando estiver pronto.");
+    await expect(page.locator(".es-course-enrollment .es-button")).toHaveAttribute(
       "href",
       "https://checkout.example.com/signal-strategy",
     );
     await expect(page.locator(".course-single__topics .es-nav-link")).toContainText("E2E Estratégia");
+    await expect(page.locator(".es-value-stack")).toContainText("Resultados de aprendizagem");
+    await expect(page.locator(".es-value-stack")).toContainText("Clarificar o sinal");
+    await expect(page.locator(".es-course-curriculum")).toContainText("Estrutura do programa");
+    await expect(page.locator(".es-course-curriculum")).toContainText("Comece pelo problema operacional");
+    await expect(page.locator(".es-course-curriculum__section")).toHaveCount(3);
+    await expect(page.locator("#course-requirements-title")).toHaveText("Antes de começar");
     await expect(page.locator("#course-content")).toContainText("Sobre este curso");
     await expect(page.locator(".es-article-prose h2").first()).toHaveText("O que você vai organizar");
-    await expect(page.locator(".es-course-enrollment")).toHaveCount(0);
-    await expect(page.locator(".es-course-curriculum")).toHaveCount(0);
+    await expect(page.locator(".es-audience-fit")).toContainText("Para quem é este curso.");
+    await expect(page.locator(".es-instructor-bio")).toContainText("Instrutor");
+    await expect(page.locator(".es-metric-strip")).toContainText("Avaliação");
+    await expect(page.locator(".es-guarantee-callout")).toContainText("Placeholder mockado de garantia.");
   });
 
   test("opens mobile navigation and submenus", async ({ page }) => {
