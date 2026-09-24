@@ -2,7 +2,7 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: Executive Signal WordPress Theme 0.2.0\n"
+"Project-Id-Version: Executive Signal WordPress Theme 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
@@ -118,6 +118,7 @@ msgstr "Artigos do autor"
 
 #: category.php:22
 #: inc/free-materials.php:136
+#: template-parts/content-course.php:81
 msgid "Category"
 msgstr "Categoria"
 
@@ -206,16 +207,20 @@ msgid "enables the free materials content domain."
 msgstr "habilita o dominio de conteudo de materiais gratuitos."
 
 #: inc/admin-notices.php:29
-msgid "handles free material capture forms and Brevo delivery."
-msgstr "processa formularios de captura de materiais gratuitos e entrega via Brevo."
+msgid "enables the online courses content domain."
+msgstr "habilita o dominio de conteudo de cursos online."
 
-#: inc/admin-notices.php:89
+#: inc/admin-notices.php:35
+msgid "handles free material capture forms and CRM delivery."
+msgstr "processa formularios de captura de materiais gratuitos e entrega via CRM."
+
+#: inc/admin-notices.php:95
 msgid "Executive Signal recommended plugins"
 msgstr "Plugins recomendados do Executive Signal"
 
-#: inc/admin-notices.php:91
-msgid "For the complete materials workflow, install and activate:"
-msgstr "Para o fluxo completo de materiais, instale e ative:"
+#: inc/admin-notices.php:97
+msgid "For the complete content workflow, install and activate:"
+msgstr "Para o fluxo completo de conteudo, instale e ative:"
 
 #: inc/customizer.php:22
 msgid "Blog"
@@ -463,6 +468,12 @@ msgid "Centered page"
 msgstr "Página centralizada"
 
 #. Template Name of the theme
+#: template-parts/course-listing.php:10
+#: template-parts/course-listing.php:43
+msgid "Courses"
+msgstr "Cursos"
+
+#. Template Name of the theme
 #: page-materiais-gratuitos.php:46
 msgid "Free materials"
 msgstr "Materiais gratuitos"
@@ -486,10 +497,12 @@ msgid "Material categories"
 msgstr "Categorias de materiais"
 
 #: page-materiais-gratuitos.php:75
+#: template-parts/course-listing.php:72
 msgid "Clear filters"
 msgstr "Limpar filtros"
 
 #: page-materiais-gratuitos.php:82
+#: template-parts/course-listing.php:79
 msgid "Filter by topic"
 msgstr "Filtrar por tema"
 
@@ -635,6 +648,73 @@ msgstr "Ver todos os materiais"
 msgid "Free materials in category"
 msgstr "Materiais gratuitos na categoria"
 
+#: template-parts/content-course-card.php:29
+#: template-parts/content-course.php:59
+msgid "Course"
+msgstr "Curso"
+
+#: template-parts/content-course-card.php:30
+#: template-parts/content-course.php:60
+#: template-parts/content-course.php:77
+msgid "Online"
+msgstr "Online"
+
+#: template-parts/content-course-card.php:49
+msgid "View course"
+msgstr "Ver curso"
+
+#: template-parts/content-course.php:40
+msgid "Online course"
+msgstr "Curso online"
+
+#: template-parts/content-course.php:52
+msgid "Course enrollment"
+msgstr "Inscrição no curso"
+
+#: template-parts/content-course.php:54
+msgid "Course preview"
+msgstr "Prévia do curso"
+
+#: template-parts/content-course.php:66
+msgid "Preview and enrollment"
+msgstr "Prévia e inscrição"
+
+#: template-parts/content-course.php:67
+msgid "Start this course when you are ready."
+msgstr "Comece este curso quando estiver pronto."
+
+#: template-parts/content-course.php:70
+msgid "Go to checkout"
+msgstr "Ir para checkout"
+
+#: template-parts/content-course.php:73
+msgid "Secure checkout handled by the course platform."
+msgstr "Checkout seguro processado pela plataforma do curso."
+
+#: template-parts/content-course.php:76
+msgid "Format"
+msgstr "Formato"
+
+#: template-parts/content-course.php:86
+msgid "Access"
+msgstr "Acesso"
+
+#: template-parts/content-course.php:87
+msgid "Self-paced"
+msgstr "No seu ritmo"
+
+#: template-parts/content-course.php:111
+msgid "Keep learning"
+msgstr "Continue aprendendo"
+
+#: template-parts/content-course.php:112
+msgid "Related courses"
+msgstr "Cursos relacionados"
+
+#: template-parts/content-course.php:113
+msgid "Continue with courses from the same track."
+msgstr "Continue com cursos da mesma trilha."
+
 #: template-parts/content-free-material-card.php:29
 msgid "Material"
 msgstr "Material"
@@ -747,6 +827,35 @@ msgstr "Navegação da página"
 #: template-parts/content.php:29
 msgid "Read article"
 msgstr "Ler artigo"
+
+#: template-parts/course-listing.php:51
+msgid "Practical courses for operators who want sharper decisions, clearer routines and better execution signals."
+msgstr "Cursos práticos para operadores que querem decisões mais claras, rotinas mais nítidas e melhores sinais de execução."
+
+#. translators: %s: Number of courses found in an archive.
+#: template-parts/course-listing.php:59
+#, php-format
+msgid "%s course found"
+msgid_plural "%s courses found"
+msgstr[0] "%s curso encontrado"
+msgstr[1] "%s cursos encontrados"
+
+#: template-parts/course-listing.php:68
+#: template-parts/course-listing.php:70
+msgid "Course categories"
+msgstr "Categorias de cursos"
+
+#: template-parts/course-listing.php:98
+msgid "No course categories found."
+msgstr "Nenhuma categoria de curso encontrada."
+
+#: template-parts/course-listing.php:102
+msgid "Course listing"
+msgstr "Listagem de cursos"
+
+#: template-parts/course-listing.php:116
+msgid "No courses match the selected categories."
+msgstr "Nenhum curso corresponde às categorias selecionadas."
 
 #: template-parts/post-navigation.php:16
 msgid "Article navigation"

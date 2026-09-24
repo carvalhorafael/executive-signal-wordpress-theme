@@ -1,5 +1,10 @@
 import "./styles/main.css";
-import { enhanceArticleFAQ, enhanceBlogSiteHeader, enhanceResourceBrowser } from "@carvalhorafael/executive-signal-web/behavior";
+import {
+  enhanceArticleFAQ,
+  enhanceBlogSiteHeader,
+  enhanceCourseCurriculum,
+  enhanceResourceBrowser,
+} from "@carvalhorafael/executive-signal-web/behavior";
 
 enhanceBlogSiteHeader({ storageKey: "executive-signal-theme" });
 
@@ -52,4 +57,5 @@ document.querySelectorAll("[data-copy-link]").forEach((button) => {
 });
 
 enhanceArticleFAQ();
+enhanceCourseCurriculum();
 enhanceResourceBrowser();
