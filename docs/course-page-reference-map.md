@@ -14,7 +14,7 @@ This should be treated as a structural reference, not a visual clone. Executive 
 
 ### 1. Course Hero
 
-Implementation status: implemented in `template-parts/content-course.php` using `es-sales-hero`, `es-badge` and existing course title/excerpt/category data.
+Implementation status: implemented in `template-parts/content-course.php` using `es-sales-hero`, `es-badge` and existing course title/excerpt/category data. The course hero now includes compact author/update/language metadata, matching the reference more closely than a separate facts panel.
 
 Purpose: introduce the course and establish conversion context above the fold.
 
@@ -34,7 +34,7 @@ Recommended Executive Signal component path:
 
 ### 2. Course Preview Media
 
-Implementation status: implemented with mocked preview copy in `template-parts/content-course.php` using `es-preview-modal-trigger` plus static featured-image media. Video/modal data is still mocked until the course plugin exposes preview video or sample lesson fields.
+Implementation status: implemented inside the right-side `es-course-enrollment` panel using the featured image as the course preview. Video/modal data is still mocked/absent until the course plugin exposes preview video or sample lesson fields.
 
 Purpose: give visitors a quick sense of the course before checkout.
 
@@ -44,12 +44,12 @@ Reference elements:
 - Video preview trigger.
 
 Recommended Executive Signal component path:
-- Use or adapt `es-preview-modal-trigger`.
-- If no playable preview exists, use the course featured image as a static preview panel.
+- Use the media slot in `es-course-enrollment` when preview and checkout should behave like the Udemy sidebar.
+- Use `es-preview-modal-trigger` only if a separate preview section is needed later.
 
 ### 3. Enrollment CTA / Checkout Panel
 
-Implementation status: implemented in `template-parts/content-course.php` using `es-course-enrollment` from the updated design system packages. The component uses the checkout URL from the course plugin and current WordPress course/category data; price/offer data remains omitted until the plugin exposes it.
+Implementation status: implemented in `template-parts/content-course.php` using `es-course-enrollment` from the updated design system packages. It now renders as a compact sticky sidebar card in the masthead, matching the structural role of the Udemy purchase/preview panel. The component uses the checkout URL from the course plugin and current WordPress course/category data; price/offer data remains omitted until the plugin exposes it.
 
 Purpose: keep the main conversion action close to the decision-making context.
 
@@ -63,9 +63,9 @@ Recommended Executive Signal component path:
 - Use `es-course-enrollment` for course-specific checkout.
 - Keep `es-offer-band` for broader in-flow promotional bands.
 
-### 4. Course Facts Strip
+### 4. Course Facts / Metadata
 
-Implementation status: implemented in `template-parts/content-course.php` using `es-event-info-strip` with format, category and updated date.
+Implementation status: implemented as compact metadata split between the hero and the enrollment sidebar. The earlier `es-event-info-strip` section was removed because the Udemy reference does not have a large standalone facts box in this position.
 
 Purpose: summarize practical facts before the visitor reads the details.
 
@@ -76,11 +76,12 @@ Reference elements:
 - Level/language/update metadata.
 
 Recommended Executive Signal component path:
-- Use `es-event-info-strip` or `es-metric-strip`.
+- Keep practical metadata inline in the hero or sidebar while the plugin has only basic fields.
+- Avoid a large standalone facts strip unless future real course data needs it.
 
 ### 5. Learning Outcomes
 
-Implementation status: implemented with mocked data in `template-parts/content-course.php` using `es-value-stack`. Replace the mock array when the plugin exposes structured learning outcomes.
+Implementation status: implemented with mocked data in `template-parts/content-course.php` using `es-value-stack`. It now appears immediately after the masthead, before topics and curriculum, matching the reference order. Replace the mock array when the plugin exposes structured learning outcomes.
 
 Purpose: answer "what will I be able to do after this?"
 
@@ -93,7 +94,7 @@ Recommended Executive Signal component path:
 
 ### 6. Topic Chips
 
-Implementation status: implemented in `template-parts/content-course.php` using existing `es-tabs` and `es-nav-link` contracts over `course_category` terms.
+Implementation status: implemented in `template-parts/content-course.php` using existing `es-tabs` and `es-nav-link` contracts over `course_category` terms, placed between learning outcomes and curriculum.
 
 Purpose: expose course taxonomy and help discovery.
 
@@ -176,7 +177,7 @@ Recommended Executive Signal component path:
 
 ### 12. Social Proof
 
-Implementation status: implemented with mocked metrics in `template-parts/content-course.php` using `es-metric-strip`. Replace the mock numbers when the plugin exposes rating, review count or student count.
+Implementation status: not rendered for now. Mocked metrics were removed because the reference surfaces rating/student count in the hero, and the current plugin does not provide real rating or enrollment data.
 
 Purpose: support the decision with proof without turning the page into a generic marketplace.
 
@@ -186,12 +187,12 @@ Reference elements:
 - Marketplace pages usually also expose review content lower on the page.
 
 Recommended Executive Signal component path:
-- Use `es-metric-strip` for quantitative proof.
+- Add compact rating/student metadata near the hero only when real data exists.
 - Use `es-proof-gallery` or `es-quote-band` only if we have real testimonials, screenshots or named proof.
 
 ### 13. Guarantee / Trust Callout
 
-Implementation status: implemented with mocked policy copy in `template-parts/content-course.php` using `es-guarantee-callout`. Replace the placeholder when the real checkout/guarantee policy is defined.
+Implementation status: not rendered for now. The mocked guarantee callout was removed because it created a theme-specific section that is not supported by real checkout policy data yet.
 
 Purpose: reduce checkout anxiety near the CTA.
 
@@ -314,17 +315,17 @@ Decision:
 
 ## Initial Page Composition Recommendation
 
-For the first implementation, use this order:
+Implemented page composition:
 
-1. Course hero with category, title, excerpt, instructor/update metadata and course facts.
-2. Preview media plus enrollment panel.
-3. Learning outcomes.
+1. Masthead grid: hero with compact metadata in the main column and `es-course-enrollment` as the compact sticky sidebar.
+2. Learning outcomes.
+3. Topic chips.
 4. Course curriculum accordion.
 5. Requirements.
 6. Long description.
 7. Audience fit.
 8. Instructor bio.
-9. Guarantee/trust callout if there is real policy copy.
+9. Social proof and guarantee placeholders.
 10. Related courses if more than one course exists.
 
 Minimum design-system work before a polished implementation:

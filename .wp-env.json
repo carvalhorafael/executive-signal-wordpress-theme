@@ -3,6 +3,7 @@
   "plugins": [
     "../plugins-wordpress/free-materials",
     "../plugins-wordpress/online-courses",
+    "../plugins-wordpress/crm-leads-capture",
     "https://downloads.wordpress.org/plugin/theme-check.latest-stable.zip"
   ],
   "themes": [

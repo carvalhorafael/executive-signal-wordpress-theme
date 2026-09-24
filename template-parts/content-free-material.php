@@ -35,14 +35,14 @@ $capture_form_action = admin_url( 'admin-post.php' );
 
 				<div class="es-resource-capture-panel__body">
 					<?php
-					if ( function_exists( 'brevo_leads_capture_render_free_material_error_message' ) ) {
-						brevo_leads_capture_render_free_material_error_message();
+					if ( function_exists( 'crm_leads_capture_render_free_material_error_message' ) ) {
+						crm_leads_capture_render_free_material_error_message();
 					}
 					?>
 
 					<form class="es-resource-capture-panel__form" action="<?php echo esc_url( $capture_form_action ); ?>" method="post">
-						<input type="hidden" name="action" value="brevo_leads_capture_free_material">
-						<?php wp_nonce_field( 'brevo_leads_capture_free_material' ); ?>
+						<input type="hidden" name="action" value="crm_leads_capture_free_material">
+						<?php wp_nonce_field( 'crm_leads_capture_free_material' ); ?>
 						<input type="hidden" name="material_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
 						<?php foreach ( executive_signal_get_free_material_capture_utm_fields() as $utm_field ) : ?>
 							<input
@@ -67,7 +67,7 @@ $capture_form_action = admin_url( 'admin-post.php' );
 							<label for="free-material-capture-website"><?php esc_html_e( 'Website', 'executive-signal-wordpress-theme' ); ?></label>
 							<input
 								id="free-material-capture-website"
-								name="brevo_leads_capture_website"
+								name="crm_leads_capture_website"
 								type="text"
 								value=""
 								autocomplete="off"

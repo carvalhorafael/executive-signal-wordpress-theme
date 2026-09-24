@@ -102,6 +102,8 @@ const translations = new Map([
   ["Start this course when you are ready.", "Comece este curso quando estiver pronto."],
   ["Use the checkout link to complete enrollment outside WordPress.", "Use o link de checkout para concluir a inscrição fora do WordPress."],
   ["Secure checkout handled by the course platform.", "Checkout seguro processado pela plataforma do curso."],
+  ["Course enrollment", "Inscrição no curso"],
+  ["Preview and enrollment", "Prévia e inscrição"],
   ["Course thumbnail", "Imagem do curso"],
   ["Access", "Acesso"],
   ["Course topics", "Tópicos do curso"],
@@ -282,8 +284,8 @@ const translations = new Map([
     "habilita o dominio de conteudo de cursos online.",
   ],
   [
-    "handles free material capture forms and Brevo delivery.",
-    "processa formularios de captura de materiais gratuitos e entrega via Brevo.",
+    "handles free material capture forms and CRM delivery.",
+    "processa formularios de captura de materiais gratuitos e entrega via CRM.",
   ],
   ["Executive Signal recommended plugins", "Plugins recomendados do Executive Signal"],
   [

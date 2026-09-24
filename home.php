@@ -30,7 +30,7 @@ get_header();
 		</div>
 	</header>
 
-	<section class="es-article-archive-grid" data-columns="two" aria-label="<?php esc_attr_e( 'Latest articles', 'executive-signal-wordpress-theme' ); ?>">
+	<section class="es-article-archive-grid" data-columns="three" aria-label="<?php esc_attr_e( 'Latest articles', 'executive-signal-wordpress-theme' ); ?>">
 		<?php if ( have_posts() ) : ?>
 			<div class="es-article-archive-grid__items">
 				<?php

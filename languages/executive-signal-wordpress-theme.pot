@@ -2,7 +2,7 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: Executive Signal WordPress Theme 0.2.0\n"
+"Project-Id-Version: Executive Signal WordPress Theme 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
@@ -116,8 +116,7 @@ msgstr ""
 
 #: category.php:22
 #: inc/free-materials.php:136
-#: template-parts/content-course.php:189
-#: template-parts/content-course.php:254
+#: template-parts/content-course.php:81
 msgid "Category"
 msgstr ""
 
@@ -210,7 +209,7 @@ msgid "enables the online courses content domain."
 msgstr ""
 
 #: inc/admin-notices.php:35
-msgid "handles free material capture forms and Brevo delivery."
+msgid "handles free material capture forms and CRM delivery."
 msgstr ""
 
 #: inc/admin-notices.php:95
@@ -648,16 +647,13 @@ msgid "Free materials in category"
 msgstr ""
 
 #: template-parts/content-course-card.php:29
-#: template-parts/content-course.php:169
-#: template-parts/content-course.php:232
+#: template-parts/content-course.php:59
 msgid "Course"
 msgstr ""
 
 #: template-parts/content-course-card.php:30
-#: template-parts/content-course.php:170
-#: template-parts/content-course.php:184
-#: template-parts/content-course.php:233
-#: template-parts/content-course.php:250
+#: template-parts/content-course.php:60
+#: template-parts/content-course.php:77
 msgid "Online"
 msgstr ""
 
@@ -665,403 +661,55 @@ msgstr ""
 msgid "View course"
 msgstr ""
 
-#: template-parts/content-course.php:18
-msgid "Clarify the signal behind a messy business problem."
-msgstr ""
-
-#: template-parts/content-course.php:19
-msgid "Turn course notes into operating routines and decision checklists."
-msgstr ""
-
-#: template-parts/content-course.php:20
-msgid "Use practical prompts, reviews and examples without losing strategic context."
-msgstr ""
-
-#: template-parts/content-course.php:23
-msgid "No advanced technical setup is required."
-msgstr ""
-
-#: template-parts/content-course.php:24
-msgid "Bring one real workflow or decision you want to improve."
-msgstr ""
-
-#: template-parts/content-course.php:25
-msgid "Set aside time to apply each lesson to your own context."
-msgstr ""
-
-#: template-parts/content-course.php:30
-msgid "Start with the operating problem"
-msgstr ""
-
-#: template-parts/content-course.php:31
-msgid "3 lessons / 12 min"
-msgstr ""
-
-#: template-parts/content-course.php:36
-msgid "Read the current signal"
-msgstr ""
-
-#: template-parts/content-course.php:37
-#: template-parts/content-course.php:87
-msgid "4 min"
-msgstr ""
-
-#: template-parts/content-course.php:42
-msgid "Map the decision context"
-msgstr ""
-
-#: template-parts/content-course.php:43
-#: template-parts/content-course.php:60
-#: template-parts/content-course.php:65
-#: template-parts/content-course.php:70
-#: template-parts/content-course.php:92
-msgid "5 min"
-msgstr ""
-
-#: template-parts/content-course.php:47
-msgid "Choose a practical target"
-msgstr ""
-
-#: template-parts/content-course.php:48
-msgid "3 min"
-msgstr ""
-
-#: template-parts/content-course.php:54
-msgid "Turn notes into routines"
-msgstr ""
-
-#: template-parts/content-course.php:55
-#: template-parts/content-course.php:77
-msgid "3 lessons / 15 min"
-msgstr ""
-
-#: template-parts/content-course.php:59
-msgid "Create a review rhythm"
-msgstr ""
-
-#: template-parts/content-course.php:64
-msgid "Build a decision checklist"
-msgstr ""
-
-#: template-parts/content-course.php:69
-msgid "Keep examples close to work"
-msgstr ""
-
-#: template-parts/content-course.php:76
-msgid "Apply and refine"
-msgstr ""
-
-#: template-parts/content-course.php:81
-msgid "Run the first review"
-msgstr ""
-
-#: template-parts/content-course.php:82
-msgid "6 min"
-msgstr ""
-
-#: template-parts/content-course.php:86
-msgid "Adjust the operating signal"
-msgstr ""
-
-#: template-parts/content-course.php:91
-msgid "Decide the next iteration"
-msgstr ""
-
-#: template-parts/content-course.php:99
-msgid "Operators"
-msgstr ""
-
-#: template-parts/content-course.php:100
-msgid "For people turning strategy into weekly execution."
-msgstr ""
-
-#: template-parts/content-course.php:101
-msgid "Use the course to make priorities, routines and review moments easier to inspect."
-msgstr ""
-
-#: template-parts/content-course.php:104
-msgid "Leaders"
-msgstr ""
-
-#: template-parts/content-course.php:105
-msgid "For leaders who need clearer management signals."
-msgstr ""
-
-#: template-parts/content-course.php:106
-msgid "Use the lessons to reduce noise before decisions reach meetings, dashboards or teams."
-msgstr ""
-
-#: template-parts/content-course.php:134
+#: template-parts/content-course.php:40
 msgid "Online course"
 msgstr ""
 
-#: template-parts/content-course.php:145
-#: template-parts/content-course.php:260
-msgid "Self-paced"
+#: template-parts/content-course.php:52
+msgid "Course enrollment"
 msgstr ""
 
-#: template-parts/content-course.php:151
-#: template-parts/content-course.php:243
-msgid "Go to checkout"
-msgstr ""
-
-#: template-parts/content-course.php:155
-msgid "View course details"
-msgstr ""
-
-#: template-parts/content-course.php:160
-msgid "Checkout opens in a secure external page."
-msgstr ""
-
-#: template-parts/content-course.php:164
+#: template-parts/content-course.php:54
 msgid "Course preview"
 msgstr ""
 
-#: template-parts/content-course.php:178
-msgid "Course overview"
+#: template-parts/content-course.php:66
+msgid "Preview and enrollment"
 msgstr ""
 
-#: template-parts/content-course.php:179
-msgid "Practical context before you enroll."
-msgstr ""
-
-#: template-parts/content-course.php:183
-#: template-parts/content-course.php:249
-msgid "Format"
-msgstr ""
-
-#: template-parts/content-course.php:185
-msgid "Self-paced access"
-msgstr ""
-
-#: template-parts/content-course.php:191
-msgid "Course track"
-msgstr ""
-
-#: template-parts/content-course.php:195
-msgid "Updated"
-msgstr ""
-
-#: template-parts/content-course.php:199
-msgid "Latest course revision"
-msgstr ""
-
-#: template-parts/content-course.php:206
-#: template-parts/content-course.php:218
-msgid "Preview"
-msgstr ""
-
-#: template-parts/content-course.php:207
-msgid "See the course shape before enrolling."
-msgstr ""
-
-#: template-parts/content-course.php:208
-msgid "This preview area uses mocked copy until the course plugin exposes preview video or sample lesson data."
-msgstr ""
-
-#: template-parts/content-course.php:210
-msgid "Read course details"
-msgstr ""
-
-#: template-parts/content-course.php:219
-msgid "Sample"
-msgstr ""
-
-#: template-parts/content-course.php:227
-msgid "Course thumbnail"
-msgstr ""
-
-#: template-parts/content-course.php:239
-msgid "Enrollment"
-msgstr ""
-
-#: template-parts/content-course.php:240
+#: template-parts/content-course.php:67
 msgid "Start this course when you are ready."
 msgstr ""
 
-#: template-parts/content-course.php:246
+#: template-parts/content-course.php:70
+msgid "Go to checkout"
+msgstr ""
+
+#: template-parts/content-course.php:73
 msgid "Secure checkout handled by the course platform."
 msgstr ""
 
-#: template-parts/content-course.php:259
+#: template-parts/content-course.php:76
+msgid "Format"
+msgstr ""
+
+#: template-parts/content-course.php:86
 msgid "Access"
 msgstr ""
 
-#: template-parts/content-course.php:268
-msgid "Course topics"
+#: template-parts/content-course.php:87
+msgid "Self-paced"
 msgstr ""
 
-#: template-parts/content-course.php:279
-msgid "Learning outcomes"
-msgstr ""
-
-#: template-parts/content-course.php:280
-msgid "What you will be able to apply."
-msgstr ""
-
-#: template-parts/content-course.php:281
-msgid "Mocked outcomes show the intended section shape until structured course outcomes exist in the plugin."
-msgstr ""
-
-#. translators: %d: Learning outcome number.
-#: template-parts/content-course.php:291
-#, php-format
-msgid "Outcome %d"
-msgstr ""
-
-#: template-parts/content-course.php:305
-msgid "Course curriculum"
-msgstr ""
-
-#: template-parts/content-course.php:306
-msgid "Program structure"
-msgstr ""
-
-#: template-parts/content-course.php:307
-msgid "Mock curriculum keeps the layout available while modules and lessons are not stored by the course plugin."
-msgstr ""
-
-#: template-parts/content-course.php:310
-msgid "Sections"
-msgstr ""
-
-#: template-parts/content-course.php:311
-msgid "3 sections"
-msgstr ""
-
-#: template-parts/content-course.php:314
-msgid "Lessons"
-msgstr ""
-
-#: template-parts/content-course.php:315
-msgid "9 lessons"
-msgstr ""
-
-#: template-parts/content-course.php:318
-msgid "Duration"
-msgstr ""
-
-#: template-parts/content-course.php:319
-msgid "42 min"
-msgstr ""
-
-#: template-parts/content-course.php:324
-msgid "Expand all sections"
-msgstr ""
-
-#: template-parts/content-course.php:327
-msgid "Collapse all sections"
-msgstr ""
-
-#: template-parts/content-course.php:350
-msgid "Preview lesson"
-msgstr ""
-
-#: template-parts/content-course.php:364
-msgid "Requirements"
-msgstr ""
-
-#: template-parts/content-course.php:365
-msgid "Before you begin"
-msgstr ""
-
-#: template-parts/content-course.php:380
-msgid "Course details"
-msgstr ""
-
-#: template-parts/content-course.php:381
-msgid "About this course"
-msgstr ""
-
-#: template-parts/content-course.php:394
-msgid "Audience fit"
-msgstr ""
-
-#: template-parts/content-course.php:395
-msgid "Who this course is for."
-msgstr ""
-
-#: template-parts/content-course.php:396
-msgid "Mocked audience groups keep the page structure visible until the plugin provides structured audience data."
-msgstr ""
-
-#: template-parts/content-course.php:415
-msgid "Instructor"
-msgstr ""
-
-#: template-parts/content-course.php:417
-msgid "Executive Signal course author"
-msgstr ""
-
-#: template-parts/content-course.php:425
-msgid "Mock instructor bio shown until the course plugin exposes dedicated instructor profile fields."
-msgstr ""
-
-#: template-parts/content-course.php:431
-msgid "Connects course concepts to practical executive routines."
-msgstr ""
-
-#: template-parts/content-course.php:432
-msgid "Keeps examples focused on decisions, signals and operating rhythm."
-msgstr ""
-
-#: template-parts/content-course.php:437
-msgid "Course social proof"
-msgstr ""
-
-#: template-parts/content-course.php:439
-msgid "Rating"
-msgstr ""
-
-#: template-parts/content-course.php:440
-msgid "4.8/5"
-msgstr ""
-
-#: template-parts/content-course.php:441
-msgid "Mock average rating"
-msgstr ""
-
-#: template-parts/content-course.php:444
-msgid "Students"
-msgstr ""
-
-#: template-parts/content-course.php:446
-msgid "Mock enrollment count"
-msgstr ""
-
-#: template-parts/content-course.php:449
-msgid "Reviews"
-msgstr ""
-
-#: template-parts/content-course.php:451
-msgid "Mock review volume"
-msgstr ""
-
-#: template-parts/content-course.php:457
-msgid "7 days"
-msgstr ""
-
-#: template-parts/content-course.php:461
-msgid "Guarantee"
-msgstr ""
-
-#: template-parts/content-course.php:462
-msgid "Mock guarantee placeholder."
-msgstr ""
-
-#: template-parts/content-course.php:465
-msgid "This section uses temporary guarantee copy until the real checkout policy is defined."
-msgstr ""
-
-#: template-parts/content-course.php:474
+#: template-parts/content-course.php:111
 msgid "Keep learning"
 msgstr ""
 
-#: template-parts/content-course.php:475
+#: template-parts/content-course.php:112
 msgid "Related courses"
 msgstr ""
 
-#: template-parts/content-course.php:476
+#: template-parts/content-course.php:113
 msgid "Continue with courses from the same track."
 msgstr ""
 

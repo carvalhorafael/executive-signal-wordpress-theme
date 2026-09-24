@@ -18,13 +18,13 @@ final class AdminNoticesTest extends TestCase {
 	/**
 	 * Recommended plugins should document the companion plugin contract.
 	 */
-	public function test_recommended_plugins_include_content_domains_and_brevo(): void {
+	public function test_recommended_plugins_include_content_domains_and_crm_capture(): void {
 		$plugins = executive_signal_get_recommended_plugins();
 		$files   = wp_list_pluck( $plugins, 'file' );
 
 		$this->assertContains( 'free-materials/free-materials.php', $files );
 		$this->assertContains( 'online-courses/online-courses.php', $files );
-		$this->assertContains( 'brevo-leads-capture/brevo-leads-capture.php', $files );
+		$this->assertContains( 'crm-leads-capture/crm-leads-capture.php', $files );
 	}
 
 	/**
@@ -36,5 +36,6 @@ final class AdminNoticesTest extends TestCase {
 
 		$this->assertNotContains( 'free-materials/free-materials.php', $missing_files );
 		$this->assertNotContains( 'online-courses/online-courses.php', $missing_files );
+		$this->assertNotContains( 'crm-leads-capture/crm-leads-capture.php', $missing_files );
 	}
 }

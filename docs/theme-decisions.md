@@ -84,3 +84,9 @@ O tema consome as funcoes publicas do plugin quando disponiveis e mantem fallbac
 Decisao: o tema valida apenas o contrato renderizado do formulario de captura de materiais gratuitos. Testes de submissao, sucesso, falha controlada, nonce, validacao de lead e integracao com Brevo pertencem ao plugin `brevo-leads-capture`.
 
 Motivo: exigir o plugin de captura no E2E obrigatorio do tema criaria acoplamento desnecessario entre repositorios. O tema deve garantir que entrega a superficie esperada para o plugin: `admin-post.php`, action `brevo_leads_capture_free_material`, nonce, `material_id`, campos publicos, honeypot e UTMs suportadas. O plugin deve ser dono do processamento e da cobertura do resultado da submissao.
+
+## 2026-09-24: Captura de leads migrada para o plugin de CRM
+
+Decisao: substituir a dependencia do plugin `brevo-leads-capture` por `crm-leads-capture`. O tema continua responsavel apenas pela apresentacao e passa a renderizar o contrato canonico do novo plugin: action e nonce `crm_leads_capture_free_material`, honeypot `crm_leads_capture_website` e helper `crm_leads_capture_render_free_material_error_message()`.
+
+Motivo: a captura deixou de ser acoplada a um unico provedor. Selecao de CRM, validacao, envio, mensagens e redirecionamento pertencem ao plugin `crm-leads-capture`; o tema nao deve depender dos aliases temporarios de compatibilidade com Brevo.

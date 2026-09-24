@@ -29,6 +29,7 @@ const deleteTermsBySlug = (taxonomy, slug) => {
 };
 
 const fixture = {
+  blogPageSlug: "blog",
   categorySlug: "e2e-theme",
   coursesPageSlug: "cursos",
   courseCategorySlugs: [
@@ -46,6 +47,7 @@ const fixture = {
   ],
   extraMaterialCategorySlug: "e2e-extra-materials",
   extraMaterialSlug: "e2e-extra-free-material",
+  homePageSlug: "inicio",
   materialCategorySlug: "e2e-materials",
   materialSlug: "e2e-free-material",
   menuName: "E2E Primary",
@@ -77,14 +79,51 @@ const articleContent = [
   ...articleSections.map(([level, title]) => `<${level}>${title}</${level}><p>Texto de apoio para ${title}.</p>`),
 ].join("");
 
+const courseBlockContent = [
+  '<!-- wp:online-courses/learning-outcomes {"eyebrow":"Resultados de aprendizagem","title":"O que você vai conseguir aplicar.","description":"Resultados editáveis vindos do bloco do curso.","items":["Clarificar o sinal por trás de um problema de negócio confuso.","Transformar anotações do curso em rotinas operacionais.","Aplicar exemplos práticos sem perder contexto estratégico."]} /-->',
+  '<!-- wp:online-courses/course-curriculum {"eyebrow":"Currículo do curso","title":"Estrutura do programa","description":"Currículo editável vindo do bloco do curso.","sections":[{"title":"Comece pelo problema operacional","meta":"3 aulas","lessons":[{"title":"Leia o sinal atual","duration":"4 min","preview":true},{"title":"Mapeie o contexto de decisão","duration":"5 min","preview":false}]},{"title":"Transforme notas em rotina","meta":"2 aulas","lessons":[{"title":"Crie um ritmo de revisão","duration":"5 min","preview":false}]}]} /-->',
+  '<!-- wp:online-courses/requirements {"eyebrow":"Requisitos","title":"Antes de começar","description":"Contexto mínimo para acompanhar o curso.","items":["Traga um fluxo real para melhorar.","Reserve tempo para aplicar cada aula."]} /-->',
+  "<!-- wp:heading --><h2>Sobre este curso</h2><!-- /wp:heading -->",
+  "<!-- wp:paragraph --><p>Conteúdo fixture do curso para validar a página individual de cursos.</p><!-- /wp:paragraph -->",
+  '<!-- wp:online-courses/audience-fit {"eyebrow":"Público indicado","title":"Para quem é este curso.","description":"Perfis que aproveitam melhor o curso.","groups":[{"label":"Operadores","title":"Para quem transforma estratégia em execução semanal.","description":"Use o curso para tornar prioridades e rotinas mais inspecionáveis."}]} /-->',
+  '<!-- wp:online-courses/instructor-bio {"eyebrow":"Instrutor","name":"Rafael Carvalho","role":"Autor de curso do Executive Signal","bio":"Bio fixture do instrutor para validar o bloco do curso.","highlights":["Conecta conceitos do curso a rotinas executivas práticas."]} /-->',
+].join("");
+
 test.beforeAll(() => {
   tryWpCli(["plugin", "activate", "free-materials"]);
   tryWpCli(["plugin", "activate", "online-courses"]);
+  tryWpCli(["plugin", "activate", "crm-leads-capture"]);
   runWpCli(["theme", "activate", "executive-signal-wordpress-theme"]);
   tryWpCli(["language", "core", "install", "pt_BR"]);
   runWpCli(["option", "update", "WPLANG", "pt_BR"]);
   runWpCli(["rewrite", "structure", "/%postname%/", "--hard"]);
   runWpCli(["rewrite", "flush", "--hard"]);
+
+  const ensurePage = (slug, title) => {
+    const existingPageId = tryWpCli(["post", "list", "--post_type=page", `--name=${slug}`, "--field=ID"]);
+
+    if (existingPageId) {
+      runWpCli(["post", "update", existingPageId, "--post_status=publish", `--post_title=${title}`]);
+      return existingPageId;
+    }
+
+    return runWpCli([
+      "post",
+      "create",
+      "--post_type=page",
+      "--post_status=publish",
+      `--post_name=${slug}`,
+      `--post_title=${title}`,
+      "--porcelain",
+    ]);
+  };
+
+  const homePageId = ensurePage(fixture.homePageSlug, "Início");
+  const blogPageId = ensurePage(fixture.blogPageSlug, "Blog");
+
+  runWpCli(["option", "update", "show_on_front", "page"]);
+  runWpCli(["option", "update", "page_on_front", homePageId]);
+  runWpCli(["option", "update", "page_for_posts", blogPageId]);
 
   const existingMaterialsPageId = tryWpCli(["post", "list", "--post_type=page", `--name=${fixture.materialsPageSlug}`, "--field=ID"]);
 
@@ -208,8 +247,7 @@ test.beforeAll(() => {
       slug: "e2e-course-signal-strategy",
       title: "E2E Signal Strategy",
       excerpt: "Curso fixture para decisões estratégicas com sinais executivos.",
-      content:
-        "<h2>O que você vai organizar</h2><p>Conteúdo fixture do curso para validar a página individual de cursos.</p><h2>Como aplicar</h2><p>Use sinais executivos para reduzir ruído e priorizar decisões.</p>",
+      content: courseBlockContent,
       category: "e2e-course-strategy",
       checkout: "https://checkout.example.com/signal-strategy",
     },
@@ -491,6 +529,17 @@ test.describe("Executive Signal theme front end", () => {
   });
 
   test("renders archive, 404 and single post editorial surfaces", async ({ page }) => {
+    await page.goto("/blog/");
+    const blogGrid = page.locator('.es-article-archive-grid[data-columns="three"]');
+
+    await expect(blogGrid).toBeVisible();
+
+    const blogColumnCount = await blogGrid.locator(".es-article-archive-grid__items").evaluate((grid) =>
+      getComputedStyle(grid).gridTemplateColumns.split(" ").length,
+    );
+
+    expect(blogColumnCount).toBe(page.viewportSize().width > 980 ? 3 : 1);
+
     await page.goto("/rota-inexistente-404/");
     await expect(page.locator(".es-empty-state__title")).toHaveText("Página não encontrada");
     await expect(page.locator(".es-empty-state .search-form")).toBeVisible();
@@ -608,12 +657,12 @@ test.describe("Executive Signal theme front end", () => {
     await expect(captureForm).toBeVisible();
     await expect(captureForm).toHaveAttribute("method", "post");
     await expect(captureForm.locator('input[name="action"]')).toHaveValue(
-      "brevo_leads_capture_free_material",
+      "crm_leads_capture_free_material",
     );
     await expect(captureForm.locator('input[name="_wpnonce"]')).toHaveCount(1);
     await expect(captureForm.locator('input[name="material_id"]')).toHaveValue(expectedMaterialId);
-    await expect(captureForm.locator('input[name="brevo_leads_capture_website"]')).toHaveValue("");
-    await expect(captureForm.locator('input[name="brevo_leads_capture_website"]')).toHaveAttribute(
+    await expect(captureForm.locator('input[name="crm_leads_capture_website"]')).toHaveValue("");
+    await expect(captureForm.locator('input[name="crm_leads_capture_website"]')).toHaveAttribute(
       "tabindex",
       "-1",
     );
@@ -681,28 +730,94 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".es-sales-hero__description")).toContainText(
       "Curso fixture para decisões estratégicas com sinais executivos.",
     );
-    await expect(page.locator(".course-single__hero-visual img")).toBeVisible();
-    await expect(page.locator(".es-event-info-strip")).toContainText("Visão geral do curso");
-    await expect(page.locator(".es-event-info-strip")).toContainText("E2E Estratégia");
-    await expect(page.locator(".es-preview-modal-trigger")).toContainText("Veja a estrutura do curso antes da inscrição.");
+    await expect(page.locator(".course-single__masthead-layout")).toBeVisible();
+    await expect(page.locator(".course-single__sidebar .es-course-enrollment")).toBeVisible();
+    await expect(page.locator(".course-single__sidebar .es-course-enrollment__preview img")).toBeVisible();
     await expect(page.locator(".es-course-enrollment")).toContainText("Comece este curso quando estiver pronto.");
     await expect(page.locator(".es-course-enrollment .es-button")).toHaveAttribute(
       "href",
       "https://checkout.example.com/signal-strategy",
     );
-    await expect(page.locator(".course-single__topics .es-nav-link")).toContainText("E2E Estratégia");
     await expect(page.locator(".es-value-stack")).toContainText("Resultados de aprendizagem");
     await expect(page.locator(".es-value-stack")).toContainText("Clarificar o sinal");
     await expect(page.locator(".es-course-curriculum")).toContainText("Estrutura do programa");
     await expect(page.locator(".es-course-curriculum")).toContainText("Comece pelo problema operacional");
-    await expect(page.locator(".es-course-curriculum__section")).toHaveCount(3);
-    await expect(page.locator("#course-requirements-title")).toHaveText("Antes de começar");
+    await expect(page.locator(".es-course-curriculum__section")).toHaveCount(2);
+    await expect(page.locator(".online-courses-block--requirements")).toContainText("Antes de começar");
     await expect(page.locator("#course-content")).toContainText("Sobre este curso");
-    await expect(page.locator(".es-article-prose h2").first()).toHaveText("O que você vai organizar");
+    await expect(page.locator(".course-single__editor-content > .wp-block-heading")).toContainText("Sobre este curso");
     await expect(page.locator(".es-audience-fit")).toContainText("Para quem é este curso.");
     await expect(page.locator(".es-instructor-bio")).toContainText("Instrutor");
-    await expect(page.locator(".es-metric-strip")).toContainText("Avaliação");
-    await expect(page.locator(".es-guarantee-callout")).toContainText("Placeholder mockado de garantia.");
+    await expect(page.locator(".es-event-info-strip")).toHaveCount(0);
+    await expect(page.locator(".es-metric-strip")).toHaveCount(0);
+    await expect(page.locator(".es-guarantee-callout")).toHaveCount(0);
+
+    const layout = await page.evaluate(() => {
+      const box = (selector) => {
+        const element = document.querySelector(selector);
+        const rect = element.getBoundingClientRect();
+
+        return {
+          height: Math.round(rect.height),
+          left: Math.round(rect.left),
+          top: Math.round(rect.top + window.scrollY),
+          width: Math.round(rect.width),
+        };
+      };
+
+      return {
+        curriculum: box(".es-course-curriculum"),
+        enrollment: box(".course-single__sidebar .es-course-enrollment"),
+        hero: box(".course-single__hero"),
+        outcomes: box(".es-value-stack"),
+        requirements: box(".online-courses-block--requirements"),
+      };
+    });
+
+    if (page.viewportSize().width >= 980) {
+      expect(layout.enrollment.left).toBeGreaterThan(layout.hero.left);
+      expect(layout.enrollment.width).toBeLessThan(430);
+      expect(layout.enrollment.height).toBeLessThan(700);
+
+      const stickyEnrollment = await page.evaluate(async () => {
+        const card = document.querySelector(".course-single__sidebar");
+        const button = document.querySelector(".course-single__sidebar .es-button");
+        const initialCardRect = card.getBoundingClientRect();
+        const initialButtonRect = button.getBoundingClientRect();
+
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight - 20;
+        const targetScroll = Math.max(300, Math.min(900, maxScroll));
+
+        window.scrollTo(0, targetScroll);
+        await new Promise((resolve) => window.setTimeout(resolve, 100));
+
+        const scrolledCardRect = card.getBoundingClientRect();
+        const scrolledButtonRect = button.getBoundingClientRect();
+
+        return {
+          initialButtonHeight: Math.round(initialButtonRect.height),
+          initialTop: Math.round(initialCardRect.top),
+          scrolledButtonHeight: Math.round(scrolledButtonRect.height),
+          scrolledTop: Math.round(scrolledCardRect.top),
+          scrollY: Math.round(window.scrollY),
+          targetScroll: Math.round(targetScroll),
+        };
+      });
+
+      expect(stickyEnrollment.initialButtonHeight).toBeGreaterThanOrEqual(48);
+      expect(stickyEnrollment.initialButtonHeight).toBeLessThan(60);
+      expect(stickyEnrollment.scrolledButtonHeight).toBeGreaterThanOrEqual(48);
+      expect(stickyEnrollment.scrolledButtonHeight).toBeLessThan(60);
+      expect(stickyEnrollment.scrollY).toBeGreaterThanOrEqual(stickyEnrollment.targetScroll - 5);
+      expect(stickyEnrollment.scrolledTop).toBeLessThan(stickyEnrollment.initialTop);
+      expect(stickyEnrollment.scrolledTop).toBeGreaterThanOrEqual(0);
+    } else {
+      expect(layout.enrollment.top).toBeGreaterThan(layout.hero.top);
+    }
+
+    expect(layout.outcomes.top).toBeGreaterThan(layout.hero.top);
+    expect(layout.curriculum.top).toBeGreaterThan(layout.outcomes.top);
+    expect(layout.requirements.top).toBeGreaterThan(layout.curriculum.top);
   });
 
   test("opens mobile navigation and submenus", async ({ page }) => {

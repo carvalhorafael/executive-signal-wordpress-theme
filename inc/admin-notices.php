@@ -29,10 +29,10 @@ function executive_signal_get_recommended_plugins() {
 			'reason'   => __( 'enables the online courses content domain.', 'executive-signal-wordpress-theme' ),
 		),
 		array(
-			'name'     => 'Brevo Leads Capture',
-			'file'     => 'brevo-leads-capture/brevo-leads-capture.php',
-			'function' => 'brevo_leads_capture',
-			'reason'   => __( 'handles free material capture forms and Brevo delivery.', 'executive-signal-wordpress-theme' ),
+			'name'     => 'CRM Leads Capture',
+			'file'     => 'crm-leads-capture/crm-leads-capture.php',
+			'function' => 'crm_leads_capture',
+			'reason'   => __( 'handles free material capture forms and CRM delivery.', 'executive-signal-wordpress-theme' ),
 		),
 	);
 }
