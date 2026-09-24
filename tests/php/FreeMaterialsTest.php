@@ -80,7 +80,7 @@ final class FreeMaterialsTest extends TestCase {
 
 		$fallback = executive_signal_get_free_material_cta( $post_id );
 
-		$this->assertSame( 'Download free material', $fallback['label'] );
+		$this->assertSame( __( 'Download free material', 'executive-signal-wordpress-theme' ), $fallback['label'] );
 
 		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL, 'Receive checklist' );
 
@@ -112,6 +112,12 @@ final class FreeMaterialsTest extends TestCase {
 	 * Landing page helper should prefer an editable WordPress page.
 	 */
 	public function test_free_material_landing_page_helpers_prefer_page(): void {
+		$existing_page = executive_signal_get_free_materials_page();
+
+		if ( $existing_page ) {
+			wp_delete_post( $existing_page->ID, true );
+		}
+
 		$post_id = wp_insert_post(
 			array(
 				'post_name'   => EXECUTIVE_SIGNAL_FREE_MATERIALS_PAGE_PATH,
@@ -137,6 +143,12 @@ final class FreeMaterialsTest extends TestCase {
 	 * Category helper should return the dedicated free material taxonomy.
 	 */
 	public function test_primary_free_material_category_is_returned(): void {
+		$existing_term = get_term_by( 'slug', 'leadership-material-test', EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY );
+
+		if ( $existing_term instanceof WP_Term ) {
+			wp_delete_term( $existing_term->term_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY );
+		}
+
 		$term = wp_insert_term(
 			'Leadership',
 			EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY,
@@ -172,6 +184,12 @@ final class FreeMaterialsTest extends TestCase {
 	 * Term renderer should output category links for the single template.
 	 */
 	public function test_free_material_terms_render_category_links(): void {
+		$existing_term = get_term_by( 'slug', 'strategy-material-test', EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY );
+
+		if ( $existing_term instanceof WP_Term ) {
+			wp_delete_term( $existing_term->term_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY );
+		}
+
 		$term = wp_insert_term(
 			'Strategy',
 			EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY,
@@ -199,7 +217,7 @@ final class FreeMaterialsTest extends TestCase {
 		$output = ob_get_clean();
 
 		$this->assertStringContainsString( 'free-material-terms', $output );
-		$this->assertStringContainsString( 'Category', $output );
+		$this->assertStringContainsString( __( 'Category', 'executive-signal-wordpress-theme' ), $output );
 		$this->assertStringContainsString( 'Strategy', $output );
 
 		wp_delete_post( $post_id, true );

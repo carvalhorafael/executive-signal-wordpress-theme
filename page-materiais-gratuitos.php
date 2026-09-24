@@ -67,7 +67,7 @@ $found_posts                  = (int) $free_materials_query->found_posts;
 		</div>
 	</header>
 
-	<section class="es-resource-browser" data-es-resource-browser="true">
+	<section class="es-resource-browser" data-columns="two" data-es-resource-browser="true">
 		<aside class="es-resource-browser__filters" aria-label="<?php esc_attr_e( 'Material categories', 'executive-signal-wordpress-theme' ); ?>">
 			<div class="es-resource-browser__filters-header">
 				<p id="free-material-filters-title" class="es-resource-browser__filters-title"><?php esc_html_e( 'Material categories', 'executive-signal-wordpress-theme' ); ?></p>

@@ -23,10 +23,16 @@ function executive_signal_get_recommended_plugins() {
 			'reason'   => __( 'enables the free materials content domain.', 'executive-signal-wordpress-theme' ),
 		),
 		array(
-			'name'     => 'Brevo Leads Capture',
-			'file'     => 'brevo-leads-capture/brevo-leads-capture.php',
-			'function' => 'brevo_leads_capture',
-			'reason'   => __( 'handles free material capture forms and Brevo delivery.', 'executive-signal-wordpress-theme' ),
+			'name'     => 'Online Courses',
+			'file'     => 'online-courses/online-courses.php',
+			'function' => 'online_courses',
+			'reason'   => __( 'enables the online courses content domain.', 'executive-signal-wordpress-theme' ),
+		),
+		array(
+			'name'     => 'CRM Leads Capture',
+			'file'     => 'crm-leads-capture/crm-leads-capture.php',
+			'function' => 'crm_leads_capture',
+			'reason'   => __( 'handles free material capture forms and CRM delivery.', 'executive-signal-wordpress-theme' ),
 		),
 	);
 }
@@ -88,7 +94,7 @@ function executive_signal_render_recommended_plugins_notice() {
 		<p>
 			<strong><?php esc_html_e( 'Executive Signal recommended plugins', 'executive-signal-wordpress-theme' ); ?></strong>
 		</p>
-		<p><?php esc_html_e( 'For the complete materials workflow, install and activate:', 'executive-signal-wordpress-theme' ); ?></p>
+		<p><?php esc_html_e( 'For the complete content workflow, install and activate:', 'executive-signal-wordpress-theme' ); ?></p>
 		<ul>
 			<?php foreach ( $missing_plugins as $plugin ) : ?>
 				<li>
