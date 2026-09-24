@@ -40,10 +40,12 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Checkout free-materials plugin
+      - name: Checkout companion plugins
         run: |
           mkdir -p ../plugins-wordpress
           git clone --depth=1 --branch develop https://github.com/carvalhorafael/free-materials.git ../plugins-wordpress/free-materials
+          git clone --depth=1 https://github.com/carvalhorafael/online-courses.git ../plugins-wordpress/online-courses
+          git clone --depth=1 https://github.com/carvalhorafael/crm-leads-capture.git ../plugins-wordpress/crm-leads-capture
 
       - name: Start WordPress
         run: npm run wp:start
