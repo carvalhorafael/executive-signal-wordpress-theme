@@ -14,6 +14,12 @@ define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY', function_exists( 'free_materi
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL', function_exists( 'free_materials_cta_label_meta_key' ) ? free_materials_cta_label_meta_key() : '_executive_signal_material_capture_label' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID', function_exists( 'free_materials_brevo_list_id_meta_key' ) ? free_materials_brevo_list_id_meta_key() : '_brevo_leads_capture_list_id' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL', function_exists( 'free_materials_brevo_delivery_url_meta_key' ) ? free_materials_brevo_delivery_url_meta_key() : '_brevo_leads_capture_delivery_url' );
+define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_FORMAT', function_exists( 'free_materials_format_meta_key' ) ? free_materials_format_meta_key() : '_free_materials_format' );
+define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_PAGES', function_exists( 'free_materials_pages_meta_key' ) ? free_materials_pages_meta_key() : '_free_materials_pages' );
+define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_FILE_SIZE', function_exists( 'free_materials_file_size_meta_key' ) ? free_materials_file_size_meta_key() : '_free_materials_file_size' );
+define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_LEVEL', function_exists( 'free_materials_level_meta_key' ) ? free_materials_level_meta_key() : '_free_materials_level' );
+define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_HIGHLIGHTS', function_exists( 'free_materials_highlights_meta_key' ) ? free_materials_highlights_meta_key() : '_free_materials_highlights' );
+define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_DOWNLOADS', function_exists( 'free_materials_downloads_meta_key' ) ? free_materials_downloads_meta_key() : '_free_materials_downloads' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIALS_PAGE_PATH', 'materiais-gratuitos' );
 
 /**
@@ -23,6 +29,44 @@ define( 'EXECUTIVE_SIGNAL_FREE_MATERIALS_PAGE_PATH', 'materiais-gratuitos' );
  */
 function executive_signal_free_materials_plugin_is_available() {
 	return function_exists( 'free_materials' ) || post_type_exists( EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE );
+}
+
+/**
+ * Get the default free materials eyebrow.
+ *
+ * @return string
+ */
+function executive_signal_get_free_materials_eyebrow_default() {
+	return __( 'Free materials', 'executive-signal-wordpress-theme' );
+}
+
+/**
+ * Get the default free materials title.
+ *
+ * @return string
+ */
+function executive_signal_get_free_materials_title_default() {
+	return __( 'Free materials', 'executive-signal-wordpress-theme' );
+}
+
+/**
+ * Get the default free materials description.
+ *
+ * @return string
+ */
+function executive_signal_get_free_materials_description_default() {
+	return __( 'Guides, checklists and working notes for leaders who want clearer operating signals.', 'executive-signal-wordpress-theme' );
+}
+
+/**
+ * Get a Customizer-backed free materials setting.
+ *
+ * @param string $setting Setting name suffix.
+ * @param string $default_value Default value.
+ * @return string
+ */
+function executive_signal_get_free_materials_setting( $setting, $default_value ) {
+	return get_theme_mod( 'executive_signal_free_materials_' . $setting, $default_value );
 }
 
 /**
@@ -63,6 +107,27 @@ function executive_signal_get_free_material_cta( $post_id = null ) {
 
 	return array(
 		'label' => $cta_label ? $cta_label : __( 'Download free material', 'executive-signal-wordpress-theme' ),
+	);
+}
+
+/**
+ * Get the visitor-facing details supplied by the Free Materials plugin.
+ *
+ * @param int|null $post_id Post ID.
+ * @return array{format:string,pages:int,file_size:string,level:string,highlights:array<int,string>,downloads:int}
+ */
+function executive_signal_get_free_material_details( $post_id = null ) {
+	$post_id    = $post_id ? (int) $post_id : get_the_ID();
+	$format     = $post_id ? (string) get_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_FORMAT, true ) : '';
+	$highlights = $post_id ? get_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_HIGHLIGHTS, true ) : array();
+
+	return array(
+		'format'     => $format && function_exists( 'free_materials_format_label' ) ? free_materials_format_label( $format ) : $format,
+		'pages'      => $post_id ? (int) get_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_PAGES, true ) : 0,
+		'file_size'  => $post_id ? (string) get_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_FILE_SIZE, true ) : '',
+		'level'      => $post_id ? (string) get_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_LEVEL, true ) : '',
+		'highlights' => is_array( $highlights ) ? array_values( array_filter( array_map( 'sanitize_text_field', $highlights ) ) ) : array(),
+		'downloads'  => $post_id ? (int) get_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_DOWNLOADS, true ) : 0,
 	);
 }
 

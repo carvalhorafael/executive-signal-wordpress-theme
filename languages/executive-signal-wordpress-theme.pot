@@ -2,7 +2,7 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: Executive Signal WordPress Theme 0.3.1\n"
+"Project-Id-Version: Executive Signal WordPress Theme 0.3.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
@@ -115,7 +115,7 @@ msgid "Author articles"
 msgstr ""
 
 #: category.php:22
-#: inc/free-materials.php:136
+#: inc/free-materials.php:201
 #: template-parts/content-course.php:81
 msgid "Category"
 msgstr ""
@@ -240,11 +240,38 @@ msgstr ""
 msgid "Blog description"
 msgstr ""
 
-#: inc/free-materials.php:65
+#. Template Name of the theme
+#: inc/customizer.php:89
+#: inc/free-materials.php:40
+#: inc/free-materials.php:49
+msgid "Free materials"
+msgstr ""
+
+#: inc/customizer.php:90
+msgid "Controls the introductory copy shown on the free materials page."
+msgstr ""
+
+#: inc/customizer.php:107
+msgid "Free materials eyebrow"
+msgstr ""
+
+#: inc/customizer.php:125
+msgid "Free materials title"
+msgstr ""
+
+#: inc/customizer.php:143
+msgid "Free materials description"
+msgstr ""
+
+#: inc/free-materials.php:58
+msgid "Guides, checklists and working notes for leaders who want clearer operating signals."
+msgstr ""
+
+#: inc/free-materials.php:109
 msgid "Download free material"
 msgstr ""
 
-#: inc/free-materials.php:128
+#: inc/free-materials.php:193
 msgctxt "free material category list separator"
 msgid ", "
 msgstr ""
@@ -471,17 +498,8 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#. Template Name of the theme
-#: page-materiais-gratuitos.php:46
-msgid "Free materials"
-msgstr ""
-
-#: page-materiais-gratuitos.php:54
-msgid "Guides, checklists and working notes for leaders who want clearer operating signals."
-msgstr ""
-
 #. translators: %s: Number of free materials found in an archive.
-#: page-materiais-gratuitos.php:62
+#: page-materiais-gratuitos.php:51
 #: taxonomy-material_categoria.php:36
 #, php-format
 msgid "%s material found"
@@ -489,30 +507,30 @@ msgid_plural "%s materials found"
 msgstr[0] ""
 msgstr[1] ""
 
-#: page-materiais-gratuitos.php:71
-#: page-materiais-gratuitos.php:73
+#: page-materiais-gratuitos.php:60
+#: page-materiais-gratuitos.php:62
 msgid "Material categories"
 msgstr ""
 
-#: page-materiais-gratuitos.php:75
+#: page-materiais-gratuitos.php:64
 #: template-parts/course-listing.php:72
 msgid "Clear filters"
 msgstr ""
 
-#: page-materiais-gratuitos.php:82
+#: page-materiais-gratuitos.php:71
 #: template-parts/course-listing.php:79
 msgid "Filter by topic"
 msgstr ""
 
-#: page-materiais-gratuitos.php:101
+#: page-materiais-gratuitos.php:90
 msgid "No material categories found."
 msgstr ""
 
-#: page-materiais-gratuitos.php:105
+#: page-materiais-gratuitos.php:94
 msgid "Material listing"
 msgstr ""
 
-#: page-materiais-gratuitos.php:119
+#: page-materiais-gratuitos.php:108
 msgid "No materials match the selected categories."
 msgstr ""
 
@@ -690,6 +708,7 @@ msgid "Secure checkout handled by the course platform."
 msgstr ""
 
 #: template-parts/content-course.php:76
+#: template-parts/content-free-material.php:35
 msgid "Format"
 msgstr ""
 
@@ -725,68 +744,93 @@ msgstr ""
 msgid "View material"
 msgstr ""
 
-#: template-parts/content-free-material.php:15
+#: template-parts/content-free-material.php:26
+#: template-parts/content-free-material.php:158
 msgid "Free material"
 msgstr ""
 
-#: template-parts/content-free-material.php:31
-msgid "Immediate access"
+#: template-parts/content-free-material.php:30
+msgid "About this material"
 msgstr ""
 
-#: template-parts/content-free-material.php:32
-msgid "Complete the form"
+#: template-parts/content-free-material.php:42
+msgid "Pages or items"
 msgstr ""
 
-#: template-parts/content-free-material.php:34
-msgid "To receive the material."
-msgstr ""
-
-#: template-parts/content-free-material.php:55
-msgid "Name"
+#: template-parts/content-free-material.php:49
+msgid "File size"
 msgstr ""
 
 #: template-parts/content-free-material.php:56
-msgid "Your full name"
-msgstr ""
-
-#: template-parts/content-free-material.php:59
-msgid "Email"
-msgstr ""
-
-#: template-parts/content-free-material.php:60
-msgid "you@example.com"
+msgid "Who it is for"
 msgstr ""
 
 #: template-parts/content-free-material.php:63
+msgid "Downloads"
+msgstr ""
+
+#: template-parts/content-free-material.php:72
+msgid "What is inside"
+msgstr ""
+
+#: template-parts/content-free-material.php:88
+msgid "Immediate access"
+msgstr ""
+
+#: template-parts/content-free-material.php:89
+msgid "Complete the form"
+msgstr ""
+
+#: template-parts/content-free-material.php:110
+msgid "Name"
+msgstr ""
+
+#: template-parts/content-free-material.php:111
+msgid "Your full name"
+msgstr ""
+
+#: template-parts/content-free-material.php:114
+msgid "Email"
+msgstr ""
+
+#: template-parts/content-free-material.php:115
+msgid "you@example.com"
+msgstr ""
+
+#: template-parts/content-free-material.php:118
 #: template-parts/share-post.php:19
 msgid "WhatsApp"
 msgstr ""
 
-#: template-parts/content-free-material.php:64
+#: template-parts/content-free-material.php:119
 msgid "(00) 00000-0000"
 msgstr ""
 
-#: template-parts/content-free-material.php:67
+#: template-parts/content-free-material.php:122
 msgid "Website"
 msgstr ""
 
-#: template-parts/content-free-material.php:86
+#: template-parts/content-free-material.php:141
 msgid "No payment required. Keep the material for future reference."
 msgstr ""
 
-#: template-parts/content-free-material.php:95
+#: template-parts/content-free-material.php:150
 msgid "What you will find"
 msgstr ""
 
-#: template-parts/content-free-material.php:96
-msgid "Applied knowledge to accelerate your journey and avoid costly mistakes."
+#: template-parts/content-free-material.php:152
+msgid "I do not want this material to just sit in your files. Use it to organize your ideas, make a decision, and take action."
 msgstr ""
 
-#: template-parts/content-free-material.php:111
+#: template-parts/content-free-material.php:159
+msgid "Download it now and consult it whenever you need."
+msgstr ""
+
+#: template-parts/content-free-material.php:187
 msgid "Ready to use"
 msgstr ""
 
-#: template-parts/content-free-material.php:112
+#: template-parts/content-free-material.php:188
 msgid "Access the content and apply the ideas today."
 msgstr ""
 

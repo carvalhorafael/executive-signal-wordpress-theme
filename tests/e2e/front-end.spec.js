@@ -52,6 +52,7 @@ const fixture = {
   materialSlug: "e2e-free-material",
   menuName: "E2E Primary",
   materialsPageSlug: "materiais-gratuitos",
+  pageSlug: "e2e-standard-page",
   postSlug: "e2e-theme-article",
   siblingSlug: "e2e-theme-related",
 };
@@ -120,6 +121,14 @@ test.beforeAll(() => {
 
   const homePageId = ensurePage(fixture.homePageSlug, "Início");
   const blogPageId = ensurePage(fixture.blogPageSlug, "Blog");
+  const standardPageId = ensurePage(fixture.pageSlug, "E2E Standard Page");
+
+  runWpCli([
+    "post",
+    "update",
+    standardPageId,
+    "--post_content=<p>Fixture content for the standard page template.</p><h2>Standard page section</h2><p>More fixture content.</p>",
+  ]);
 
   runWpCli(["option", "update", "show_on_front", "page"]);
   runWpCli(["option", "update", "page_on_front", homePageId]);
@@ -175,6 +184,15 @@ test.beforeAll(() => {
 
   const coursesPageId = runWpCli(["post", "list", "--post_type=page", `--name=${fixture.coursesPageSlug}`, "--field=ID"]);
   runWpCli(["post", "meta", "update", coursesPageId, "_wp_page_template", "page-cursos.php"]);
+  runWpCli(["theme", "mod", "set", "executive_signal_free_materials_eyebrow", "E2E Materials"]);
+  runWpCli(["theme", "mod", "set", "executive_signal_free_materials_title", "E2E Free Materials"]);
+  runWpCli([
+    "theme",
+    "mod",
+    "set",
+    "executive_signal_free_materials_description",
+    "Customizer copy for the free materials archive.",
+  ]);
 
   tryWpCli(["term", "create", "category", "E2E Theme", "--slug=e2e-theme"]);
   tryWpCli(["term", "create", "post_tag", "E2E Tag", "--slug=e2e-tag"]);
@@ -355,6 +373,15 @@ test.beforeAll(() => {
     `wp_set_object_terms(${Number(materialId)}, array(${Number(materialCategoryId)}), 'material_categoria', false);`,
   ]);
   runWpCli(["post", "meta", "update", materialId, "_executive_signal_material_capture_label", "Receive material"]);
+  runWpCli(["post", "meta", "update", materialId, "_free_materials_format", "pdf"]);
+  runWpCli(["post", "meta", "update", materialId, "_free_materials_pages", "12"]);
+  runWpCli(["post", "meta", "update", materialId, "_free_materials_file_size", "2.4 MB"]);
+  runWpCli(["post", "meta", "update", materialId, "_free_materials_level", "Executive leaders"]);
+  runWpCli(["post", "meta", "update", materialId, "_free_materials_downloads", "1847"]);
+  runWpCli([
+    "eval",
+    `update_post_meta(${Number(materialId)}, '_free_materials_highlights', array('Scorecard', 'Decision checklist'));`,
+  ]);
 
   if (!tryWpCli(["post", "meta", "get", materialId, "_thumbnail_id"])) {
     runWpCli([
@@ -528,6 +555,31 @@ test.describe("Executive Signal theme front end", () => {
     await expectNoAxeViolations(page);
   });
 
+  test("keeps standard pages in a single-column reading flow", async ({ page }) => {
+    await page.goto(`/${fixture.pageSlug}/`);
+
+    await expect(page.locator(".es-article-hero__title")).toHaveText("E2E Standard Page");
+    await expect(page.locator(".entry__content")).toContainText("Fixture content for the standard page template.");
+
+    const layout = await page.evaluate(() => {
+      const article = document.querySelector(".entry--page").getBoundingClientRect();
+      const content = document.querySelector(".entry--page > .entry__content").getBoundingClientRect();
+      const title = document.querySelector(".entry--page .es-article-hero__title").getBoundingClientRect();
+      const articleColumns = getComputedStyle(document.querySelector(".entry--page")).gridTemplateColumns;
+
+      return {
+        articleCenter: article.left + article.width / 2,
+        columnCount: articleColumns.split(" ").filter(Boolean).length,
+        contentCenter: content.left + content.width / 2,
+        titleCenter: title.left + title.width / 2,
+      };
+    });
+
+    expect(layout.columnCount).toBe(1);
+    expect(Math.abs(layout.articleCenter - layout.contentCenter)).toBeLessThanOrEqual(1);
+    expect(Math.abs(layout.contentCenter - layout.titleCenter)).toBeLessThanOrEqual(1);
+  });
+
   test("renders archive, 404 and single post editorial surfaces", async ({ page }) => {
     await page.goto("/blog/");
     const blogGrid = page.locator('.es-article-archive-grid[data-columns="three"]');
@@ -613,10 +665,10 @@ test.describe("Executive Signal theme front end", () => {
     ]);
 
     await page.goto("/materiais-gratuitos/");
-    await expect(page.locator(".es-blog-archive-header__eyebrow")).toHaveText("Materiais gratuitos");
-    await expect(page.locator(".es-blog-archive-header__title")).toHaveText("Materiais Gratuitos");
+    await expect(page.locator(".es-blog-archive-header__eyebrow")).toHaveText("E2E Materials");
+    await expect(page.locator(".es-blog-archive-header__title")).toHaveText("E2E Free Materials");
     await expect(page.locator(".es-blog-archive-header__description")).toContainText(
-      "Descrição editável da página de materiais gratuitos.",
+      "Customizer copy for the free materials archive.",
     );
     await expect(page.locator(".es-resource-browser__filters")).toBeVisible();
     await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toBeVisible();
@@ -642,16 +694,14 @@ test.describe("Executive Signal theme front end", () => {
     );
     await expect(page.locator('article[itemtype="https://schema.org/CreativeWork"]')).toBeVisible();
     await expect(page.locator(".free-material-terms")).toHaveCount(0);
-    await expect(page.locator(".es-resource-capture-hero__visual")).toBeVisible();
+    await expect(page.locator(".es-resource-capture-hero__visual")).toHaveCount(0);
+    await expect(page.locator(".free-material-content-cover")).toBeVisible();
     await expect(page.locator(".es-resource-capture-hero__description")).toHaveCount(0);
     await expect(page.locator(".es-resource-capture-hero__proof")).toHaveCount(0);
     await expect(page.locator(".es-resource-capture-hero")).not.toContainText(
       "Second material fixture for category filter tests.",
     );
     await expect(page.locator(".es-resource-capture-panel")).toContainText("Complete o formulário");
-    await expect(page.locator(".es-resource-capture-panel")).toContainText(
-      "para receber o material.",
-    );
     const captureForm = page.locator('.es-resource-capture-panel form[action$="/wp-admin/admin-post.php"]');
 
     await expect(captureForm).toBeVisible();
@@ -675,15 +725,35 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator("#free-material-capture-email")).toBeVisible();
     await expect(page.locator("#free-material-capture-whatsapp")).toBeVisible();
     await expect(page.locator(".es-resource-capture-panel button")).toHaveText("Receive material");
-    await expect(page.locator(".es-resource-detail__title")).toHaveText(
-      "Conhecimento aplicado para acelerar sua jornada e evitar erros caros.",
+    await expect(page.locator(".free-material-overview")).toBeVisible();
+    await expect(page.locator(".free-material-overview")).toContainText("PDF");
+    await expect(page.locator(".free-material-overview")).toContainText("Executive leaders");
+    await expect(page.locator(".free-material-overview__contents li")).toHaveText([
+      "Scorecard",
+      "Decision checklist",
+    ]);
+    await expect(page.locator(".free-material-quote")).toContainText(
+      "Não quero que este material fique apenas nos seus arquivos.",
     );
-    await expect(page.locator(".es-resource-final-cta")).toContainText(
+    await expect(page.locator(".free-material-quote cite")).toHaveText("Rafael Carvalho");
+    await expect(page.locator(".free-material-sticky-cta")).toBeVisible();
+    await expect(page.locator(".free-material-sticky-cta")).toContainText("Material gratuito");
+    await expect(page.locator(".free-material-sticky-cta")).toContainText(
+      "Baixe agora mesmo e consulte sempre que precisar.",
+    );
+    await expect(page.locator(".free-material-sticky-cta .es-button")).toHaveAttribute("href", "#capture");
+    await expect(page.locator(".free-material-sticky-cta")).toHaveCSS(
+      "position",
+      test.info().project.name === "mobile-chrome" ? "static" : "sticky",
+    );
+    const finalCta = page.locator(".es-resource-capture-landing__final-cta .es-resource-final-cta");
+
+    await expect(finalCta).toContainText(
       "Acesse o conteúdo e aplique as ideias hoje mesmo.",
     );
-    await expect(page.locator(".es-resource-final-cta .es-button")).toHaveAttribute("href", "#capture");
-    await page.locator(".es-resource-final-cta .es-button").scrollIntoViewIfNeeded();
-    await page.locator(".es-resource-final-cta .es-button").click();
+    await expect(finalCta.locator(".es-button")).toHaveAttribute("href", "#capture");
+    await finalCta.locator(".es-button").scrollIntoViewIfNeeded();
+    await finalCta.locator(".es-button").click();
     await expect(page).toHaveURL(/#capture$/);
     await expect
       .poll(async () =>

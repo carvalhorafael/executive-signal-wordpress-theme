@@ -47,6 +47,11 @@ test.describe("Executive Signal theme editor contracts", () => {
     await loginAsAdmin(page);
     await page.goto("/wp-admin/post-new.php");
 
+    await expect(page.locator('link[id^="executive-signal-editor"]')).toHaveCount(1);
+
+    const adminBodyColor = await page.locator("body").evaluate((body) => getComputedStyle(body).color);
+    expect(adminBodyColor).toBe("rgb(60, 67, 74)");
+
     await page.waitForFunction(() => {
       const core = window.wp?.data?.select("core");
       const patterns = core?.getBlockPatterns?.();
@@ -71,5 +76,36 @@ test.describe("Executive Signal theme editor contracts", () => {
         "executive-signal/landing-page",
       ]),
     );
+
+    const welcomeDialog = page.getByRole("dialog").first();
+
+    await welcomeDialog.waitFor({ state: "visible", timeout: 2_000 }).catch(() => {});
+
+    if (await welcomeDialog.isVisible()) {
+      const closeButton = welcomeDialog.getByRole("button", { name: /Fechar|Close/i }).first();
+
+      if (await closeButton.isVisible()) {
+        await closeButton.click();
+      }
+    }
+
+    const featuredImageButton = page
+      .getByRole("button", { name: /Definir imagem destacada|Set featured image/i })
+      .first();
+
+    if (!(await featuredImageButton.isVisible())) {
+      const settingsButton = page.getByRole("button", { name: /Configurações|Settings/i }).first();
+
+      if (await settingsButton.isVisible()) {
+        await settingsButton.click();
+      }
+    }
+
+    await featuredImageButton.click();
+    await page.getByRole("tab", { name: /Biblioteca de mídia|Media Library/i }).click();
+    const mediaFilterLabel = page.locator('label[for="media-attachment-filters"]');
+
+    await expect(mediaFilterLabel).toBeVisible();
+    await expect(mediaFilterLabel).toHaveCSS("color", adminBodyColor);
   });
 });

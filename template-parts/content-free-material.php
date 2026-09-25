@@ -6,7 +6,18 @@
  */
 
 $material_cta        = executive_signal_get_free_material_cta();
+$material_details    = executive_signal_get_free_material_details();
 $capture_form_action = admin_url( 'admin-post.php' );
+
+$material_facts = array_filter(
+	array(
+		'format'    => $material_details['format'],
+		'pages'     => $material_details['pages'] > 0 ? number_format_i18n( $material_details['pages'] ) : '',
+		'file_size' => $material_details['file_size'],
+		'level'     => $material_details['level'],
+		'downloads' => $material_details['downloads'] > 0 ? number_format_i18n( $material_details['downloads'] ) : '',
+	)
+);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry entry--single free-material-single es-resource-capture-landing' ); ?> data-variant="classic" itemscope itemtype="https://schema.org/CreativeWork">
@@ -15,12 +26,58 @@ $capture_form_action = admin_url( 'admin-post.php' );
 			<p class="es-resource-capture-hero__eyebrow"><?php esc_html_e( 'Free material', 'executive-signal-wordpress-theme' ); ?></p>
 			<?php the_title( '<h1 class="es-resource-capture-hero__title" itemprop="headline">', '</h1>' ); ?>
 
-			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="es-resource-capture-hero__visual" data-placement="below-title">
-					<figure class="es-resource-cover">
-						<?php the_post_thumbnail( 'large' ); ?>
-					</figure>
-				</div>
+			<?php if ( $material_facts || $material_details['highlights'] ) : ?>
+				<section class="free-material-overview" aria-label="<?php esc_attr_e( 'About this material', 'executive-signal-wordpress-theme' ); ?>">
+					<?php if ( $material_facts ) : ?>
+						<dl class="free-material-overview__facts">
+							<?php if ( $material_details['format'] ) : ?>
+								<div class="free-material-overview__fact">
+									<dt><?php esc_html_e( 'Format', 'executive-signal-wordpress-theme' ); ?></dt>
+									<dd><?php echo esc_html( $material_details['format'] ); ?></dd>
+								</div>
+							<?php endif; ?>
+
+							<?php if ( $material_details['pages'] > 0 ) : ?>
+								<div class="free-material-overview__fact">
+									<dt><?php esc_html_e( 'Pages or items', 'executive-signal-wordpress-theme' ); ?></dt>
+									<dd><?php echo esc_html( number_format_i18n( $material_details['pages'] ) ); ?></dd>
+								</div>
+							<?php endif; ?>
+
+							<?php if ( $material_details['file_size'] ) : ?>
+								<div class="free-material-overview__fact">
+									<dt><?php esc_html_e( 'File size', 'executive-signal-wordpress-theme' ); ?></dt>
+									<dd><?php echo esc_html( $material_details['file_size'] ); ?></dd>
+								</div>
+							<?php endif; ?>
+
+							<?php if ( $material_details['level'] ) : ?>
+								<div class="free-material-overview__fact free-material-overview__fact--wide">
+									<dt><?php esc_html_e( 'Who it is for', 'executive-signal-wordpress-theme' ); ?></dt>
+									<dd><?php echo esc_html( $material_details['level'] ); ?></dd>
+								</div>
+							<?php endif; ?>
+
+							<?php if ( $material_details['downloads'] > 0 ) : ?>
+								<div class="free-material-overview__fact">
+									<dt><?php esc_html_e( 'Downloads', 'executive-signal-wordpress-theme' ); ?></dt>
+									<dd><?php echo esc_html( number_format_i18n( $material_details['downloads'] ) ); ?></dd>
+								</div>
+							<?php endif; ?>
+						</dl>
+					<?php endif; ?>
+
+					<?php if ( $material_details['highlights'] ) : ?>
+						<div class="free-material-overview__contents">
+							<h3><?php esc_html_e( 'What is inside', 'executive-signal-wordpress-theme' ); ?></h3>
+							<ul>
+								<?php foreach ( $material_details['highlights'] as $highlight ) : ?>
+									<li><?php echo esc_html( $highlight ); ?></li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
+					<?php endif; ?>
+				</section>
 			<?php endif; ?>
 
 			<meta itemprop="mainEntityOfPage" content="<?php echo esc_url( get_permalink() ); ?>">
@@ -30,8 +87,6 @@ $capture_form_action = admin_url( 'admin-post.php' );
 			<aside id="capture" class="es-resource-capture-panel" aria-labelledby="free-material-capture-title">
 				<p class="es-resource-capture-panel__eyebrow"><?php esc_html_e( 'Immediate access', 'executive-signal-wordpress-theme' ); ?></p>
 				<h2 id="free-material-capture-title" class="es-resource-capture-panel__title"><?php esc_html_e( 'Complete the form', 'executive-signal-wordpress-theme' ); ?></h2>
-
-				<p class="es-resource-capture-panel__description"><?php esc_html_e( 'To receive the material.', 'executive-signal-wordpress-theme' ); ?></p>
 
 				<div class="es-resource-capture-panel__body">
 					<?php
@@ -92,11 +147,32 @@ $capture_form_action = admin_url( 'admin-post.php' );
 	<div class="es-resource-capture-landing__details">
 		<section class="es-resource-detail" data-layout="split">
 			<div class="es-resource-detail__intro">
-				<p class="es-resource-detail__eyebrow"><?php esc_html_e( 'What you will find', 'executive-signal-wordpress-theme' ); ?></p>
-				<h2 class="es-resource-detail__title"><?php esc_html_e( 'Applied knowledge to accelerate your journey and avoid costly mistakes.', 'executive-signal-wordpress-theme' ); ?></h2>
+				<h2 class="screen-reader-text"><?php esc_html_e( 'What you will find', 'executive-signal-wordpress-theme' ); ?></h2>
+				<blockquote class="free-material-quote">
+					<p><?php esc_html_e( 'I do not want this material to just sit in your files. Use it to organize your ideas, make a decision, and take action.', 'executive-signal-wordpress-theme' ); ?></p>
+					<cite>Rafael Carvalho</cite>
+				</blockquote>
+
+				<aside class="es-resource-final-cta free-material-sticky-cta" aria-labelledby="free-material-sticky-cta-title">
+					<div>
+						<p class="es-resource-final-cta__eyebrow"><?php esc_html_e( 'Free material', 'executive-signal-wordpress-theme' ); ?></p>
+						<h2 id="free-material-sticky-cta-title" class="es-resource-final-cta__title"><?php esc_html_e( 'Download it now and consult it whenever you need.', 'executive-signal-wordpress-theme' ); ?></h2>
+					</div>
+					<div class="es-resource-final-cta__action">
+						<a class="es-button" data-variant="primary" href="#capture">
+							<?php echo esc_html( $material_cta['label'] ); ?>
+						</a>
+					</div>
+				</aside>
 			</div>
 
 			<div class="es-resource-detail__body entry__content es-article-prose free-material-single__content" itemprop="text">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<figure class="es-resource-cover free-material-content-cover">
+						<?php the_post_thumbnail( 'large' ); ?>
+					</figure>
+				<?php endif; ?>
+
 				<?php
 				the_content();
 				wp_link_pages();
