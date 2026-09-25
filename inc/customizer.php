@@ -78,5 +78,72 @@ function executive_signal_customize_register( $wp_customize ) {
 			'type'    => 'textarea',
 		)
 	);
+
+	if ( ! executive_signal_free_materials_plugin_is_available() ) {
+		return;
+	}
+
+	$wp_customize->add_section(
+		'executive_signal_free_materials',
+		array(
+			'title'       => esc_html__( 'Free materials', 'executive-signal-wordpress-theme' ),
+			'description' => esc_html__( 'Controls the introductory copy shown on the free materials page.', 'executive-signal-wordpress-theme' ),
+			'priority'    => 36,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'executive_signal_free_materials_eyebrow',
+		array(
+			'default'           => executive_signal_get_free_materials_eyebrow_default(),
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		'executive_signal_free_materials_eyebrow',
+		array(
+			'label'   => esc_html__( 'Free materials eyebrow', 'executive-signal-wordpress-theme' ),
+			'section' => 'executive_signal_free_materials',
+			'type'    => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'executive_signal_free_materials_title',
+		array(
+			'default'           => executive_signal_get_free_materials_title_default(),
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		'executive_signal_free_materials_title',
+		array(
+			'label'   => esc_html__( 'Free materials title', 'executive-signal-wordpress-theme' ),
+			'section' => 'executive_signal_free_materials',
+			'type'    => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'executive_signal_free_materials_description',
+		array(
+			'default'           => executive_signal_get_free_materials_description_default(),
+			'sanitize_callback' => 'sanitize_textarea_field',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		'executive_signal_free_materials_description',
+		array(
+			'label'   => esc_html__( 'Free materials description', 'executive-signal-wordpress-theme' ),
+			'section' => 'executive_signal_free_materials',
+			'type'    => 'textarea',
+		)
+	);
 }
 add_action( 'customize_register', 'executive_signal_customize_register' );

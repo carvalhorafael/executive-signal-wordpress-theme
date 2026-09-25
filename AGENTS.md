@@ -183,7 +183,9 @@ Camadas esperadas:
 - `npm test`: gate automatizado padrao para PRs;
 - `npm run validate`: gate completo de release e empacotamento.
 
-Durante iteracoes pequenas, rode apenas o menor comando que cobre o risco da mudanca. Exemplos: `npm run test:quick` para mudancas simples de asset/PHP, `npm run i18n:check` quando alterar strings traduziveis, ou um teste especifico quando tocar uma area coberta. Reserve `npm test`, `npm run test:prepush` e `npm run validate` para antes de push, PR, release ou mudancas com impacto amplo.
+Durante uma rodada composta por varios ajustes pequenos, nao rode suites de testes depois de cada ajuste, nem mesmo `npm run test:quick` ou testes focados. Faca apenas a inspecao pontual necessaria para confirmar o comportamento em andamento e acumule a validacao automatizada. Rode os testes aplicaveis uma unica vez, depois que o ultimo ajuste da rodada estiver concluido e imediatamente antes de abrir o PR. Excecoes ficam restritas a mudancas que nao possam ser avaliadas com seguranca sem um teste focado ou a um pedido explicito do usuario.
+
+Para uma mudanca pequena isolada que nao faca parte de uma rodada, rode apenas o menor comando que cobre o risco. Reserve `npm test`, `npm run test:prepush` e `npm run validate` para antes de PR, release ou mudancas com impacto amplo.
 
 O que deve ser testado:
 

@@ -97,6 +97,10 @@ function executive_signal_enqueue_theme_bootstrap() {
 /**
  * Enqueue block editor assets.
  *
+ * The editor bundle contains only design-system contracts and rules scoped to
+ * the editor canvas. Frontend theme styles must not be imported here because
+ * this hook also loads the stylesheet in the surrounding WordPress admin UI.
+ *
  * @return void
  */
 function executive_signal_enqueue_editor_assets() {
