@@ -77,14 +77,32 @@ test.describe("Executive Signal theme editor contracts", () => {
       ]),
     );
 
-    const welcomeDialog = page.getByRole("dialog", { name: "Boas-vindas ao editor do site" });
+    const welcomeDialog = page.getByRole("dialog").first();
+
+    await welcomeDialog.waitFor({ state: "visible", timeout: 2_000 }).catch(() => {});
 
     if (await welcomeDialog.isVisible()) {
-      await welcomeDialog.getByRole("button", { name: "Fechar" }).click();
+      const closeButton = welcomeDialog.getByRole("button", { name: /Fechar|Close/i }).first();
+
+      if (await closeButton.isVisible()) {
+        await closeButton.click();
+      }
     }
 
-    await page.getByRole("button", { name: "Definir imagem destacada" }).click();
-    await page.getByRole("tab", { name: "Biblioteca de mídia" }).click();
+    const featuredImageButton = page
+      .getByRole("button", { name: /Definir imagem destacada|Set featured image/i })
+      .first();
+
+    if (!(await featuredImageButton.isVisible())) {
+      const settingsButton = page.getByRole("button", { name: /Configurações|Settings/i }).first();
+
+      if (await settingsButton.isVisible()) {
+        await settingsButton.click();
+      }
+    }
+
+    await featuredImageButton.click();
+    await page.getByRole("tab", { name: /Biblioteca de mídia|Media Library/i }).click();
     const mediaFilterLabel = page.locator('label[for="media-attachment-filters"]');
 
     await expect(mediaFilterLabel).toBeVisible();
