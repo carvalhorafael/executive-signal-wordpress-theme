@@ -1,10 +1,14 @@
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { basename, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 
 const root = resolve(import.meta.dirname, "..");
 const themeName = basename(root);
 const zipPath = resolve(root, "dist", `${themeName}.zip`);
+const rootPhpEntries = readdirSync(root, { withFileTypes: true })
+  .filter((entry) => entry.isFile() && entry.name.endsWith(".php"))
+  .map((entry) => `${themeName}/${entry.name}`)
+  .sort();
 
 if (!existsSync(zipPath)) {
   throw new Error(`Theme zip not found: ${zipPath}`);
@@ -22,18 +26,7 @@ if (result.status !== 0) {
 const entries = result.stdout.trim().split("\n").filter(Boolean);
 const required = [
   `${themeName}/style.css`,
-  `${themeName}/functions.php`,
-  `${themeName}/404.php`,
-  `${themeName}/archive.php`,
-  `${themeName}/footer.php`,
-  `${themeName}/front-page.php`,
-  `${themeName}/header.php`,
-  `${themeName}/index.php`,
-  `${themeName}/page.php`,
-  `${themeName}/page-centered.php`,
-  `${themeName}/page-wide.php`,
-  `${themeName}/search.php`,
-  `${themeName}/single.php`,
+  ...rootPhpEntries,
   `${themeName}/theme.json`,
   `${themeName}/LICENSE.md`,
   `${themeName}/readme.txt`,
