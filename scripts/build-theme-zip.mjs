@@ -1,4 +1,4 @@
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { basename, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
@@ -8,21 +8,14 @@ const themeName = basename(root);
 const distDir = resolve(root, "dist");
 const stagingDir = resolve(distDir, themeName);
 const zipPath = resolve(distDir, `${themeName}.zip`);
+const rootPhpFiles = (await readdir(root, { withFileTypes: true }))
+  .filter((entry) => entry.isFile() && entry.name.endsWith(".php"))
+  .map((entry) => entry.name)
+  .sort();
 
 const includePaths = [
   "style.css",
-  "functions.php",
-  "404.php",
-  "archive.php",
-  "footer.php",
-  "front-page.php",
-  "header.php",
-  "index.php",
-  "page.php",
-  "page-centered.php",
-  "page-wide.php",
-  "search.php",
-  "single.php",
+  ...rootPhpFiles,
   "theme.json",
   "LICENSE.md",
   "README.md",
