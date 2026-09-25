@@ -10,14 +10,9 @@
 
 get_header();
 
-$landing_page_id          = get_queried_object_id();
-$landing_page_description = '';
-
-if ( has_excerpt( $landing_page_id ) ) {
-	$landing_page_description = wpautop( get_the_excerpt( $landing_page_id ) );
-} elseif ( trim( get_post_field( 'post_content', $landing_page_id ) ) ) {
-	$landing_page_description = apply_filters( 'the_content', get_post_field( 'post_content', $landing_page_id ) );
-}
+$free_materials_eyebrow     = executive_signal_get_free_materials_setting( 'eyebrow', executive_signal_get_free_materials_eyebrow_default() );
+$free_materials_title       = executive_signal_get_free_materials_setting( 'title', executive_signal_get_free_materials_title_default() );
+$free_materials_description = executive_signal_get_free_materials_setting( 'description', executive_signal_get_free_materials_description_default() );
 
 $free_material_categories     = get_terms(
 	array(
@@ -43,17 +38,11 @@ $found_posts                  = (int) $free_materials_query->found_posts;
 	<header class="es-blog-archive-header">
 		<div class="es-blog-archive-header__main">
 			<div class="es-blog-archive-header__copy">
-				<p class="es-blog-archive-header__eyebrow"><?php esc_html_e( 'Free materials', 'executive-signal-wordpress-theme' ); ?></p>
-				<h1 class="es-blog-archive-header__title"><?php the_title(); ?></h1>
-				<?php if ( $landing_page_description ) : ?>
-					<div class="es-blog-archive-header__description">
-						<?php echo wp_kses_post( $landing_page_description ); ?>
-					</div>
-				<?php else : ?>
-					<p class="es-blog-archive-header__description">
-						<?php esc_html_e( 'Guides, checklists and working notes for leaders who want clearer operating signals.', 'executive-signal-wordpress-theme' ); ?>
-					</p>
-				<?php endif; ?>
+				<p class="es-blog-archive-header__eyebrow"><?php echo esc_html( $free_materials_eyebrow ); ?></p>
+				<h1 class="es-blog-archive-header__title"><?php echo esc_html( $free_materials_title ); ?></h1>
+				<p class="es-blog-archive-header__description">
+					<?php echo esc_html( $free_materials_description ); ?>
+				</p>
 			</div>
 			<div class="es-blog-archive-header__meta">
 				<?php

@@ -1,7 +1,13 @@
-@import "./main.css";
+@import "@carvalhorafael/executive-signal-tokens";
+@import "@carvalhorafael/executive-signal-css";
+
+:root {
+  color-scheme: light;
+}
 
 .editor-styles-wrapper {
   background: var(--es-background);
+  color-scheme: dark;
   color: var(--es-text-primary);
   font-family: var(--es-font-sans);
 }

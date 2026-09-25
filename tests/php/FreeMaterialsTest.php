@@ -11,12 +11,72 @@ use PHPUnit\Framework\TestCase;
  * Verifies the theme's Free Materials plugin integration.
  *
  * @covers ::executive_signal_get_free_material_cta
+ * @covers ::executive_signal_get_free_material_details
+ * @covers ::executive_signal_get_free_materials_description_default
+ * @covers ::executive_signal_get_free_materials_eyebrow_default
  * @covers ::executive_signal_get_free_materials_page
  * @covers ::executive_signal_get_free_materials_page_url
+ * @covers ::executive_signal_get_free_materials_setting
+ * @covers ::executive_signal_get_free_materials_title_default
  * @covers ::executive_signal_get_primary_free_material_category
  * @covers ::executive_signal_render_free_material_terms
  */
 final class FreeMaterialsTest extends TestCase {
+	/**
+	 * Visitor-facing details should use the plugin-owned metadata contract.
+	 */
+	public function test_free_material_details_use_plugin_metadata(): void {
+		$post_id = wp_insert_post(
+			array(
+				'post_title'  => 'Material details fixture',
+				'post_status' => 'publish',
+				'post_type'   => EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
+			),
+			true
+		);
+
+		$this->assertIsInt( $post_id );
+
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_FORMAT, 'pdf' );
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_PAGES, 12 );
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_FILE_SIZE, '2,4 MB' );
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_LEVEL, 'Executive leaders' );
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_HIGHLIGHTS, array( 'Scorecard', 'Checklist' ) );
+		update_post_meta( $post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_DOWNLOADS, 1847 );
+
+		$details = executive_signal_get_free_material_details( $post_id );
+
+		$this->assertSame( 'PDF', $details['format'] );
+		$this->assertSame( 12, $details['pages'] );
+		$this->assertSame( '2,4 MB', $details['file_size'] );
+		$this->assertSame( 'Executive leaders', $details['level'] );
+		$this->assertSame( array( 'Scorecard', 'Checklist' ), $details['highlights'] );
+		$this->assertSame( 1847, $details['downloads'] );
+
+		wp_delete_post( $post_id, true );
+	}
+
+	/**
+	 * Free materials archive copy should use Customizer values with defaults.
+	 */
+	public function test_free_materials_archive_copy_uses_theme_mods(): void {
+		remove_theme_mod( 'executive_signal_free_materials_eyebrow' );
+
+		$this->assertSame(
+			executive_signal_get_free_materials_eyebrow_default(),
+			executive_signal_get_free_materials_setting( 'eyebrow', executive_signal_get_free_materials_eyebrow_default() )
+		);
+
+		set_theme_mod( 'executive_signal_free_materials_eyebrow', 'Biblioteca executiva' );
+
+		$this->assertSame(
+			'Biblioteca executiva',
+			executive_signal_get_free_materials_setting( 'eyebrow', executive_signal_get_free_materials_eyebrow_default() )
+		);
+
+		remove_theme_mod( 'executive_signal_free_materials_eyebrow' );
+	}
+
 	/**
 	 * Free material post type should be public and editor friendly.
 	 */
