@@ -514,6 +514,17 @@ a {
   max-width: none;
 }
 
+.es-resource-capture-panel .crm-leads-capture-message {
+  --crm-leads-capture-surface: color-mix(in srgb, var(--crm-leads-capture-accent) 8%, var(--es-panel-muted));
+  --crm-leads-capture-radius: var(--es-radius-panel);
+
+  color: var(--es-text-primary);
+}
+
+.es-resource-capture-panel .crm-leads-capture-message[data-feedback-tone="success"] {
+  --crm-leads-capture-accent: var(--es-success);
+}
+
 .free-material-overview {
   display: grid;
   gap: clamp(1.25rem, 3vw, 2rem);
@@ -524,7 +535,7 @@ a {
 }
 
 .es-resource-capture-hero__copy .free-material-overview__facts {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .free-material-overview__facts,
@@ -559,8 +570,8 @@ a {
   padding-left: 0.85rem;
 }
 
-.free-material-overview__fact--wide {
-  grid-column: span 2;
+.free-material-overview__fact--audience {
+  grid-column: 1 / -1;
 }
 
 .free-material-overview__fact dd {
@@ -609,7 +620,7 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .free-material-overview__fact--wide {
+  .free-material-overview__fact--audience {
     grid-column: auto;
   }
 
@@ -897,6 +908,45 @@ a {
   text-decoration: none;
 }
 
+.free-materials-featured {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.free-material-featured-card {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+
+.free-material-featured-card__media {
+  display: block;
+  min-height: clamp(14rem, 24vw, 20rem);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.free-material-featured-card__media > img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.free-material-featured-card__media--placeholder {
+  align-content: end;
+  display: grid;
+  gap: 0.35rem;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+@media (max-width: 980px) {
+  .free-material-featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .free-material-featured-card__media {
+    min-height: clamp(14rem, 55vw, 22rem);
+  }
+}
+
 .free-material-card__media--placeholder,
 .course-card__media--placeholder {
   align-content: end;
@@ -1101,6 +1151,56 @@ a {
   clear: both;
   display: block;
   margin-inline: auto;
+}
+
+/*
+ * Temporary WordPress adapter for aligned core/image blocks.
+ * Remove after executive-signal-design-system#73 is published and consumed.
+ * Theme tracking: executive-signal-wordpress-theme#47.
+ */
+.es-article-prose .wp-block-image:has(> figure.alignleft),
+.es-article-prose .wp-block-image:has(> figure.alignright) {
+  display: block;
+  margin: 0;
+}
+
+.es-article-prose .wp-block-image > figure.alignleft,
+.es-article-prose .wp-block-image > figure.alignright {
+  display: block;
+  max-width: calc(50% - 0.75rem);
+}
+
+.es-article-prose .wp-block-image > figure.alignleft {
+  float: left;
+  margin: 0.35rem 1.5rem 1rem 0;
+}
+
+.es-article-prose .wp-block-image > figure.alignright {
+  float: right;
+  margin: 0.35rem 0 1rem 1.5rem;
+}
+
+.es-article-prose::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+@media (max-width: 40rem) {
+  .es-article-prose .wp-block-image:has(> figure.alignleft),
+  .es-article-prose .wp-block-image:has(> figure.alignright) {
+    display: grid;
+    gap: 0.65rem;
+    margin: 2rem 0;
+  }
+
+  .es-article-prose .wp-block-image > figure.alignleft,
+  .es-article-prose .wp-block-image > figure.alignright {
+    float: none;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
 }
 
 .wp-caption {

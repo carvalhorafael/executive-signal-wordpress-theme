@@ -32,6 +32,9 @@ $free_materials_query         = new WP_Query(
 	)
 );
 $found_posts                  = (int) $free_materials_query->found_posts;
+$featured_free_material       = executive_signal_get_featured_free_material( $free_materials_query->posts );
+$featured_free_material_id    = $featured_free_material instanceof WP_Post ? (int) $featured_free_material->ID : 0;
+$regular_free_materials_count = $found_posts - ( $featured_free_material_id ? 1 : 0 );
 ?>
 
 <main id="primary" class="site-main site-main--blog site-main--free-materials">
@@ -55,6 +58,16 @@ $found_posts                  = (int) $free_materials_query->found_posts;
 			</div>
 		</div>
 	</header>
+
+	<?php
+	if ( $featured_free_material instanceof WP_Post ) {
+		get_template_part(
+			'template-parts/content',
+			'free-material-featured',
+			array( 'material' => $featured_free_material )
+		);
+	}
+	?>
 
 	<section class="es-resource-browser" data-columns="two" data-es-resource-browser="true">
 		<aside class="es-resource-browser__filters" aria-label="<?php esc_attr_e( 'Material categories', 'executive-signal-wordpress-theme' ); ?>">
@@ -93,16 +106,24 @@ $found_posts                  = (int) $free_materials_query->found_posts;
 
 		<section class="es-resource-browser__results" aria-label="<?php esc_attr_e( 'Material listing', 'executive-signal-wordpress-theme' ); ?>" aria-live="polite" data-es-resource-results="true">
 			<?php if ( $free_materials_query->have_posts() ) : ?>
-				<div class="es-resource-browser__items">
+				<?php if ( $regular_free_materials_count > 0 ) : ?>
+					<div class="es-resource-browser__items">
 					<?php
 					while ( $free_materials_query->have_posts() ) :
 						$free_materials_query->the_post();
+
+						if ( get_the_ID() === $featured_free_material_id ) {
+							continue;
+						}
 
 						get_template_part( 'template-parts/content', 'free-material-card' );
 					endwhile;
 					wp_reset_postdata();
 					?>
-				</div>
+					</div>
+				<?php else : ?>
+					<?php wp_reset_postdata(); ?>
+				<?php endif; ?>
 
 				<p class="es-resource-browser__empty" hidden data-es-resource-empty="true">
 					<?php esc_html_e( 'No materials match the selected categories.', 'executive-signal-wordpress-theme' ); ?>

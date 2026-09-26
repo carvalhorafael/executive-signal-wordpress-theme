@@ -114,6 +114,32 @@ function executive_signal_register_widget_areas() {
 add_action( 'widgets_init', 'executive_signal_register_widget_areas' );
 
 /**
+ * Keep editorial listings aligned with the three-column card grid.
+ *
+ * @param WP_Query $query Current WordPress query.
+ * @return void
+ */
+function executive_signal_set_editorial_posts_per_page( $query ) {
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return;
+	}
+
+	$is_editorial_listing = $query->is_home()
+		|| $query->is_search()
+		|| $query->is_category()
+		|| $query->is_tag()
+		|| $query->is_author()
+		|| $query->is_date();
+
+	if ( ! $is_editorial_listing ) {
+		return;
+	}
+
+	$query->set( 'posts_per_page', 12 );
+}
+add_action( 'pre_get_posts', 'executive_signal_set_editorial_posts_per_page' );
+
+/**
  * Get stylesheets loaded in the block editor canvas.
  *
  * @return string[]

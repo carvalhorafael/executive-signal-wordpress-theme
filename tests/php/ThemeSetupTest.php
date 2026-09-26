@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
  * Verifies WordPress-facing setup registered by the theme.
  *
  * @covers ::executive_signal_get_editor_stylesheets
+ * @covers ::executive_signal_set_editorial_posts_per_page
  * @covers ::executive_signal_theme_setup
  */
 final class ThemeSetupTest extends TestCase {
@@ -74,6 +75,45 @@ final class ThemeSetupTest extends TestCase {
 
 		$this->assertNotEmpty( $stylesheets );
 		$this->assertContainsOnly( 'string', $stylesheets );
+	}
+
+	/**
+	 * Editorial listings should fill the three-column grid with complete rows.
+	 */
+	public function test_editorial_listings_use_twelve_posts_per_page(): void {
+		global $wp_the_query;
+
+		$previous_main_query = $wp_the_query;
+		$query               = new WP_Query();
+		$query->is_home      = true;
+		$wp_the_query        = $query;
+
+		try {
+			executive_signal_set_editorial_posts_per_page( $query );
+			$this->assertSame( 12, $query->get( 'posts_per_page' ) );
+		} finally {
+			$wp_the_query = $previous_main_query;
+		}
+	}
+
+	/**
+	 * Custom post type archives should keep their own pagination contract.
+	 */
+	public function test_custom_post_type_archives_keep_their_page_size(): void {
+		global $wp_the_query;
+
+		$previous_main_query         = $wp_the_query;
+		$query                       = new WP_Query();
+		$query->is_post_type_archive = true;
+		$wp_the_query                = $query;
+		$query->set( 'posts_per_page', 10 );
+
+		try {
+			executive_signal_set_editorial_posts_per_page( $query );
+			$this->assertSame( 10, $query->get( 'posts_per_page' ) );
+		} finally {
+			$wp_the_query = $previous_main_query;
+		}
 	}
 
 	/**
