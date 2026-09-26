@@ -16,15 +16,9 @@ $material_title    = get_the_title( $material_id );
 $material_url      = get_permalink( $material_id );
 $material_excerpt  = executive_signal_get_listing_excerpt( $material_id );
 $material_category = executive_signal_get_primary_free_material_category( $material_id );
-$material_terms    = get_the_terms( $material_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY );
-$material_slugs    = array();
-
-if ( is_array( $material_terms ) ) {
-	$material_slugs = wp_list_pluck( $material_terms, 'slug' );
-}
 ?>
 
-<div class="es-resource-browser__featured" data-es-resource-item data-es-resource-facets="<?php echo esc_attr( implode( ' ', $material_slugs ) ); ?>">
+<div class="free-materials-featured">
 	<article
 		id="post-<?php echo esc_attr( $material_id ); ?>"
 		<?php post_class( 'es-featured-article-card free-material-featured-card', $material_id ); ?>

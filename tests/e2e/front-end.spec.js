@@ -726,7 +726,16 @@ test.describe("Executive Signal theme front end", () => {
       "Customizer copy for the free materials archive.",
     );
     await expect(page.locator(".es-resource-browser__filters")).toBeVisible();
-    await expect(page.locator(".free-material-featured-card", { hasText: "E2E Free Material" })).toBeVisible();
+    const featuredMaterial = page.locator(".free-material-featured-card", { hasText: "E2E Free Material" });
+    const resourceBrowser = page.locator(".es-resource-browser");
+
+    await expect(featuredMaterial).toBeVisible();
+    expect(
+      await featuredMaterial.evaluate(
+        (featured, browser) => Boolean(featured.compareDocumentPosition(browser) & Node.DOCUMENT_POSITION_FOLLOWING),
+        await resourceBrowser.elementHandle(),
+      ),
+    ).toBe(true);
     await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toHaveCount(0);
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeVisible();
 
@@ -736,7 +745,7 @@ test.describe("Executive Signal theme front end", () => {
 
     await page.locator('[data-es-resource-filter][value="e2e-materials"]').uncheck();
     await page.locator('[data-es-resource-filter][value="e2e-extra-materials"]').check();
-    await expect(page.locator(".free-material-featured-card", { hasText: "E2E Free Material" })).toBeHidden();
+    await expect(featuredMaterial).toBeVisible();
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeVisible();
 
     await page.locator("[data-es-resource-clear]").click();

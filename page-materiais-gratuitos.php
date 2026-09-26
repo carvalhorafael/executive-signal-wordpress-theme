@@ -59,6 +59,16 @@ $regular_free_materials_count = $found_posts - ( $featured_free_material_id ? 1 
 		</div>
 	</header>
 
+	<?php
+	if ( $featured_free_material instanceof WP_Post ) {
+		get_template_part(
+			'template-parts/content',
+			'free-material-featured',
+			array( 'material' => $featured_free_material )
+		);
+	}
+	?>
+
 	<section class="es-resource-browser" data-columns="two" data-es-resource-browser="true">
 		<aside class="es-resource-browser__filters" aria-label="<?php esc_attr_e( 'Material categories', 'executive-signal-wordpress-theme' ); ?>">
 			<div class="es-resource-browser__filters-header">
@@ -96,16 +106,6 @@ $regular_free_materials_count = $found_posts - ( $featured_free_material_id ? 1 
 
 		<section class="es-resource-browser__results" aria-label="<?php esc_attr_e( 'Material listing', 'executive-signal-wordpress-theme' ); ?>" aria-live="polite" data-es-resource-results="true">
 			<?php if ( $free_materials_query->have_posts() ) : ?>
-				<?php
-				if ( $featured_free_material instanceof WP_Post ) {
-					get_template_part(
-						'template-parts/content',
-						'free-material-featured',
-						array( 'material' => $featured_free_material )
-					);
-				}
-				?>
-
 				<?php if ( $regular_free_materials_count > 0 ) : ?>
 					<div class="es-resource-browser__items">
 					<?php
