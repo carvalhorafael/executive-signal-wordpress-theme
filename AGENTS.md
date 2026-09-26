@@ -213,17 +213,19 @@ Rotina padrao de release:
 
 1. acumular PRs pequenos em `develop`;
 2. quando a release for decidida pelo usuario, criar uma branch de release a partir de `develop`;
-3. atualizar a versao em `package.json`;
-4. atualizar `Version` em `style.css`;
-5. atualizar `Stable tag` em `readme.txt`;
-6. abrir PR da branch de release para `main`;
-7. mergear em `main` apos o CI completo passar.
+3. executar `npm run release:prepare -- X.Y.Z` para atualizar `package.json`, `package-lock.json`, `style.css`, `readme.txt` e regenerar `languages/`;
+4. revisar e commitar todos os arquivos alterados pelo comando;
+5. abrir PR da branch de release para `main`;
+6. mergear em `main` somente apos o check obrigatorio `Validate theme` passar.
 
 O workflow `Release` roda em `push` para `main`. Ele le `package.json`, resolve a tag `vX.Y.Z`, falha se a tag ja existir e valida que a versao bate com:
 
 - `package.json` -> `version`;
 - `style.css` -> `Version`;
-- `readme.txt` -> `Stable tag`.
+- `readme.txt` -> `Stable tag`;
+- `languages/executive-signal-wordpress-theme.pot` -> `Project-Id-Version`;
+- `languages/pt_BR.po` -> `Project-Id-Version`;
+- `languages/pt_BR.mo` -> catalogo compilado com a mesma versao.
 
 Depois disso, executa `npm run validate`, cria a tag anotada, cria a GitHub Release e anexa o ZIP publico do tema.
 
