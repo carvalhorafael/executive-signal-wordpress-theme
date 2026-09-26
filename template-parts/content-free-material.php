@@ -30,6 +30,13 @@ $material_facts = array_filter(
 				<section class="free-material-overview" aria-label="<?php esc_attr_e( 'About this material', 'executive-signal-wordpress-theme' ); ?>">
 					<?php if ( $material_facts ) : ?>
 						<dl class="free-material-overview__facts">
+							<?php if ( $material_details['level'] ) : ?>
+								<div class="free-material-overview__fact free-material-overview__fact--audience">
+									<dt><?php esc_html_e( 'Who it is for', 'executive-signal-wordpress-theme' ); ?></dt>
+									<dd><?php echo esc_html( $material_details['level'] ); ?></dd>
+								</div>
+							<?php endif; ?>
+
 							<?php if ( $material_details['format'] ) : ?>
 								<div class="free-material-overview__fact">
 									<dt><?php esc_html_e( 'Format', 'executive-signal-wordpress-theme' ); ?></dt>
@@ -48,13 +55,6 @@ $material_facts = array_filter(
 								<div class="free-material-overview__fact">
 									<dt><?php esc_html_e( 'File size', 'executive-signal-wordpress-theme' ); ?></dt>
 									<dd><?php echo esc_html( $material_details['file_size'] ); ?></dd>
-								</div>
-							<?php endif; ?>
-
-							<?php if ( $material_details['level'] ) : ?>
-								<div class="free-material-overview__fact free-material-overview__fact--wide">
-									<dt><?php esc_html_e( 'Who it is for', 'executive-signal-wordpress-theme' ); ?></dt>
-									<dd><?php echo esc_html( $material_details['level'] ); ?></dd>
 								</div>
 							<?php endif; ?>
 

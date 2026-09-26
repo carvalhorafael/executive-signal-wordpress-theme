@@ -535,7 +535,7 @@ a {
 }
 
 .es-resource-capture-hero__copy .free-material-overview__facts {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .free-material-overview__facts,
@@ -570,8 +570,8 @@ a {
   padding-left: 0.85rem;
 }
 
-.free-material-overview__fact--wide {
-  grid-column: span 2;
+.free-material-overview__fact--audience {
+  grid-column: 1 / -1;
 }
 
 .free-material-overview__fact dd {
@@ -620,7 +620,7 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .free-material-overview__fact--wide {
+  .free-material-overview__fact--audience {
     grid-column: auto;
   }
 
