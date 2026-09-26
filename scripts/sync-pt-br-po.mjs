@@ -443,6 +443,8 @@ const translations = new Map([
   ["Material", "Material"],
   ["Free", "Gratuito"],
   ["View material", "Ver material"],
+  ["Featured material", "Material em destaque"],
+  ["Access free material", "Acessar material gratuito"],
   ["Executive Signal", "Executive Signal"],
   ["Guide, checklist or working note", "Guia, checklist ou nota de trabalho"],
   ["Immediate access", "Acesso imediato"],

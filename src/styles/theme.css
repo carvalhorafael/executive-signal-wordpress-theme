@@ -908,6 +908,30 @@ a {
   text-decoration: none;
 }
 
+.es-resource-browser__featured {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.free-material-featured-card__media {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.free-material-featured-card__media > img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.free-material-featured-card__media--placeholder {
+  align-content: end;
+  display: grid;
+  gap: 0.35rem;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
 .free-material-card__media--placeholder,
 .course-card__media--placeholder {
   align-content: end;

@@ -386,6 +386,7 @@ test.beforeAll(() => {
   runWpCli(["post", "meta", "update", materialId, "_free_materials_file_size", "2.4 MB"]);
   runWpCli(["post", "meta", "update", materialId, "_free_materials_level", "Executive leaders"]);
   runWpCli(["post", "meta", "update", materialId, "_free_materials_downloads", "1847"]);
+  runWpCli(["post", "meta", "update", materialId, "_free_materials_featured", "1"]);
   runWpCli([
     "eval",
     `update_post_meta(${Number(materialId)}, '_free_materials_highlights', array('Scorecard', 'Decision checklist'));`,
@@ -725,18 +726,21 @@ test.describe("Executive Signal theme front end", () => {
       "Customizer copy for the free materials archive.",
     );
     await expect(page.locator(".es-resource-browser__filters")).toBeVisible();
-    await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toBeVisible();
+    await expect(page.locator(".free-material-featured-card", { hasText: "E2E Free Material" })).toBeVisible();
+    await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toHaveCount(0);
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeVisible();
 
     await page.locator('[data-es-resource-filter][value="e2e-materials"]').check();
-    await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toBeVisible();
+    await expect(page.locator(".free-material-featured-card", { hasText: "E2E Free Material" })).toBeVisible();
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeHidden();
 
+    await page.locator('[data-es-resource-filter][value="e2e-materials"]').uncheck();
     await page.locator('[data-es-resource-filter][value="e2e-extra-materials"]').check();
+    await expect(page.locator(".free-material-featured-card", { hasText: "E2E Free Material" })).toBeHidden();
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeVisible();
 
     await page.locator("[data-es-resource-clear]").click();
-    await expect(page.locator(".free-material-card", { hasText: "E2E Free Material" })).toBeVisible();
+    await expect(page.locator(".free-material-featured-card", { hasText: "E2E Free Material" })).toBeVisible();
     await expect(page.locator(".free-material-card", { hasText: "E2E Extra Free Material" })).toBeVisible();
 
     await page.goto(`/materiais-gratuitos/categoria/${fixture.materialCategorySlug}/`);
