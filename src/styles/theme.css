@@ -923,6 +923,7 @@ a {
 .free-material-featured-card__media {
   align-self: stretch;
   display: block;
+  margin-left: 0.75rem;
   min-height: 0;
   overflow: hidden;
   text-decoration: none;
