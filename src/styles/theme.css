@@ -912,8 +912,13 @@ a {
   margin-bottom: clamp(1.25rem, 3vw, 2rem);
 }
 
+.free-material-featured-card {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+
 .free-material-featured-card__media {
   display: block;
+  min-height: clamp(14rem, 24vw, 20rem);
   overflow: hidden;
   text-decoration: none;
 }
@@ -930,6 +935,16 @@ a {
   display: grid;
   gap: 0.35rem;
   padding: clamp(1rem, 3vw, 2rem);
+}
+
+@media (max-width: 980px) {
+  .free-material-featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .free-material-featured-card__media {
+    min-height: clamp(14rem, 55vw, 22rem);
+  }
 }
 
 .free-material-card__media--placeholder,
