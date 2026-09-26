@@ -54,7 +54,7 @@ $found_posts  = isset( $wp_query->found_posts ) ? (int) $wp_query->found_posts :
 		</div>
 	</header>
 
-	<section class="es-article-archive-grid" data-columns="two" aria-label="<?php esc_attr_e( 'Search results', 'executive-signal-wordpress-theme' ); ?>">
+	<section class="es-article-archive-grid" data-columns="three" aria-label="<?php esc_attr_e( 'Search results', 'executive-signal-wordpress-theme' ); ?>">
 		<?php if ( have_posts() ) : ?>
 			<div class="es-article-archive-grid__items">
 				<?php

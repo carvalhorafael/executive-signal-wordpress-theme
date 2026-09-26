@@ -12,6 +12,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @covers ::executive_signal_get_free_material_cta
  * @covers ::executive_signal_get_free_material_details
+ * @covers ::executive_signal_get_featured_free_material
  * @covers ::executive_signal_get_free_materials_description_default
  * @covers ::executive_signal_get_free_materials_eyebrow_default
  * @covers ::executive_signal_get_free_materials_page
@@ -22,6 +23,44 @@ use PHPUnit\Framework\TestCase;
  * @covers ::executive_signal_render_free_material_terms
  */
 final class FreeMaterialsTest extends TestCase {
+	/**
+	 * Featured material helper should select the first marked post in display order.
+	 */
+	public function test_featured_free_material_uses_the_first_marked_post(): void {
+		$first_post_id  = wp_insert_post(
+			array(
+				'post_title'  => 'First highlighted material',
+				'post_status' => 'publish',
+				'post_type'   => EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
+			),
+			true
+		);
+		$second_post_id = wp_insert_post(
+			array(
+				'post_title'  => 'Second highlighted material',
+				'post_status' => 'publish',
+				'post_type'   => EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE,
+			),
+			true
+		);
+
+		$this->assertIsInt( $first_post_id );
+		$this->assertIsInt( $second_post_id );
+
+		update_post_meta( $first_post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_FEATURED, true );
+		update_post_meta( $second_post_id, EXECUTIVE_SIGNAL_FREE_MATERIAL_FEATURED, true );
+
+		$featured = executive_signal_get_featured_free_material(
+			array( get_post( $first_post_id ), get_post( $second_post_id ) )
+		);
+
+		$this->assertInstanceOf( WP_Post::class, $featured );
+		$this->assertSame( $first_post_id, $featured->ID );
+
+		wp_delete_post( $first_post_id, true );
+		wp_delete_post( $second_post_id, true );
+	}
+
 	/**
 	 * Visitor-facing details should use the plugin-owned metadata contract.
 	 */
