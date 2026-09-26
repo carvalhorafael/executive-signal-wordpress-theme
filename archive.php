@@ -41,7 +41,7 @@ $found_posts         = isset( $wp_query->found_posts ) ? (int) $wp_query->found_
 		</div>
 	</header>
 
-	<section class="es-article-archive-grid" data-columns="two" aria-label="<?php esc_attr_e( 'Archive articles', 'executive-signal-wordpress-theme' ); ?>">
+	<section class="es-article-archive-grid" data-columns="<?php echo esc_attr( is_post_type_archive() ? 'two' : 'three' ); ?>" aria-label="<?php esc_attr_e( 'Archive articles', 'executive-signal-wordpress-theme' ); ?>">
 		<?php if ( have_posts() ) : ?>
 			<div class="es-article-archive-grid__items">
 				<?php

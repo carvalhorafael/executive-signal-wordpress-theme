@@ -20,6 +20,7 @@ define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_FILE_SIZE', function_exists( 'free_mater
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_LEVEL', function_exists( 'free_materials_level_meta_key' ) ? free_materials_level_meta_key() : '_free_materials_level' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_HIGHLIGHTS', function_exists( 'free_materials_highlights_meta_key' ) ? free_materials_highlights_meta_key() : '_free_materials_highlights' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_DOWNLOADS', function_exists( 'free_materials_downloads_meta_key' ) ? free_materials_downloads_meta_key() : '_free_materials_downloads' );
+define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_FEATURED', function_exists( 'free_materials_featured_meta_key' ) ? free_materials_featured_meta_key() : '_free_materials_featured' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIALS_PAGE_PATH', 'materiais-gratuitos' );
 
 /**
@@ -29,6 +30,26 @@ define( 'EXECUTIVE_SIGNAL_FREE_MATERIALS_PAGE_PATH', 'materiais-gratuitos' );
  */
 function executive_signal_free_materials_plugin_is_available() {
 	return function_exists( 'free_materials' ) || post_type_exists( EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE );
+}
+
+/**
+ * Return the first catalog-highlighted material from a query result.
+ *
+ * The plugin keeps this metadata exclusive. Selecting the first match also
+ * gives the theme a deterministic fallback for content created before that
+ * rule existed.
+ *
+ * @param WP_Post[] $materials Candidate materials in display order.
+ * @return WP_Post|null
+ */
+function executive_signal_get_featured_free_material( $materials ) {
+	foreach ( $materials as $material ) {
+		if ( $material instanceof WP_Post && get_post_meta( $material->ID, EXECUTIVE_SIGNAL_FREE_MATERIAL_FEATURED, true ) ) {
+			return $material;
+		}
+	}
+
+	return null;
 }
 
 /**
