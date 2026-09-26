@@ -80,6 +80,14 @@ const articleContent = [
   ...articleSections.map(([level, title]) => `<${level}>${title}</${level}><p>Texto de apoio para ${title}.</p>`),
 ].join("");
 
+const standardPageContent = [
+  "<p>Fixture content for the standard page template.</p>",
+  '<div class="wp-block-image is-style-default"><figure class="alignleft size-large is-resized"><img src="/wp-content/themes/executive-signal-wordpress-theme/screenshot.png" alt="" width="320" height="240"></figure></div>',
+  '<p class="wp-block-paragraph" data-e2e-aligned-image-copy>Aligned image copy should wrap beside the media on desktop and return to the normal reading flow on narrow screens.</p>',
+  "<h2>Standard page section</h2>",
+  "<p>More fixture content.</p>",
+].join("");
+
 const courseBlockContent = [
   '<!-- wp:online-courses/learning-outcomes {"eyebrow":"Resultados de aprendizagem","title":"O que você vai conseguir aplicar.","description":"Resultados editáveis vindos do bloco do curso.","items":["Clarificar o sinal por trás de um problema de negócio confuso.","Transformar anotações do curso em rotinas operacionais.","Aplicar exemplos práticos sem perder contexto estratégico."]} /-->',
   '<!-- wp:online-courses/course-curriculum {"eyebrow":"Currículo do curso","title":"Estrutura do programa","description":"Currículo editável vindo do bloco do curso.","sections":[{"title":"Comece pelo problema operacional","meta":"3 aulas","lessons":[{"title":"Leia o sinal atual","duration":"4 min","preview":true},{"title":"Mapeie o contexto de decisão","duration":"5 min","preview":false}]},{"title":"Transforme notas em rotina","meta":"2 aulas","lessons":[{"title":"Crie um ritmo de revisão","duration":"5 min","preview":false}]}]} /-->',
@@ -127,7 +135,7 @@ test.beforeAll(() => {
     "post",
     "update",
     standardPageId,
-    "--post_content=<p>Fixture content for the standard page template.</p><h2>Standard page section</h2><p>More fixture content.</p>",
+    `--post_content=${standardPageContent}`,
   ]);
 
   runWpCli(["option", "update", "show_on_front", "page"]);
@@ -580,6 +588,48 @@ test.describe("Executive Signal theme front end", () => {
     expect(Math.abs(layout.contentCenter - layout.titleCenter)).toBeLessThanOrEqual(1);
   });
 
+  test("preserves aligned Gutenberg images in the front-end reading flow", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(`/${fixture.pageSlug}/`);
+
+    const desktopLayout = await page.evaluate(() => {
+      const content = document.querySelector(".entry__content").getBoundingClientRect();
+      const figure = document.querySelector(".wp-block-image > figure.alignleft").getBoundingClientRect();
+      const copy = document.querySelector("[data-e2e-aligned-image-copy]");
+      const firstLine = document.createRange();
+      firstLine.selectNodeContents(copy);
+
+      return {
+        contentWidth: content.width,
+        figureRight: figure.right,
+        figureWidth: figure.width,
+        firstLineLeft: firstLine.getClientRects()[0].left,
+      };
+    });
+
+    expect(desktopLayout.figureWidth).toBeLessThan(desktopLayout.contentWidth);
+    expect(desktopLayout.firstLineLeft).toBeGreaterThan(desktopLayout.figureRight);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.reload();
+
+    const mobileLayout = await page.evaluate(() => {
+      const content = document.querySelector(".entry__content").getBoundingClientRect();
+      const figure = document.querySelector(".wp-block-image > figure.alignleft").getBoundingClientRect();
+      const copy = document.querySelector("[data-e2e-aligned-image-copy]").getBoundingClientRect();
+
+      return {
+        contentWidth: content.width,
+        copyTop: copy.top,
+        figureBottom: figure.bottom,
+        figureWidth: figure.width,
+      };
+    });
+
+    expect(Math.abs(mobileLayout.contentWidth - mobileLayout.figureWidth)).toBeLessThanOrEqual(1);
+    expect(mobileLayout.copyTop).toBeGreaterThanOrEqual(mobileLayout.figureBottom);
+  });
+
   test("renders archive, 404 and single post editorial surfaces", async ({ page }) => {
     await page.goto("/blog/");
     const blogGrid = page.locator('.es-article-archive-grid[data-columns="three"]');
@@ -598,7 +648,11 @@ test.describe("Executive Signal theme front end", () => {
 
     await page.goto(`/category/${fixture.categorySlug}/`);
     await expect(page.locator(".es-blog-archive-header__eyebrow")).toHaveText("Categoria");
+    await expect(page.locator('.es-article-archive-grid[data-columns="three"]')).toBeVisible();
     await expect(page.locator(".es-article-card").first()).toBeVisible();
+
+    await page.goto("/?s=E2E");
+    await expect(page.locator('.es-article-archive-grid[data-columns="three"]')).toBeVisible();
 
     await page.goto(`/${fixture.postSlug}/`);
     await expect(page.locator('article[itemtype="https://schema.org/BlogPosting"]')).toBeVisible();
