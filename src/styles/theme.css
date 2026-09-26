@@ -917,16 +917,16 @@ a {
 }
 
 .free-material-featured-card__media {
+  align-self: center;
   display: block;
-  min-height: clamp(14rem, 24vw, 20rem);
+  min-height: 0;
   overflow: hidden;
   text-decoration: none;
 }
 
 .free-material-featured-card__media > img {
   display: block;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   width: 100%;
 }
 
@@ -940,10 +940,6 @@ a {
 @media (max-width: 980px) {
   .free-material-featured-card {
     grid-template-columns: 1fr;
-  }
-
-  .free-material-featured-card__media {
-    min-height: clamp(14rem, 55vw, 22rem);
   }
 }
 
