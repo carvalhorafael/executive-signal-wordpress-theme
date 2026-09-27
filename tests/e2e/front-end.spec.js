@@ -32,6 +32,7 @@ const fixture = {
   blogPageSlug: "blog",
   categorySlug: "e2e-theme",
   coursesPageSlug: "cursos",
+  cooPageSlug: "coo-as-a-service",
   courseCategorySlugs: [
     "e2e-course-strategy",
     "e2e-course-operations",
@@ -129,7 +130,10 @@ test.beforeAll(() => {
 
   const homePageId = ensurePage(fixture.homePageSlug, "Início");
   const blogPageId = ensurePage(fixture.blogPageSlug, "Blog");
+  const cooPageId = ensurePage(fixture.cooPageSlug, "COO as a Service");
   const standardPageId = ensurePage(fixture.pageSlug, "E2E Standard Page");
+
+  runWpCli(["post", "meta", "update", cooPageId, "_wp_page_template", "page-coo-as-a-service.php"]);
 
   runWpCli([
     "post",
@@ -562,6 +566,60 @@ test.describe("Executive Signal theme front end", () => {
     await page.goto("/");
 
     await expectNoAxeViolations(page);
+  });
+
+  test("renders the COO as a Service sales page and captures qualified interest", async ({ page }) => {
+    await page.route("**/wp-json/crm-leads-capture/v1/service-interest", async (route) => {
+      await route.fulfill({
+        contentType: "application/json",
+        status: 200,
+        body: JSON.stringify({
+          success: true,
+          message: "Recebi seu contexto. Vou analisar as informações e retorno se houver aderência.",
+        }),
+      });
+    });
+
+    await page.goto(`/${fixture.cooPageSlug}/?utm_source=e2e&utm_medium=playwright`);
+
+    await expect(page.locator("body")).toHaveClass(/page-template-page-coo-as-a-service/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Sua empresa cresceu. A operação ainda depende demais de você.",
+    );
+    await expect(page.locator(".coo-dependency-map")).toContainText("CEO");
+    await expect(page.locator(".coo-process-list > li")).toHaveCount(5);
+    await expect(page.locator(".coo-about__portrait img")).toBeVisible();
+
+    const captureForm = page.locator("[data-service-interest-form]");
+
+    if (await captureForm.count()) {
+      await expect(captureForm.locator('input[name="action"]')).toHaveValue(
+        "crm_leads_capture_service_interest",
+      );
+      await expect(captureForm.locator('input[name="utm_source"]')).toHaveValue("e2e");
+      await expect(captureForm.locator('input[name="utm_medium"]')).toHaveValue("playwright");
+      await captureForm.getByLabel("Nome").fill("Pessoa E2E");
+      await captureForm.getByLabel("E-mail corporativo").fill("pessoa@example.com");
+      await captureForm.getByLabel("Empresa", { exact: true }).fill("Empresa E2E");
+      await captureForm.getByLabel("Seu papel").selectOption("ceo");
+      await captureForm.getByLabel("Onde a operação mais depende de você hoje?").fill(
+        "As decisões operacionais ainda convergem para a liderança.",
+      );
+      await captureForm.getByRole("checkbox").check();
+      await captureForm.getByRole("button", { name: "Quero conversar sobre minha operação" }).click();
+
+      const feedback = page.locator("[data-crm-leads-capture-message]");
+      await expect(feedback).toHaveAttribute("data-feedback-tone", "success");
+      await expect(feedback).toContainText("Recebi seu contexto");
+      await expect(feedback).toBeFocused();
+    } else {
+      await expect(page.locator(".coo-form-unavailable")).toBeVisible();
+    }
+
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .exclude("#wpadminbar")
+      .analyze();
+    expect(accessibilityScanResults.violations).toEqual([]);
   });
 
   test("keeps standard pages in a single-column reading flow", async ({ page }) => {

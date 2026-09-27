@@ -133,4 +133,15 @@ final class ThemeSetupTest extends TestCase {
 		$this->assertArrayHasKey( 'core/button', $theme_json['styles']['blocks'] );
 		$this->assertArrayHasKey( 'core/separator', $theme_json['styles']['blocks'] );
 	}
+
+	/**
+	 * COO as a Service should be selectable as a page template.
+	 */
+	public function test_coo_as_a_service_template_is_registered(): void {
+		$templates = wp_get_theme()->get_page_templates();
+
+		$this->assertArrayHasKey( 'page-coo-as-a-service.php', $templates );
+		$this->assertSame( 'COO as a Service', $templates['page-coo-as-a-service.php'] );
+		$this->assertFileExists( EXECUTIVE_SIGNAL_THEME_DIR . '/assets/images/rafael-carvalho-coo-as-a-service.jpeg' );
+	}
 }

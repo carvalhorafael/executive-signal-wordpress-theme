@@ -168,6 +168,12 @@ msgstr ""
 msgid "Publish comment"
 msgstr ""
 
+#. translators: %s: Current year.
+#: footer-sales.php:16
+#, php-format
+msgid "Copyright © %s Rafael Carvalho."
+msgstr ""
+
 #. translators: %d: Footer column number.
 #: footer.php:13
 #, php-format
@@ -178,6 +184,27 @@ msgstr ""
 #: footer.php:28
 #, php-format
 msgid "Copyright © %s - Developed by Rafael Carvalho®"
+msgstr ""
+
+#: header-sales.php:18
+msgid "Pular para o conteúdo"
+msgstr ""
+
+#: header-sales.php:30
+msgid "Navegação da página"
+msgstr ""
+
+#: header-sales.php:31
+#: page-coo-as-a-service.php:115
+msgid "Como funciona"
+msgstr ""
+
+#: header-sales.php:32
+msgid "Para quem é"
+msgstr ""
+
+#: header-sales.php:35
+msgid "Conversar sobre minha operação"
 msgstr ""
 
 #: header.php:18
@@ -493,6 +520,489 @@ msgid "Centered page"
 msgstr ""
 
 #. Template Name of the theme
+#: page-coo-as-a-service.php:22
+msgid "COO as a Service"
+msgstr ""
+
+#: page-coo-as-a-service.php:23
+msgid "Sua empresa cresceu. A operação ainda depende demais de você."
+msgstr ""
+
+#: page-coo-as-a-service.php:24
+msgid "Ajudo fundadores a sair do papel de gargalo e construir uma operação que escala."
+msgstr ""
+
+#: page-coo-as-a-service.php:25
+msgid "Liderança operacional sênior para empresas em crescimento que ainda não precisam de um COO em tempo integral."
+msgstr ""
+
+#: page-coo-as-a-service.php:27
+#: page-coo-as-a-service.php:315
+msgid "Quero conversar sobre minha operação"
+msgstr ""
+
+#: page-coo-as-a-service.php:28
+msgid "Uma conversa inicial para entender o momento da empresa e avaliar se essa atuação faz sentido."
+msgstr ""
+
+#: page-coo-as-a-service.php:34
+msgid "Prioridades"
+msgstr ""
+
+#: page-coo-as-a-service.php:35
+msgid "Decisões"
+msgstr ""
+
+#: page-coo-as-a-service.php:36
+msgid "Pessoas"
+msgstr ""
+
+#: page-coo-as-a-service.php:37
+msgid "Riscos"
+msgstr ""
+
+#: page-coo-as-a-service.php:38
+#: page-coo-as-a-service.php:285
+msgid "CEO"
+msgstr ""
+
+#: page-coo-as-a-service.php:40
+msgid "Quando toda decisão importante converge para o fundador, crescimento também aumenta dependência."
+msgstr ""
+
+#: page-coo-as-a-service.php:48
+msgid "O sintoma"
+msgstr ""
+
+#: page-coo-as-a-service.php:49
+msgid "O problema não é falta de esforço. A empresa cresceu além do modelo de gestão que trouxe você até aqui."
+msgstr ""
+
+#: page-coo-as-a-service.php:53
+msgid "Decisões importantes continuam voltando para você."
+msgstr ""
+
+#: page-coo-as-a-service.php:54
+msgid "Gestores executam, mas ainda assumem pouca responsabilidade pelos resultados."
+msgstr ""
+
+#: page-coo-as-a-service.php:55
+msgid "Prioridades mudam ou competem entre si."
+msgstr ""
+
+#: page-coo-as-a-service.php:56
+msgid "Os números existem, mas não orientam suficientemente as decisões."
+msgstr ""
+
+#: page-coo-as-a-service.php:57
+msgid "Problemas relevantes aparecem tarde."
+msgstr ""
+
+#: page-coo-as-a-service.php:58
+msgid "A empresa trabalha muito, mas executa com pouca previsibilidade."
+msgstr ""
+
+#: page-coo-as-a-service.php:61
+msgid "Contratar mais pessoas não resolve quando prioridades, responsabilidades e decisões continuam centralizadas."
+msgstr ""
+
+#: page-coo-as-a-service.php:67
+msgid "A mudança necessária"
+msgstr ""
+
+#: page-coo-as-a-service.php:68
+msgid "Você não precisa estar em todas as decisões para continuar no controle."
+msgstr ""
+
+#: page-coo-as-a-service.php:69
+msgid "Precisa de uma operação que torne prioridades, responsabilidades, riscos e resultados visíveis."
+msgstr ""
+
+#: page-coo-as-a-service.php:76
+msgid "A atuação"
+msgstr ""
+
+#: page-coo-as-a-service.php:77
+msgid "Senioridade operacional ao lado do CEO."
+msgstr ""
+
+#: page-coo-as-a-service.php:78
+msgid "COO as a Service é uma atuação executiva dentro da empresa para diagnosticar gargalos, transformar estratégia em prioridades e fazer a mudança acontecer junto aos gestores."
+msgstr ""
+
+#: page-coo-as-a-service.php:81
+msgid "Diferença entre consultoria tradicional e a atuação proposta"
+msgstr ""
+
+#: page-coo-as-a-service.php:85
+msgid "Não é"
+msgstr ""
+
+#: page-coo-as-a-service.php:86
+msgid "É"
+msgstr ""
+
+#: page-coo-as-a-service.php:91
+msgid "Diagnóstico isolado"
+msgstr ""
+
+#: page-coo-as-a-service.php:92
+msgid "Diagnóstico seguido de implementação"
+msgstr ""
+
+#: page-coo-as-a-service.php:95
+msgid "Framework aplicado da mesma forma em qualquer empresa"
+msgstr ""
+
+#: page-coo-as-a-service.php:96
+msgid "Ferramentas escolhidas conforme o contexto"
+msgstr ""
+
+#: page-coo-as-a-service.php:99
+msgid "Aconselhamento distante"
+msgstr ""
+
+#: page-coo-as-a-service.php:100
+msgid "Participação próxima do CEO e da liderança"
+msgstr ""
+
+#: page-coo-as-a-service.php:103
+msgid "Equipe júnior executando recomendações"
+msgstr ""
+
+#: page-coo-as-a-service.php:104
+msgid "Atuação direta de Rafael"
+msgstr ""
+
+#: page-coo-as-a-service.php:116
+msgid "O processo é consistente. As ferramentas mudam conforme o contexto."
+msgstr ""
+
+#: page-coo-as-a-service.php:121
+msgid "Diagnosticar"
+msgstr ""
+
+#: page-coo-as-a-service.php:122
+msgid "Entender estratégia, números, pessoas, decisões, dependências e riscos."
+msgstr ""
+
+#: page-coo-as-a-service.php:125
+msgid "Priorizar"
+msgstr ""
+
+#: page-coo-as-a-service.php:126
+msgid "Identificar os poucos problemas que mais limitam a execução e definir o que precisa mudar primeiro."
+msgstr ""
+
+#: page-coo-as-a-service.php:129
+msgid "Implementar"
+msgstr ""
+
+#: page-coo-as-a-service.php:130
+msgid "Colocar prioridades, responsabilidades, indicadores e cadências de gestão em funcionamento."
+msgstr ""
+
+#: page-coo-as-a-service.php:133
+msgid "Fortalecer a liderança"
+msgstr ""
+
+#: page-coo-as-a-service.php:134
+msgid "Ajudar gestores a assumir decisões e resultados sem depender continuamente do fundador."
+msgstr ""
+
+#: page-coo-as-a-service.php:137
+msgid "Evoluir"
+msgstr ""
+
+#: page-coo-as-a-service.php:138
+msgid "Acompanhar a operação, tornar problemas visíveis mais cedo e ajustar o sistema com o aprendizado real."
+msgstr ""
+
+#: page-coo-as-a-service.php:147
+msgid "A transformação"
+msgstr ""
+
+#: page-coo-as-a-service.php:148
+msgid "Uma operação que consegue executar sem pedir ao fundador cada resposta."
+msgstr ""
+
+#: page-coo-as-a-service.php:149
+msgid "A direção esperada é reduzir dependência e aumentar a capacidade executiva da empresa, sem criar processo pela organização em si."
+msgstr ""
+
+#: page-coo-as-a-service.php:154
+#: page-coo-as-a-service.php:158
+#: page-coo-as-a-service.php:159
+#: page-coo-as-a-service.php:160
+#: page-coo-as-a-service.php:161
+#: page-coo-as-a-service.php:162
+msgid "Hoje"
+msgstr ""
+
+#: page-coo-as-a-service.php:155
+#: page-coo-as-a-service.php:158
+#: page-coo-as-a-service.php:159
+#: page-coo-as-a-service.php:160
+#: page-coo-as-a-service.php:161
+#: page-coo-as-a-service.php:162
+msgid "Evolução esperada"
+msgstr ""
+
+#: page-coo-as-a-service.php:158
+msgid "Prioridades concorrentes"
+msgstr ""
+
+#: page-coo-as-a-service.php:158
+msgid "Poucas prioridades explícitas"
+msgstr ""
+
+#: page-coo-as-a-service.php:159
+msgid "Decisões acumuladas no CEO"
+msgstr ""
+
+#: page-coo-as-a-service.php:159
+msgid "Gestores decidindo dentro de seus papéis"
+msgstr ""
+
+#: page-coo-as-a-service.php:160
+msgid "Problemas descobertos tarde"
+msgstr ""
+
+#: page-coo-as-a-service.php:160
+msgid "Riscos e bloqueios visíveis"
+msgstr ""
+
+#: page-coo-as-a-service.php:161
+msgid "Reuniões sem consequência"
+msgstr ""
+
+#: page-coo-as-a-service.php:161
+msgid "Cadência com decisão e acompanhamento"
+msgstr ""
+
+#: page-coo-as-a-service.php:162
+msgid "Execução reativa"
+msgstr ""
+
+#: page-coo-as-a-service.php:162
+msgid "Mais clareza e previsibilidade"
+msgstr ""
+
+#: page-coo-as-a-service.php:171
+msgid "Aderência"
+msgstr ""
+
+#: page-coo-as-a-service.php:172
+msgid "Esse trabalho exige uma empresa pronta para mudar a forma como executa."
+msgstr ""
+
+#: page-coo-as-a-service.php:177
+msgid "Pode fazer sentido"
+msgstr ""
+
+#: page-coo-as-a-service.php:178
+msgid "A empresa já possui uma operação real para transformar."
+msgstr ""
+
+#: page-coo-as-a-service.php:180
+msgid "O produto foi validado e a empresa vende de forma consistente."
+msgstr ""
+
+#: page-coo-as-a-service.php:181
+msgid "Existe equipe e alguma estrutura de gestão."
+msgstr ""
+
+#: page-coo-as-a-service.php:182
+msgid "O crescimento aumentou a complexidade."
+msgstr ""
+
+#: page-coo-as-a-service.php:183
+msgid "O CEO reconhece que virou ponto de decisão e desbloqueio."
+msgstr ""
+
+#: page-coo-as-a-service.php:184
+msgid "Ainda não faz sentido contratar um COO sênior em tempo integral."
+msgstr ""
+
+#: page-coo-as-a-service.php:189
+msgid "Provavelmente não é o momento"
+msgstr ""
+
+#: page-coo-as-a-service.php:190
+msgid "A prioridade ainda está antes da complexidade operacional."
+msgstr ""
+
+#: page-coo-as-a-service.php:192
+msgid "A empresa ainda está validando produto ou mercado."
+msgstr ""
+
+#: page-coo-as-a-service.php:193
+msgid "Praticamente não existe equipe para liderar."
+msgstr ""
+
+#: page-coo-as-a-service.php:194
+msgid "A busca é apenas por aconselhamento pontual."
+msgstr ""
+
+#: page-coo-as-a-service.php:195
+msgid "A intenção é terceirizar a responsabilidade do CEO."
+msgstr ""
+
+#: page-coo-as-a-service.php:196
+msgid "Não há abertura para mudar prioridades e responsabilidades."
+msgstr ""
+
+#: page-coo-as-a-service.php:206
+msgid "Rafael Carvalho sentado, em retrato com fundo neutro."
+msgstr ""
+
+#: page-coo-as-a-service.php:209
+msgid "Atuação direta"
+msgstr ""
+
+#: page-coo-as-a-service.php:210
+msgid "Eu já estive do outro lado da mesa."
+msgstr ""
+
+#: page-coo-as-a-service.php:211
+msgid "Sou empreendedor e executivo há mais de 20 anos. Já construí empresas, liderei equipes e atravessei diferentes fases de crescimento."
+msgstr ""
+
+#: page-coo-as-a-service.php:212
+msgid "Conheço o problema de ser o fundador que precisa entender, decidir e desbloquear tudo. Também conheço o trabalho necessário para construir prioridades, gestores e sistemas capazes de sustentar uma operação mais madura."
+msgstr ""
+
+#: page-coo-as-a-service.php:213
+msgid "No COO as a Service, essa experiência não aparece apenas em recomendações. Eu trabalho diretamente com o CEO e com a liderança para diagnosticar, priorizar e implementar."
+msgstr ""
+
+#: page-coo-as-a-service.php:221
+msgid "Perguntas importantes"
+msgstr ""
+
+#: page-coo-as-a-service.php:222
+msgid "Antes de avaliar se faz sentido conversar."
+msgstr ""
+
+#: page-coo-as-a-service.php:226
+msgid "Isso é uma consultoria?"
+msgstr ""
+
+#: page-coo-as-a-service.php:227
+msgid "Não no sentido tradicional de entregar um diagnóstico e deixar a implementação com outra equipe. A atuação acontece diretamente com o CEO e os gestores, do diagnóstico à execução das mudanças prioritárias."
+msgstr ""
+
+#: page-coo-as-a-service.php:230
+msgid "COO as a Service substitui um COO em tempo integral?"
+msgstr ""
+
+#: page-coo-as-a-service.php:231
+msgid "É uma forma de incorporar senioridade operacional em um estágio em que contratar um COO experiente em tempo integral ainda seria prematuro ou desproporcional."
+msgstr ""
+
+#: page-coo-as-a-service.php:234
+msgid "Minha empresa precisa já ter gestores?"
+msgstr ""
+
+#: page-coo-as-a-service.php:235
+msgid "Precisa existir uma equipe e pessoas com quem seja possível dividir responsabilidades reais. Parte do trabalho pode envolver desenvolver essa liderança, mas não substitui a existência de uma operação para liderar."
+msgstr ""
+
+#: page-coo-as-a-service.php:244
+msgid "Próximo passo"
+msgstr ""
+
+#: page-coo-as-a-service.php:245
+msgid "Onde a operação ainda depende de você?"
+msgstr ""
+
+#: page-coo-as-a-service.php:246
+msgid "Conte brevemente o momento da empresa. Vou analisar o contexto e entrar em contato se houver aderência para uma conversa."
+msgstr ""
+
+#: page-coo-as-a-service.php:248
+msgid "Análise feita diretamente por Rafael."
+msgstr ""
+
+#: page-coo-as-a-service.php:249
+msgid "Sem diagnóstico automático ou abordagem comercial genérica."
+msgstr ""
+
+#: page-coo-as-a-service.php:250
+msgid "Se não houver aderência, isso também será dito com clareza."
+msgstr ""
+
+#: page-coo-as-a-service.php:269
+msgid "Nome"
+msgstr ""
+
+#: page-coo-as-a-service.php:273
+msgid "E-mail corporativo"
+msgstr ""
+
+#: page-coo-as-a-service.php:277
+msgid "Empresa"
+msgstr ""
+
+#: page-coo-as-a-service.php:281
+msgid "Seu papel"
+msgstr ""
+
+#: page-coo-as-a-service.php:283
+msgid "Selecione"
+msgstr ""
+
+#: page-coo-as-a-service.php:284
+msgid "Fundador ou cofundador"
+msgstr ""
+
+#: page-coo-as-a-service.php:286
+msgid "Outro executivo"
+msgstr ""
+
+#: page-coo-as-a-service.php:290
+msgid "Site ou LinkedIn da empresa"
+msgstr ""
+
+#: page-coo-as-a-service.php:294
+#: template-parts/content-free-material.php:118
+#: template-parts/share-post.php:19
+msgid "WhatsApp"
+msgstr ""
+
+#: page-coo-as-a-service.php:294
+msgid "opcional"
+msgstr ""
+
+#: page-coo-as-a-service.php:298
+msgid "Onde a operação mais depende de você hoje?"
+msgstr ""
+
+#: page-coo-as-a-service.php:307
+msgid "Concordo com o uso dos meus dados para retorno sobre este contato, conforme a"
+msgstr ""
+
+#: page-coo-as-a-service.php:308
+msgid "Política de Privacidade"
+msgstr ""
+
+#: page-coo-as-a-service.php:310
+msgid "Concordo com o uso dos meus dados para retorno sobre este contato."
+msgstr ""
+
+#: page-coo-as-a-service.php:318
+msgid "O formulário está temporariamente indisponível. Tente novamente mais tarde."
+msgstr ""
+
+#: page-coo-as-a-service.php:325
+msgid "Ação principal"
+msgstr ""
+
+#: page-coo-as-a-service.php:326
+msgid "Quero conversar"
+msgstr ""
+
+#. Template Name of the theme
 #: template-parts/course-listing.php:10
 #: template-parts/course-listing.php:43
 msgid "Courses"
@@ -805,11 +1315,6 @@ msgstr ""
 
 #: template-parts/content-free-material.php:115
 msgid "you@example.com"
-msgstr ""
-
-#: template-parts/content-free-material.php:118
-#: template-parts/share-post.php:19
-msgid "WhatsApp"
 msgstr ""
 
 #: template-parts/content-free-material.php:119
