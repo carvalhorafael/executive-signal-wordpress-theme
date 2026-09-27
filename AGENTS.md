@@ -115,6 +115,34 @@ Credenciais locais padrao do `wp-env`:
 
 Essas credenciais sao apenas do ambiente local de desenvolvimento. Nao usar como referencia para producao, staging ou qualquer ambiente real.
 
+### Alinhamento entre branch e ambiente local
+
+Quando a tarefa exigir validacao manual no WordPress da porta `8888`, o checkout principal montado pelo `wp-env` deve estar na branch de trabalho da tarefa.
+
+Se uma worktree isolada for usada:
+
+1. informar explicitamente que o WordPress principal nao esta usando essa worktree;
+2. executar um WordPress isolado nessa mesma worktree e fornecer sua URL; ou
+3. antes de entregar para validacao manual, mover a branch para o checkout principal.
+
+Nao considerar a implementacao pronta para revisao manual sem confirmar:
+
+- `git branch --show-current` aponta para a branch da tarefa;
+- o arquivo implementado existe no checkout principal;
+- o WordPress reconhece o template, pattern ou funcionalidade;
+- plugins companheiros montados pelo `.wp-env.json` tambem estao nas branches compativeis;
+- `http://localhost:8888/` responde corretamente.
+
+Para templates de pagina, validar com:
+
+```bash
+npx wp-env run cli wp eval 'print_r( wp_get_theme()->get_page_templates() );'
+```
+
+Para integracoes com plugins, validar tambem que as funcoes ou classes consumidas pelo tema estao disponiveis no WordPress em execucao.
+
+Nunca trocar ou remover a branch anterior sem preservar alteracoes rastreadas e arquivos nao rastreados do usuario.
+
 ## GitHub Packages
 
 Para rodar `npm install` ou `npm ci`, o projeto precisa conseguir ler os pacotes `@carvalhorafael/*` no GitHub Packages.
@@ -137,6 +165,7 @@ Regra padrao:
 - antes de criar branch de trabalho, buscar `origin` e sincronizar `develop` com `origin/develop`;
 - toda branch de trabalho deve partir de `origin/develop` atualizado;
 - criar uma branch de trabalho antes de alterar codigo;
+- a branch usada para codificacao e a branch montada no ambiente de revisao manual devem ser a mesma, salvo quando uma URL isolada for comunicada explicitamente;
 - usar prefixo `codex/` para branches criadas por agentes;
 - fazer commits pequenos e intencionais;
 - fazer push da branch para `origin`;
