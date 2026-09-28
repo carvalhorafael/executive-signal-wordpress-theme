@@ -187,15 +187,18 @@ msgid "Copyright © %s - Developed by Rafael Carvalho®"
 msgstr ""
 
 #: header-sales.php:18
+#: header-speaking.php:18
 msgid "Pular para o conteúdo"
 msgstr ""
 
 #: header-sales.php:30
+#: header-speaking.php:30
 msgid "Navegação da página"
 msgstr ""
 
 #: header-sales.php:31
-#: page-coo-as-a-service.php:115
+#: page-coo-as-a-service.php:134
+#: page-palestras.php:137
 msgid "Como funciona"
 msgstr ""
 
@@ -205,6 +208,20 @@ msgstr ""
 
 #: header-sales.php:35
 msgid "Conversar sobre minha operação"
+msgstr ""
+
+#: header-speaking.php:31
+#: page-palestras.php:58
+msgid "Temas"
+msgstr ""
+
+#: header-speaking.php:32
+#: page-palestras.php:121
+msgid "Formatos"
+msgstr ""
+
+#: header-speaking.php:35
+msgid "Convidar Rafael"
 msgstr ""
 
 #: header.php:18
@@ -529,6 +546,7 @@ msgid "Sua empresa cresceu. A operação ainda depende demais de você."
 msgstr ""
 
 #: page-coo-as-a-service.php:24
+#: template-parts/home/content.php:36
 msgid "Ajudo fundadores a sair do papel de gargalo e construir uma operação que escala."
 msgstr ""
 
@@ -537,7 +555,7 @@ msgid "Liderança operacional sênior para empresas em crescimento que ainda nã
 msgstr ""
 
 #: page-coo-as-a-service.php:27
-#: page-coo-as-a-service.php:315
+#: page-coo-as-a-service.php:350
 msgid "Quero conversar sobre minha operação"
 msgstr ""
 
@@ -562,7 +580,7 @@ msgid "Riscos"
 msgstr ""
 
 #: page-coo-as-a-service.php:38
-#: page-coo-as-a-service.php:285
+#: page-coo-as-a-service.php:320
 msgid "CEO"
 msgstr ""
 
@@ -570,435 +588,489 @@ msgstr ""
 msgid "Quando toda decisão importante converge para o fundador, crescimento também aumenta dependência."
 msgstr ""
 
-#: page-coo-as-a-service.php:48
+#: page-coo-as-a-service.php:49
 msgid "O sintoma"
 msgstr ""
 
-#: page-coo-as-a-service.php:49
+#: page-coo-as-a-service.php:50
 msgid "O problema não é falta de esforço. A empresa cresceu além do modelo de gestão que trouxe você até aqui."
 msgstr ""
 
-#: page-coo-as-a-service.php:53
+#: page-coo-as-a-service.php:54
 msgid "Decisões importantes continuam voltando para você."
 msgstr ""
 
-#: page-coo-as-a-service.php:54
+#: page-coo-as-a-service.php:55
 msgid "Gestores executam, mas ainda assumem pouca responsabilidade pelos resultados."
 msgstr ""
 
-#: page-coo-as-a-service.php:55
+#: page-coo-as-a-service.php:56
 msgid "Prioridades mudam ou competem entre si."
 msgstr ""
 
-#: page-coo-as-a-service.php:56
+#: page-coo-as-a-service.php:57
 msgid "Os números existem, mas não orientam suficientemente as decisões."
 msgstr ""
 
-#: page-coo-as-a-service.php:57
+#: page-coo-as-a-service.php:58
 msgid "Problemas relevantes aparecem tarde."
 msgstr ""
 
-#: page-coo-as-a-service.php:58
+#: page-coo-as-a-service.php:59
 msgid "A empresa trabalha muito, mas executa com pouca previsibilidade."
 msgstr ""
 
-#: page-coo-as-a-service.php:61
+#: page-coo-as-a-service.php:66
 msgid "Contratar mais pessoas não resolve quando prioridades, responsabilidades e decisões continuam centralizadas."
 msgstr ""
 
-#: page-coo-as-a-service.php:67
+#: page-coo-as-a-service.php:76
 msgid "A mudança necessária"
 msgstr ""
 
-#: page-coo-as-a-service.php:68
+#: page-coo-as-a-service.php:77
 msgid "Você não precisa estar em todas as decisões para continuar no controle."
 msgstr ""
 
-#: page-coo-as-a-service.php:69
-msgid "Precisa de uma operação que torne prioridades, responsabilidades, riscos e resultados visíveis."
-msgstr ""
-
-#: page-coo-as-a-service.php:76
-msgid "A atuação"
-msgstr ""
-
-#: page-coo-as-a-service.php:77
-msgid "Senioridade operacional ao lado do CEO."
-msgstr ""
-
 #: page-coo-as-a-service.php:78
-msgid "COO as a Service é uma atuação executiva dentro da empresa para diagnosticar gargalos, transformar estratégia em prioridades e fazer a mudança acontecer junto aos gestores."
+msgid "O CEO não precisa acompanhar cada movimento. Precisa de visibilidade suficiente para decidir onde sua atenção realmente muda o resultado."
 msgstr ""
 
-#: page-coo-as-a-service.php:81
-msgid "Diferença entre consultoria tradicional e a atuação proposta"
+#: page-coo-as-a-service.php:82
+msgid "Uma operação sob controle consegue responder:"
+msgstr ""
+
+#: page-coo-as-a-service.php:84
+msgid "O que realmente precisa avançar agora?"
 msgstr ""
 
 #: page-coo-as-a-service.php:85
-msgid "Não é"
+msgid "Quem tem autoridade para decidir e responder?"
 msgstr ""
 
 #: page-coo-as-a-service.php:86
-msgid "É"
-msgstr ""
-
-#: page-coo-as-a-service.php:91
-msgid "Diagnóstico isolado"
-msgstr ""
-
-#: page-coo-as-a-service.php:92
-msgid "Diagnóstico seguido de implementação"
+msgid "Onde estão os riscos e bloqueios que exigem atenção?"
 msgstr ""
 
 #: page-coo-as-a-service.php:95
-msgid "Framework aplicado da mesma forma em qualquer empresa"
+msgid "A atuação"
 msgstr ""
 
 #: page-coo-as-a-service.php:96
-msgid "Ferramentas escolhidas conforme o contexto"
+#: template-parts/home/content.php:95
+msgid "Senioridade operacional ao lado do CEO."
 msgstr ""
 
-#: page-coo-as-a-service.php:99
-msgid "Aconselhamento distante"
+#: page-coo-as-a-service.php:97
+msgid "COO as a Service é uma atuação executiva dentro da empresa para diagnosticar gargalos, transformar estratégia em prioridades e fazer a mudança acontecer junto aos gestores."
 msgstr ""
 
 #: page-coo-as-a-service.php:100
-msgid "Participação próxima do CEO e da liderança"
-msgstr ""
-
-#: page-coo-as-a-service.php:103
-msgid "Equipe júnior executando recomendações"
+msgid "Diferença entre consultoria tradicional e a atuação proposta"
 msgstr ""
 
 #: page-coo-as-a-service.php:104
-msgid "Atuação direta de Rafael"
+msgid "Não é consultoria tradicional"
 msgstr ""
 
-#: page-coo-as-a-service.php:116
-msgid "O processo é consistente. As ferramentas mudam conforme o contexto."
+#: page-coo-as-a-service.php:105
+msgid "É atuação executiva"
 msgstr ""
 
-#: page-coo-as-a-service.php:121
-msgid "Diagnosticar"
+#: page-coo-as-a-service.php:110
+msgid "Diagnóstico isolado"
+msgstr ""
+
+#: page-coo-as-a-service.php:111
+msgid "Diagnóstico seguido de implementação"
+msgstr ""
+
+#: page-coo-as-a-service.php:114
+msgid "Framework aplicado da mesma forma em qualquer empresa"
+msgstr ""
+
+#: page-coo-as-a-service.php:115
+msgid "Ferramentas escolhidas conforme o contexto"
+msgstr ""
+
+#: page-coo-as-a-service.php:118
+msgid "Aconselhamento distante"
+msgstr ""
+
+#: page-coo-as-a-service.php:119
+msgid "Participação próxima do CEO e da liderança"
 msgstr ""
 
 #: page-coo-as-a-service.php:122
+msgid "Equipe júnior executando recomendações"
+msgstr ""
+
+#: page-coo-as-a-service.php:123
+msgid "Atuação direta e pessoal"
+msgstr ""
+
+#: page-coo-as-a-service.php:135
+msgid "O processo é consistente. As ferramentas mudam conforme o contexto."
+msgstr ""
+
+#: page-coo-as-a-service.php:140
+msgid "Diagnosticar"
+msgstr ""
+
+#: page-coo-as-a-service.php:141
 msgid "Entender estratégia, números, pessoas, decisões, dependências e riscos."
 msgstr ""
 
-#: page-coo-as-a-service.php:125
+#: page-coo-as-a-service.php:144
 msgid "Priorizar"
 msgstr ""
 
-#: page-coo-as-a-service.php:126
+#: page-coo-as-a-service.php:145
 msgid "Identificar os poucos problemas que mais limitam a execução e definir o que precisa mudar primeiro."
 msgstr ""
 
-#: page-coo-as-a-service.php:129
+#: page-coo-as-a-service.php:148
 msgid "Implementar"
 msgstr ""
 
-#: page-coo-as-a-service.php:130
+#: page-coo-as-a-service.php:149
 msgid "Colocar prioridades, responsabilidades, indicadores e cadências de gestão em funcionamento."
 msgstr ""
 
-#: page-coo-as-a-service.php:133
+#: page-coo-as-a-service.php:152
 msgid "Fortalecer a liderança"
 msgstr ""
 
-#: page-coo-as-a-service.php:134
+#: page-coo-as-a-service.php:153
 msgid "Ajudar gestores a assumir decisões e resultados sem depender continuamente do fundador."
 msgstr ""
 
-#: page-coo-as-a-service.php:137
+#: page-coo-as-a-service.php:156
 msgid "Evoluir"
 msgstr ""
 
-#: page-coo-as-a-service.php:138
+#: page-coo-as-a-service.php:157
 msgid "Acompanhar a operação, tornar problemas visíveis mais cedo e ajustar o sistema com o aprendizado real."
 msgstr ""
 
-#: page-coo-as-a-service.php:147
+#: page-coo-as-a-service.php:166
 msgid "A transformação"
 msgstr ""
 
-#: page-coo-as-a-service.php:148
+#: page-coo-as-a-service.php:167
 msgid "Uma operação que consegue executar sem pedir ao fundador cada resposta."
 msgstr ""
 
-#: page-coo-as-a-service.php:149
+#: page-coo-as-a-service.php:168
 msgid "A direção esperada é reduzir dependência e aumentar a capacidade executiva da empresa, sem criar processo pela organização em si."
 msgstr ""
 
-#: page-coo-as-a-service.php:154
-#: page-coo-as-a-service.php:158
-#: page-coo-as-a-service.php:159
-#: page-coo-as-a-service.php:160
-#: page-coo-as-a-service.php:161
-#: page-coo-as-a-service.php:162
+#: page-coo-as-a-service.php:173
+#: page-coo-as-a-service.php:177
+#: page-coo-as-a-service.php:178
+#: page-coo-as-a-service.php:179
+#: page-coo-as-a-service.php:180
+#: page-coo-as-a-service.php:181
 msgid "Hoje"
 msgstr ""
 
-#: page-coo-as-a-service.php:155
-#: page-coo-as-a-service.php:158
-#: page-coo-as-a-service.php:159
-#: page-coo-as-a-service.php:160
-#: page-coo-as-a-service.php:161
-#: page-coo-as-a-service.php:162
+#: page-coo-as-a-service.php:174
+#: page-coo-as-a-service.php:177
+#: page-coo-as-a-service.php:178
+#: page-coo-as-a-service.php:179
+#: page-coo-as-a-service.php:180
+#: page-coo-as-a-service.php:181
 msgid "Evolução esperada"
 msgstr ""
 
-#: page-coo-as-a-service.php:158
+#: page-coo-as-a-service.php:177
 msgid "Prioridades concorrentes"
 msgstr ""
 
-#: page-coo-as-a-service.php:158
+#: page-coo-as-a-service.php:177
 msgid "Poucas prioridades explícitas"
 msgstr ""
 
-#: page-coo-as-a-service.php:159
+#: page-coo-as-a-service.php:178
 msgid "Decisões acumuladas no CEO"
 msgstr ""
 
-#: page-coo-as-a-service.php:159
+#: page-coo-as-a-service.php:178
 msgid "Gestores decidindo dentro de seus papéis"
 msgstr ""
 
-#: page-coo-as-a-service.php:160
+#: page-coo-as-a-service.php:179
 msgid "Problemas descobertos tarde"
 msgstr ""
 
-#: page-coo-as-a-service.php:160
+#: page-coo-as-a-service.php:179
 msgid "Riscos e bloqueios visíveis"
 msgstr ""
 
-#: page-coo-as-a-service.php:161
+#: page-coo-as-a-service.php:180
 msgid "Reuniões sem consequência"
 msgstr ""
 
-#: page-coo-as-a-service.php:161
+#: page-coo-as-a-service.php:180
 msgid "Cadência com decisão e acompanhamento"
 msgstr ""
 
-#: page-coo-as-a-service.php:162
+#: page-coo-as-a-service.php:181
 msgid "Execução reativa"
 msgstr ""
 
-#: page-coo-as-a-service.php:162
+#: page-coo-as-a-service.php:181
 msgid "Mais clareza e previsibilidade"
 msgstr ""
 
-#: page-coo-as-a-service.php:171
+#: page-coo-as-a-service.php:190
 msgid "Aderência"
 msgstr ""
 
-#: page-coo-as-a-service.php:172
+#: page-coo-as-a-service.php:191
 msgid "Esse trabalho exige uma empresa pronta para mudar a forma como executa."
 msgstr ""
 
-#: page-coo-as-a-service.php:177
+#: page-coo-as-a-service.php:196
 msgid "Pode fazer sentido"
 msgstr ""
 
-#: page-coo-as-a-service.php:178
+#: page-coo-as-a-service.php:197
 msgid "A empresa já possui uma operação real para transformar."
 msgstr ""
 
-#: page-coo-as-a-service.php:180
+#: page-coo-as-a-service.php:199
 msgid "O produto foi validado e a empresa vende de forma consistente."
 msgstr ""
 
-#: page-coo-as-a-service.php:181
+#: page-coo-as-a-service.php:200
 msgid "Existe equipe e alguma estrutura de gestão."
 msgstr ""
 
-#: page-coo-as-a-service.php:182
+#: page-coo-as-a-service.php:201
 msgid "O crescimento aumentou a complexidade."
 msgstr ""
 
-#: page-coo-as-a-service.php:183
+#: page-coo-as-a-service.php:202
 msgid "O CEO reconhece que virou ponto de decisão e desbloqueio."
 msgstr ""
 
-#: page-coo-as-a-service.php:184
+#: page-coo-as-a-service.php:203
 msgid "Ainda não faz sentido contratar um COO sênior em tempo integral."
 msgstr ""
 
-#: page-coo-as-a-service.php:189
+#: page-coo-as-a-service.php:208
 msgid "Provavelmente não é o momento"
 msgstr ""
 
-#: page-coo-as-a-service.php:190
+#: page-coo-as-a-service.php:209
 msgid "A prioridade ainda está antes da complexidade operacional."
 msgstr ""
 
-#: page-coo-as-a-service.php:192
+#: page-coo-as-a-service.php:211
 msgid "A empresa ainda está validando produto ou mercado."
 msgstr ""
 
-#: page-coo-as-a-service.php:193
+#: page-coo-as-a-service.php:212
 msgid "Praticamente não existe equipe para liderar."
 msgstr ""
 
-#: page-coo-as-a-service.php:194
+#: page-coo-as-a-service.php:213
 msgid "A busca é apenas por aconselhamento pontual."
 msgstr ""
 
-#: page-coo-as-a-service.php:195
+#: page-coo-as-a-service.php:214
 msgid "A intenção é terceirizar a responsabilidade do CEO."
 msgstr ""
 
-#: page-coo-as-a-service.php:196
+#: page-coo-as-a-service.php:215
 msgid "Não há abertura para mudar prioridades e responsabilidades."
 msgstr ""
 
-#: page-coo-as-a-service.php:206
+#: page-coo-as-a-service.php:225
+#: template-parts/home/content.php:45
 msgid "Rafael Carvalho sentado, em retrato com fundo neutro."
 msgstr ""
 
-#: page-coo-as-a-service.php:209
+#: page-coo-as-a-service.php:228
 msgid "Atuação direta"
 msgstr ""
 
-#: page-coo-as-a-service.php:210
+#: page-coo-as-a-service.php:229
+#: template-parts/home/content.php:166
 msgid "Eu já estive do outro lado da mesa."
 msgstr ""
 
-#: page-coo-as-a-service.php:211
+#: page-coo-as-a-service.php:230
+#: template-parts/home/content.php:167
 msgid "Sou empreendedor e executivo há mais de 20 anos. Já construí empresas, liderei equipes e atravessei diferentes fases de crescimento."
 msgstr ""
 
-#: page-coo-as-a-service.php:212
+#: page-coo-as-a-service.php:231
 msgid "Conheço o problema de ser o fundador que precisa entender, decidir e desbloquear tudo. Também conheço o trabalho necessário para construir prioridades, gestores e sistemas capazes de sustentar uma operação mais madura."
 msgstr ""
 
-#: page-coo-as-a-service.php:213
+#: page-coo-as-a-service.php:232
 msgid "No COO as a Service, essa experiência não aparece apenas em recomendações. Eu trabalho diretamente com o CEO e com a liderança para diagnosticar, priorizar e implementar."
 msgstr ""
 
-#: page-coo-as-a-service.php:221
+#: page-coo-as-a-service.php:240
 msgid "Perguntas importantes"
 msgstr ""
 
-#: page-coo-as-a-service.php:222
+#: page-coo-as-a-service.php:241
 msgid "Antes de avaliar se faz sentido conversar."
 msgstr ""
 
-#: page-coo-as-a-service.php:226
+#: page-coo-as-a-service.php:245
 msgid "Isso é uma consultoria?"
 msgstr ""
 
-#: page-coo-as-a-service.php:227
+#: page-coo-as-a-service.php:246
 msgid "Não no sentido tradicional de entregar um diagnóstico e deixar a implementação com outra equipe. A atuação acontece diretamente com o CEO e os gestores, do diagnóstico à execução das mudanças prioritárias."
 msgstr ""
 
-#: page-coo-as-a-service.php:230
+#: page-coo-as-a-service.php:249
 msgid "COO as a Service substitui um COO em tempo integral?"
 msgstr ""
 
-#: page-coo-as-a-service.php:231
+#: page-coo-as-a-service.php:250
 msgid "É uma forma de incorporar senioridade operacional em um estágio em que contratar um COO experiente em tempo integral ainda seria prematuro ou desproporcional."
 msgstr ""
 
-#: page-coo-as-a-service.php:234
+#: page-coo-as-a-service.php:253
 msgid "Minha empresa precisa já ter gestores?"
 msgstr ""
 
-#: page-coo-as-a-service.php:235
+#: page-coo-as-a-service.php:254
 msgid "Precisa existir uma equipe e pessoas com quem seja possível dividir responsabilidades reais. Parte do trabalho pode envolver desenvolver essa liderança, mas não substitui a existência de uma operação para liderar."
 msgstr ""
 
-#: page-coo-as-a-service.php:244
-msgid "Próximo passo"
+#: page-coo-as-a-service.php:257
+msgid "Como saber se este é o momento certo para contratar?"
 msgstr ""
 
-#: page-coo-as-a-service.php:245
-msgid "Onde a operação ainda depende de você?"
+#: page-coo-as-a-service.php:258
+msgid "Faz sentido quando a empresa já possui um produto validado, vende de forma consistente e ganhou complexidade, mas decisões, prioridades e desbloqueios ainda dependem demais do fundador. Não é o formato indicado para negócios ainda buscando validação ou apenas aconselhamento pontual."
 msgstr ""
 
-#: page-coo-as-a-service.php:246
-msgid "Conte brevemente o momento da empresa. Vou analisar o contexto e entrar em contato se houver aderência para uma conversa."
+#: page-coo-as-a-service.php:261
+msgid "Quanto o CEO precisa se envolver no trabalho?"
 msgstr ""
 
-#: page-coo-as-a-service.php:248
-msgid "Análise feita diretamente por Rafael."
+#: page-coo-as-a-service.php:262
+msgid "O CEO precisa participar das decisões críticas, dar contexto e sustentar as mudanças junto à liderança. A proposta não é criar uma nova dependência, mas construir uma operação capaz de decidir e executar sem exigir a presença do CEO em cada movimento."
 msgstr ""
 
-#: page-coo-as-a-service.php:249
-msgid "Sem diagnóstico automático ou abordagem comercial genérica."
+#: page-coo-as-a-service.php:265
+msgid "Como o trabalho começa?"
 msgstr ""
 
-#: page-coo-as-a-service.php:250
-msgid "Se não houver aderência, isso também será dito com clareza."
+#: page-coo-as-a-service.php:266
+msgid "O início passa por entender estratégia, números, pessoas, responsabilidades, decisões acumuladas e riscos. A partir disso, identificamos os poucos gargalos que mais limitam a execução e definimos o que precisa mudar primeiro."
 msgstr ""
 
 #: page-coo-as-a-service.php:269
-msgid "Nome"
+msgid "Você aplica o mesmo modelo em todas as empresas?"
 msgstr ""
 
-#: page-coo-as-a-service.php:273
-msgid "E-mail corporativo"
+#: page-coo-as-a-service.php:270
+msgid "Não. O processo de diagnosticar, priorizar e implementar é consistente, mas as ferramentas, cadências e estruturas são escolhidas conforme a maturidade, as pessoas e as restrições de cada empresa."
 msgstr ""
 
-#: page-coo-as-a-service.php:277
-msgid "Empresa"
+#: page-coo-as-a-service.php:279
+#: template-parts/home/content.php:221
+msgid "Próximo passo"
+msgstr ""
+
+#: page-coo-as-a-service.php:280
+msgid "Onde a operação ainda depende de você?"
 msgstr ""
 
 #: page-coo-as-a-service.php:281
-msgid "Seu papel"
+msgid "Conte brevemente o momento da empresa. Vou analisar o contexto e entrar em contato se houver aderência para uma conversa."
 msgstr ""
 
 #: page-coo-as-a-service.php:283
-msgid "Selecione"
+msgid "Análise feita diretamente por Rafael."
 msgstr ""
 
 #: page-coo-as-a-service.php:284
+msgid "Sem diagnóstico automático ou abordagem comercial genérica."
+msgstr ""
+
+#: page-coo-as-a-service.php:285
+msgid "Se não houver aderência, isso também será dito com clareza."
+msgstr ""
+
+#: page-coo-as-a-service.php:304
+msgid "Nome"
+msgstr ""
+
+#: page-coo-as-a-service.php:308
+msgid "E-mail corporativo"
+msgstr ""
+
+#: page-coo-as-a-service.php:312
+msgid "Empresa"
+msgstr ""
+
+#: page-coo-as-a-service.php:316
+msgid "Seu papel"
+msgstr ""
+
+#: page-coo-as-a-service.php:318
+msgid "Selecione"
+msgstr ""
+
+#: page-coo-as-a-service.php:319
 msgid "Fundador ou cofundador"
 msgstr ""
 
-#: page-coo-as-a-service.php:286
+#: page-coo-as-a-service.php:321
 msgid "Outro executivo"
 msgstr ""
 
-#: page-coo-as-a-service.php:290
+#: page-coo-as-a-service.php:325
 msgid "Site ou LinkedIn da empresa"
 msgstr ""
 
-#: page-coo-as-a-service.php:294
+#: page-coo-as-a-service.php:329
 #: template-parts/content-free-material.php:118
 #: template-parts/share-post.php:19
 msgid "WhatsApp"
 msgstr ""
 
-#: page-coo-as-a-service.php:294
+#: page-coo-as-a-service.php:329
 msgid "opcional"
 msgstr ""
 
-#: page-coo-as-a-service.php:298
+#: page-coo-as-a-service.php:333
 msgid "Onde a operação mais depende de você hoje?"
 msgstr ""
 
-#: page-coo-as-a-service.php:307
+#: page-coo-as-a-service.php:342
 msgid "Concordo com o uso dos meus dados para retorno sobre este contato, conforme a"
 msgstr ""
 
-#: page-coo-as-a-service.php:308
+#: page-coo-as-a-service.php:343
 msgid "Política de Privacidade"
 msgstr ""
 
-#: page-coo-as-a-service.php:310
+#: page-coo-as-a-service.php:345
 msgid "Concordo com o uso dos meus dados para retorno sobre este contato."
 msgstr ""
 
-#: page-coo-as-a-service.php:318
+#: page-coo-as-a-service.php:353
 msgid "O formulário está temporariamente indisponível. Tente novamente mais tarde."
 msgstr ""
 
-#: page-coo-as-a-service.php:325
+#: page-coo-as-a-service.php:360
+#: page-palestras.php:193
 msgid "Ação principal"
 msgstr ""
 
-#: page-coo-as-a-service.php:326
+#: page-coo-as-a-service.php:361
 msgid "Quero conversar"
 msgstr ""
 
@@ -1006,6 +1078,10 @@ msgstr ""
 #: template-parts/course-listing.php:10
 #: template-parts/course-listing.php:43
 msgid "Courses"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Home — Rafael Carvalho"
 msgstr ""
 
 #. translators: %s: Number of free materials found in an archive.
@@ -1042,6 +1118,281 @@ msgstr ""
 
 #: page-materiais-gratuitos.php:129
 msgid "No materials match the selected categories."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Palestras"
+msgstr ""
+
+#: page-palestras.php:23
+msgid "Palestras com Rafael Carvalho"
+msgstr ""
+
+#: page-palestras.php:24
+msgid "As decisões reais por trás de empreender, liderar e crescer."
+msgstr ""
+
+#: page-palestras.php:25
+msgid "Experiência de quem construiu empresas, liderou operações e conhece as escolhas que acontecem longe das fórmulas prontas."
+msgstr ""
+
+#: page-palestras.php:27
+#: page-palestras.php:194
+msgid "Quero convidar Rafael"
+msgstr ""
+
+#: page-palestras.php:28
+msgid "Conhecer os temas"
+msgstr ""
+
+#: page-palestras.php:33
+msgid "Retrato de Rafael Carvalho."
+msgstr ""
+
+#: page-palestras.php:34
+msgid "Empreendedor · Executivo · Autor"
+msgstr ""
+
+#: page-palestras.php:42
+msgid "O que fica depois"
+msgstr ""
+
+#: page-palestras.php:43
+msgid "Uma boa palestra não termina no aplauso."
+msgstr ""
+
+#: page-palestras.php:44
+msgid "Ela abre novas perguntas, organiza ideias e cria conversas que continuam quando o evento termina."
+msgstr ""
+
+#: page-palestras.php:48
+msgid "Provocar uma leitura mais honesta sobre os desafios de empreender e liderar."
+msgstr ""
+
+#: page-palestras.php:49
+msgid "Dar linguagem para decisões que muitas lideranças vivem, mas raramente discutem."
+msgstr ""
+
+#: page-palestras.php:50
+msgid "Transformar reflexão em conversas práticas sobre o que precisa mudar."
+msgstr ""
+
+#: page-palestras.php:59
+msgid "Histórias, tensões e aprendizados que não cabem em fórmulas prontas."
+msgstr ""
+
+#: page-palestras.php:65
+#: page-palestras.php:126
+msgid "Palestra principal"
+msgstr ""
+
+#: page-palestras.php:66
+msgid "As verdades sobre empreendedorismo que não te contaram"
+msgstr ""
+
+#: page-palestras.php:67
+msgid "Uma conversa sobre a distância entre a versão romantizada do empreendedorismo e as decisões reais que envolvem risco, pessoas, crescimento e responsabilidade."
+msgstr ""
+
+#: page-palestras.php:74
+msgid "Crescer sem virar o gargalo da empresa"
+msgstr ""
+
+#: page-palestras.php:75
+msgid "O que muda no papel do fundador quando a empresa cresce e a centralização deixa de ajudar."
+msgstr ""
+
+#: page-palestras.php:79
+msgid "Da estratégia à execução"
+msgstr ""
+
+#: page-palestras.php:80
+msgid "Por que boas ideias travam e como prioridades, liderança e cadência transformam intenção em movimento."
+msgstr ""
+
+#: page-palestras.php:84
+msgid "O recorte e os exemplos são ajustados ao contexto do evento, ao perfil do público e à conversa que o encontro precisa provocar."
+msgstr ""
+
+#: page-palestras.php:91
+msgid "Onde essa conversa faz sentido"
+msgstr ""
+
+#: page-palestras.php:92
+msgid "Para públicos que vivem decisões de verdade."
+msgstr ""
+
+#: page-palestras.php:96
+msgid "Eventos de empreendedorismo e inovação"
+msgstr ""
+
+#: page-palestras.php:97
+msgid "Encontros de fundadores e lideranças"
+msgstr ""
+
+#: page-palestras.php:98
+msgid "Convenções e reuniões estratégicas"
+msgstr ""
+
+#: page-palestras.php:99
+msgid "Programas de formação executiva"
+msgstr ""
+
+#: page-palestras.php:100
+msgid "Comunidades e ecossistemas de negócios"
+msgstr ""
+
+#: page-palestras.php:108
+#: template-parts/home/content.php:165
+msgid "Experiência aplicada"
+msgstr ""
+
+#: page-palestras.php:109
+msgid "O conteúdo vem de experiência vivida, não apenas observada."
+msgstr ""
+
+#: page-palestras.php:112
+msgid "Rafael Carvalho é empreendedor e executivo há mais de 20 anos. Construiu empresas, liderou equipes e operações e acompanhou de perto as diferentes fases de crescimento de um negócio."
+msgstr ""
+
+#: page-palestras.php:113
+msgid "É autor de Paixão S.A. e hoje trabalha ao lado de fundadores e lideranças para conectar estratégia, decisão e execução."
+msgstr ""
+
+#: page-palestras.php:122
+msgid "A conversa certa para cada tipo de encontro."
+msgstr ""
+
+#: page-palestras.php:126
+msgid "Uma narrativa estruturada para grandes públicos, eventos e convenções."
+msgstr ""
+
+#: page-palestras.php:127
+msgid "Conversa para lideranças"
+msgstr ""
+
+#: page-palestras.php:127
+msgid "Um encontro mais próximo para aprofundar tensões e decisões com grupos executivos."
+msgstr ""
+
+#: page-palestras.php:128
+msgid "Painéis e encontros"
+msgstr ""
+
+#: page-palestras.php:128
+msgid "Participação em conversas mediadas, comunidades e formatos especiais."
+msgstr ""
+
+#: page-palestras.php:130
+msgid "Os formatos podem acontecer presencialmente ou online, conforme o desenho do evento."
+msgstr ""
+
+#: page-palestras.php:138
+msgid "Do primeiro contato ao dia do evento."
+msgstr ""
+
+#: page-palestras.php:141
+msgid "Briefing"
+msgstr ""
+
+#: page-palestras.php:141
+msgid "Entendemos o evento, o público e o objetivo da conversa."
+msgstr ""
+
+#: page-palestras.php:142
+msgid "Alinhamento"
+msgstr ""
+
+#: page-palestras.php:142
+msgid "Definimos tema, recorte e formato mais adequados."
+msgstr ""
+
+#: page-palestras.php:143
+msgid "Preparação"
+msgstr ""
+
+#: page-palestras.php:143
+msgid "A narrativa é ajustada ao contexto e às tensões do público."
+msgstr ""
+
+#: page-palestras.php:144
+msgid "Palestra"
+msgstr ""
+
+#: page-palestras.php:144
+msgid "Rafael conduz uma conversa direta, relevante e conectada ao encontro."
+msgstr ""
+
+#: page-palestras.php:152
+msgid "Perguntas frequentes"
+msgstr ""
+
+#: page-palestras.php:153
+msgid "Antes de fazer o convite."
+msgstr ""
+
+#: page-palestras.php:156
+msgid "O conteúdo pode ser adaptado ao evento?"
+msgstr ""
+
+#: page-palestras.php:156
+msgid "Sim. O tema central é preservado, mas o recorte, os exemplos e a ênfase são definidos a partir do público e do objetivo do encontro."
+msgstr ""
+
+#: page-palestras.php:157
+msgid "A palestra pode ser presencial ou online?"
+msgstr ""
+
+#: page-palestras.php:157
+msgid "Sim. O formato é alinhado durante o briefing de acordo com a dinâmica do evento."
+msgstr ""
+
+#: page-palestras.php:158
+msgid "É possível fazer um encontro apenas para lideranças?"
+msgstr ""
+
+#: page-palestras.php:158
+msgid "Sim. Conversas com grupos executivos permitem aprofundar dilemas específicos e abrir mais espaço para interação."
+msgstr ""
+
+#: page-palestras.php:159
+msgid "Como funciona a contratação?"
+msgstr ""
+
+#: page-palestras.php:159
+msgid "Envie o contexto inicial do evento. A partir dele, avaliamos a aderência, alinhamos o formato e seguimos com a proposta."
+msgstr ""
+
+#: page-palestras.php:167
+msgid "Convite"
+msgstr ""
+
+#: page-palestras.php:168
+msgid "Conte um pouco sobre o evento."
+msgstr ""
+
+#: page-palestras.php:169
+msgid "Compartilhe o contexto, o público e o formato que você está planejando. Rafael avaliará pessoalmente a aderência do convite."
+msgstr ""
+
+#: page-palestras.php:171
+msgid "Contexto e objetivo do encontro"
+msgstr ""
+
+#: page-palestras.php:172
+msgid "Perfil e tamanho do público"
+msgstr ""
+
+#: page-palestras.php:173
+msgid "Data, local e formato desejado"
+msgstr ""
+
+#: page-palestras.php:184
+msgid "O formulário de convite ainda não está configurado."
+msgstr ""
+
+#: page-palestras.php:185
+msgid "Quando a captação for ativada, ela aparecerá aqui sem alterar este template."
 msgstr ""
 
 #. Template Name of the theme
@@ -1382,6 +1733,7 @@ msgid "Page navigation"
 msgstr ""
 
 #: template-parts/content.php:29
+#: template-parts/home/content.php:135
 msgid "Read article"
 msgstr ""
 
@@ -1412,6 +1764,223 @@ msgstr ""
 
 #: template-parts/course-listing.php:116
 msgid "No courses match the selected categories."
+msgstr ""
+
+#: template-parts/home/content.php:35
+msgid "Rafael Carvalho · Empreendedor e executivo"
+msgstr ""
+
+#: template-parts/home/content.php:37
+msgid "Trabalho ao lado de CEOs e lideranças para transformar estratégia em prioridades, decisões e execução."
+msgstr ""
+
+#: template-parts/home/content.php:39
+#: template-parts/home/content.php:226
+msgid "Conheça o COO as a Service"
+msgstr ""
+
+#: template-parts/home/content.php:40
+msgid "Leia minhas ideias"
+msgstr ""
+
+#: template-parts/home/content.php:47
+msgid "Estratégia"
+msgstr ""
+
+#: template-parts/home/content.php:48
+msgid "Operação"
+msgstr ""
+
+#: template-parts/home/content.php:49
+msgid "Liderança"
+msgstr ""
+
+#: template-parts/home/content.php:55
+msgid "Explorar o site"
+msgstr ""
+
+#: template-parts/home/content.php:57
+msgid "Resolver um problema de operação"
+msgstr ""
+
+#: template-parts/home/content.php:58
+msgid "Acompanhar ideias e análises"
+msgstr ""
+
+#: template-parts/home/content.php:59
+msgid "Conhecer minha trajetória"
+msgstr ""
+
+#: template-parts/home/content.php:66
+msgid "Uma mudança de papel"
+msgstr ""
+
+#: template-parts/home/content.php:67
+msgid "Quando a empresa cresce, o papel do fundador também precisa mudar."
+msgstr ""
+
+#: template-parts/home/content.php:68
+msgid "No início, centralizar decisões ajuda a empresa a avançar. Conforme a operação cresce, a mesma centralização começa a limitar pessoas, prioridades e resultados."
+msgstr ""
+
+#: template-parts/home/content.php:74
+msgid "Validar"
+msgstr ""
+
+#: template-parts/home/content.php:75
+msgid "O fundador concentra contexto, velocidade e decisões."
+msgstr ""
+
+#: template-parts/home/content.php:79
+msgid "Crescer"
+msgstr ""
+
+#: template-parts/home/content.php:80
+msgid "Mais clientes, pessoas e frentes aumentam a complexidade."
+msgstr ""
+
+#: template-parts/home/content.php:84
+msgid "Construir capacidade"
+msgstr ""
+
+#: template-parts/home/content.php:85
+msgid "A liderança assume decisões e a operação ganha clareza."
+msgstr ""
+
+#: template-parts/home/content.php:94
+msgid "Atuação principal"
+msgstr ""
+
+#: template-parts/home/content.php:96
+msgid "COO as a Service é uma atuação próxima para diagnosticar gargalos, organizar prioridades e fortalecer a capacidade de execução da liderança."
+msgstr ""
+
+#: template-parts/home/content.php:97
+msgid "Entenda como funciona"
+msgstr ""
+
+#: template-parts/home/content.php:101
+msgid "Poucas prioridades, claramente assumidas."
+msgstr ""
+
+#: template-parts/home/content.php:102
+msgid "Gestores decidindo dentro de seus papéis."
+msgstr ""
+
+#: template-parts/home/content.php:103
+msgid "Riscos e bloqueios visíveis mais cedo."
+msgstr ""
+
+#: template-parts/home/content.php:112
+msgid "Pensamento em público"
+msgstr ""
+
+#: template-parts/home/content.php:113
+msgid "Ideias para quem precisa decidir e fazer acontecer."
+msgstr ""
+
+#: template-parts/home/content.php:115
+msgid "Ver todos os artigos"
+msgstr ""
+
+#: template-parts/home/content.php:156
+msgid "Novos artigos serão publicados em breve."
+msgstr ""
+
+#: template-parts/home/content.php:168
+msgid "Hoje, uso essa experiência para trabalhar diretamente com fundadores e lideranças, conectando diagnóstico, decisão e implementação."
+msgstr ""
+
+#: template-parts/home/content.php:172
+msgid "Construir"
+msgstr ""
+
+#: template-parts/home/content.php:172
+msgid "Empresas, produtos e novos mercados."
+msgstr ""
+
+#: template-parts/home/content.php:173
+msgid "Liderar"
+msgstr ""
+
+#: template-parts/home/content.php:173
+msgid "Pessoas e operações em diferentes fases de crescimento."
+msgstr ""
+
+#: template-parts/home/content.php:174
+msgid "Acompanhar"
+msgstr ""
+
+#: template-parts/home/content.php:174
+msgid "Fundadores diante da complexidade que vem depois da validação."
+msgstr ""
+
+#: template-parts/home/content.php:182
+msgid "Acervo"
+msgstr ""
+
+#: template-parts/home/content.php:183
+msgid "Outras formas de acompanhar meu trabalho."
+msgstr ""
+
+#: template-parts/home/content.php:188
+msgid "Livro"
+msgstr ""
+
+#: template-parts/home/content.php:189
+msgid "Paixão S.A."
+msgstr ""
+
+#: template-parts/home/content.php:190
+msgid "Uma reflexão sobre transformar paixão em negócio."
+msgstr ""
+
+#: template-parts/home/content.php:193
+msgid "Recursos"
+msgstr ""
+
+#: template-parts/home/content.php:194
+msgid "Materiais gratuitos"
+msgstr ""
+
+#: template-parts/home/content.php:195
+msgid "Guias e ferramentas para decisões mais claras."
+msgstr ""
+
+#: template-parts/home/content.php:198
+msgid "Aprendizado"
+msgstr ""
+
+#: template-parts/home/content.php:199
+msgid "Cursos"
+msgstr ""
+
+#: template-parts/home/content.php:200
+msgid "Conteúdos estruturados para colocar ideias em prática."
+msgstr ""
+
+#: template-parts/home/content.php:210
+msgid "Palestras e conversas"
+msgstr ""
+
+#: template-parts/home/content.php:211
+msgid "Para eventos e equipes que querem conversar sobre empreendedorismo, liderança e execução."
+msgstr ""
+
+#: template-parts/home/content.php:213
+msgid "Conhecer palestras"
+msgstr ""
+
+#: template-parts/home/content.php:222
+msgid "Sua empresa cresceu. A operação ainda depende demais de você?"
+msgstr ""
+
+#: template-parts/home/content.php:223
+msgid "Conheça uma atuação executiva construída para reduzir dependência, fortalecer a liderança e fazer a estratégia avançar."
+msgstr ""
+
+#: template-parts/home/content.php:228
+msgid "Entrar em contato"
 msgstr ""
 
 #: template-parts/post-navigation.php:16

@@ -144,4 +144,36 @@ final class ThemeSetupTest extends TestCase {
 		$this->assertSame( 'COO as a Service', $templates['page-coo-as-a-service.php'] );
 		$this->assertFileExists( EXECUTIVE_SIGNAL_THEME_DIR . '/assets/images/rafael-carvalho-coo-as-a-service.jpeg' );
 	}
+
+	/**
+	 * Rafael Carvalho Home should be selectable as a page template.
+	 */
+	public function test_rafael_home_template_is_registered(): void {
+		$templates = wp_get_theme()->get_page_templates();
+
+		$this->assertArrayHasKey( 'page-home.php', $templates );
+		$this->assertSame( 'Home — Rafael Carvalho', $templates['page-home.php'] );
+	}
+
+	/**
+	 * Palestras should be selectable as a page template.
+	 */
+	public function test_speaking_template_is_registered(): void {
+		$templates = wp_get_theme()->get_page_templates();
+
+		$this->assertArrayHasKey( 'page-palestras.php', $templates );
+		$this->assertSame( 'Palestras', $templates['page-palestras.php'] );
+	}
+
+	/**
+	 * The front page controller should honor the template assigned in WordPress.
+	 */
+	public function test_front_page_delegates_to_the_assigned_page_template(): void {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Reads a local theme fixture in an isolated test.
+		$front_page_source = file_get_contents( EXECUTIVE_SIGNAL_THEME_DIR . '/front-page.php' );
+
+		$this->assertIsString( $front_page_source );
+		$this->assertStringContainsString( 'get_page_template()', $front_page_source );
+		$this->assertStringContainsString( 'require $assigned_page_template;', $front_page_source );
+	}
 }

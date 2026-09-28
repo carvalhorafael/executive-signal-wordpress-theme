@@ -1,3 +1,5 @@
 @import "@carvalhorafael/executive-signal-tokens";
 @import "@carvalhorafael/executive-signal-css";
 @import "./theme.css";
+@import "./home.css";
+@import "./speaking.css";

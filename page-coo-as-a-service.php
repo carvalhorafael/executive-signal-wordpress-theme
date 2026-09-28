@@ -43,30 +43,49 @@ $utm_fields         = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_te
 	</section>
 
 	<section class="coo-section coo-section--diagnosis" aria-labelledby="coo-diagnosis-title">
-		<div class="coo-layout coo-diagnosis">
-			<div class="coo-section-heading">
-				<p class="coo-eyebrow"><?php esc_html_e( 'O sintoma', 'executive-signal-wordpress-theme' ); ?></p>
-				<h2 id="coo-diagnosis-title"><?php esc_html_e( 'O problema não é falta de esforço. A empresa cresceu além do modelo de gestão que trouxe você até aqui.', 'executive-signal-wordpress-theme' ); ?></h2>
+		<div class="coo-layout">
+			<div class="coo-diagnosis">
+				<div class="coo-section-heading">
+					<p class="coo-eyebrow"><?php esc_html_e( 'O sintoma', 'executive-signal-wordpress-theme' ); ?></p>
+					<h2 id="coo-diagnosis-title"><?php esc_html_e( 'O problema não é falta de esforço. A empresa cresceu além do modelo de gestão que trouxe você até aqui.', 'executive-signal-wordpress-theme' ); ?></h2>
+				</div>
+
+				<ul class="coo-symptom-list">
+					<li><?php esc_html_e( 'Decisões importantes continuam voltando para você.', 'executive-signal-wordpress-theme' ); ?></li>
+					<li><?php esc_html_e( 'Gestores executam, mas ainda assumem pouca responsabilidade pelos resultados.', 'executive-signal-wordpress-theme' ); ?></li>
+					<li><?php esc_html_e( 'Prioridades mudam ou competem entre si.', 'executive-signal-wordpress-theme' ); ?></li>
+					<li><?php esc_html_e( 'Os números existem, mas não orientam suficientemente as decisões.', 'executive-signal-wordpress-theme' ); ?></li>
+					<li><?php esc_html_e( 'Problemas relevantes aparecem tarde.', 'executive-signal-wordpress-theme' ); ?></li>
+					<li><?php esc_html_e( 'A empresa trabalha muito, mas executa com pouca previsibilidade.', 'executive-signal-wordpress-theme' ); ?></li>
+				</ul>
 			</div>
 
-			<ul class="coo-symptom-list">
-				<li><?php esc_html_e( 'Decisões importantes continuam voltando para você.', 'executive-signal-wordpress-theme' ); ?></li>
-				<li><?php esc_html_e( 'Gestores executam, mas ainda assumem pouca responsabilidade pelos resultados.', 'executive-signal-wordpress-theme' ); ?></li>
-				<li><?php esc_html_e( 'Prioridades mudam ou competem entre si.', 'executive-signal-wordpress-theme' ); ?></li>
-				<li><?php esc_html_e( 'Os números existem, mas não orientam suficientemente as decisões.', 'executive-signal-wordpress-theme' ); ?></li>
-				<li><?php esc_html_e( 'Problemas relevantes aparecem tarde.', 'executive-signal-wordpress-theme' ); ?></li>
-				<li><?php esc_html_e( 'A empresa trabalha muito, mas executa com pouca previsibilidade.', 'executive-signal-wordpress-theme' ); ?></li>
-			</ul>
-
-			<p class="coo-diagnosis__conclusion"><?php esc_html_e( 'Contratar mais pessoas não resolve quando prioridades, responsabilidades e decisões continuam centralizadas.', 'executive-signal-wordpress-theme' ); ?></p>
+			<div class="es-article-prose coo-diagnosis__conclusion">
+				<figure class="wp-block-pullquote">
+					<blockquote>
+						<p><?php esc_html_e( 'Contratar mais pessoas não resolve quando prioridades, responsabilidades e decisões continuam centralizadas.', 'executive-signal-wordpress-theme' ); ?></p>
+					</blockquote>
+				</figure>
+			</div>
 		</div>
 	</section>
 
 	<section class="coo-pivot" aria-labelledby="coo-pivot-title">
-		<div class="coo-layout">
-			<p class="coo-eyebrow"><?php esc_html_e( 'A mudança necessária', 'executive-signal-wordpress-theme' ); ?></p>
-			<h2 id="coo-pivot-title"><?php esc_html_e( 'Você não precisa estar em todas as decisões para continuar no controle.', 'executive-signal-wordpress-theme' ); ?></h2>
-			<p><?php esc_html_e( 'Precisa de uma operação que torne prioridades, responsabilidades, riscos e resultados visíveis.', 'executive-signal-wordpress-theme' ); ?></p>
+		<div class="coo-layout coo-pivot__layout">
+			<div class="coo-pivot__copy">
+				<p class="coo-eyebrow"><?php esc_html_e( 'A mudança necessária', 'executive-signal-wordpress-theme' ); ?></p>
+				<h2 id="coo-pivot-title"><?php esc_html_e( 'Você não precisa estar em todas as decisões para continuar no controle.', 'executive-signal-wordpress-theme' ); ?></h2>
+				<p><?php esc_html_e( 'O CEO não precisa acompanhar cada movimento. Precisa de visibilidade suficiente para decidir onde sua atenção realmente muda o resultado.', 'executive-signal-wordpress-theme' ); ?></p>
+			</div>
+
+			<div class="coo-pivot__questions">
+				<p class="coo-pivot__questions-label"><?php esc_html_e( 'Uma operação sob controle consegue responder:', 'executive-signal-wordpress-theme' ); ?></p>
+				<ol>
+					<li><span>01</span><p><?php esc_html_e( 'O que realmente precisa avançar agora?', 'executive-signal-wordpress-theme' ); ?></p></li>
+					<li><span>02</span><p><?php esc_html_e( 'Quem tem autoridade para decidir e responder?', 'executive-signal-wordpress-theme' ); ?></p></li>
+					<li><span>03</span><p><?php esc_html_e( 'Onde estão os riscos e bloqueios que exigem atenção?', 'executive-signal-wordpress-theme' ); ?></p></li>
+				</ol>
+			</div>
 		</div>
 	</section>
 
@@ -82,8 +101,8 @@ $utm_fields         = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_te
 				<table>
 					<thead>
 						<tr>
-							<th scope="col"><?php esc_html_e( 'Não é', 'executive-signal-wordpress-theme' ); ?></th>
-							<th scope="col"><?php esc_html_e( 'É', 'executive-signal-wordpress-theme' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'Não é consultoria tradicional', 'executive-signal-wordpress-theme' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'É atuação executiva', 'executive-signal-wordpress-theme' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -101,7 +120,7 @@ $utm_fields         = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_te
 						</tr>
 						<tr>
 							<td><?php esc_html_e( 'Equipe júnior executando recomendações', 'executive-signal-wordpress-theme' ); ?></td>
-							<td><?php esc_html_e( 'Atuação direta de Rafael', 'executive-signal-wordpress-theme' ); ?></td>
+							<td><?php esc_html_e( 'Atuação direta e pessoal', 'executive-signal-wordpress-theme' ); ?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -233,6 +252,22 @@ $utm_fields         = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_te
 				<details>
 					<summary><?php esc_html_e( 'Minha empresa precisa já ter gestores?', 'executive-signal-wordpress-theme' ); ?></summary>
 					<p><?php esc_html_e( 'Precisa existir uma equipe e pessoas com quem seja possível dividir responsabilidades reais. Parte do trabalho pode envolver desenvolver essa liderança, mas não substitui a existência de uma operação para liderar.', 'executive-signal-wordpress-theme' ); ?></p>
+				</details>
+				<details>
+					<summary><?php esc_html_e( 'Como saber se este é o momento certo para contratar?', 'executive-signal-wordpress-theme' ); ?></summary>
+					<p><?php esc_html_e( 'Faz sentido quando a empresa já possui um produto validado, vende de forma consistente e ganhou complexidade, mas decisões, prioridades e desbloqueios ainda dependem demais do fundador. Não é o formato indicado para negócios ainda buscando validação ou apenas aconselhamento pontual.', 'executive-signal-wordpress-theme' ); ?></p>
+				</details>
+				<details>
+					<summary><?php esc_html_e( 'Quanto o CEO precisa se envolver no trabalho?', 'executive-signal-wordpress-theme' ); ?></summary>
+					<p><?php esc_html_e( 'O CEO precisa participar das decisões críticas, dar contexto e sustentar as mudanças junto à liderança. A proposta não é criar uma nova dependência, mas construir uma operação capaz de decidir e executar sem exigir a presença do CEO em cada movimento.', 'executive-signal-wordpress-theme' ); ?></p>
+				</details>
+				<details>
+					<summary><?php esc_html_e( 'Como o trabalho começa?', 'executive-signal-wordpress-theme' ); ?></summary>
+					<p><?php esc_html_e( 'O início passa por entender estratégia, números, pessoas, responsabilidades, decisões acumuladas e riscos. A partir disso, identificamos os poucos gargalos que mais limitam a execução e definimos o que precisa mudar primeiro.', 'executive-signal-wordpress-theme' ); ?></p>
+				</details>
+				<details>
+					<summary><?php esc_html_e( 'Você aplica o mesmo modelo em todas as empresas?', 'executive-signal-wordpress-theme' ); ?></summary>
+					<p><?php esc_html_e( 'Não. O processo de diagnosticar, priorizar e implementar é consistente, mas as ferramentas, cadências e estruturas são escolhidas conforme a maturidade, as pessoas e as restrições de cada empresa.', 'executive-signal-wordpress-theme' ); ?></p>
 				</details>
 			</div>
 		</div>

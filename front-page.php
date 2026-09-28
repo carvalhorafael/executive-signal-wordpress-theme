@@ -5,6 +5,18 @@
  * @package ExecutiveSignal
  */
 
+if ( 'posts' === get_option( 'show_on_front' ) ) {
+	require get_home_template();
+	return;
+}
+
+$assigned_page_template = get_page_template();
+
+if ( $assigned_page_template && realpath( $assigned_page_template ) !== realpath( __FILE__ ) ) {
+	require $assigned_page_template;
+	return;
+}
+
 get_header();
 ?>
 
