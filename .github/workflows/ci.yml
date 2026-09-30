@@ -22,8 +22,6 @@ jobs:
     name: Validate theme
     runs-on: ubuntu-latest
     timeout-minutes: 25
-    env:
-      CRM_LEADS_CAPTURE_REF: codex/capture-profiles-core
 
     steps:
       - name: Checkout
@@ -62,12 +60,7 @@ jobs:
           mkdir -p ../plugins-wordpress
           git clone --depth=1 --branch develop https://github.com/carvalhorafael/free-materials.git ../plugins-wordpress/free-materials
           git clone --depth=1 https://github.com/carvalhorafael/online-courses.git ../plugins-wordpress/online-courses
-          if git ls-remote --exit-code --heads https://github.com/carvalhorafael/crm-leads-capture.git "${CRM_LEADS_CAPTURE_REF}" >/dev/null; then
-            git clone --depth=1 --branch "${CRM_LEADS_CAPTURE_REF}" https://github.com/carvalhorafael/crm-leads-capture.git ../plugins-wordpress/crm-leads-capture
-          else
-            echo "${CRM_LEADS_CAPTURE_REF} is no longer available; using the integrated develop branch."
-            git clone --depth=1 --branch develop https://github.com/carvalhorafael/crm-leads-capture.git ../plugins-wordpress/crm-leads-capture
-          fi
+          git clone --depth=1 --branch develop https://github.com/carvalhorafael/crm-leads-capture.git ../plugins-wordpress/crm-leads-capture
 
       - name: Start WordPress
         if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.base_ref == 'develop'
