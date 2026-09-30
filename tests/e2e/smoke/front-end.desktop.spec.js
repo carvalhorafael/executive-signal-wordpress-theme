@@ -37,7 +37,7 @@ test.describe("required desktop smoke", () => {
       route.fulfill({ contentType: "application/json", status: 200, body: JSON.stringify({ success: true, message: "Recebi seu contexto." }) }),
     );
 
-    await page.goto("/coo-as-a-service/?utm_source=e2e&utm_medium=playwright");
+    await page.goto("/?pagename=coo-as-a-service&utm_source=e2e&utm_medium=playwright");
 
     const form = page.locator('[data-crm-leads-capture="coo-as-a-service"]');
     await expect(form).toBeVisible();
@@ -62,7 +62,7 @@ test.describe("required desktop smoke", () => {
       route.fulfill({ contentType: "application/json", status: 200, body: JSON.stringify({ success: true, message: "Recebi os detalhes do evento." }) }),
     );
 
-    await page.goto("/palestras/?utm_source=e2e&utm_medium=playwright");
+    await page.goto("/?pagename=palestras&utm_source=e2e&utm_medium=playwright");
 
     const form = page.locator('[data-crm-leads-capture="speaker-invitation"]');
     await expect(form).toBeVisible();
@@ -80,7 +80,7 @@ test.describe("required desktop smoke", () => {
   });
 
   test("renders the free-material capture contract", async ({ page }) => {
-    await page.goto("/materiais-gratuitos/e2e-free-material/?utm_source=e2e&utm_medium=playwright");
+    await page.goto("/?post_type=material_gratuito&name=e2e-free-material&utm_source=e2e&utm_medium=playwright");
 
     const form = page.locator('.es-resource-capture-panel form[action$="/wp-admin/admin-post.php"]');
     await expect(form).toBeVisible();
