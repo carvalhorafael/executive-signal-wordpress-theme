@@ -80,7 +80,7 @@ test.describe("required desktop smoke", () => {
   });
 
   test("renders the free-material capture contract", async ({ page }) => {
-    await page.goto("/?post_type=material_gratuito&name=e2e-free-material&utm_source=e2e&utm_medium=playwright");
+    await page.goto("/materiais-gratuitos/e2e-free-material/?utm_source=e2e&utm_medium=playwright");
 
     const form = page.locator('.es-resource-capture-panel form[action$="/wp-admin/admin-post.php"]');
     await expect(form).toBeVisible();
