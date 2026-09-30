@@ -208,7 +208,8 @@ Camadas esperadas:
 - `npm run test:quick`: validacao curta para iteracao pequena, com build Vite e sintaxe PHP;
 - `npm run test:static`: build Vite, sintaxe PHP, PHPCS e Theme Check;
 - `npm run test:php`: PHPUnit dentro do WordPress de testes do `wp-env`;
-- `npm run test:e2e`: Playwright para smoke do front-end e do editor, rodando contra a porta de testes do `wp-env`;
+- `npm run test:e2e`: smoke obrigatorio e enxuto do front-end, com apenas os fluxos de conversao, carregamento e navegacao que precisam bloquear PRs;
+- `npm run test:e2e:extended`: cobertura ampla de layout, editor, cursos, arquivos e comportamentos responsivos, executada manualmente ou quando a superficie alterada justificar;
 - `npm test`: gate automatizado padrao para PRs;
 - `npm run release:package`: gera e valida o ZIP sem repetir a suite de testes;
 - `npm run validate`: gate completo local, combinando testes e empacotamento, reservado para diagnostico explicito ou mudanca de alto risco.
@@ -216,6 +217,12 @@ Camadas esperadas:
 Durante uma rodada composta por varios ajustes pequenos, nao rode suites de testes depois de cada ajuste, nem mesmo `npm run test:quick` ou testes focados. Faca apenas a inspecao pontual necessaria para confirmar o comportamento em andamento e acumule a validacao automatizada. Antes de atualizar uma PR existente para `develop`, rode apenas os testes focados ou `npm run test:quick` proporcionais ao risco; nao execute `npm test`, `npm run test:prepush` ou `npm run validate` apenas para duplicar o gate remoto.
 
 Para uma mudanca pequena isolada que nao faca parte de uma rodada, rode apenas o menor comando que cobre o risco. Uma execucao local completa continua indicada quando o usuario pedir explicitamente, quando a mudanca afetar a propria infraestrutura de testes, quando o CI nao puder cobrir o risco ou quando for necessario diagnosticar uma falha remota.
+
+O smoke obrigatorio deve permanecer pequeno e orientado a risco. Nao duplique o mesmo contrato funcional em desktop e mobile: use desktop para carregamento, acessibilidade e formularios, e mobile apenas para interacoes realmente responsivas, como menu e submenu. Testes de geometria, scroll, filtros fornecidos por plugins, detalhes visuais do editor e variacoes extensas de templates pertencem a `test:e2e:extended`, nao ao gate de toda PR.
+
+As fixtures do smoke devem ser criadas uma unica vez por execucao, preferencialmente por um unico `wp eval-file`. Nao use dezenas de chamadas separadas a `wp-env run` nem recrie a mesma base para cada projeto Playwright.
+
+Quando o tema depender de uma capacidade ainda nao integrada de um plugin companheiro, o workflow pode apontar temporariamente para a branch da PR desse plugin. A referencia deve ficar explicita no workflow, ter fallback para `develop` depois do merge e ser removida quando `develop` se tornar a fonte canonica da capacidade.
 
 O fluxo automatizado canonico e:
 
