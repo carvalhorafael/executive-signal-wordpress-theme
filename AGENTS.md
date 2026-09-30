@@ -195,7 +195,7 @@ Regras para novos textos:
 - para plural, usar `_n()` ou `_nx()`;
 - para strings com placeholders, adicionar comentario `translators`;
 - quando a mudanca adicionar, remover ou alterar strings traduziveis, rodar `npm run i18n` e commitar as alteracoes em `languages/`;
-- antes de considerar uma mudanca pronta, usar `npm run i18n:check` ou `npm run validate`.
+- antes de considerar uma mudanca traduzivel pronta, regenerar `languages/` e usar o menor check local que cubra o risco; o gate completo de i18n pertence ao CI de `develop`.
 
 O idioma base inicial e `pt_BR`. O arquivo `languages/pt_BR.po` funciona como catalogo identidade ate que outro fluxo de traducao seja decidido.
 
@@ -210,11 +210,21 @@ Camadas esperadas:
 - `npm run test:php`: PHPUnit dentro do WordPress de testes do `wp-env`;
 - `npm run test:e2e`: Playwright para smoke do front-end e do editor, rodando contra a porta de testes do `wp-env`;
 - `npm test`: gate automatizado padrao para PRs;
-- `npm run validate`: gate completo de release e empacotamento.
+- `npm run release:package`: gera e valida o ZIP sem repetir a suite de testes;
+- `npm run validate`: gate completo local, combinando testes e empacotamento, reservado para diagnostico explicito ou mudanca de alto risco.
 
-Durante uma rodada composta por varios ajustes pequenos, nao rode suites de testes depois de cada ajuste, nem mesmo `npm run test:quick` ou testes focados. Faca apenas a inspecao pontual necessaria para confirmar o comportamento em andamento e acumule a validacao automatizada. Rode os testes aplicaveis uma unica vez, depois que o ultimo ajuste da rodada estiver concluido e imediatamente antes de abrir o PR. Excecoes ficam restritas a mudancas que nao possam ser avaliadas com seguranca sem um teste focado ou a um pedido explicito do usuario.
+Durante uma rodada composta por varios ajustes pequenos, nao rode suites de testes depois de cada ajuste, nem mesmo `npm run test:quick` ou testes focados. Faca apenas a inspecao pontual necessaria para confirmar o comportamento em andamento e acumule a validacao automatizada. Antes de atualizar uma PR existente para `develop`, rode apenas os testes focados ou `npm run test:quick` proporcionais ao risco; nao execute `npm test`, `npm run test:prepush` ou `npm run validate` apenas para duplicar o gate remoto.
 
-Para uma mudanca pequena isolada que nao faca parte de uma rodada, rode apenas o menor comando que cobre o risco. Reserve `npm test`, `npm run test:prepush` e `npm run validate` para antes de PR, release ou mudancas com impacto amplo.
+Para uma mudanca pequena isolada que nao faca parte de uma rodada, rode apenas o menor comando que cobre o risco. Uma execucao local completa continua indicada quando o usuario pedir explicitamente, quando a mudanca afetar a propria infraestrutura de testes, quando o CI nao puder cobrir o risco ou quando for necessario diagnosticar uma falha remota.
+
+O fluxo automatizado canonico e:
+
+1. PR de uma branch de trabalho para `develop`: executa `npm test` uma vez sobre a mudanca proposta.
+2. Push resultante em `develop`: executa `npm test` novamente para validar o estado integrado de todas as mudancas.
+3. PR de `develop` para `main`: verifica a paridade da versao, executa `npm run release:package` e publica o ZIP como artefato; nao sobe WordPress nem repete PHP/E2E.
+4. Push em `main`: o workflow `Release` reconstrui o ZIP a partir do commit final com `npm run release:package`, cria a tag e publica a GitHub Release; nao repete a suite completa.
+
+Para sustentar esse fluxo, `develop` e `main` devem permanecer protegidas contra push direto. A PR para `main` deve vir de `develop` e nao pode receber mudanca funcional, resolucao manual de conflito ou atualizacao de dependencia sem voltar a `develop` e passar novamente pelo gate completo. Em qualquer uma dessas excecoes, execute `npm test` antes da release.
 
 O que deve ser testado:
 
@@ -236,17 +246,19 @@ O que nao deve ser testado aqui:
 
 A decisao de criar uma nova release e humana. O usuario deve avisar explicitamente quando quiser preparar uma release, por exemplo: "preparar release 0.2.0".
 
-Depois desse pedido, crie uma branch de release a partir de `develop`, atualize a versao e abra PR para `main`. O merge em `main` dispara a automacao de release.
+Depois desse pedido, garanta que a versao seja atualizada e validada em `develop`. A promocao para producao acontece por uma PR de `develop` para `main`; o merge em `main` dispara a automacao de release.
 
 Rotina padrao de release:
 
 1. acumular PRs pequenos em `develop`;
-2. quando a release for decidida pelo usuario, criar uma branch de release a partir de `develop`;
-3. atualizar a versao em `package.json`;
+2. quando a release for decidida pelo usuario, atualizar a versao ainda no fluxo de PR para `develop`;
+3. atualizar a versao em `package.json` e `package-lock.json`;
 4. atualizar `Version` em `style.css`;
-5. atualizar `Stable tag` em `readme.txt`;
-6. abrir PR da branch de release para `main`;
-7. mergear em `main` apos o CI completo passar.
+5. atualizar `Stable tag` em `readme.txt` e regenerar `languages/`;
+6. aguardar o `npm test` do push integrado em `develop` passar;
+7. abrir PR de `develop` para `main`, sem mudancas funcionais adicionais;
+8. aguardar a checagem de versao e o pacote validado da PR;
+9. mergear em `main` para publicar a release.
 
 O workflow `Release` roda em `push` para `main`. Ele le `package.json`, resolve a tag `vX.Y.Z`, falha se a tag ja existir e valida que a versao bate com:
 
@@ -254,7 +266,7 @@ O workflow `Release` roda em `push` para `main`. Ele le `package.json`, resolve 
 - `style.css` -> `Version`;
 - `readme.txt` -> `Stable tag`.
 
-Depois disso, executa `npm run validate`, cria a tag anotada, cria a GitHub Release e anexa o ZIP publico do tema.
+Depois disso, executa `npm run release:package`, cria a tag anotada, cria a GitHub Release e anexa o ZIP publico do tema. A suite completa nao e repetida nessa etapa porque o mesmo estado funcional ja passou pelo gate integrado de `develop`.
 
 Nao crie tags manualmente por padrao. A tag manual so deve ser usada se o workflow de release falhar depois do merge em `main` e houver decisao explicita de recuperacao.
 

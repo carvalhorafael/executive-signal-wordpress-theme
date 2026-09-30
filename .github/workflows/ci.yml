@@ -8,8 +8,11 @@ on:
   push:
     branches:
       - develop
-      - main
   workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -37,10 +40,22 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.EXECUTIVE_SIGNAL_PACKAGES_TOKEN }}
         run: npm ci
 
+      - name: Require develop as release source
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "${HEAD_REF}" != "develop" ]; then
+            echo "Release pull requests to main must come directly from develop."
+            exit 1
+          fi
+
       - name: Install Playwright browsers
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.base_ref == 'develop'
         run: npx playwright install --with-deps chromium
 
       - name: Checkout companion plugins
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.base_ref == 'develop'
         run: |
           mkdir -p ../plugins-wordpress
           git clone --depth=1 --branch develop https://github.com/carvalhorafael/free-materials.git ../plugins-wordpress/free-materials
@@ -48,20 +63,34 @@ jobs:
           git clone --depth=1 https://github.com/carvalhorafael/crm-leads-capture.git ../plugins-wordpress/crm-leads-capture
 
       - name: Start WordPress
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.base_ref == 'develop'
         run: npm run wp:start
 
       - name: Install PHP dependencies
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.base_ref == 'develop'
         run: npm run composer:install
 
       - name: Run automated tests
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.base_ref == 'develop'
         run: npm test
 
-      - name: Validate release package
-        if: github.base_ref == 'main' || (github.event_name == 'push' && github.ref_name == 'main')
-        run: npm run validate
+      - name: Resolve release tag
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        id: release
+        run: echo "tag=v$(node -p \"require('./package.json').version\")" >> "${GITHUB_OUTPUT}"
+
+      - name: Check release version
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        env:
+          TAG_NAME: ${{ steps.release.outputs.tag }}
+        run: npm run release:check-version -- "${TAG_NAME}"
+
+      - name: Build and validate release package
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        run: npm run release:package
 
       - name: Upload theme ZIP
-        if: github.base_ref == 'main' || (github.event_name == 'push' && github.ref_name == 'main')
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
         uses: actions/upload-artifact@v5
         with:
           name: executive-signal-wordpress-theme
@@ -69,6 +98,6 @@ jobs:
           if-no-files-found: error
 
       - name: Stop WordPress
-        if: always()
+        if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.base_ref == 'develop') }}
         continue-on-error: true
         run: npm run wp:stop
