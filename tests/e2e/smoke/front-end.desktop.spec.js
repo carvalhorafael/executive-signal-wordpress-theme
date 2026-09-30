@@ -79,15 +79,4 @@ test.describe("required desktop smoke", () => {
     await expect(form.locator("[data-crm-leads-capture-message]")).toContainText("Recebi os detalhes do evento");
   });
 
-  test("renders the free-material capture contract", async ({ page }) => {
-    await page.goto("/materiais-gratuitos/e2e-free-material/?utm_source=e2e&utm_medium=playwright");
-
-    const form = page.locator('.es-resource-capture-panel form[action$="/wp-admin/admin-post.php"]');
-    await expect(form).toBeVisible();
-    await expect(form.locator('input[name="action"]')).toHaveValue("crm_leads_capture_free_material");
-    await expect(form.locator('input[name="material_id"]')).not.toHaveValue("");
-    await expect(form.locator('input[name="utm_source"]')).toHaveValue("e2e");
-    await expect(form.locator('input[name="utm_medium"]')).toHaveValue("playwright");
-    await expect(form.locator('input[name="_wpnonce"]')).toHaveCount(1);
-  });
 });

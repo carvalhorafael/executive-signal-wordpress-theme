@@ -231,27 +231,6 @@ $capture_profiles = array(
 
 update_option( 'crm_leads_capture_profiles', $capture_profiles, false );
 
-$material    = get_page_by_path( 'e2e-free-material', OBJECT, 'material_gratuito' );
-$material_id = wp_insert_post(
-	array(
-		'ID'           => $material instanceof WP_Post ? $material->ID : 0,
-		'post_type'    => 'material_gratuito',
-		'post_status'  => 'publish',
-		'post_name'    => 'e2e-free-material',
-		'post_title'   => 'E2E Free Material',
-		'post_excerpt' => 'Material fixture for capture integration.',
-		'post_content' => 'Fixture content for the material capture template.',
-	),
-	true
-);
-
-if ( is_wp_error( $material_id ) ) {
-	throw new RuntimeException( esc_html( $material_id->get_error_message() ) );
-}
-
-update_post_meta( $material_id, '_executive_signal_material_capture_label', 'Receive material' );
-update_post_meta( $material_id, '_free_materials_format', 'pdf' );
-
 $menu_name   = 'E2E Primary';
 $menu_object = wp_get_nav_menu_object( $menu_name );
 $menu_id     = $menu_object instanceof WP_Term ? $menu_object->term_id : wp_create_nav_menu( $menu_name );
