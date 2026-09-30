@@ -2237,12 +2237,15 @@ a {
   justify-self: start;
 }
 
-.coo-honeypot {
+.coo-honeypot,
+.coo-lead-form .crm-leads-capture-honeypot {
   position: absolute !important;
   left: -10000px !important;
   width: 1px !important;
   height: 1px !important;
+  opacity: 0 !important;
   overflow: hidden !important;
+  pointer-events: none !important;
 }
 
 .coo-form-unavailable {

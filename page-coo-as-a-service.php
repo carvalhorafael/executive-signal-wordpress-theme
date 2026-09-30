@@ -8,11 +8,14 @@
 
 get_header( 'sales' );
 
-$privacy_policy_url = get_privacy_policy_url();
-$capture_available  = function_exists( 'crm_leads_capture_service_interest_nonce_field' )
-	&& function_exists( 'crm_leads_capture_render_service_interest_message' );
-$portrait_url       = get_theme_file_uri( 'assets/images/rafael-carvalho-coo-as-a-service.jpeg' );
-$utm_fields         = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content' );
+$privacy_policy_url   = get_privacy_policy_url();
+$capture_profile_slug = 'coo-as-a-service';
+$capture_available    = function_exists( 'crm_leads_capture_form_fields' )
+	&& function_exists( 'crm_leads_capture_render_message' )
+	&& function_exists( 'crm_leads_capture' )
+	&& null !== crm_leads_capture()->capture_profiles()->resolve( $capture_profile_slug );
+$portrait             = executive_signal_get_page_portrait();
+$utm_fields           = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_name' );
 ?>
 
 <main id="primary" class="coo-sales-page">
@@ -222,7 +225,7 @@ $utm_fields         = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_te
 	<section class="coo-section coo-section--about" aria-labelledby="coo-about-title">
 		<div class="coo-layout coo-about">
 			<figure class="coo-about__portrait">
-				<img src="<?php echo esc_url( $portrait_url ); ?>" alt="<?php esc_attr_e( 'Rafael Carvalho sentado, em retrato com fundo neutro.', 'executive-signal-wordpress-theme' ); ?>" width="550" height="550" loading="lazy">
+				<img src="<?php echo esc_url( $portrait['url'] ); ?>" alt="<?php echo esc_attr( $portrait['alt'] ); ?>" width="<?php echo esc_attr( $portrait['width'] ); ?>" height="<?php echo esc_attr( $portrait['height'] ); ?>" loading="lazy">
 			</figure>
 			<div class="coo-about__content">
 				<p class="coo-eyebrow"><?php esc_html_e( 'Atuação direta', 'executive-signal-wordpress-theme' ); ?></p>
@@ -288,12 +291,8 @@ $utm_fields         = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_te
 
 			<div class="es-lead-form coo-lead-form">
 				<?php if ( $capture_available ) : ?>
-					<?php crm_leads_capture_render_service_interest_message(); ?>
-					<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" data-service-interest-form>
-						<input type="hidden" name="action" value="crm_leads_capture_service_interest">
-						<?php crm_leads_capture_service_interest_nonce_field(); ?>
-						<input class="coo-honeypot" type="text" name="crm_leads_capture_website" value="" autocomplete="off" tabindex="-1" aria-hidden="true">
-						<input type="hidden" name="page_url" value="<?php echo esc_url( get_permalink() ); ?>">
+					<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" data-crm-leads-capture="<?php echo esc_attr( $capture_profile_slug ); ?>">
+						<?php crm_leads_capture_form_fields( $capture_profile_slug ); ?>
 						<?php foreach ( $utm_fields as $utm_field ) : ?>
 							<?php $utm_value = isset( $_GET[ $utm_field ] ) ? sanitize_text_field( wp_unslash( $_GET[ $utm_field ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
 							<input type="hidden" name="<?php echo esc_attr( $utm_field ); ?>" value="<?php echo esc_attr( $utm_value ); ?>">
@@ -348,6 +347,7 @@ $utm_fields         = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_te
 						</label>
 
 						<button class="es-button coo-primary-action" data-variant="primary" data-size="lg" type="submit"><?php esc_html_e( 'Quero conversar sobre minha operação', 'executive-signal-wordpress-theme' ); ?></button>
+						<?php crm_leads_capture_render_message( $capture_profile_slug ); ?>
 					</form>
 				<?php else : ?>
 					<p class="coo-form-unavailable" role="status"><?php esc_html_e( 'O formulário está temporariamente indisponível. Tente novamente mais tarde.', 'executive-signal-wordpress-theme' ); ?></p>

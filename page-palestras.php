@@ -12,8 +12,41 @@ if ( have_posts() ) {
 	the_post();
 }
 
-$portrait_url    = get_theme_file_uri( 'assets/images/rafael-carvalho-coo-as-a-service.jpeg' );
-$contact_content = trim( get_the_content() );
+$portrait             = executive_signal_get_page_portrait();
+$privacy_policy_url   = get_privacy_policy_url();
+$capture_profile_slug = 'speaker-invitation';
+$capture_available    = function_exists( 'crm_leads_capture_form_fields' )
+	&& function_exists( 'crm_leads_capture_render_message' )
+	&& function_exists( 'crm_leads_capture' )
+	&& null !== crm_leads_capture()->capture_profiles()->resolve( $capture_profile_slug );
+$utm_fields           = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_name' );
+$speaking_videos      = array(
+	array(
+		'id'    => '1MIaHnWisrU',
+		'url'   => 'https://www.youtube.com/watch?v=1MIaHnWisrU',
+		'title' => esc_html__( 'Como construir negócios que não param de crescer no digital', 'executive-signal-wordpress-theme' ),
+	),
+	array(
+		'id'    => 'uThiFciz-14',
+		'url'   => 'https://www.youtube.com/watch?v=uThiFciz-14',
+		'title' => esc_html__( 'Vendas de infoprodutos: esqueça tudo que já ouviu sobre ganhar dinheiro na internet', 'executive-signal-wordpress-theme' ),
+	),
+	array(
+		'id'    => '72aXZzF9lyk',
+		'url'   => 'https://www.youtube.com/watch?v=72aXZzF9lyk',
+		'title' => esc_html__( 'O segredo por trás dos negócios que não param de crescer', 'executive-signal-wordpress-theme' ),
+	),
+	array(
+		'id'    => 'PSkfPahhMx4',
+		'url'   => 'https://www.youtube.com/watch?v=PSkfPahhMx4',
+		'title' => esc_html__( 'Novidades do mercado para afiliados: tendências e estratégias avançadas', 'executive-signal-wordpress-theme' ),
+	),
+	array(
+		'id'    => '6146xJHLR5k',
+		'url'   => 'https://www.youtube.com/watch?v=6146xJHLR5k',
+		'title' => esc_html__( 'Por que negócios quebram? Palestra no Sebrae sobre empreendedorismo digital', 'executive-signal-wordpress-theme' ),
+	),
+);
 ?>
 
 <main id="primary" class="speaking-page">
@@ -30,7 +63,7 @@ $contact_content = trim( get_the_content() );
 			</div>
 
 			<figure class="speaking-hero__portrait">
-				<img src="<?php echo esc_url( $portrait_url ); ?>" alt="<?php esc_attr_e( 'Retrato de Rafael Carvalho.', 'executive-signal-wordpress-theme' ); ?>" width="550" height="550" fetchpriority="high">
+				<img src="<?php echo esc_url( $portrait['url'] ); ?>" alt="<?php echo esc_attr( $portrait['alt'] ); ?>" width="<?php echo esc_attr( $portrait['width'] ); ?>" height="<?php echo esc_attr( $portrait['height'] ); ?>" fetchpriority="high">
 				<figcaption><?php esc_html_e( 'Empreendedor · Executivo · Autor', 'executive-signal-wordpress-theme' ); ?></figcaption>
 			</figure>
 		</div>
@@ -82,6 +115,54 @@ $contact_content = trim( get_the_content() );
 			</div>
 
 			<p class="speaking-topics__note"><?php esc_html_e( 'O recorte e os exemplos são ajustados ao contexto do evento, ao perfil do público e à conversa que o encontro precisa provocar.', 'executive-signal-wordpress-theme' ); ?></p>
+		</div>
+	</section>
+
+	<section id="videos" class="speaking-section speaking-videos" aria-labelledby="speaking-videos-title">
+		<div class="speaking-layout">
+			<div class="speaking-heading speaking-heading--wide">
+				<p class="speaking-eyebrow"><?php esc_html_e( 'Palestras em vídeo', 'executive-signal-wordpress-theme' ); ?></p>
+				<h2 id="speaking-videos-title"><?php esc_html_e( 'Veja as ideias acontecendo no palco.', 'executive-signal-wordpress-theme' ); ?></h2>
+				<p><?php esc_html_e( 'Uma seleção de palestras para conhecer o ritmo, a linguagem e a forma como Rafael conduz conversas com diferentes públicos.', 'executive-signal-wordpress-theme' ); ?></p>
+			</div>
+
+			<div class="speaking-videos__showcase">
+				<a class="speaking-video speaking-video--featured" href="<?php echo esc_url( $speaking_videos[0]['url'] ); ?>" target="_blank" rel="noopener noreferrer">
+					<span class="speaking-video__media">
+						<img src="<?php echo esc_url( 'https://i.ytimg.com/vi/' . $speaking_videos[0]['id'] . '/maxresdefault.jpg' ); ?>" alt="" width="1280" height="720" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+						<span class="speaking-video__play" aria-hidden="true"></span>
+					</span>
+					<span class="speaking-video__copy">
+						<span class="speaking-video__label"><?php esc_html_e( 'Palestra completa em destaque', 'executive-signal-wordpress-theme' ); ?></span>
+						<strong><?php echo esc_html( $speaking_videos[0]['title'] ); ?></strong>
+						<span class="speaking-video__action"><?php esc_html_e( 'Assistir no YouTube', 'executive-signal-wordpress-theme' ); ?> <span aria-hidden="true">↗</span><span class="screen-reader-text"> <?php esc_html_e( 'Abre em nova aba.', 'executive-signal-wordpress-theme' ); ?></span></span>
+					</span>
+				</a>
+
+				<div class="speaking-videos__rail">
+					<a class="speaking-video speaking-video--secondary" href="<?php echo esc_url( $speaking_videos[1]['url'] ); ?>" target="_blank" rel="noopener noreferrer">
+						<span class="speaking-video__media">
+							<img src="<?php echo esc_url( 'https://i.ytimg.com/vi/' . $speaking_videos[1]['id'] . '/maxresdefault.jpg' ); ?>" alt="" width="1280" height="720" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+							<span class="speaking-video__play" aria-hidden="true"></span>
+						</span>
+						<span class="speaking-video__copy">
+							<span class="speaking-video__label"><?php esc_html_e( 'Também vale assistir', 'executive-signal-wordpress-theme' ); ?></span>
+							<strong><?php echo esc_html( $speaking_videos[1]['title'] ); ?></strong>
+						</span>
+					</a>
+
+					<div class="speaking-videos__more" aria-label="<?php esc_attr_e( 'Outras palestras em vídeo', 'executive-signal-wordpress-theme' ); ?>">
+						<?php foreach ( array_slice( $speaking_videos, 2 ) as $index => $video ) : ?>
+							<a href="<?php echo esc_url( $video['url'] ); ?>" target="_blank" rel="noopener noreferrer">
+								<span><?php echo esc_html( sprintf( '%02d', $index + 3 ) ); ?></span>
+								<strong><?php echo esc_html( $video['title'] ); ?></strong>
+								<span aria-hidden="true">↗</span>
+								<span class="screen-reader-text"> <?php esc_html_e( 'Abre em nova aba.', 'executive-signal-wordpress-theme' ); ?></span>
+							</a>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -166,19 +247,69 @@ $contact_content = trim( get_the_content() );
 			<div class="speaking-contact__copy">
 				<p class="speaking-eyebrow"><?php esc_html_e( 'Convite', 'executive-signal-wordpress-theme' ); ?></p>
 				<h2 id="speaking-contact-title"><?php esc_html_e( 'Conte um pouco sobre o evento.', 'executive-signal-wordpress-theme' ); ?></h2>
-				<p><?php esc_html_e( 'Compartilhe o contexto, o público e o formato que você está planejando. Rafael avaliará pessoalmente a aderência do convite.', 'executive-signal-wordpress-theme' ); ?></p>
+				<p><?php esc_html_e( 'Compartilhe quem está organizando, o objetivo e o formato do encontro. Rafael avaliará pessoalmente a aderência do convite.', 'executive-signal-wordpress-theme' ); ?></p>
 				<ul>
+					<li><?php esc_html_e( 'Dados para retorno e organização responsável', 'executive-signal-wordpress-theme' ); ?></li>
 					<li><?php esc_html_e( 'Contexto e objetivo do encontro', 'executive-signal-wordpress-theme' ); ?></li>
-					<li><?php esc_html_e( 'Perfil e tamanho do público', 'executive-signal-wordpress-theme' ); ?></li>
-					<li><?php esc_html_e( 'Data, local e formato desejado', 'executive-signal-wordpress-theme' ); ?></li>
+					<li><?php esc_html_e( 'Formato desejado', 'executive-signal-wordpress-theme' ); ?></li>
 				</ul>
 			</div>
-			<div class="speaking-contact__form">
-				<?php if ( $contact_content ) : ?>
-					<?php
-					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted page content is processed through WordPress content and shortcode filters.
-					echo apply_filters( 'the_content', $contact_content );
-					?>
+			<div class="es-lead-form speaking-contact__form">
+				<?php if ( $capture_available ) : ?>
+					<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" data-crm-leads-capture="<?php echo esc_attr( $capture_profile_slug ); ?>">
+						<?php crm_leads_capture_form_fields( $capture_profile_slug ); ?>
+						<?php foreach ( $utm_fields as $utm_field ) : ?>
+							<?php $utm_value = isset( $_GET[ $utm_field ] ) ? sanitize_text_field( wp_unslash( $_GET[ $utm_field ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
+							<input type="hidden" name="<?php echo esc_attr( $utm_field ); ?>" value="<?php echo esc_attr( $utm_value ); ?>">
+						<?php endforeach; ?>
+
+						<div class="speaking-contact__form-grid">
+							<label class="speaking-contact__field">
+								<span><?php esc_html_e( 'Nome', 'executive-signal-wordpress-theme' ); ?></span>
+								<input type="text" name="name" autocomplete="name" required>
+							</label>
+							<label class="speaking-contact__field">
+								<span><?php esc_html_e( 'E-mail', 'executive-signal-wordpress-theme' ); ?></span>
+								<input type="email" name="email" autocomplete="email" inputmode="email" required>
+							</label>
+							<label class="speaking-contact__field">
+								<span><?php esc_html_e( 'WhatsApp', 'executive-signal-wordpress-theme' ); ?></span>
+								<input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" required>
+							</label>
+							<label class="speaking-contact__field">
+								<span><?php esc_html_e( 'Empresa ou organização', 'executive-signal-wordpress-theme' ); ?></span>
+								<input type="text" name="organization" autocomplete="organization" required>
+							</label>
+							<label class="speaking-contact__field speaking-contact__field--full">
+								<span><?php esc_html_e( 'Qual é o objetivo do encontro?', 'executive-signal-wordpress-theme' ); ?></span>
+								<textarea name="objective_context" rows="4" required></textarea>
+							</label>
+							<label class="speaking-contact__field speaking-contact__field--full">
+								<span><?php esc_html_e( 'Formato', 'executive-signal-wordpress-theme' ); ?></span>
+								<select name="format" required>
+									<option value=""><?php esc_html_e( 'Selecione', 'executive-signal-wordpress-theme' ); ?></option>
+									<option value="presencial"><?php esc_html_e( 'Presencial', 'executive-signal-wordpress-theme' ); ?></option>
+									<option value="online"><?php esc_html_e( 'Online', 'executive-signal-wordpress-theme' ); ?></option>
+									<option value="hibrido"><?php esc_html_e( 'Híbrido', 'executive-signal-wordpress-theme' ); ?></option>
+								</select>
+							</label>
+						</div>
+
+						<label class="speaking-contact__consent">
+							<input type="checkbox" name="consent" value="1" required>
+							<span>
+								<?php if ( $privacy_policy_url ) : ?>
+									<?php esc_html_e( 'Concordo com o uso dos meus dados para avaliação e retorno sobre este convite, conforme a', 'executive-signal-wordpress-theme' ); ?>
+									<a href="<?php echo esc_url( $privacy_policy_url ); ?>"><?php esc_html_e( 'Política de Privacidade', 'executive-signal-wordpress-theme' ); ?></a>.
+								<?php else : ?>
+									<?php esc_html_e( 'Concordo com o uso dos meus dados para avaliação e retorno sobre este convite.', 'executive-signal-wordpress-theme' ); ?>
+								<?php endif; ?>
+							</span>
+						</label>
+
+						<button class="es-button speaking-contact__submit" data-variant="primary" data-size="lg" type="submit"><?php esc_html_e( 'Enviar convite para avaliação', 'executive-signal-wordpress-theme' ); ?></button>
+						<?php crm_leads_capture_render_message( $capture_profile_slug ); ?>
+					</form>
 				<?php else : ?>
 					<div class="speaking-contact__unavailable" role="status">
 						<p><?php esc_html_e( 'O formulário de convite ainda não está configurado.', 'executive-signal-wordpress-theme' ); ?></p>

@@ -9,13 +9,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$portrait_url  = get_theme_file_uri( 'assets/images/rafael-carvalho-coo-as-a-service.jpeg' );
+$portrait      = executive_signal_get_page_portrait();
 $coo_page      = get_page_by_path( 'coo-as-a-service' );
 $coo_url       = $coo_page instanceof WP_Post && 'publish' === $coo_page->post_status ? get_permalink( $coo_page ) : home_url( '/coo-as-a-service/' );
 $posts_page    = (int) get_option( 'page_for_posts' );
 $articles_url  = $posts_page ? get_permalink( $posts_page ) : home_url( '/artigos/' );
 $contact_page  = get_page_by_path( 'contato' );
 $contact_url   = $contact_page instanceof WP_Post && 'publish' === $contact_page->post_status ? get_permalink( $contact_page ) : '';
+$about_page    = get_page_by_path( 'sobre' );
+$about_url     = $about_page instanceof WP_Post && 'publish' === $about_page->post_status ? get_permalink( $about_page ) : home_url( '/sobre/' );
 $speaking_page = get_page_by_path( 'palestras' );
 $speaking_url  = $speaking_page instanceof WP_Post && 'publish' === $speaking_page->post_status ? get_permalink( $speaking_page ) : '';
 $articles      = new WP_Query(
@@ -33,8 +35,8 @@ $articles      = new WP_Query(
 	<div class="rafael-home__layout rafael-home__hero-layout">
 		<div class="rafael-home__hero-copy">
 			<p class="rafael-home__eyebrow"><?php esc_html_e( 'Rafael Carvalho · Empreendedor e executivo', 'executive-signal-wordpress-theme' ); ?></p>
-			<h1 id="rafael-home-title"><?php esc_html_e( 'Ajudo fundadores a sair do papel de gargalo e construir uma operação que escala.', 'executive-signal-wordpress-theme' ); ?></h1>
-			<p class="rafael-home__hero-summary"><?php esc_html_e( 'Trabalho ao lado de CEOs e lideranças para transformar estratégia em prioridades, decisões e execução.', 'executive-signal-wordpress-theme' ); ?></p>
+			<h1 id="rafael-home-title"><?php esc_html_e( 'Ajudo fundadores a construir uma operação que não depende deles para tudo.', 'executive-signal-wordpress-theme' ); ?></h1>
+			<p class="rafael-home__hero-summary"><?php esc_html_e( 'Trabalho ao lado de CEOs e lideranças para transformar estratégia em prioridades claras, decisões no lugar certo e execução consistente.', 'executive-signal-wordpress-theme' ); ?></p>
 			<div class="rafael-home__actions">
 				<a class="es-button" data-variant="primary" data-size="lg" href="<?php echo esc_url( $coo_url ); ?>"><?php esc_html_e( 'Conheça o COO as a Service', 'executive-signal-wordpress-theme' ); ?></a>
 				<a class="rafael-home__text-link" href="#ideias"><?php esc_html_e( 'Leia minhas ideias', 'executive-signal-wordpress-theme' ); ?><span aria-hidden="true"> ↓</span></a>
@@ -42,7 +44,7 @@ $articles      = new WP_Query(
 		</div>
 
 		<figure class="rafael-home__portrait">
-			<img src="<?php echo esc_url( $portrait_url ); ?>" alt="<?php esc_attr_e( 'Rafael Carvalho sentado, em retrato com fundo neutro.', 'executive-signal-wordpress-theme' ); ?>" width="550" height="550" fetchpriority="high">
+			<img src="<?php echo esc_url( $portrait['url'] ); ?>" alt="<?php echo esc_attr( $portrait['alt'] ); ?>" width="<?php echo esc_attr( $portrait['width'] ); ?>" height="<?php echo esc_attr( $portrait['height'] ); ?>" fetchpriority="high">
 			<figcaption>
 				<span><?php esc_html_e( 'Estratégia', 'executive-signal-wordpress-theme' ); ?></span>
 				<span><?php esc_html_e( 'Operação', 'executive-signal-wordpress-theme' ); ?></span>
@@ -101,6 +103,8 @@ $articles      = new WP_Query(
 			<li><span>01</span><?php esc_html_e( 'Poucas prioridades, claramente assumidas.', 'executive-signal-wordpress-theme' ); ?></li>
 			<li><span>02</span><?php esc_html_e( 'Gestores decidindo dentro de seus papéis.', 'executive-signal-wordpress-theme' ); ?></li>
 			<li><span>03</span><?php esc_html_e( 'Riscos e bloqueios visíveis mais cedo.', 'executive-signal-wordpress-theme' ); ?></li>
+			<li><span>04</span><?php esc_html_e( 'Decisões acompanhadas até virarem execução.', 'executive-signal-wordpress-theme' ); ?></li>
+			<li><span>05</span><?php esc_html_e( 'Uma operação menos dependente do fundador.', 'executive-signal-wordpress-theme' ); ?></li>
 		</ul>
 	</div>
 </section>
@@ -166,12 +170,15 @@ $articles      = new WP_Query(
 			<h2 id="rafael-home-experience-title"><?php esc_html_e( 'Eu já estive do outro lado da mesa.', 'executive-signal-wordpress-theme' ); ?></h2>
 			<p><?php esc_html_e( 'Sou empreendedor e executivo há mais de 20 anos. Já construí empresas, liderei equipes e atravessei diferentes fases de crescimento.', 'executive-signal-wordpress-theme' ); ?></p>
 			<p><?php esc_html_e( 'Hoje, uso essa experiência para trabalhar diretamente com fundadores e lideranças, conectando diagnóstico, decisão e implementação.', 'executive-signal-wordpress-theme' ); ?></p>
+			<a class="rafael-home__text-link rafael-home__experience-link" href="<?php echo esc_url( $about_url ); ?>"><?php esc_html_e( 'Conheça minha trajetória completa', 'executive-signal-wordpress-theme' ); ?><span aria-hidden="true"> →</span></a>
 		</div>
 
 		<ol class="rafael-home__experience-path">
 			<li><span><?php esc_html_e( 'Construir', 'executive-signal-wordpress-theme' ); ?></span><?php esc_html_e( 'Empresas, produtos e novos mercados.', 'executive-signal-wordpress-theme' ); ?></li>
 			<li><span><?php esc_html_e( 'Liderar', 'executive-signal-wordpress-theme' ); ?></span><?php esc_html_e( 'Pessoas e operações em diferentes fases de crescimento.', 'executive-signal-wordpress-theme' ); ?></li>
 			<li><span><?php esc_html_e( 'Acompanhar', 'executive-signal-wordpress-theme' ); ?></span><?php esc_html_e( 'Fundadores diante da complexidade que vem depois da validação.', 'executive-signal-wordpress-theme' ); ?></li>
+			<li><span><?php esc_html_e( 'Diagnosticar', 'executive-signal-wordpress-theme' ); ?></span><?php esc_html_e( 'Gargalos, prioridades e riscos que limitam a execução.', 'executive-signal-wordpress-theme' ); ?></li>
+			<li><span><?php esc_html_e( 'Implementar', 'executive-signal-wordpress-theme' ); ?></span><?php esc_html_e( 'Mudanças de gestão junto ao CEO e à liderança.', 'executive-signal-wordpress-theme' ); ?></li>
 		</ol>
 	</div>
 </section>
@@ -184,11 +191,11 @@ $articles      = new WP_Query(
 		</div>
 
 		<div class="rafael-home__archive-list">
-			<article>
+			<a href="<?php echo esc_url( 'https://www.amazon.com.br/Paix%C3%A3o-S-Transforme-neg%C3%B3cio-digital/dp/6555441186' ); ?>" target="_blank" rel="noopener noreferrer">
 				<p><?php esc_html_e( 'Livro', 'executive-signal-wordpress-theme' ); ?></p>
 				<h3><?php esc_html_e( 'Paixão S.A.', 'executive-signal-wordpress-theme' ); ?></h3>
 				<span><?php esc_html_e( 'Uma reflexão sobre transformar paixão em negócio.', 'executive-signal-wordpress-theme' ); ?></span>
-			</article>
+			</a>
 			<a href="<?php echo esc_url( executive_signal_get_free_materials_page_url() ); ?>">
 				<p><?php esc_html_e( 'Recursos', 'executive-signal-wordpress-theme' ); ?></p>
 				<h3><?php esc_html_e( 'Materiais gratuitos', 'executive-signal-wordpress-theme' ); ?></h3>
@@ -198,6 +205,21 @@ $articles      = new WP_Query(
 				<p><?php esc_html_e( 'Aprendizado', 'executive-signal-wordpress-theme' ); ?></p>
 				<h3><?php esc_html_e( 'Cursos', 'executive-signal-wordpress-theme' ); ?></h3>
 				<span><?php esc_html_e( 'Conteúdos estruturados para colocar ideias em prática.', 'executive-signal-wordpress-theme' ); ?></span>
+			</a>
+			<a href="<?php echo esc_url( 'https://www.youtube.com/@RafaelCarvalhoMCC?utm_medium=site&utm_source=site&utm_campaign=home&sub_confirmation=1' ); ?>" target="_blank" rel="noopener noreferrer">
+				<p><?php esc_html_e( 'Vídeos', 'executive-signal-wordpress-theme' ); ?></p>
+				<h3><?php esc_html_e( 'Canal no YouTube', 'executive-signal-wordpress-theme' ); ?></h3>
+				<span><?php esc_html_e( 'Conversas sobre empreendedorismo, estratégia, operação e liderança.', 'executive-signal-wordpress-theme' ); ?></span>
+			</a>
+			<a href="<?php echo esc_url( 'https://www.instagram.com/eu.rafaelcarvalho/' ); ?>" target="_blank" rel="noopener noreferrer">
+				<p><?php esc_html_e( 'Rede social', 'executive-signal-wordpress-theme' ); ?></p>
+				<h3><?php esc_html_e( 'Instagram', 'executive-signal-wordpress-theme' ); ?></h3>
+				<span><?php esc_html_e( 'Bastidores, ideias e aprendizados do dia a dia.', 'executive-signal-wordpress-theme' ); ?></span>
+			</a>
+			<a href="<?php echo esc_url( 'https://www.linkedin.com/in/rafaelmcarvalho/' ); ?>" target="_blank" rel="noopener noreferrer">
+				<p><?php esc_html_e( 'Rede profissional', 'executive-signal-wordpress-theme' ); ?></p>
+				<h3><?php esc_html_e( 'LinkedIn', 'executive-signal-wordpress-theme' ); ?></h3>
+				<span><?php esc_html_e( 'Reflexões sobre negócios, gestão, carreira e liderança.', 'executive-signal-wordpress-theme' ); ?></span>
 			</a>
 		</div>
 	</div>

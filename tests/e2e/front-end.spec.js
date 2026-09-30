@@ -56,6 +56,66 @@ const fixture = {
   pageSlug: "e2e-standard-page",
   postSlug: "e2e-theme-article",
   siblingSlug: "e2e-theme-related",
+  speakingPageSlug: "palestras",
+};
+
+const speakerCaptureProfile = {
+  name: "Convite para palestras",
+  slug: "speaker-invitation",
+  fields: [
+    ["name", "text", "lead", true],
+    ["email", "email", "lead", true],
+    ["whatsapp", "phone", "lead", true],
+    ...["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_name"].map(
+      (name) => [name, "text", "tracking", false],
+    ),
+    ["organization", "text", "custom_fields", true],
+    ["objective_context", "textarea", "custom_fields", true],
+    ["format", "select", "custom_fields", true, ["presencial", "online", "hibrido"]],
+    ["consent", "boolean", "consent", true],
+  ].map(([name, type, group, required, allowed_values]) => ({
+    name,
+    type,
+    group,
+    required,
+    ...(allowed_values ? { allowed_values } : {}),
+  })),
+  context: { source: "speaker_invitation" },
+  providers: {
+    brevo: { list_ids: [123], attribute_map: {} },
+    rd_station: { conversion_identifier: "speaker-invitation", tags: ["speaker", "event"], field_map: {} },
+  },
+  success: { message: "Recebi os detalhes do evento. Vou analisar o convite e retornar." },
+};
+
+const cooCaptureProfile = {
+  name: "COO as a Service",
+  slug: "coo-as-a-service",
+  fields: [
+    ["name", "text", "lead", true],
+    ["email", "email", "lead", true],
+    ["whatsapp", "phone", "lead", false],
+    ...["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_name"].map(
+      (name) => [name, "text", "tracking", false],
+    ),
+    ["company", "text", "custom_fields", true],
+    ["role", "select", "custom_fields", true, ["founder", "ceo", "executive"]],
+    ["company_url", "url", "custom_fields", false],
+    ["challenge", "textarea", "custom_fields", true],
+    ["consent", "boolean", "consent", true],
+  ].map(([name, type, group, required, allowed_values]) => ({
+    name,
+    type,
+    group,
+    required,
+    ...(allowed_values ? { allowed_values } : {}),
+  })),
+  context: { source: "coo_as_a_service" },
+  providers: {
+    brevo: { list_ids: [123], attribute_map: {} },
+    rd_station: { conversion_identifier: "coo-as-a-service-interest", tags: ["coo-as-a-service"], field_map: {} },
+  },
+  success: { message: "Recebi seu contexto. Vou analisar as informações e entrarei em contato." },
 };
 
 const articleSections = [
@@ -131,9 +191,24 @@ test.beforeAll(() => {
   const homePageId = ensurePage(fixture.homePageSlug, "Início");
   const blogPageId = ensurePage(fixture.blogPageSlug, "Blog");
   const cooPageId = ensurePage(fixture.cooPageSlug, "COO as a Service");
+  const speakingPageId = ensurePage(fixture.speakingPageSlug, "Palestras");
   const standardPageId = ensurePage(fixture.pageSlug, "E2E Standard Page");
 
   runWpCli(["post", "meta", "update", cooPageId, "_wp_page_template", "page-coo-as-a-service.php"]);
+  runWpCli(["post", "meta", "update", speakingPageId, "_wp_page_template", "page-palestras.php"]);
+  runWpCli(["post", "meta", "update", cooPageId, "_crm_leads_capture_profile", cooCaptureProfile.slug]);
+  runWpCli(["post", "meta", "update", speakingPageId, "_crm_leads_capture_profile", speakerCaptureProfile.slug]);
+
+  const encodedCaptureProfiles = Buffer.from(
+    JSON.stringify({
+      [cooCaptureProfile.slug]: cooCaptureProfile,
+      [speakerCaptureProfile.slug]: speakerCaptureProfile,
+    }),
+  ).toString("base64");
+  runWpCli([
+    "eval",
+    `update_option('crm_leads_capture_profiles', json_decode(base64_decode('${encodedCaptureProfiles}'), true), false);`,
+  ]);
 
   runWpCli([
     "post",
@@ -569,7 +644,14 @@ test.describe("Executive Signal theme front end", () => {
   });
 
   test("renders the COO as a Service sales page and captures qualified interest", async ({ page }) => {
-    await page.route("**/wp-json/crm-leads-capture/v1/service-interest", async (route) => {
+    await page.route("**/wp-json/crm-leads-capture/v1/capture/coo-as-a-service/nonce", async (route) => {
+      await route.fulfill({
+        contentType: "application/json",
+        status: 200,
+        body: JSON.stringify({ success: true, nonce: "e2e-coo-nonce" }),
+      });
+    });
+    await page.route("**/wp-json/crm-leads-capture/v1/capture/coo-as-a-service", async (route) => {
       await route.fulfill({
         contentType: "application/json",
         status: 200,
@@ -590,36 +672,82 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".coo-process-list > li")).toHaveCount(5);
     await expect(page.locator(".coo-about__portrait img")).toBeVisible();
 
-    const captureForm = page.locator("[data-service-interest-form]");
+    const captureForm = page.locator('[data-crm-leads-capture="coo-as-a-service"]');
 
-    if (await captureForm.count()) {
-      await expect(captureForm.locator('input[name="action"]')).toHaveValue(
-        "crm_leads_capture_service_interest",
-      );
-      await expect(captureForm.locator('input[name="utm_source"]')).toHaveValue("e2e");
-      await expect(captureForm.locator('input[name="utm_medium"]')).toHaveValue("playwright");
-      await captureForm.getByLabel("Nome").fill("Pessoa E2E");
-      await captureForm.getByLabel("E-mail corporativo").fill("pessoa@example.com");
-      await captureForm.getByLabel("Empresa", { exact: true }).fill("Empresa E2E");
-      await captureForm.getByLabel("Seu papel").selectOption("ceo");
-      await captureForm.getByLabel("Onde a operação mais depende de você hoje?").fill(
-        "As decisões operacionais ainda convergem para a liderança.",
-      );
-      await captureForm.getByRole("checkbox").check();
-      await captureForm.getByRole("button", { name: "Quero conversar sobre minha operação" }).click();
+    await expect(captureForm.locator('input[name="action"]')).toHaveValue("crm_leads_capture_submit");
+    await expect(captureForm.locator('input[name="crm_leads_capture_profile"]')).toHaveValue(
+      "coo-as-a-service",
+    );
+    await expect(captureForm.locator('input[name="utm_source"]')).toHaveValue("e2e");
+    await expect(captureForm.locator('input[name="utm_medium"]')).toHaveValue("playwright");
+    await captureForm.getByLabel("Nome").fill("Pessoa E2E");
+    await captureForm.getByLabel("E-mail corporativo").fill("pessoa@example.com");
+    await captureForm.getByLabel("Empresa", { exact: true }).fill("Empresa E2E");
+    await captureForm.getByLabel("Seu papel").selectOption("ceo");
+    await captureForm.getByLabel("Onde a operação mais depende de você hoje?").fill(
+      "As decisões operacionais ainda convergem para a liderança.",
+    );
+    await captureForm.getByRole("checkbox").check();
+    await captureForm.getByRole("button", { name: "Quero conversar sobre minha operação" }).click();
 
-      const feedback = page.locator("[data-crm-leads-capture-message]");
-      await expect(feedback).toHaveAttribute("data-feedback-tone", "success");
-      await expect(feedback).toContainText("Recebi seu contexto");
-      await expect(feedback).toBeFocused();
-    } else {
-      await expect(page.locator(".coo-form-unavailable")).toBeVisible();
-    }
+    const feedback = captureForm.locator("[data-crm-leads-capture-message]");
+    await expect(feedback).toHaveAttribute("data-feedback-tone", "success");
+    await expect(feedback).toContainText("Recebi seu contexto");
+    await expect(feedback).toBeFocused();
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .exclude("#wpadminbar")
       .analyze();
     expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
+  test("renders the speaking invitation form through a reusable capture profile", async ({ page }) => {
+    await page.route("**/wp-json/crm-leads-capture/v1/capture/speaker-invitation/nonce", async (route) => {
+      await route.fulfill({
+        contentType: "application/json",
+        status: 200,
+        body: JSON.stringify({ success: true, nonce: "e2e-speaker-nonce" }),
+      });
+    });
+    await page.route("**/wp-json/crm-leads-capture/v1/capture/speaker-invitation", async (route) => {
+      await route.fulfill({
+        contentType: "application/json",
+        status: 200,
+        body: JSON.stringify({
+          success: true,
+          message: "Recebi os detalhes do evento. Vou analisar o convite e retornar.",
+        }),
+      });
+    });
+
+    await page.goto(`/${fixture.speakingPageSlug}/?utm_source=e2e&utm_medium=playwright`);
+
+    const captureForm = page.locator('[data-crm-leads-capture="speaker-invitation"]');
+    await expect(captureForm).toBeVisible();
+    await expect(captureForm.locator('input[name="crm_leads_capture_profile"]')).toHaveValue("speaker-invitation");
+    await expect(captureForm.locator('input[name="utm_source"]')).toHaveValue("e2e");
+    await expect(captureForm.locator('input[name="utm_medium"]')).toHaveValue("playwright");
+    const honeypotPosition = await captureForm.locator(".crm-leads-capture-honeypot").evaluate((element) => {
+      const bounds = element.getBoundingClientRect();
+
+      return { opacity: getComputedStyle(element).opacity, right: bounds.right };
+    });
+    expect(honeypotPosition.opacity).toBe("0");
+    expect(honeypotPosition.right).toBeLessThan(0);
+
+    await captureForm.getByLabel("Nome", { exact: true }).fill("Pessoa E2E");
+    await captureForm.getByLabel("E-mail").fill("pessoa@example.com");
+    await captureForm.getByLabel("WhatsApp").fill("21999999999");
+    await captureForm.getByLabel("Empresa ou organização").fill("Organização E2E");
+    await captureForm.getByLabel("Qual é o objetivo do encontro?").fill("Provocar decisões melhores.");
+    await captureForm.getByLabel("Formato").selectOption("presencial");
+    await captureForm.getByRole("checkbox").check();
+    await captureForm.getByRole("button", { name: "Enviar convite para avaliação" }).click();
+
+    const feedback = page.locator("[data-crm-leads-capture-message]");
+    await expect(feedback).toHaveAttribute("data-feedback-tone", "success");
+    await expect(feedback).toContainText("Recebi os detalhes do evento");
+    await expect(feedback).toBeFocused();
   });
 
   test("keeps standard pages in a single-column reading flow", async ({ page }) => {
@@ -984,7 +1112,20 @@ test.describe("Executive Signal theme front end", () => {
         const targetScroll = Math.max(300, Math.min(900, maxScroll));
 
         window.scrollTo(0, targetScroll);
-        await new Promise((resolve) => window.setTimeout(resolve, 100));
+        await new Promise((resolve) => {
+          const startedAt = performance.now();
+
+          const waitForScroll = () => {
+            if (window.scrollY >= targetScroll - 5 || performance.now() - startedAt >= 2000) {
+              resolve();
+              return;
+            }
+
+            window.requestAnimationFrame(waitForScroll);
+          };
+
+          waitForScroll();
+        });
 
         const scrolledCardRect = card.getBoundingClientRect();
         const scrolledButtonRect = button.getBoundingClientRect();

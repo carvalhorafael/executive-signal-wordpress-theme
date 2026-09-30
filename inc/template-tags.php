@@ -10,6 +10,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Get the portrait configured for the current page.
+ *
+ * The page featured image is preferred. The bundled portrait keeps existing
+ * templates visually stable until an editor assigns a featured image.
+ *
+ * @param int|null $post_id Page ID. Defaults to the queried object.
+ * @return array{url:string,alt:string,width:int,height:int}
+ */
+function executive_signal_get_page_portrait( $post_id = null ) {
+	$post_id      = $post_id ? (int) $post_id : (int) get_queried_object_id();
+	$fallback_alt = __( 'Retrato de Rafael Carvalho.', 'executive-signal-wordpress-theme' );
+	$fallback     = array(
+		'url'    => get_theme_file_uri( 'assets/images/rafael-carvalho-coo-as-a-service.jpeg' ),
+		'alt'    => $fallback_alt,
+		'width'  => 550,
+		'height' => 550,
+	);
+
+	if ( ! $post_id || ! has_post_thumbnail( $post_id ) ) {
+		return $fallback;
+	}
+
+	$attachment_id = (int) get_post_thumbnail_id( $post_id );
+	$image         = wp_get_attachment_image_src( $attachment_id, 'full' );
+
+	if ( ! $image ) {
+		return $fallback;
+	}
+
+	$alt = trim( (string) get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) );
+
+	return array(
+		'url'    => $image[0],
+		'alt'    => $alt ? $alt : $fallback_alt,
+		'width'  => (int) $image[1],
+		'height' => (int) $image[2],
+	);
+}
+
+/**
  * Render a compact content label.
  *
  * @param string $label Label text.
