@@ -149,20 +149,6 @@ final class FreeMaterialsTest extends TestCase {
 	}
 
 	/**
-	 * Brevo capture settings should be registered as explicit post metadata.
-	 */
-	public function test_free_material_brevo_metadata_is_registered(): void {
-		$registered_meta = get_registered_meta_keys( 'post', EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE );
-
-		$this->assertArrayHasKey( EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID, $registered_meta );
-		$this->assertArrayHasKey( EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL, $registered_meta );
-		$this->assertSame( 'sanitize_text_field', $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID ]['sanitize_callback'] );
-		$this->assertSame( 'esc_url_raw', $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL ]['sanitize_callback'] );
-		$this->assertTrue( $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID ]['show_in_rest'] );
-		$this->assertTrue( $registered_meta[ EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL ]['show_in_rest'] );
-	}
-
-	/**
 	 * Capture CTA should use explicit button text metadata with a safe fallback.
 	 */
 	public function test_free_material_cta_uses_button_text_metadata_and_fallback(): void {

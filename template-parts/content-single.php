@@ -9,6 +9,8 @@
 <?php
 $article_content_data = executive_signal_prepare_article_content( str_replace( ']]>', ']]&gt;', apply_filters( 'the_content', get_the_content() ) ) );
 $has_right_rail       = ! empty( $article_content_data['table_of_contents'] ) || is_active_sidebar( 'post-right' );
+$coo_page             = get_page_by_path( 'coo-as-a-service' );
+$coo_url              = $coo_page instanceof WP_Post && 'publish' === $coo_page->post_status ? get_permalink( $coo_page ) : home_url( '/coo-as-a-service/' );
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry entry--single' ); ?> itemscope itemtype="https://schema.org/BlogPosting">
 	<header class="es-article-hero" data-layout="text-only">
@@ -28,11 +30,18 @@ $has_right_rail       = ! empty( $article_content_data['table_of_contents'] ) ||
 	</header>
 
 	<div class="entry__body-layout">
-		<?php if ( is_active_sidebar( 'post-left' ) ) : ?>
-			<aside class="entry__widget-area entry__widget-area--left" aria-label="<?php esc_attr_e( 'Post left rail', 'executive-signal-wordpress-theme' ); ?>">
+		<aside class="entry__widget-area entry__widget-area--left" aria-label="<?php esc_attr_e( 'Post left rail', 'executive-signal-wordpress-theme' ); ?>">
+			<section class="entry-coo-cta" aria-labelledby="entry-coo-cta-title">
+				<p class="entry-coo-cta__eyebrow"><?php esc_html_e( 'COO as a Service', 'executive-signal-wordpress-theme' ); ?></p>
+				<h2 id="entry-coo-cta-title" class="entry-coo-cta__title"><?php esc_html_e( 'A operação ainda depende demais de você?', 'executive-signal-wordpress-theme' ); ?></h2>
+				<p class="entry-coo-cta__description"><?php esc_html_e( 'Organize prioridades e decisões para a operação avançar sem depender tanto de você.', 'executive-signal-wordpress-theme' ); ?></p>
+				<a class="es-button entry-coo-cta__action" data-variant="primary" data-size="md" href="<?php echo esc_url( $coo_url ); ?>"><?php esc_html_e( 'Veja como funciona', 'executive-signal-wordpress-theme' ); ?></a>
+			</section>
+
+			<?php if ( is_active_sidebar( 'post-left' ) ) : ?>
 				<?php dynamic_sidebar( 'post-left' ); ?>
-			</aside>
-		<?php endif; ?>
+			<?php endif; ?>
+		</aside>
 
 		<div class="entry__content es-article-prose" itemprop="articleBody">
 			<?php

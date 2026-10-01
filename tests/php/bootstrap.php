@@ -24,6 +24,10 @@ if ( function_exists( 'activate_plugin' ) && ! is_plugin_active( 'online-courses
 	activate_plugin( 'online-courses/online-courses.php' );
 }
 
+if ( function_exists( 'activate_plugin' ) && ! is_plugin_active( 'crm-leads-capture/crm-leads-capture.php' ) ) {
+	activate_plugin( 'crm-leads-capture/crm-leads-capture.php' );
+}
+
 if ( ! defined( 'EXECUTIVE_SIGNAL_THEME_DIR' ) ) {
 	$theme = wp_get_theme( 'executive-signal-wordpress-theme' );
 
