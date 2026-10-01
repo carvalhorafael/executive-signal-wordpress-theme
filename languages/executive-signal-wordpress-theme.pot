@@ -115,7 +115,7 @@ msgid "Author articles"
 msgstr ""
 
 #: category.php:22
-#: inc/free-materials.php:222
+#: inc/free-materials.php:220
 #: template-parts/content-course.php:81
 msgid "Category"
 msgstr ""
@@ -286,8 +286,8 @@ msgstr ""
 
 #. Template Name of the theme
 #: inc/customizer.php:89
-#: inc/free-materials.php:61
-#: inc/free-materials.php:70
+#: inc/free-materials.php:59
+#: inc/free-materials.php:68
 msgid "Free materials"
 msgstr ""
 
@@ -307,15 +307,15 @@ msgstr ""
 msgid "Free materials description"
 msgstr ""
 
-#: inc/free-materials.php:79
+#: inc/free-materials.php:77
 msgid "Guides, checklists and working notes for leaders who want clearer operating signals."
 msgstr ""
 
-#: inc/free-materials.php:130
+#: inc/free-materials.php:128
 msgid "Download free material"
 msgstr ""
 
-#: inc/free-materials.php:214
+#: inc/free-materials.php:212
 msgctxt "free material category list separator"
 msgid ", "
 msgstr ""
