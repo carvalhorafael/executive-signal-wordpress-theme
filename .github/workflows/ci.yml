@@ -77,7 +77,9 @@ jobs:
       - name: Resolve release tag
         if: github.event_name == 'pull_request' && github.base_ref == 'main'
         id: release
-        run: echo "tag=v$(node -p \"require('./package.json').version\")" >> "${GITHUB_OUTPUT}"
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          echo "tag=v${VERSION}" >> "${GITHUB_OUTPUT}"
 
       - name: Check release version
         if: github.event_name == 'pull_request' && github.base_ref == 'main'
