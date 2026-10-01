@@ -115,6 +115,34 @@ Credenciais locais padrao do `wp-env`:
 
 Essas credenciais sao apenas do ambiente local de desenvolvimento. Nao usar como referencia para producao, staging ou qualquer ambiente real.
 
+### Alinhamento entre branch e ambiente local
+
+Quando a tarefa exigir validacao manual no WordPress da porta `8888`, o checkout principal montado pelo `wp-env` deve estar na branch de trabalho da tarefa.
+
+Se uma worktree isolada for usada:
+
+1. informar explicitamente que o WordPress principal nao esta usando essa worktree;
+2. executar um WordPress isolado nessa mesma worktree e fornecer sua URL; ou
+3. antes de entregar para validacao manual, mover a branch para o checkout principal.
+
+Nao considerar a implementacao pronta para revisao manual sem confirmar:
+
+- `git branch --show-current` aponta para a branch da tarefa;
+- o arquivo implementado existe no checkout principal;
+- o WordPress reconhece o template, pattern ou funcionalidade;
+- plugins companheiros montados pelo `.wp-env.json` tambem estao nas branches compativeis;
+- `http://localhost:8888/` responde corretamente.
+
+Para templates de pagina, validar com:
+
+```bash
+npx wp-env run cli wp eval 'print_r( wp_get_theme()->get_page_templates() );'
+```
+
+Para integracoes com plugins, validar tambem que as funcoes ou classes consumidas pelo tema estao disponiveis no WordPress em execucao.
+
+Nunca trocar ou remover a branch anterior sem preservar alteracoes rastreadas e arquivos nao rastreados do usuario.
+
 ## GitHub Packages
 
 Para rodar `npm install` ou `npm ci`, o projeto precisa conseguir ler os pacotes `@carvalhorafael/*` no GitHub Packages.
@@ -137,6 +165,7 @@ Regra padrao:
 - antes de criar branch de trabalho, buscar `origin` e sincronizar `develop` com `origin/develop`;
 - toda branch de trabalho deve partir de `origin/develop` atualizado;
 - criar uma branch de trabalho antes de alterar codigo;
+- a branch usada para codificacao e a branch montada no ambiente de revisao manual devem ser a mesma, salvo quando uma URL isolada for comunicada explicitamente;
 - usar prefixo `codex/` para branches criadas por agentes;
 - fazer commits pequenos e intencionais;
 - fazer push da branch para `origin`;
@@ -166,7 +195,7 @@ Regras para novos textos:
 - para plural, usar `_n()` ou `_nx()`;
 - para strings com placeholders, adicionar comentario `translators`;
 - quando a mudanca adicionar, remover ou alterar strings traduziveis, rodar `npm run i18n` e commitar as alteracoes em `languages/`;
-- antes de considerar uma mudanca pronta, usar `npm run i18n:check` ou `npm run validate`.
+- antes de considerar uma mudanca traduzivel pronta, regenerar `languages/` e usar o menor check local que cubra o risco; o gate completo de i18n pertence ao CI de `develop`.
 
 O idioma base inicial e `pt_BR`. O arquivo `languages/pt_BR.po` funciona como catalogo identidade ate que outro fluxo de traducao seja decidido.
 
@@ -179,13 +208,30 @@ Camadas esperadas:
 - `npm run test:quick`: validacao curta para iteracao pequena, com build Vite e sintaxe PHP;
 - `npm run test:static`: build Vite, sintaxe PHP, PHPCS e Theme Check;
 - `npm run test:php`: PHPUnit dentro do WordPress de testes do `wp-env`;
-- `npm run test:e2e`: Playwright para smoke do front-end e do editor, rodando contra a porta de testes do `wp-env`;
+- `npm run test:e2e`: smoke obrigatorio e enxuto do front-end, com apenas os fluxos de conversao, carregamento e navegacao que precisam bloquear PRs;
+- `npm run test:e2e:extended`: cobertura ampla de layout, editor, cursos, arquivos e comportamentos responsivos, executada manualmente ou quando a superficie alterada justificar;
 - `npm test`: gate automatizado padrao para PRs;
-- `npm run validate`: gate completo de release e empacotamento.
+- `npm run release:package`: gera e valida o ZIP sem repetir a suite de testes;
+- `npm run validate`: gate completo local, combinando testes e empacotamento, reservado para diagnostico explicito ou mudanca de alto risco.
 
-Durante uma rodada composta por varios ajustes pequenos, nao rode suites de testes depois de cada ajuste, nem mesmo `npm run test:quick` ou testes focados. Faca apenas a inspecao pontual necessaria para confirmar o comportamento em andamento e acumule a validacao automatizada. Rode os testes aplicaveis uma unica vez, depois que o ultimo ajuste da rodada estiver concluido e imediatamente antes de abrir o PR. Excecoes ficam restritas a mudancas que nao possam ser avaliadas com seguranca sem um teste focado ou a um pedido explicito do usuario.
+Durante uma rodada composta por varios ajustes pequenos, nao rode suites de testes depois de cada ajuste, nem mesmo `npm run test:quick` ou testes focados. Faca apenas a inspecao pontual necessaria para confirmar o comportamento em andamento e acumule a validacao automatizada. Antes de atualizar uma PR existente para `develop`, rode apenas os testes focados ou `npm run test:quick` proporcionais ao risco; nao execute `npm test`, `npm run test:prepush` ou `npm run validate` apenas para duplicar o gate remoto.
 
-Para uma mudanca pequena isolada que nao faca parte de uma rodada, rode apenas o menor comando que cobre o risco. Reserve `npm test`, `npm run test:prepush` e `npm run validate` para antes de PR, release ou mudancas com impacto amplo.
+Para uma mudanca pequena isolada que nao faca parte de uma rodada, rode apenas o menor comando que cobre o risco. Uma execucao local completa continua indicada quando o usuario pedir explicitamente, quando a mudanca afetar a propria infraestrutura de testes, quando o CI nao puder cobrir o risco ou quando for necessario diagnosticar uma falha remota.
+
+O smoke obrigatorio deve permanecer pequeno e orientado a risco. Nao duplique o mesmo contrato funcional em desktop e mobile: use desktop para carregamento, acessibilidade e formularios, e mobile apenas para interacoes realmente responsivas, como menu e submenu. Testes de geometria, scroll, filtros fornecidos por plugins, detalhes visuais do editor e variacoes extensas de templates pertencem a `test:e2e:extended`, nao ao gate de toda PR.
+
+As fixtures do smoke devem ser criadas uma unica vez por execucao, preferencialmente por um unico `wp eval-file`. Nao use dezenas de chamadas separadas a `wp-env run` nem recrie a mesma base para cada projeto Playwright.
+
+Quando o tema depender de uma capacidade ainda nao integrada de um plugin companheiro, o workflow pode apontar temporariamente para a branch da PR desse plugin. A referencia deve ficar explicita no workflow, ter fallback para `develop` depois do merge e ser removida quando `develop` se tornar a fonte canonica da capacidade.
+
+O fluxo automatizado canonico e:
+
+1. PR de uma branch de trabalho para `develop`: executa `npm test` uma vez sobre a mudanca proposta.
+2. Push resultante em `develop`: executa `npm test` novamente para validar o estado integrado de todas as mudancas.
+3. PR de `develop` para `main`: verifica a paridade da versao, executa `npm run release:package` e publica o ZIP como artefato; nao sobe WordPress nem repete PHP/E2E.
+4. Push em `main`: o workflow `Release` reconstrui o ZIP a partir do commit final com `npm run release:package`, cria a tag e publica a GitHub Release; nao repete a suite completa.
+
+Para sustentar esse fluxo, `develop` e `main` devem permanecer protegidas contra push direto. A PR para `main` deve vir de `develop` e nao pode receber mudanca funcional, resolucao manual de conflito ou atualizacao de dependencia sem voltar a `develop` e passar novamente pelo gate completo. Em qualquer uma dessas excecoes, execute `npm test` antes da release.
 
 O que deve ser testado:
 
@@ -207,16 +253,17 @@ O que nao deve ser testado aqui:
 
 A decisao de criar uma nova release e humana. O usuario deve avisar explicitamente quando quiser preparar uma release, por exemplo: "preparar release 0.2.0".
 
-Depois desse pedido, crie uma branch de release a partir de `develop`, atualize a versao e abra PR para `main`. O merge em `main` dispara a automacao de release.
+Depois desse pedido, garanta que a versao seja atualizada e validada em `develop`. A promocao para producao acontece por uma PR de `develop` para `main`; o merge em `main` dispara a automacao de release.
 
 Rotina padrao de release:
 
 1. acumular PRs pequenos em `develop`;
-2. quando a release for decidida pelo usuario, criar uma branch de release a partir de `develop`;
-3. executar `npm run release:prepare -- X.Y.Z` para atualizar `package.json`, `package-lock.json`, `style.css`, `readme.txt` e regenerar `languages/`;
-4. revisar e commitar todos os arquivos alterados pelo comando;
-5. abrir PR da branch de release para `main`;
-6. mergear em `main` somente apos o check obrigatorio `Validate theme` passar.
+2. quando a release for decidida pelo usuario, ainda no fluxo final de PR para `develop`, executar `npm run release:prepare -- X.Y.Z`;
+3. revisar e commitar `package.json`, `package-lock.json`, `style.css`, `readme.txt` e os catalogos regenerados em `languages/`;
+4. aguardar o `npm test` do PR e do push integrado em `develop` passar;
+5. abrir PR de `develop` para `main`, sem mudancas funcionais adicionais;
+6. aguardar a checagem de versao e o pacote validado da PR;
+7. mergear em `main` para publicar a release.
 
 O workflow `Release` roda em `push` para `main`. Ele le `package.json`, resolve a tag `vX.Y.Z`, falha se a tag ja existir e valida que a versao bate com:
 
@@ -227,7 +274,7 @@ O workflow `Release` roda em `push` para `main`. Ele le `package.json`, resolve 
 - `languages/pt_BR.po` -> `Project-Id-Version`;
 - `languages/pt_BR.mo` -> catalogo compilado com a mesma versao.
 
-Depois disso, executa `npm run validate`, cria a tag anotada, cria a GitHub Release e anexa o ZIP publico do tema.
+Depois disso, executa `npm run release:package`, cria a tag anotada, cria a GitHub Release e anexa o ZIP publico do tema. A suite completa nao e repetida nessa etapa porque o mesmo estado funcional ja passou pelo gate integrado de `develop`.
 
 Nao crie tags manualmente por padrao. A tag manual so deve ser usada se o workflow de release falhar depois do merge em `main` e houver decisao explicita de recuperacao.
 

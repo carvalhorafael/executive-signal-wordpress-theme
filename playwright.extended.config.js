@@ -3,8 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 const testsPort = process.env.WP_ENV_TESTS_PORT || "8889";
 
 export default defineConfig({
-  testDir: "tests/e2e/smoke",
-  globalSetup: "./tests/e2e/global-setup.js",
+  testDir: "tests/e2e/extended",
   timeout: 30_000,
   workers: 1,
   expect: {
@@ -17,12 +16,10 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      testMatch: "**/*.desktop.spec.js",
       use: { ...devices["Desktop Chrome"] },
     },
     {
       name: "mobile-chrome",
-      testMatch: "**/*.mobile.spec.js",
       use: { ...devices["Pixel 5"] },
     },
   ],

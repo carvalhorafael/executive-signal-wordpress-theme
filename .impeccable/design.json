@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T00:00:00-03:00",
+  "title": "Design System: Executive Signal WordPress Theme",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Oliva de decisão",
+        "canonical": "oklch(46% 0.115 116deg)",
+        "tonalRamp": ["oklch(15% 0.04 116deg)", "oklch(26% 0.065 116deg)", "oklch(38% 0.095 116deg)", "oklch(46% 0.115 116deg)", "oklch(58% 0.1 116deg)", "oklch(70% 0.08 116deg)", "oklch(84% 0.045 116deg)", "oklch(95% 0.015 116deg)"]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Papel frio",
+        "canonical": "oklch(97% 0.008 250deg)",
+        "tonalRamp": ["oklch(15% 0.01 250deg)", "oklch(28% 0.012 250deg)", "oklch(42% 0.012 250deg)", "oklch(56% 0.012 250deg)", "oklch(70% 0.01 250deg)", "oklch(82% 0.01 250deg)", "oklch(91% 0.009 250deg)", "oklch(97% 0.008 250deg)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero e transições narrativas." },
+      "body": { "displayName": "Body", "purpose": "Leitura executiva em medidas curtas." }
+    },
+    "shadows": [
+      { "name": "surface-low", "value": "0 10px 24px oklch(18% 0.018 250deg / 0.08)", "purpose": "Controles e superfícies interativas." },
+      { "name": "conversion", "value": "0 18px 44px oklch(18% 0.018 250deg / 0.11)", "purpose": "Formulário e superfícies de decisão." }
+    ],
+    "motion": [
+      { "name": "state", "value": "180ms cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Hover, foco e feedback sem coreografia excessiva." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "680px" },
+      { "name": "layout", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal direta e de alto contraste.",
+      "html": "<button class=\"ds-button-primary\">Quero conversar sobre minha operação</button>",
+      "css": ".ds-button-primary { border: 1px solid oklch(46% 0.115 116deg); border-radius: .625rem; background: oklch(46% 0.115 116deg); color: oklch(99% 0.006 250deg); padding: .875rem 1.25rem; font: 600 1rem/1.2 'Avenir Next', 'Segoe UI', sans-serif; transition: background 180ms cubic-bezier(.22,1,.36,1), transform 180ms cubic-bezier(.22,1,.36,1); } .ds-button-primary:hover { background: oklch(40% 0.115 116deg); transform: translateY(-1px); } .ds-button-primary:focus-visible { outline: 3px solid oklch(46% 0.115 116deg / .22); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "description": "Campo claro com rótulo persistente e foco inequívoco.",
+      "html": "<label class=\"ds-field\">Empresa<input class=\"ds-field-input\" type=\"text\" value=\"\"></label>",
+      "css": ".ds-field { display:grid; gap:.5rem; color:oklch(18% 0.018 250deg); font:560 .875rem/1.3 'Avenir Next','Segoe UI',sans-serif; }.ds-field-input { min-height:3rem; border:1px solid oklch(78% 0.018 250deg / .54); border-radius:.625rem; background:oklch(99% 0.006 250deg / .98); padding:.75rem .875rem; color:oklch(18% 0.018 250deg); font:400 1rem/1.4 'Avenir Next','Segoe UI',sans-serif; }.ds-field-input:focus-visible { outline:3px solid oklch(46% 0.115 116deg / .22); border-color:oklch(46% 0.115 116deg); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A sessão executiva estruturada",
+    "overview": "O Executive Signal deve parecer uma conversa de trabalho entre lideranças experientes: precisa, calma e orientada a decisões. A estrutura visual cria ritmo e confiança sem recorrer à teatralidade de uma landing page de infoproduto.",
+    "keyCharacteristics": ["Hierarquia tipográfica firme e concisa.", "Accent oliva usado como sinal.", "Alternância de ritmo em vez de grades repetitivas.", "Acessibilidade e estabilidade responsiva."],
+    "rules": [
+      { "name": "The Signal Rule", "body": "O accent não decora. Ele aponta uma ação, uma decisão ou uma mudança de estado.", "section": "colors" },
+      { "name": "The Diagnostic Headline Rule", "body": "Todo título deve avançar o raciocínio da página.", "section": "typography" },
+      { "name": "The Flat Narrative Rule", "body": "Conteúdo narrativo permanece no fluxo da página.", "section": "elevation" }
+    ],
+    "dos": ["Do começar pelo sintoma reconhecível.", "Do usar fotografia real de Rafael.", "Do preservar foco visível e redução de movimento."],
+    "donts": ["Don't criar uma landing page agressiva de infoproduto.", "Don't usar grades repetitivas de cards SaaS.", "Don't usar claims sem evidência."]
+  }
+}

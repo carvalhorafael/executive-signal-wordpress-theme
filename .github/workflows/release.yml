@@ -6,12 +6,17 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
 jobs:
   release:
     name: Publish tagged release
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
@@ -33,9 +38,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.EXECUTIVE_SIGNAL_PACKAGES_TOKEN }}
         run: npm ci
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
 
       - name: Resolve release tag
         id: release
@@ -60,21 +62,8 @@ jobs:
           TAG_NAME: ${{ steps.release.outputs.tag }}
         run: npm run release:check-version -- "${TAG_NAME}"
 
-      - name: Checkout companion plugins
-        run: |
-          mkdir -p ../plugins-wordpress
-          git clone --depth=1 --branch develop https://github.com/carvalhorafael/free-materials.git ../plugins-wordpress/free-materials
-          git clone --depth=1 https://github.com/carvalhorafael/online-courses.git ../plugins-wordpress/online-courses
-          git clone --depth=1 https://github.com/carvalhorafael/crm-leads-capture.git ../plugins-wordpress/crm-leads-capture
-
-      - name: Start WordPress
-        run: npm run wp:start
-
-      - name: Install PHP dependencies
-        run: npm run composer:install
-
-      - name: Validate release package
-        run: npm run validate
+      - name: Build and validate release package
+        run: npm run release:package
 
       - name: Create release tag
         env:
@@ -94,8 +83,3 @@ jobs:
             dist/executive-signal-wordpress-theme.zip \
             --title "${TAG_NAME}" \
             --generate-notes
-
-      - name: Stop WordPress
-        if: always()
-        continue-on-error: true
-        run: npm run wp:stop

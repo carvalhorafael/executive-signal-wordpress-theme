@@ -34,6 +34,7 @@ const required = [
   `${themeName}/languages/executive-signal-wordpress-theme.pot`,
   `${themeName}/languages/pt_BR.po`,
   `${themeName}/languages/pt_BR.mo`,
+  `${themeName}/assets/images/rafael-carvalho-coo-as-a-service.jpeg`,
   `${themeName}/assets/dist/.vite/manifest.json`,
 ];
 const forbidden = [

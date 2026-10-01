@@ -25,6 +25,7 @@ const includePaths = [
   "languages",
   "template-parts",
   "patterns",
+  "assets/images",
   "assets/dist",
 ];
 
