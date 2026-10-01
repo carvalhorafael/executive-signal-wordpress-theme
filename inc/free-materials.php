@@ -12,8 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_POST_TYPE', function_exists( 'free_materials_post_type' ) ? free_materials_post_type() : 'material_gratuito' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_TAXONOMY', function_exists( 'free_materials_taxonomy' ) ? free_materials_taxonomy() : 'material_categoria' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_CTA_LABEL', function_exists( 'free_materials_cta_label_meta_key' ) ? free_materials_cta_label_meta_key() : '_executive_signal_material_capture_label' );
-define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_LIST_ID', function_exists( 'free_materials_brevo_list_id_meta_key' ) ? free_materials_brevo_list_id_meta_key() : '_brevo_leads_capture_list_id' );
-define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_BREVO_DELIVERY_URL', function_exists( 'free_materials_brevo_delivery_url_meta_key' ) ? free_materials_brevo_delivery_url_meta_key() : '_brevo_leads_capture_delivery_url' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_FORMAT', function_exists( 'free_materials_format_meta_key' ) ? free_materials_format_meta_key() : '_free_materials_format' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_PAGES', function_exists( 'free_materials_pages_meta_key' ) ? free_materials_pages_meta_key() : '_free_materials_pages' );
 define( 'EXECUTIVE_SIGNAL_FREE_MATERIAL_FILE_SIZE', function_exists( 'free_materials_file_size_meta_key' ) ? free_materials_file_size_meta_key() : '_free_materials_file_size' );

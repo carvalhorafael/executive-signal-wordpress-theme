@@ -2,7 +2,7 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: Executive Signal WordPress Theme 0.4.0\n"
+"Project-Id-Version: Executive Signal WordPress Theme 0.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
@@ -117,7 +117,7 @@ msgid "Author articles"
 msgstr "Artigos do autor"
 
 #: category.php:22
-#: inc/free-materials.php:222
+#: inc/free-materials.php:220
 #: template-parts/content-course.php:81
 msgid "Category"
 msgstr "Categoria"
@@ -288,8 +288,8 @@ msgstr "Descrição do blog"
 
 #. Template Name of the theme
 #: inc/customizer.php:89
-#: inc/free-materials.php:61
-#: inc/free-materials.php:70
+#: inc/free-materials.php:59
+#: inc/free-materials.php:68
 msgid "Free materials"
 msgstr "Materiais gratuitos"
 
@@ -309,15 +309,15 @@ msgstr "Título de materiais gratuitos"
 msgid "Free materials description"
 msgstr "Descrição de materiais gratuitos"
 
-#: inc/free-materials.php:79
+#: inc/free-materials.php:77
 msgid "Guides, checklists and working notes for leaders who want clearer operating signals."
 msgstr "Guias, checklists e notas de trabalho para líderes que querem sinais operacionais mais claros."
 
-#: inc/free-materials.php:130
+#: inc/free-materials.php:128
 msgid "Download free material"
 msgstr "Baixar material gratuito"
 
-#: inc/free-materials.php:214
+#: inc/free-materials.php:212
 msgctxt "free material category list separator"
 msgid ", "
 msgstr ", "
@@ -390,12 +390,12 @@ msgid "Executive accent"
 msgstr "Executive destaque"
 
 #: inc/setup.php:90
-#: template-parts/content-single.php:32
+#: template-parts/content-single.php:33
 msgid "Post left rail"
 msgstr "Área esquerda do post"
 
 #: inc/setup.php:91
-#: template-parts/content-single.php:45
+#: template-parts/content-single.php:54
 msgid "Post right rail"
 msgstr "Área direita do post"
 
@@ -544,6 +544,8 @@ msgstr "Página centralizada"
 
 #. Template Name of the theme
 #: page-coo-as-a-service.php:25
+#: template-parts/content-single.php:35
+#: template-parts/post-coo-cta.php:13
 msgid "COO as a Service"
 msgstr "COO as a Service"
 
@@ -1752,6 +1754,7 @@ msgstr "Hoje, ele também dedica essa experiência a ajudar fundadores e CEOs de
 #: page-sobre-rafael-carvalho.php:250
 #: template-parts/home/content.php:41
 #: template-parts/home/content.php:248
+#: template-parts/post-coo-cta.php:17
 msgid "Conheça o COO as a Service"
 msgstr "Conheça o COO as a Service"
 
@@ -2102,6 +2105,18 @@ msgstr "Ver artigos mais recentes"
 msgid "Page navigation"
 msgstr "Navegação da página"
 
+#: template-parts/content-single.php:36
+msgid "A operação ainda depende demais de você?"
+msgstr "A operação ainda depende demais de você?"
+
+#: template-parts/content-single.php:37
+msgid "Organize prioridades e decisões para a operação avançar sem depender tanto de você."
+msgstr "Organize prioridades e decisões para a operação avançar sem depender tanto de você."
+
+#: template-parts/content-single.php:38
+msgid "Veja como funciona"
+msgstr "Veja como funciona"
+
 #: template-parts/content.php:29
 #: template-parts/home/content.php:139
 msgid "Read article"
@@ -2408,6 +2423,14 @@ msgstr "Conheça uma atuação executiva construída para reduzir dependência, 
 #: template-parts/home/content.php:250
 msgid "Entrar em contato"
 msgstr "Entrar em contato"
+
+#: template-parts/post-coo-cta.php:14
+msgid "Leve mais clareza e capacidade de execução para a operação."
+msgstr "Leve mais clareza e capacidade de execução para a operação."
+
+#: template-parts/post-coo-cta.php:16
+msgid "Organize prioridades, responsabilidades e decisões para a empresa avançar sem depender de cada decisão do CEO."
+msgstr "Organize prioridades, responsabilidades e decisões para a empresa avançar sem depender de cada decisão do CEO."
 
 #: template-parts/post-navigation.php:16
 msgid "Article navigation"
