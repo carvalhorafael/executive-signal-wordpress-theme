@@ -90,3 +90,5 @@ Motivo: exigir o plugin de captura no E2E obrigatorio do tema criaria acoplament
 Decisao: substituir a dependencia do plugin `brevo-leads-capture` por `crm-leads-capture`. O tema continua responsavel apenas pela apresentacao e passa a renderizar o contrato canonico do novo plugin: action e nonce `crm_leads_capture_free_material`, honeypot `crm_leads_capture_website` e helper `crm_leads_capture_render_free_material_error_message()`.
 
 Motivo: a captura deixou de ser acoplada a um unico provedor. Selecao de CRM, validacao, envio, mensagens e redirecionamento pertencem ao plugin `crm-leads-capture`; o tema nao deve depender dos aliases temporarios de compatibilidade com Brevo.
+
+Consequencia: metadados de destino, inclusive as chaves legadas de Brevo preservadas durante a migracao, pertencem integralmente ao plugin. O tema nao registra, valida nem expoe constantes para essas chaves; seus testes verificam apenas a disponibilidade do plugin e o contrato de apresentacao consumido pelos templates.
