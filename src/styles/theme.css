@@ -933,12 +933,18 @@ a {
   text-decoration: none;
 }
 
-.free-material-featured-card__media > img {
+.free-material-featured-card__media > img,
+.free-material-featured-card__media > picture,
+.free-material-featured-card__media > picture > img {
   display: block;
   height: 100%;
+  width: 100%;
+}
+
+.free-material-featured-card__media > img,
+.free-material-featured-card__media > picture > img {
   object-fit: contain;
   object-position: left center;
-  width: 100%;
 }
 
 .free-material-featured-card__media--placeholder {

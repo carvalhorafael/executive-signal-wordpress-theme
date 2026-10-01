@@ -6,28 +6,30 @@ A decisao de release e humana, mas a publicacao e automatica depois do merge em 
 
 1. Acumule PRs pequenos em `develop`.
 2. Quando a release for decidida, peca explicitamente para preparar a release com a versao desejada.
-3. Crie uma branch de release a partir de `develop`.
-4. Atualize a versao em:
-   - `package.json` -> `version`
-   - `style.css` -> `Version`
-   - `readme.txt` -> `Stable tag`
-5. Abra PR da branch de release para `main`.
-6. Depois que o CI passar, faca merge em `main`.
-7. O workflow `Release` cria a tag `vX.Y.Z`, valida o pacote, cria a GitHub Release e anexa o ZIP do tema.
+3. Ainda no fluxo final de PR para `develop`, execute `npm run release:prepare -- X.Y.Z`. O comando atualiza as versoes e regenera os catalogos de traducao.
+4. Revise e commite os arquivos gerados, depois aguarde o CI completo de `develop` passar.
+5. Abra a PR de `develop` para `main` sem mudancas funcionais adicionais.
+6. Depois que a checagem de versao e o pacote validado da PR passarem, faca merge em `main`.
+7. O workflow `Release` cria a tag `vX.Y.Z`, valida o pacote, cria a GitHub Release e anexa o ZIP do tema sem repetir a suite funcional completa.
 
 ## Validacao local
 
 Antes de abrir o PR para `main`, garanta paridade entre:
 
 - `package.json` -> `version`
+- `package-lock.json` -> `version` e versao do pacote raiz
 - `style.css` -> `Version`
 - `readme.txt` -> `Stable tag`
+- `languages/executive-signal-wordpress-theme.pot` -> `Project-Id-Version`
+- `languages/pt_BR.po` -> `Project-Id-Version`
+- `languages/pt_BR.mo` -> catalogo compilado
 
-Valide localmente:
+Prepare e valide localmente:
 
 ```bash
-npm run release:check-version -- v0.1.0
-npm run validate
+npm run release:prepare -- 0.4.0
+npm run release:check-version -- v0.4.0
+npm run release:package
 ```
 
 ## Automacao
@@ -37,8 +39,8 @@ O workflow `Release` roda em `push` para `main`. Ele:
 - le a versao de `package.json`;
 - monta a tag `vX.Y.Z`;
 - falha se essa tag ja existir;
-- valida a paridade de versao com `style.css` e `readme.txt`;
-- executa `npm run validate`;
+- valida a paridade de versao em todos os metadados e catalogos de traducao;
+- executa `npm run release:package`;
 - cria a tag anotada;
 - publica a GitHub Release;
 - anexa `dist/executive-signal-wordpress-theme.zip`.

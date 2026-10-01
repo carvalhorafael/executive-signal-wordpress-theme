@@ -258,20 +258,21 @@ Depois desse pedido, garanta que a versao seja atualizada e validada em `develop
 Rotina padrao de release:
 
 1. acumular PRs pequenos em `develop`;
-2. quando a release for decidida pelo usuario, atualizar a versao ainda no fluxo de PR para `develop`;
-3. atualizar a versao em `package.json` e `package-lock.json`;
-4. atualizar `Version` em `style.css`;
-5. atualizar `Stable tag` em `readme.txt` e regenerar `languages/`;
-6. aguardar o `npm test` do push integrado em `develop` passar;
-7. abrir PR de `develop` para `main`, sem mudancas funcionais adicionais;
-8. aguardar a checagem de versao e o pacote validado da PR;
-9. mergear em `main` para publicar a release.
+2. quando a release for decidida pelo usuario, ainda no fluxo final de PR para `develop`, executar `npm run release:prepare -- X.Y.Z`;
+3. revisar e commitar `package.json`, `package-lock.json`, `style.css`, `readme.txt` e os catalogos regenerados em `languages/`;
+4. aguardar o `npm test` do PR e do push integrado em `develop` passar;
+5. abrir PR de `develop` para `main`, sem mudancas funcionais adicionais;
+6. aguardar a checagem de versao e o pacote validado da PR;
+7. mergear em `main` para publicar a release.
 
 O workflow `Release` roda em `push` para `main`. Ele le `package.json`, resolve a tag `vX.Y.Z`, falha se a tag ja existir e valida que a versao bate com:
 
 - `package.json` -> `version`;
 - `style.css` -> `Version`;
-- `readme.txt` -> `Stable tag`.
+- `readme.txt` -> `Stable tag`;
+- `languages/executive-signal-wordpress-theme.pot` -> `Project-Id-Version`;
+- `languages/pt_BR.po` -> `Project-Id-Version`;
+- `languages/pt_BR.mo` -> catalogo compilado com a mesma versao.
 
 Depois disso, executa `npm run release:package`, cria a tag anotada, cria a GitHub Release e anexa o ZIP publico do tema. A suite completa nao e repetida nessa etapa porque o mesmo estado funcional ja passou pelo gate integrado de `develop`.
 

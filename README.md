@@ -136,18 +136,19 @@ Abra pull requests de branches de trabalho para `develop`. Mudancas em `main` de
 
 ## Release
 
-A decisao de release e humana. Quando for hora de lancar, prepare uma branch de release a partir de `develop`, atualize a versao e abra PR para `main`.
-
-Antes de abrir o PR para `main`, mantenha a versao sincronizada em:
-
-- `package.json`
-- `style.css`
-- `readme.txt`
-
-Valide a paridade:
+A decisao de release e humana. Quando for hora de lancar, execute o comando abaixo ainda no fluxo final de PR para `develop`:
 
 ```bash
-npm run release:check-version -- v0.1.0
+npm run release:prepare -- 0.4.0
+```
+
+O comando atualiza `package.json`, `package-lock.json`, `style.css` e `readme.txt`, regenera os catalogos em `languages/` e confirma que todas as superficies usam a mesma versao.
+
+Depois que o CI completo de `develop` passar, abra a PR de `develop` para `main` sem novas mudancas funcionais. Para repetir as validacoes específicas de release localmente:
+
+```bash
+npm run release:check-version -- v0.4.0
+npm run release:package
 ```
 
 Depois do merge em `main`, o workflow `Release` cria a tag `vX.Y.Z`, valida o tema e publica o ZIP na GitHub Release.
