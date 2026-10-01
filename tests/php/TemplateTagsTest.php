@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
  * Verifies shared template helpers.
  *
  * @covers ::executive_signal_get_listing_excerpt
+ * @covers ::executive_signal_get_page_portrait
  * @covers ::executive_signal_get_unique_article_heading_id
  * @covers ::executive_signal_prepare_article_content
  * @covers ::executive_signal_render_article_table_of_contents
@@ -18,6 +19,80 @@ use PHPUnit\Framework\TestCase;
  * @covers ::executive_signal_render_post_meta
  */
 final class TemplateTagsTest extends TestCase {
+	/**
+	 * Pages without a featured image should keep the bundled portrait.
+	 */
+	public function test_page_portrait_falls_back_to_bundled_image(): void {
+		$post_id = wp_insert_post(
+			array(
+				'post_title'  => 'Page without portrait',
+				'post_status' => 'draft',
+				'post_type'   => 'page',
+			),
+			true
+		);
+
+		$this->assertIsInt( $post_id );
+
+		$portrait = executive_signal_get_page_portrait( $post_id );
+
+		$this->assertSame( get_theme_file_uri( 'assets/images/rafael-carvalho-coo-as-a-service.jpeg' ), $portrait['url'] );
+		$this->assertSame( 'Retrato de Rafael Carvalho.', $portrait['alt'] );
+		$this->assertSame( 550, $portrait['width'] );
+		$this->assertSame( 550, $portrait['height'] );
+
+		wp_delete_post( $post_id, true );
+	}
+
+	/**
+	 * A configured featured image should replace the bundled portrait.
+	 */
+	public function test_page_portrait_uses_featured_image(): void {
+		$post_id       = wp_insert_post(
+			array(
+				'post_title'  => 'Page with portrait',
+				'post_status' => 'draft',
+				'post_type'   => 'page',
+			),
+			true
+		);
+		$attachment_id = wp_insert_attachment(
+			array(
+				'guid'           => 'https://example.test/portrait.jpg',
+				'post_mime_type' => 'image/jpeg',
+				'post_status'    => 'inherit',
+				'post_title'     => 'Page portrait',
+			)
+		);
+
+		$this->assertIsInt( $post_id );
+		$this->assertIsInt( $attachment_id );
+
+		update_post_meta( $attachment_id, '_wp_attachment_image_alt', 'Retrato configurado no WordPress' );
+		update_post_meta( $post_id, '_thumbnail_id', $attachment_id );
+
+		$image_downsize = static function ( $downsize, $requested_attachment_id, $size ) use ( $attachment_id ) {
+			if ( $attachment_id === (int) $requested_attachment_id && 'full' === $size ) {
+				return array( 'https://example.test/portrait.jpg', 1200, 1500, false );
+			}
+
+			return $downsize;
+		};
+		add_filter( 'image_downsize', $image_downsize, 10, 3 );
+
+		$portrait = executive_signal_get_page_portrait( $post_id );
+
+		remove_filter( 'image_downsize', $image_downsize, 10 );
+
+		$this->assertSame( 'https://example.test/portrait.jpg', $portrait['url'] );
+		$this->assertSame( 'Retrato configurado no WordPress', $portrait['alt'] );
+		$this->assertSame( 1200, $portrait['width'] );
+		$this->assertSame( 1500, $portrait['height'] );
+
+		wp_delete_attachment( $attachment_id, true );
+		wp_delete_post( $post_id, true );
+	}
+
 	/**
 	 * Badge labels should be escaped before rendering.
 	 */
