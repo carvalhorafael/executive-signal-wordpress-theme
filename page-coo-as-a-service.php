@@ -15,6 +15,8 @@ $capture_available    = function_exists( 'crm_leads_capture_form_fields' )
 	&& function_exists( 'crm_leads_capture' )
 	&& null !== crm_leads_capture()->capture_profiles()->resolve( $capture_profile_slug );
 $portrait             = executive_signal_get_page_portrait();
+$about_page           = get_page_by_path( 'sobre-rafael-carvalho' );
+$about_url            = $about_page instanceof WP_Post && 'publish' === $about_page->post_status ? get_permalink( $about_page ) : home_url( '/sobre-rafael-carvalho/' );
 $utm_fields           = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_name' );
 ?>
 
@@ -233,6 +235,68 @@ $utm_fields           = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_
 				<p><?php esc_html_e( 'Sou empreendedor e executivo há mais de 20 anos. Já construí empresas, liderei equipes e atravessei diferentes fases de crescimento.', 'executive-signal-wordpress-theme' ); ?></p>
 				<p><?php esc_html_e( 'Conheço o problema de ser o fundador que precisa entender, decidir e desbloquear tudo. Também conheço o trabalho necessário para construir prioridades, gestores e sistemas capazes de sustentar uma operação mais madura.', 'executive-signal-wordpress-theme' ); ?></p>
 				<p><?php esc_html_e( 'No COO as a Service, essa experiência não aparece apenas em recomendações. Eu trabalho diretamente com o CEO e com a liderança para diagnosticar, priorizar e implementar.', 'executive-signal-wordpress-theme' ); ?></p>
+				<ul class="coo-authority-list" aria-label="<?php esc_attr_e( 'Experiência aplicada', 'executive-signal-wordpress-theme' ); ?>">
+					<li><strong><?php esc_html_e( 'Construção', 'executive-signal-wordpress-theme' ); ?></strong><span><?php esc_html_e( 'Empresas, produtos e novos mercados.', 'executive-signal-wordpress-theme' ); ?></span></li>
+					<li><strong><?php esc_html_e( 'Liderança', 'executive-signal-wordpress-theme' ); ?></strong><span><?php esc_html_e( 'Equipes e operações em diferentes fases de crescimento.', 'executive-signal-wordpress-theme' ); ?></span></li>
+					<li><strong><?php esc_html_e( 'Escala', 'executive-signal-wordpress-theme' ); ?></strong><span><?php esc_html_e( 'Da startup a estruturas com mais de 200 profissionais.', 'executive-signal-wordpress-theme' ); ?></span></li>
+				</ul>
+				<a class="coo-authority-link" href="<?php echo esc_url( $about_url ); ?>"><?php esc_html_e( 'Conheça minha trajetória completa', 'executive-signal-wordpress-theme' ); ?></a>
+			</div>
+		</div>
+	</section>
+
+	<section class="coo-section coo-section--case-study" aria-labelledby="coo-case-study-title">
+		<div class="coo-layout">
+			<div class="coo-case-study__intro">
+				<div>
+					<p class="coo-eyebrow"><?php esc_html_e( 'Experiência real', 'executive-signal-wordpress-theme' ); ?></p>
+					<h2 id="coo-case-study-title"><?php esc_html_e( 'Escalar uma empresa exige mudar também a forma como as decisões acontecem.', 'executive-signal-wordpress-theme' ); ?></h2>
+				</div>
+				<div class="coo-case-study__context">
+					<p><?php esc_html_e( 'A trajetória da HeroSpark reuniu produtos, equipes e operações que precisavam funcionar como uma única empresa, em um momento de crescimento e aumento da complexidade.', 'executive-signal-wordpress-theme' ); ?></p>
+				</div>
+			</div>
+
+			<ol class="coo-case-study__stages">
+				<li>
+					<span>01</span>
+					<h3><?php esc_html_e( 'O contexto', 'executive-signal-wordpress-theme' ); ?></h3>
+					<p><?php esc_html_e( 'A fusão entre Edools e Eadbox deu origem à HeroSpark, reunindo produtos, equipes e operações que precisavam avançar como uma única empresa.', 'executive-signal-wordpress-theme' ); ?></p>
+				</li>
+				<li>
+					<span>02</span>
+					<h3><?php esc_html_e( 'A responsabilidade', 'executive-signal-wordpress-theme' ); ?></h3>
+					<p><?php esc_html_e( 'Como cofundador e COO, Rafael liderou uma estrutura com mais de 200 profissionais e áreas como Vendas, Marketing, Customer Success, Suporte e Gestão de Pessoas.', 'executive-signal-wordpress-theme' ); ?></p>
+				</li>
+				<li>
+					<span>03</span>
+					<h3><?php esc_html_e( 'O aprendizado aplicado hoje', 'executive-signal-wordpress-theme' ); ?></h3>
+					<p><?php esc_html_e( 'Crescimento não se sustenta apenas contratando mais pessoas. É preciso transformar estratégia em prioridades, deixar responsabilidades explícitas e criar uma operação capaz de decidir.', 'executive-signal-wordpress-theme' ); ?></p>
+				</li>
+			</ol>
+
+			<div class="coo-case-study__footer">
+				<p><?php esc_html_e( 'Essa experiência é uma das bases da atuação em COO as a Service.', 'executive-signal-wordpress-theme' ); ?></p>
+				<div class="coo-case-study__links">
+					<a href="<?php echo esc_url( 'https://tiinside.com.br/04/07/2019/startups-edools-e-eadbox-se-fundem-e-criam-a-herospark/' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Leia sobre a fusão', 'executive-signal-wordpress-theme' ); ?></a>
+					<a href="<?php echo esc_url( 'https://pipelinevalor.globo.com/startups/noticia/com-capital-da-alexia-ventures-herospark-quer-transformar-profissionais-em-professores.ghtml' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Veja a rodada Series A', 'executive-signal-wordpress-theme' ); ?></a>
+					<a href="<?php echo esc_url( $about_url ); ?>"><?php esc_html_e( 'Conheça a trajetória completa', 'executive-signal-wordpress-theme' ); ?></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="coo-section coo-section--testimonial" aria-labelledby="coo-testimonial-title">
+		<div class="coo-layout">
+			<div class="es-quote-band" data-align="center">
+				<p class="es-quote-band__eyebrow"><?php esc_html_e( 'Sobre trabalhar com Rafael', 'executive-signal-wordpress-theme' ); ?></p>
+				<blockquote class="es-quote-band__quote">
+					<p id="coo-testimonial-title"><?php esc_html_e( 'Rafael sabe fazer escolhas, entende seus impactos, ouve as diferentes partes e constrói decisões e soluções. É pragmático, entrega e lidera pelo exemplo.', 'executive-signal-wordpress-theme' ); ?></p>
+				</blockquote>
+				<footer class="es-quote-band__footer">
+					<strong class="es-quote-band__attribution"><?php esc_html_e( 'Mateus Leonardi · CTO na Manhattan Mental Health Counseling', 'executive-signal-wordpress-theme' ); ?></strong>
+					<span class="es-quote-band__cite"><?php esc_html_e( 'Trabalhou com Rafael na HeroSpark.', 'executive-signal-wordpress-theme' ); ?></span>
+				</footer>
 			</div>
 		</div>
 	</section>
