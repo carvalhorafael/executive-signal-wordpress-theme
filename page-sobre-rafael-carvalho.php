@@ -107,7 +107,7 @@ $timeline              = array(
 				'<a href="' . esc_url( 'https://tiinside.com.br/04/07/2019/startups-edools-e-eadbox-se-fundem-e-criam-a-herospark/' ) . '" target="_blank" rel="noopener noreferrer">',
 				'</a>'
 			),
-			esc_html__( 'Como cofundador e COO, liderou uma equipe de mais de 190 profissionais e teve sob sua responsabilidade áreas como Customer Success, Suporte, Vendas, Marketing e Gestão de Pessoas. Seu trabalho envolvia transformar estratégia em prioridades executáveis, estruturar indicadores e criar alinhamento entre líderes com responsabilidades distintas.', 'executive-signal-wordpress-theme' ),
+			esc_html__( 'Como cofundador e COO, liderou uma equipe de mais de 200 profissionais e teve sob sua responsabilidade áreas como Customer Success, Suporte, Vendas, Marketing e Gestão de Pessoas. Seu trabalho envolvia transformar estratégia em prioridades executáveis, estruturar indicadores e criar alinhamento entre líderes com responsabilidades distintas.', 'executive-signal-wordpress-theme' ),
 			sprintf(
 				/* translators: 1: opening link to the HeroSpark Series A article, 2: closing link. */
 				__( 'Também participou diretamente da integração das empresas, da organização da cadência executiva e da %1$srodada Series A%2$s, com posição permanente na liderança e reporte ao CEO e ao conselho.', 'executive-signal-wordpress-theme' ),
