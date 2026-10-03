@@ -89,6 +89,7 @@
 .rafael-home__portrait img {
   aspect-ratio: 4 / 5;
   display: block;
+  height: auto;
   object-fit: cover;
   position: relative;
   width: 100%;
