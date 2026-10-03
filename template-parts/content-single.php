@@ -58,6 +58,8 @@ $coo_url              = $coo_page instanceof WP_Post && 'publish' === $coo_page-
 		<?php endif; ?>
 	</div>
 
+	<?php get_template_part( 'template-parts/post-coo-cta' ); ?>
+
 	<footer class="entry__footer">
 		<?php executive_signal_render_article_tags(); ?>
 	</footer>
