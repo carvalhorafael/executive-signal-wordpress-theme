@@ -1154,10 +1154,6 @@ msgstr "Site ou LinkedIn da empresa"
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: page-coo-as-a-service.php:392
-msgid "opcional"
-msgstr "opcional"
-
 #: page-coo-as-a-service.php:396
 msgid "Onde a operação mais depende de você hoje?"
 msgstr "Onde a operação mais depende de você hoje?"

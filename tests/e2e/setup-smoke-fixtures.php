@@ -108,7 +108,7 @@ $capture_profiles = array(
 					'name'     => 'whatsapp',
 					'type'     => 'phone',
 					'group'    => 'lead',
-					'required' => false,
+					'required' => true,
 				),
 			),
 			$tracking_fields,

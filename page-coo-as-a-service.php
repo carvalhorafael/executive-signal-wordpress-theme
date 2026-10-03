@@ -389,8 +389,8 @@ $utm_fields           = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_
 								<input type="url" name="company_url" autocomplete="url" placeholder="https://">
 							</label>
 							<label class="coo-field">
-								<span><?php esc_html_e( 'WhatsApp', 'executive-signal-wordpress-theme' ); ?> <small><?php esc_html_e( 'opcional', 'executive-signal-wordpress-theme' ); ?></small></span>
-								<input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel">
+								<span><?php esc_html_e( 'WhatsApp', 'executive-signal-wordpress-theme' ); ?></span>
+								<input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" required>
 							</label>
 							<label class="coo-field coo-field--full">
 								<span><?php esc_html_e( 'Onde a operação mais depende de você hoje?', 'executive-signal-wordpress-theme' ); ?></span>

@@ -1152,10 +1152,6 @@ msgstr ""
 msgid "WhatsApp"
 msgstr ""
 
-#: page-coo-as-a-service.php:392
-msgid "opcional"
-msgstr ""
-
 #: page-coo-as-a-service.php:396
 msgid "Onde a operação mais depende de você hoje?"
 msgstr ""

@@ -45,6 +45,7 @@ test.describe("required desktop smoke", () => {
     await expect(form.locator('input[name="utm_source"]')).toHaveValue("e2e");
     await form.getByLabel("Nome").fill("Pessoa E2E");
     await form.getByLabel("E-mail corporativo").fill("pessoa@example.com");
+    await form.getByLabel("WhatsApp").fill("21999999999");
     await form.getByLabel("Empresa", { exact: true }).fill("Empresa E2E");
     await form.getByLabel("Seu papel").selectOption("ceo");
     await form.getByLabel("Onde a operação mais depende de você hoje?").fill("Decisões ainda convergem para a liderança.");
