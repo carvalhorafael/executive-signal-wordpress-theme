@@ -71,6 +71,7 @@
 .rafael-about__portrait img {
   aspect-ratio: 1 / 1;
   display: block;
+  height: auto;
   object-fit: cover;
   position: relative;
   width: 100%;
