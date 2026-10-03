@@ -323,7 +323,16 @@
   overflow: hidden;
 }
 
-.rafael-home__featured-article .es-featured-article-card__media img {
+.rafael-home__featured-article .es-featured-article-card__media > img,
+.rafael-home__featured-article .es-featured-article-card__media > picture,
+.rafael-home__featured-article .es-featured-article-card__media > picture > img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.rafael-home__featured-article .es-featured-article-card__media > img,
+.rafael-home__featured-article .es-featured-article-card__media > picture > img {
   object-fit: cover;
 }
 
