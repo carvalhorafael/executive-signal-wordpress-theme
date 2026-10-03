@@ -14,7 +14,6 @@ get_header();
 		the_post();
 
 		get_template_part( 'template-parts/content', 'single' );
-		get_template_part( 'template-parts/post-coo-cta' );
 		get_template_part( 'template-parts/share-post' );
 		get_template_part( 'template-parts/post-navigation' );
 		get_template_part( 'template-parts/related-posts' );
