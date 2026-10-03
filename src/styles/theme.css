@@ -2185,6 +2185,7 @@ a {
   position: relative;
   z-index: 1;
   display: block;
+  height: auto;
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
