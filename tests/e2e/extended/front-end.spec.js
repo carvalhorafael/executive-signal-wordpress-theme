@@ -94,7 +94,7 @@ const cooCaptureProfile = {
   fields: [
     ["name", "text", "lead", true],
     ["email", "email", "lead", true],
-    ["whatsapp", "phone", "lead", false],
+    ["whatsapp", "phone", "lead", true],
     ...["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_name"].map(
       (name) => [name, "text", "tracking", false],
     ),
@@ -682,6 +682,7 @@ test.describe("Executive Signal theme front end", () => {
     await expect(captureForm.locator('input[name="utm_medium"]')).toHaveValue("playwright");
     await captureForm.getByLabel("Nome").fill("Pessoa E2E");
     await captureForm.getByLabel("E-mail corporativo").fill("pessoa@example.com");
+    await captureForm.getByLabel("WhatsApp").fill("21999999999");
     await captureForm.getByLabel("Empresa", { exact: true }).fill("Empresa E2E");
     await captureForm.getByLabel("Seu papel").selectOption("ceo");
     await captureForm.getByLabel("Onde a operação mais depende de você hoje?").fill(
