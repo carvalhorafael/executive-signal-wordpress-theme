@@ -2,7 +2,7 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: Executive Signal WordPress Theme 0.6.1\n"
+"Project-Id-Version: Executive Signal WordPress Theme 0.6.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
@@ -1153,10 +1153,6 @@ msgstr "Site ou LinkedIn da empresa"
 #: template-parts/share-post.php:19
 msgid "WhatsApp"
 msgstr "WhatsApp"
-
-#: page-coo-as-a-service.php:392
-msgid "opcional"
-msgstr "opcional"
 
 #: page-coo-as-a-service.php:396
 msgid "Onde a operação mais depende de você hoje?"
