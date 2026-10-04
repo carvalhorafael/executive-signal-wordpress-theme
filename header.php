@@ -38,7 +38,7 @@
 					aria-expanded="false"
 				>
 					<span class="es-blog-site-header__menu-toggle-icon" aria-hidden="true"></span>
-					<span><?php esc_html_e( 'Open menu', 'executive-signal-wordpress-theme' ); ?></span>
+					<span class="screen-reader-text"><?php esc_html_e( 'Open menu', 'executive-signal-wordpress-theme' ); ?></span>
 				</button>
 
 			<?php executive_signal_render_header_navigation(); ?>

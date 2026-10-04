@@ -2,7 +2,7 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: Executive Signal WordPress Theme 0.6.2\n"
+"Project-Id-Version: Executive Signal WordPress Theme 0.6.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/executive-signal-wordpress-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Executive Signal\n"
@@ -1149,7 +1149,7 @@ msgstr "Site ou LinkedIn da empresa"
 
 #: page-coo-as-a-service.php:392
 #: page-palestras.php:276
-#: template-parts/content-free-material.php:118
+#: template-parts/content-free-material.php:63
 #: template-parts/share-post.php:19
 msgid "WhatsApp"
 msgstr "WhatsApp"
@@ -2038,7 +2038,7 @@ msgid "Secure checkout handled by the course platform."
 msgstr "Checkout seguro processado pela plataforma do curso."
 
 #: template-parts/content-course.php:76
-#: template-parts/content-free-material.php:42
+#: template-parts/content-free-material.php:104
 msgid "Format"
 msgstr "Formato"
 
@@ -2085,87 +2085,87 @@ msgid "Access free material"
 msgstr "Acessar material gratuito"
 
 #: template-parts/content-free-material.php:26
-#: template-parts/content-free-material.php:158
+#: template-parts/content-free-material.php:157
 msgid "Free material"
 msgstr "Material gratuito"
 
-#: template-parts/content-free-material.php:30
-msgid "About this material"
-msgstr "Sobre este material"
-
-#: template-parts/content-free-material.php:35
-msgid "Who it is for"
-msgstr "Para quem é"
-
-#: template-parts/content-free-material.php:49
-msgid "Pages or items"
-msgstr "Páginas ou itens"
-
-#: template-parts/content-free-material.php:56
-msgid "File size"
-msgstr "Tamanho do arquivo"
-
-#: template-parts/content-free-material.php:63
-msgid "Downloads"
-msgstr "Downloads"
-
-#: template-parts/content-free-material.php:72
-msgid "What is inside"
-msgstr "O que está incluído"
-
-#: template-parts/content-free-material.php:88
+#: template-parts/content-free-material.php:33
 msgid "Immediate access"
 msgstr "Acesso imediato"
 
-#: template-parts/content-free-material.php:89
+#: template-parts/content-free-material.php:34
 msgid "Complete the form"
 msgstr "Complete o formulário"
 
-#: template-parts/content-free-material.php:110
+#: template-parts/content-free-material.php:55
 msgid "Name"
 msgstr "Nome"
 
-#: template-parts/content-free-material.php:111
+#: template-parts/content-free-material.php:56
 msgid "Your full name"
 msgstr "Seu nome completo"
 
-#: template-parts/content-free-material.php:114
+#: template-parts/content-free-material.php:59
 msgid "Email"
 msgstr "Email"
 
-#: template-parts/content-free-material.php:115
+#: template-parts/content-free-material.php:60
 msgid "you@example.com"
 msgstr "voce@exemplo.com"
 
-#: template-parts/content-free-material.php:119
+#: template-parts/content-free-material.php:64
 msgid "(00) 00000-0000"
 msgstr "(00) 00000-0000"
 
-#: template-parts/content-free-material.php:122
+#: template-parts/content-free-material.php:67
 msgid "Website"
 msgstr "Site"
 
-#: template-parts/content-free-material.php:141
+#: template-parts/content-free-material.php:86
 msgid "No payment required. Keep the material for future reference."
 msgstr "Sem pagamento. Guarde o material para consultar depois."
 
-#: template-parts/content-free-material.php:150
+#: template-parts/content-free-material.php:92
+msgid "About this material"
+msgstr "Sobre este material"
+
+#: template-parts/content-free-material.php:97
+msgid "Who it is for"
+msgstr "Para quem é"
+
+#: template-parts/content-free-material.php:111
+msgid "Pages or items"
+msgstr "Páginas ou itens"
+
+#: template-parts/content-free-material.php:118
+msgid "File size"
+msgstr "Tamanho do arquivo"
+
+#: template-parts/content-free-material.php:125
+msgid "Downloads"
+msgstr "Downloads"
+
+#: template-parts/content-free-material.php:134
+msgid "What is inside"
+msgstr "O que está incluído"
+
+#: template-parts/content-free-material.php:149
 msgid "What you will find"
 msgstr "O que você vai encontrar"
 
-#: template-parts/content-free-material.php:152
+#: template-parts/content-free-material.php:151
 msgid "I do not want this material to just sit in your files. Use it to organize your ideas, make a decision, and take action."
 msgstr "Não quero que este material fique apenas nos seus arquivos. Use-o para organizar suas ideias, tomar uma decisão e agir."
 
-#: template-parts/content-free-material.php:159
+#: template-parts/content-free-material.php:158
 msgid "Download it now and consult it whenever you need."
 msgstr "Baixe agora mesmo e consulte sempre que precisar."
 
-#: template-parts/content-free-material.php:187
+#: template-parts/content-free-material.php:186
 msgid "Ready to use"
 msgstr "Pronto para usar"
 
-#: template-parts/content-free-material.php:188
+#: template-parts/content-free-material.php:187
 msgid "Access the content and apply the ideas today."
 msgstr "Acesse o conteúdo e aplique as ideias hoje mesmo."
 

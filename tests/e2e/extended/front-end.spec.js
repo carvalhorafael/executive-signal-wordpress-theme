@@ -671,6 +671,20 @@ test.describe("Executive Signal theme front end", () => {
     await expect(page.locator(".coo-dependency-map")).toContainText("CEO");
     await expect(page.locator(".coo-process-list > li")).toHaveCount(5);
     await expect(page.locator(".coo-about__portrait img")).toBeVisible();
+    if (test.info().project.name === "mobile-chrome") {
+      const mobileCta = await page.locator(".coo-mobile-cta").evaluate((cta) => {
+        const rect = cta.getBoundingClientRect();
+
+        return {
+          documentWidth: document.documentElement.clientWidth,
+          left: rect.left,
+          right: rect.right,
+        };
+      });
+
+      expect(mobileCta.left).toBeGreaterThan(0);
+      expect(mobileCta.right).toBeLessThan(mobileCta.documentWidth);
+    }
 
     const captureForm = page.locator('[data-crm-leads-capture="coo-as-a-service"]');
 
@@ -723,6 +737,24 @@ test.describe("Executive Signal theme front end", () => {
 
     await page.goto(`/${fixture.speakingPageSlug}/?utm_source=e2e&utm_medium=playwright`);
 
+    await expect(page.locator(".speaking-faq summary").first()).toHaveCSS("list-style-position", "inside");
+    if (test.info().project.name === "mobile-chrome") {
+      const mobileAction = page.locator(".speaking-mobile-action");
+      const mobileActionLayout = await mobileAction.evaluate((container) => {
+        const containerRect = container.getBoundingClientRect();
+        const buttonRect = container.querySelector(".es-button")?.getBoundingClientRect();
+
+        return {
+          buttonLeft: buttonRect?.left ?? 0,
+          buttonRight: buttonRect?.right ?? Number.POSITIVE_INFINITY,
+          containerLeft: containerRect.left,
+          containerRight: containerRect.right,
+        };
+      });
+
+      expect(mobileActionLayout.buttonLeft).toBeGreaterThanOrEqual(mobileActionLayout.containerLeft);
+      expect(mobileActionLayout.buttonRight).toBeLessThanOrEqual(mobileActionLayout.containerRight);
+    }
     const captureForm = page.locator('[data-crm-leads-capture="speaker-invitation"]');
     await expect(captureForm).toBeVisible();
     await expect(captureForm.locator('input[name="crm_leads_capture_profile"]')).toHaveValue("speaker-invitation");
@@ -891,6 +923,27 @@ test.describe("Executive Signal theme front end", () => {
     expect(tocDensity.fontSize).toBeLessThanOrEqual(14);
     expect(tocDensity.fontWeight).toBeLessThanOrEqual(400);
     expect(tocDensity.minHeight).toBeLessThanOrEqual(32);
+    const endCtaLayout = await page.locator(".entry-end-cta").evaluate((cta) => {
+      const rect = cta.getBoundingClientRect();
+      const action = cta.querySelector(".entry-end-cta__action")?.getBoundingClientRect();
+
+      return {
+        actionLeft: action?.left ?? 0,
+        actionRight: action?.right ?? Number.POSITIVE_INFINITY,
+        documentWidth: document.documentElement.clientWidth,
+        documentScrollWidth: document.documentElement.scrollWidth,
+        left: rect.left,
+        right: rect.right,
+      };
+    });
+
+    expect(endCtaLayout.left).toBeGreaterThanOrEqual(0);
+    expect(endCtaLayout.right).toBeLessThanOrEqual(endCtaLayout.documentWidth);
+    expect(endCtaLayout.actionLeft).toBeGreaterThanOrEqual(endCtaLayout.left);
+    expect(endCtaLayout.actionRight).toBeLessThanOrEqual(endCtaLayout.right);
+    if (test.info().project.name === "mobile-chrome") {
+      expect(endCtaLayout.documentScrollWidth).toBe(endCtaLayout.documentWidth);
+    }
     await expect(page.locator(".es-article-tags")).toBeVisible();
     await expect(page.locator(".es-social-share-bar--article")).toBeVisible();
     await expect(page.locator(".es-post-navigation")).toBeVisible();
@@ -913,9 +966,13 @@ test.describe("Executive Signal theme front end", () => {
       "Customizer copy for the free materials archive.",
     );
     await expect(page.locator(".es-resource-browser__filters")).toBeVisible();
+    const resourceColumns = await page.locator(".es-resource-browser__items").evaluate((items) => {
+      return window.getComputedStyle(items).gridTemplateColumns.split(" ").length;
+    });
     const featuredMaterial = page.locator(".free-material-featured-card", { hasText: "E2E Free Material" });
     const resourceBrowser = page.locator(".es-resource-browser");
 
+    expect(resourceColumns).toBe(page.viewportSize().width <= 680 ? 1 : 2);
     await expect(featuredMaterial).toBeVisible();
     expect(
       await featuredMaterial.evaluate(
@@ -986,6 +1043,16 @@ test.describe("Executive Signal theme front end", () => {
       "Scorecard",
       "Decision checklist",
     ]);
+    if (test.info().project.name === "mobile-chrome") {
+      const mobileCaptureOrder = await page.evaluate(() => {
+        const panel = document.querySelector(".es-resource-capture-hero__panel")?.getBoundingClientRect();
+        const overview = document.querySelector(".free-material-overview--hero")?.getBoundingClientRect();
+
+        return panel && overview ? panel.bottom <= overview.top : false;
+      });
+
+      expect(mobileCaptureOrder).toBe(true);
+    }
     await expect(page.locator(".free-material-quote")).toContainText(
       "Não quero que este material fique apenas nos seus arquivos.",
     );
@@ -1166,7 +1233,51 @@ test.describe("Executive Signal theme front end", () => {
     const mobileNav = page.locator(".es-blog-site-header__nav");
 
     await expect(mobileToggle).toBeVisible();
+    await expect(mobileToggle).toHaveAccessibleName("Abrir menu");
+    await expect(mobileToggle.locator(".screen-reader-text")).toHaveCSS("clip", "rect(1px, 1px, 1px, 1px)");
     await expect(mobileNav).toBeHidden();
+
+    const mobileHeaderLayout = await page.evaluate(() => {
+      const brand = document.querySelector(".es-blog-site-header__brand")?.getBoundingClientRect();
+      const search = document.querySelector(".es-blog-site-header-search")?.getBoundingClientRect();
+      const theme = document.querySelector(".es-blog-theme-switcher")?.getBoundingClientRect();
+      const menu = document.querySelector(".es-blog-site-header__menu-toggle")?.getBoundingClientRect();
+      const feed = document.querySelector(".es-blog-site-header-feed-link");
+
+      if (!brand || !search || !theme || !menu || !feed) {
+        return null;
+      }
+
+      return {
+        brandCenter: brand.top + brand.height / 2,
+        brandRight: brand.right,
+        searchCenter: search.top + search.height / 2,
+        searchLeft: search.left,
+        searchRight: search.right,
+        searchHeight: search.height,
+        searchWidth: search.width,
+        themeCenter: theme.top + theme.height / 2,
+        themeHeight: theme.height,
+        themeLeft: theme.left,
+        themeRight: theme.right,
+        menuCenter: menu.top + menu.height / 2,
+        menuHeight: menu.height,
+        menuLeft: menu.left,
+        feedDisplay: window.getComputedStyle(feed).display,
+      };
+    });
+
+    expect(mobileHeaderLayout).not.toBeNull();
+    expect(mobileHeaderLayout.feedDisplay).toBe("none");
+    expect(mobileHeaderLayout.searchWidth).toBeGreaterThanOrEqual(80);
+    expect(mobileHeaderLayout.brandRight).toBeLessThanOrEqual(mobileHeaderLayout.searchLeft);
+    expect(mobileHeaderLayout.searchRight).toBeLessThanOrEqual(mobileHeaderLayout.themeLeft);
+    expect(mobileHeaderLayout.themeRight).toBeLessThanOrEqual(mobileHeaderLayout.menuLeft);
+    expect(mobileHeaderLayout.menuHeight).toBe(mobileHeaderLayout.searchHeight);
+    expect(mobileHeaderLayout.menuHeight).toBe(mobileHeaderLayout.themeHeight);
+    expect(Math.abs(mobileHeaderLayout.brandCenter - mobileHeaderLayout.searchCenter)).toBeLessThan(2);
+    expect(Math.abs(mobileHeaderLayout.brandCenter - mobileHeaderLayout.themeCenter)).toBeLessThan(2);
+    expect(Math.abs(mobileHeaderLayout.brandCenter - mobileHeaderLayout.menuCenter)).toBeLessThan(2);
 
     await mobileToggle.click();
     await expect(header).toHaveAttribute("data-mobile-open", "true");
