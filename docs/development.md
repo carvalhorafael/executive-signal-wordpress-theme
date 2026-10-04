@@ -55,3 +55,19 @@ Use antes de push ou PR. Para o gate completo de pacote:
 ```bash
 npm run validate
 ```
+
+## Auditoria de performance
+
+Para medir localmente os assets compilados nas paginas representativas:
+
+```bash
+npm run perf:local
+```
+
+Para auditar URLs publicas com PageSpeed Insights e dados CrUX quando disponiveis:
+
+```bash
+npm run perf:pagespeed -- https://www.exemplo.com/
+```
+
+Os relatorios ficam em `reports/` e nao sao versionados. Consulte `docs/performance.md` para a matriz de paginas, a classificacao dos achados e os criterios de entrada gradual no CI.

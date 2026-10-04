@@ -84,6 +84,18 @@ Executa a suite completa e valida o pacote distribuivel do tema.
 Use `npm run validate` ou `npm run test:prepush` antes de push, PR de integracao ou preparacao de release.
 
 ```bash
+npm run perf:local
+```
+
+Prepara fixtures e executa tres auditorias Lighthouse em cada pagina representativa, usando os assets compilados no WordPress de testes.
+
+```bash
+npm run perf:pagespeed -- https://www.exemplo.com/
+```
+
+Audita URLs publicas em mobile e desktop com PageSpeed Insights e inclui dados CrUX quando disponiveis.
+
+```bash
 npm run theme:zip
 ```
 
@@ -162,3 +174,4 @@ O tema tambem consulta a ultima GitHub Release pelo updater em `inc/updater.php`
 - `docs/development.md`: detalhes de desenvolvimento local.
 - `docs/release.md`: processo de release.
 - `docs/theme-decisions.md`: decisoes tecnicas do tema.
+- `docs/performance.md`: auditorias locais e publicas de performance.

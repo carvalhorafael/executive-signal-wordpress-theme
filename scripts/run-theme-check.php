@@ -21,10 +21,12 @@ add_filter(
 		return array_merge(
 			$directories,
 			array(
+				'.lighthouseci',
 				'assets/dist',
 				'coverage',
 				'dist',
 				'docs',
+				'reports',
 				'scripts',
 				'src',
 				'tests',
