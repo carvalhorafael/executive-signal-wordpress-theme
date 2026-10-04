@@ -213,4 +213,30 @@ O build produziu:
 | Meta description ausente | todas as fixtures locais | `content` ou plugin de SEO | não criar regra editorial durável no tema apenas para elevar o score local |
 | Cache de longa duração ausente | recursos servidos pelo `wp-env` | `hosting` local | não criar workaround no tema |
 
-O PageSpeed público foi solicitado para home, COO as a Service, palestras, blog e o artigo mais recente disponível. A API respondeu `HTTP 429` antes da primeira análise porque a cota anônima diária estava esgotada e não havia `GOOGLE_PSI_API_KEY` configurada. Portanto, este baseline não apresenta score público nem dados CrUX; a ausência não deve ser interpretada como zero ou aprovação.
+### Baseline público
+
+Em 4 de outubro de 2026, o PageSpeed Insights foi executado com a API autenticada para home, COO as a Service, palestras, blog e o artigo mais recente disponível. Os valores abaixo são dados de laboratório de uma execução por combinação de URL e dispositivo:
+
+| Página | Dispositivo | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS | TBT | TTFB |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Home | mobile | 97 | 92 | 100 | 100 | 2,1 s | 0 | 0 ms | 160 ms |
+| Home | desktop | 98 | 96 | 100 | 100 | 1,1 s | 0 | 0 ms | 60 ms |
+| COO as a Service | mobile | 99 | 100 | 100 | 100 | 2,0 s | 0 | 0 ms | 310 ms |
+| COO as a Service | desktop | 100 | 100 | 100 | 100 | 0,5 s | 0 | 0 ms | 190 ms |
+| Palestras | mobile | 99 | 100 | 100 | 100 | 2,0 s | 0,009 | 0 ms | 60 ms |
+| Palestras | desktop | 100 | 100 | 100 | 100 | 0,8 s | 0 | 0 ms | 50 ms |
+| Blog | mobile | 97 | 96 | 100 | 100 | 2,5 s | 0 | 0 ms | 130 ms |
+| Blog | desktop | 97 | 96 | 100 | 100 | 1,2 s | 0 | 0 ms | 270 ms |
+| Artigo | mobile | 99 | 93 | 100 | 92 | 1,9 s | 0 | 0 ms | 70 ms |
+| Artigo | desktop | 88 | 93 | 77 | 92 | 0,5 s | 0 | 290 ms | 100 ms |
+
+O PSI não encontrou dados de campo CrUX suficientes para nenhuma das URLs nem para a origem. A ausência de CrUX não representa reprovação, mas impede concluir sobre a experiência agregada de usuários reais neste baseline.
+
+Os principais pontos para investigação são:
+
+- o artigo em desktop carregou 1,21 MB, dos quais 915 KB eram scripts, e registrou 1,07 MB e 17 requisições de terceiros; o resultado inclui 290 ms de TBT, 527 KiB estimados de JavaScript não usado e cinco cookies de terceiros;
+- a home e o blog têm oportunidades relevantes de otimização de imagens e cache, chegando a aproximadamente 604 KiB e 624 KiB de economia estimada, respectivamente;
+- CSS não usado e recursos que bloqueiam renderização aparecem em várias páginas, com maior impacto estimado no mobile;
+- o artigo também apresenta ausência de título em `iframe`, meta description e o mesmo contraste já registrado nas issues do tema e do design system.
+
+Esses achados são evidência inicial, não orçamento bloqueante. Antes de corrigir, repita as medições para separar comportamento estável de variação de laboratório e identificar a origem dos terceiros do artigo.
