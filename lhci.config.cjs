@@ -1,0 +1,45 @@
+const testsPort = process.env.WP_ENV_TESTS_PORT || "8889";
+const baseUrl = process.env.PERF_LOCAL_BASE_URL || `http://localhost:${testsPort}`;
+
+const paths = [
+  "/",
+  "/blog/",
+  "/performance-audit-article/",
+  "/coo-as-a-service/",
+  "/palestras/",
+];
+
+module.exports = {
+  ci: {
+    collect: {
+      url: paths.map((path) => new URL(path, baseUrl).toString()),
+      numberOfRuns: 3,
+      settings: {
+        onlyCategories: ["performance", "accessibility", "best-practices", "seo"],
+        formFactor: "mobile",
+        screenEmulation: {
+          mobile: true,
+          width: 390,
+          height: 844,
+          deviceScaleFactor: 3,
+          disabled: false,
+        },
+      },
+    },
+    assert: {
+      assertions: {
+        "categories:performance": ["warn", { minScore: 0.7 }],
+        "categories:accessibility": ["warn", { minScore: 0.9 }],
+        "categories:best-practices": ["warn", { minScore: 0.9 }],
+        "categories:seo": ["warn", { minScore: 0.9 }],
+        "largest-contentful-paint": ["warn", { maxNumericValue: 4000 }],
+        "cumulative-layout-shift": ["warn", { maxNumericValue: 0.25 }],
+        "total-blocking-time": ["warn", { maxNumericValue: 600 }],
+      },
+    },
+    upload: {
+      target: "filesystem",
+      outputDir: "reports/lighthouse-ci",
+    },
+  },
+};
