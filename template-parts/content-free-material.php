@@ -25,61 +25,6 @@ $material_facts = array_filter(
 		<div class="es-resource-capture-hero__copy">
 			<p class="es-resource-capture-hero__eyebrow"><?php esc_html_e( 'Free material', 'executive-signal-wordpress-theme' ); ?></p>
 			<?php the_title( '<h1 class="es-resource-capture-hero__title" itemprop="headline">', '</h1>' ); ?>
-
-			<?php if ( $material_facts || $material_details['highlights'] ) : ?>
-				<section class="free-material-overview" aria-label="<?php esc_attr_e( 'About this material', 'executive-signal-wordpress-theme' ); ?>">
-					<?php if ( $material_facts ) : ?>
-						<dl class="free-material-overview__facts">
-							<?php if ( $material_details['level'] ) : ?>
-								<div class="free-material-overview__fact free-material-overview__fact--audience">
-									<dt><?php esc_html_e( 'Who it is for', 'executive-signal-wordpress-theme' ); ?></dt>
-									<dd><?php echo esc_html( $material_details['level'] ); ?></dd>
-								</div>
-							<?php endif; ?>
-
-							<?php if ( $material_details['format'] ) : ?>
-								<div class="free-material-overview__fact">
-									<dt><?php esc_html_e( 'Format', 'executive-signal-wordpress-theme' ); ?></dt>
-									<dd><?php echo esc_html( $material_details['format'] ); ?></dd>
-								</div>
-							<?php endif; ?>
-
-							<?php if ( $material_details['pages'] > 0 ) : ?>
-								<div class="free-material-overview__fact">
-									<dt><?php esc_html_e( 'Pages or items', 'executive-signal-wordpress-theme' ); ?></dt>
-									<dd><?php echo esc_html( number_format_i18n( $material_details['pages'] ) ); ?></dd>
-								</div>
-							<?php endif; ?>
-
-							<?php if ( $material_details['file_size'] ) : ?>
-								<div class="free-material-overview__fact">
-									<dt><?php esc_html_e( 'File size', 'executive-signal-wordpress-theme' ); ?></dt>
-									<dd><?php echo esc_html( $material_details['file_size'] ); ?></dd>
-								</div>
-							<?php endif; ?>
-
-							<?php if ( $material_details['downloads'] > 0 ) : ?>
-								<div class="free-material-overview__fact">
-									<dt><?php esc_html_e( 'Downloads', 'executive-signal-wordpress-theme' ); ?></dt>
-									<dd><?php echo esc_html( number_format_i18n( $material_details['downloads'] ) ); ?></dd>
-								</div>
-							<?php endif; ?>
-						</dl>
-					<?php endif; ?>
-
-					<?php if ( $material_details['highlights'] ) : ?>
-						<div class="free-material-overview__contents">
-							<h3><?php esc_html_e( 'What is inside', 'executive-signal-wordpress-theme' ); ?></h3>
-							<ul>
-								<?php foreach ( $material_details['highlights'] as $highlight ) : ?>
-									<li><?php echo esc_html( $highlight ); ?></li>
-								<?php endforeach; ?>
-							</ul>
-						</div>
-					<?php endif; ?>
-				</section>
-			<?php endif; ?>
-
 			<meta itemprop="mainEntityOfPage" content="<?php echo esc_url( get_permalink() ); ?>">
 		</div>
 
@@ -142,6 +87,60 @@ $material_facts = array_filter(
 				</div>
 			</aside>
 		</div>
+
+		<?php if ( $material_facts || $material_details['highlights'] ) : ?>
+			<section class="free-material-overview free-material-overview--hero" aria-label="<?php esc_attr_e( 'About this material', 'executive-signal-wordpress-theme' ); ?>">
+				<?php if ( $material_facts ) : ?>
+					<dl class="free-material-overview__facts">
+						<?php if ( $material_details['level'] ) : ?>
+							<div class="free-material-overview__fact free-material-overview__fact--audience">
+								<dt><?php esc_html_e( 'Who it is for', 'executive-signal-wordpress-theme' ); ?></dt>
+								<dd><?php echo esc_html( $material_details['level'] ); ?></dd>
+							</div>
+						<?php endif; ?>
+
+						<?php if ( $material_details['format'] ) : ?>
+							<div class="free-material-overview__fact">
+								<dt><?php esc_html_e( 'Format', 'executive-signal-wordpress-theme' ); ?></dt>
+								<dd><?php echo esc_html( $material_details['format'] ); ?></dd>
+							</div>
+						<?php endif; ?>
+
+						<?php if ( $material_details['pages'] > 0 ) : ?>
+							<div class="free-material-overview__fact">
+								<dt><?php esc_html_e( 'Pages or items', 'executive-signal-wordpress-theme' ); ?></dt>
+								<dd><?php echo esc_html( number_format_i18n( $material_details['pages'] ) ); ?></dd>
+							</div>
+						<?php endif; ?>
+
+						<?php if ( $material_details['file_size'] ) : ?>
+							<div class="free-material-overview__fact">
+								<dt><?php esc_html_e( 'File size', 'executive-signal-wordpress-theme' ); ?></dt>
+								<dd><?php echo esc_html( $material_details['file_size'] ); ?></dd>
+							</div>
+						<?php endif; ?>
+
+						<?php if ( $material_details['downloads'] > 0 ) : ?>
+							<div class="free-material-overview__fact">
+								<dt><?php esc_html_e( 'Downloads', 'executive-signal-wordpress-theme' ); ?></dt>
+								<dd><?php echo esc_html( number_format_i18n( $material_details['downloads'] ) ); ?></dd>
+							</div>
+						<?php endif; ?>
+					</dl>
+				<?php endif; ?>
+
+				<?php if ( $material_details['highlights'] ) : ?>
+					<div class="free-material-overview__contents">
+						<h3><?php esc_html_e( 'What is inside', 'executive-signal-wordpress-theme' ); ?></h3>
+						<ul>
+							<?php foreach ( $material_details['highlights'] as $highlight ) : ?>
+								<li><?php echo esc_html( $highlight ); ?></li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				<?php endif; ?>
+			</section>
+		<?php endif; ?>
 	</header>
 
 	<div class="es-resource-capture-landing__details">
