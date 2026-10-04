@@ -65,7 +65,7 @@ O problema não deve ser reduzido à falta de disciplina, gestão de tempo ou pr
 
 > COO as a Service para empresas em crescimento.
 
-A A transformação vem antes da categoria. `COO as a Service` explica o formato da atuação, mas não deve ser a promessa principal dos materiais.
+A transformação vem antes da categoria. `COO as a Service` explica o formato da atuação, mas não deve ser a promessa principal dos materiais.
 
 ## O que o cliente compra
 
