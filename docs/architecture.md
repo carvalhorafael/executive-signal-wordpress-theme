@@ -17,6 +17,8 @@ O tema consome o Executive Signal Design System por pacotes publicados no GitHub
 - `template-parts/`: markup reutilizavel para paginas, posts e estados vazios.
 - `patterns/`: composicoes editoriais reutilizaveis no Gutenberg.
 - `src/`: fonte de JavaScript e CSS compilado por Vite. `src/styles/main.css` importa o design system; `src/styles/theme.css` concentra adaptacoes WordPress.
+- `docs/performance.md`: arquitetura das auditorias Lighthouse, PageSpeed Insights e CrUX.
+- `lhci.config.cjs`: matriz local advisory executada sobre o WordPress de testes e os assets compilados.
 
 ## Fronteira de responsabilidade
 
@@ -25,3 +27,7 @@ O tema deve cuidar de apresentacao. Regras de negocio, tipos de conteudo permane
 O dominio de materiais gratuitos e fornecido pelo plugin `free-materials`, que registra `material_gratuito`, `material_categoria` e metadados canonicos. O tema apenas renderiza as superficies publicas desse dominio.
 
 Adaptacoes locais que indiquem lacuna reutilizavel no design system devem seguir a politica de issues cruzadas descrita em `AGENTS.md`.
+
+## Performance
+
+A performance e verificada em camadas. Lighthouse CI mede de forma reproduzivel as fixtures locais; PageSpeed Insights confirma o comportamento de URLs publicas e incorpora dados CrUX quando existirem; Playwright e axe protegem regressao funcional e de acessibilidade. Os relatorios sao temporarios e ficam fora do Git.
