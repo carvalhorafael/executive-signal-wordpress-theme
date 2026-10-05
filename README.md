@@ -95,6 +95,8 @@ npm run perf:pagespeed -- https://www.exemplo.com/
 
 Audita URLs publicas em mobile e desktop com PageSpeed Insights e inclui dados CrUX quando disponiveis.
 
+Na PR de release de `develop` para `main`, um workflow separado executa a matriz Lighthouse local em modo advisory e publica os relatorios como artefato. Ele nao acessa o site em producao; a auditoria publica continua sendo executada manualmente com PageSpeed Insights.
+
 ```bash
 npm run theme:zip
 ```

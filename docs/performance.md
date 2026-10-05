@@ -161,20 +161,20 @@ Os arquivos em `reports/` são evidência temporária e não são versionados. P
 
 Identifique sempre se uma métrica veio do Lighthouse de laboratório ou do CrUX de campo.
 
-## Entrada gradual no CI
+## Performance no CI de release
 
-Performance não faz parte de `npm test` nesta primeira etapa.
+Performance não faz parte de `npm test` e não roda nas PRs cotidianas para `develop`. O workflow independente `.github/workflows/performance.yml` é executado:
 
-O fluxo previsto é:
+- automaticamente na PR de release de `develop` para `main`;
+- manualmente por `workflow_dispatch` quando uma auditoria adicional for necessária.
 
-1. coletar pelo menos três baselines locais estáveis;
-2. revisar a variação por URL e métrica;
-3. criar um job separado de performance no CI;
-4. publicar relatórios como artefato;
-5. promover primeiro contratos estruturais estáveis para `error`;
-6. manter métricas sensíveis a máquina, rede, cache e terceiros como advisory até haver evidência suficiente.
+O job usa o WordPress de testes, as fixtures determinísticas e os assets compilados. Ele executa as mesmas três medições mobile nas cinco páginas da matriz local e publica `reports/lighthouse-ci/` e `reports/assets/` como artefato por 14 dias. Não acessa URLs públicas e não usa `GOOGLE_PSI_API_KEY`.
 
-PageSpeed público não deve bloquear toda PR. Ele depende de serviço externo, cota da API, estado publicado e condições de rede.
+Os limites de score e métricas permanecem como `warn`. Uma variação de performance gera evidência no relatório sem reprovar a release; falhas técnicas que impeçam preparar o WordPress, abrir uma página ou produzir a auditoria deixam o job vermelho. O check começa como advisory e não deve ser exigido pela proteção da branch enquanto o histórico ainda estiver sendo formado.
+
+Depois de três a cinco releases, revise duração, variação e utilidade dos relatórios. Promova para `error` apenas contratos estáveis e acionáveis. Métricas sensíveis a máquina, cache e conteúdo devem permanecer advisory até existir evidência suficiente.
+
+PageSpeed público continua manual e separado do CI. Ele depende de serviço externo, cota da API, estado publicado e condições de rede e deve ser usado depois da publicação ou em uma investigação específica de produção.
 
 ## Orçamento de assets
 
