@@ -1,10 +1,14 @@
 ---
 titulo: "Direção visual da coleção Operação que Escala"
-status: "prova para validação"
+status: "sistema visual aprovado; prova ajustada"
 ultima_atualizacao: "2026-10-06"
 ---
 
 # Direção visual
+
+## Validação
+
+Em 2026-10-06, cores, fontes e estilo visual foram aprovados. A prova foi ajustada após a revisão anotada para corrigir posicionamento da fotografia, contenção de textos e centralização dentro dos elementos.
 
 ## Cena de uso
 
@@ -102,4 +106,3 @@ Um fundador lê o material no notebook ou tablet, durante o dia, entre duas reun
 4. Página de exercício prático.
 
 Essa prova valida o sistema visual. Ela não é a versão completa do material.
-

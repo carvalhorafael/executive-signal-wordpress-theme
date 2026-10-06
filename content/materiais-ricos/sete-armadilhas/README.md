@@ -1,6 +1,6 @@
 ---
 titulo: "As 7 Armadilhas que Mantêm o Fundador Preso à Operação"
-status: "conteúdo aprovado; produção visual pendente"
+status: "conteúdo e sistema visual aprovados; diagramação em andamento"
 onda: 1
 ultima_atualizacao: "2026-10-06"
 ---

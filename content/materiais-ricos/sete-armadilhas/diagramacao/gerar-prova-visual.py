@@ -122,6 +122,26 @@ def draw_label(page: canvas.Canvas, text: str, x: float, y: float, color: Color)
     page.drawText(label)
 
 
+def centered_baseline(font: str, size: float, center_y: float) -> float:
+    """Retorna a baseline que centraliza visualmente uma linha em um eixo Y."""
+    ascent, descent = pdfmetrics.getAscentDescent(font, size)
+    return center_y - (ascent + descent) / 2
+
+
+def draw_centered_line(
+    page: canvas.Canvas,
+    text: str,
+    center_x: float,
+    center_y: float,
+    font: str,
+    size: float,
+    color: Color,
+) -> None:
+    page.setFillColor(color)
+    page.setFont(font, size)
+    page.drawCentredString(center_x, centered_baseline(font, size, center_y), text)
+
+
 def footer(page: canvas.Canvas, number: int) -> None:
     y = 12 * mm
     page.setStrokeColor(BORDER)
@@ -179,8 +199,8 @@ def draw_cover(page: canvas.Canvas, photo_path: Path) -> None:
     )
 
     photo_size = 78 * mm
-    photo_x = PAGE_W - MARGIN - photo_size
-    photo_y = 27 * mm
+    photo_x = (PAGE_W - photo_size) / 2
+    photo_y = 53 * mm
     page.setFillColor(OLIVE)
     page.roundRect(photo_x - 4 * mm, photo_y + 4 * mm, photo_size, photo_size, 4 * mm, stroke=0, fill=1)
     page.drawImage(
@@ -242,40 +262,84 @@ def draw_thesis(page: canvas.Canvas) -> None:
         page.setStrokeColor(BORDER)
         page.setLineWidth(0.5)
         page.roundRect(left_x, y, node_w, node_h, 2.5 * mm, stroke=1, fill=1)
-        page.setFillColor(SLATE)
-        page.setFont("AvenirNext-Demi", 7.2)
-        page.drawCentredString(left_x + node_w / 2, y + 3.2 * mm, label)
+        draw_centered_line(
+            page,
+            label,
+            left_x + node_w / 2,
+            y + node_h / 2,
+            "AvenirNext-Demi",
+            7.2,
+            SLATE,
+        )
         page.setStrokeColor(BORDER)
         page.line(left_x + node_w, y + node_h / 2, founder_x, founder_y + 11 * mm)
 
     page.setFillColor(INK)
     page.circle(founder_x + 15 * mm, founder_y + 11 * mm, 15 * mm, stroke=0, fill=1)
-    page.setFillColor(LIGHT_INK)
-    page.setFont("AvenirNext-Demi", 8)
-    page.drawCentredString(founder_x + 15 * mm, founder_y + 12.2 * mm, "FUNDADOR")
-    page.setFillColor(LIGHT_SLATE)
-    page.setFont("AvenirNext", 5.2)
-    page.drawCentredString(founder_x + 15 * mm, founder_y + 8.8 * mm, "INTEGRA E DESTRAVA")
+    founder_center_x = founder_x + 15 * mm
+    founder_center_y = founder_y + 11 * mm
+    draw_centered_line(
+        page,
+        "FUNDADOR",
+        founder_center_x,
+        founder_center_y + 4.2 * mm,
+        "AvenirNext-Demi",
+        8,
+        LIGHT_INK,
+    )
+    draw_centered_line(
+        page,
+        "INTEGRA E",
+        founder_center_x,
+        founder_center_y - 1.1 * mm,
+        "AvenirNext",
+        4.8,
+        LIGHT_SLATE,
+    )
+    draw_centered_line(
+        page,
+        "DESTRAVA",
+        founder_center_x,
+        founder_center_y - 4.2 * mm,
+        "AvenirNext",
+        4.8,
+        LIGHT_SLATE,
+    )
 
     page.setStrokeColor(OLIVE)
     page.setLineWidth(1.2)
     page.line(founder_x + 30 * mm, founder_y + 11 * mm, execution_x, execution_y + 11 * mm)
     page.setFillColor(OLIVE)
     page.roundRect(execution_x, execution_y + 2 * mm, 39 * mm, 18 * mm, 4 * mm, stroke=0, fill=1)
-    page.setFillColor(LIGHT_INK)
-    page.setFont("AvenirNext-Demi", 8)
-    page.drawCentredString(execution_x + 19.5 * mm, execution_y + 12 * mm, "EXECUÇÃO")
-    page.setFont("AvenirNext", 6.8)
-    page.drawCentredString(execution_x + 19.5 * mm, execution_y + 8.6 * mm, "AVANÇA OU ESPERA")
+    execution_center_x = execution_x + 19.5 * mm
+    execution_center_y = execution_y + 11 * mm
+    draw_centered_line(
+        page,
+        "EXECUÇÃO",
+        execution_center_x,
+        execution_center_y + 2.5 * mm,
+        "AvenirNext-Demi",
+        8,
+        LIGHT_INK,
+    )
+    draw_centered_line(
+        page,
+        "AVANÇA OU ESPERA",
+        execution_center_x,
+        execution_center_y - 2.6 * mm,
+        "AvenirNext",
+        6.4,
+        LIGHT_INK,
+    )
 
     quote_y = 29 * mm
     page.setFillColor(oklch(0.93, 0.025, 116))
     page.roundRect(MARGIN, quote_y, PAGE_W - 2 * MARGIN, 39 * mm, 4 * mm, stroke=0, fill=1)
     draw_label(page, "Diagnóstico", MARGIN + 7 * mm, quote_y + 29 * mm, OLIVE)
-    quote = paragraph_style("quote", 13.6, 17.2, INK, "AvenirNext-Demi")
+    quote = paragraph_style("quote", 12.4, 15.5, INK, "AvenirNext-Demi")
     draw_paragraph(
         page,
-        "O problema não é apenas excesso de trabalho. É uma operação que cresceu além do modelo de gestão que a trouxe até aqui.",
+        "O problema não é apenas excesso de trabalho.<br/>É uma operação que cresceu além do modelo de gestão<br/>que a trouxe até aqui.",
         MARGIN + 7 * mm,
         quote_y + 23 * mm,
         PAGE_W - 2 * MARGIN - 14 * mm,
@@ -303,7 +367,7 @@ def draw_chapter(page: canvas.Canvas) -> None:
     )
 
     left_w = 84 * mm
-    right_x = 123 * mm
+    right_x = 120 * mm
     right_w = PAGE_W - MARGIN - right_x
     body = paragraph_style("chapter-body", 8.9, 13.3, SLATE)
     subhead = paragraph_style("chapter-sub", 12, 14.5, INK, "AvenirNext-Demi")
@@ -313,7 +377,7 @@ def draw_chapter(page: canvas.Canvas) -> None:
     used += 4 * mm
     used += draw_paragraph(
         page,
-        "O fundador distribui atividades, mas continua definindo a solução, aprovando cada etapa e decidindo como agir diante de qualquer desvio.<br/><br/>A tarefa mudou de mãos; a responsabilidade real, não.",
+        "O fundador distribui atividades, mas continua<br/>definindo a solução, aprovando cada etapa e<br/>decidindo como agir diante de qualquer desvio.<br/><br/>A tarefa mudou de mãos; a responsabilidade<br/>real, não.",
         MARGIN,
         top - used,
         left_w,
@@ -325,7 +389,7 @@ def draw_chapter(page: canvas.Canvas) -> None:
     used2 += 4 * mm
     draw_paragraph(
         page,
-        "Quem precisa da aprovação do fundador para avançar aprende a preparar decisões para ele, não a assumir decisões dentro de um mandato claro.<br/><br/>A equipe executa mais, mas ainda não responde pela escolha.",
+        "Quem precisa da aprovação do fundador para<br/>avançar aprende a preparar decisões para ele,<br/>não a assumir decisões dentro de um mandato<br/>claro.<br/><br/>A equipe executa mais, mas ainda não responde<br/>pela escolha.",
         MARGIN,
         mechanism_top - used2,
         left_w,
@@ -337,13 +401,13 @@ def draw_chapter(page: canvas.Canvas) -> None:
     page.setFillColor(SURFACE_STRONG)
     page.roundRect(right_x, panel_y, right_w, panel_h, 4 * mm, stroke=0, fill=1)
     draw_label(page, "Sinais observáveis", right_x + 6 * mm, panel_y + panel_h - 11 * mm, OLIVE)
-    bullet_style = paragraph_style("bullet", 8.8, 12.8, SLATE)
+    bullet_style = paragraph_style("bullet", 8.2, 11.7, SLATE)
     bullets = [
-        "O gestor chega com informações, mas sem uma recomendação.",
-        "Entregas param enquanto aguardam uma aprovação.",
-        "O fundador revisa decisões de baixo risco.",
-        "A equipe pergunta o que deve fazer em situações recorrentes.",
-        "A responsabilidade volta para quem deu a última aprovação.",
+        "O gestor chega com informações,<br/>mas sem uma recomendação.",
+        "Entregas param enquanto<br/>aguardam uma aprovação.",
+        "O fundador revisa decisões<br/>de baixo risco.",
+        "A equipe pergunta o que deve<br/>fazer em situações recorrentes.",
+        "A responsabilidade volta para<br/>quem deu a última aprovação.",
     ]
     y = panel_y + panel_h - 22 * mm
     for bullet in bullets:
@@ -403,12 +467,25 @@ def draw_exercise(page: canvas.Canvas) -> None:
         page.setStrokeColor(BORDER)
         page.setLineWidth(0.55)
         page.roundRect(MARGIN, y - height, PAGE_W - 2 * MARGIN, height, 3 * mm, stroke=1, fill=1)
+        center_y = y - height / 2
+        number_font = "AvenirNext-Demi"
+        number_size = 9
+        label_font = "AvenirNext-Medium"
+        label_size = 8.6
         page.setFillColor(OLIVE)
-        page.setFont("AvenirNext-Demi", 9)
-        page.drawString(MARGIN + 5 * mm, y - 7 * mm, number)
+        page.setFont(number_font, number_size)
+        page.drawString(
+            MARGIN + 5 * mm,
+            centered_baseline(number_font, number_size, center_y),
+            number,
+        )
         page.setFillColor(INK)
-        page.setFont("AvenirNext-Medium", 8.6)
-        page.drawString(MARGIN + 16 * mm, y - 7 * mm, label)
+        page.setFont(label_font, label_size)
+        page.drawString(
+            MARGIN + 16 * mm,
+            centered_baseline(label_font, label_size, center_y),
+            label,
+        )
         y -= height + 5 * mm
 
     callout_y = 26 * mm
