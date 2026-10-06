@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[4]
 CONTENT = ROOT / "content/materiais-ricos/sete-armadilhas/conteudo.md"
 VISUAL_SOURCE = Path(__file__).with_name("gerar-prova-visual.py")
 OUTPUT = ROOT / "output/pdf/7-armadilhas-fundador-operacao.pdf"
+COO_LP_URL = "https://rafaelcarvalho.tv/coo-as-a-service/"
 
 
 def load_visual_system():
@@ -96,10 +97,6 @@ def style(name: str, size: float, leading: float, color, font: str = "AvenirNext
     return V.paragraph_style(name, size, leading, color, font)
 
 
-def clean_inline(text: str) -> str:
-    return escape(text.strip()).replace("\n", " ")
-
-
 def safe_markup(text: str, paragraph_style, width: float, safety: float = 1.28) -> str:
     """Insere quebras conservadoras para compensar métricas do TTC no PDF."""
     words = text.strip().replace("\n", " ").split()
@@ -123,7 +120,11 @@ def safe_markup(text: str, paragraph_style, width: float, safety: float = 1.28) 
 
 
 def split_blocks(text: str) -> list[str]:
-    return [block.strip() for block in re.split(r"\n\s*\n", text.strip()) if block.strip()]
+    return [
+        block.strip()
+        for block in re.split(r"\n\s*\n", text.strip())
+        if block.strip() and block.strip() != "---"
+    ]
 
 
 def draw_blocks(
@@ -203,25 +204,32 @@ def draw_intro_one(page: canvas.Canvas, paragraphs: list[str], page_number: int)
     body = style("intro-one", 9.6, 14.4, V.SLATE)
     y = draw_blocks(page, "\n\n".join(paragraphs[:4]), MARGIN, y, 154 * mm, body, gap=3.5 * mm, min_y=95 * mm)
 
-    labels = ["MAIS PESSOAS E ÁREAS", "MAIS DECISÕES", "MESMO TEMPO DO FUNDADOR"]
+    labels = [
+        ["MAIS PESSOAS E ÁREAS"],
+        ["MAIS DECISÕES"],
+        ["MESMO TEMPO", "DO FUNDADOR"],
+    ]
     box_y = 49 * mm
     box_h = 18 * mm
     box_w = 48 * mm
     gap = 5 * mm
-    for index, label in enumerate(labels):
+    for index, lines in enumerate(labels):
         x = MARGIN + index * (box_w + gap)
         page.setFillColor(V.SURFACE if index < 2 else V.INK)
         page.setStrokeColor(V.BORDER)
         page.roundRect(x, box_y, box_w, box_h, 3 * mm, stroke=int(index < 2), fill=1)
-        V.draw_centered_line(
-            page,
-            label,
-            x + box_w / 2,
-            box_y + box_h / 2,
-            "AvenirNext-Demi",
-            6.8,
-            V.SLATE if index < 2 else V.LIGHT_INK,
-        )
+        line_gap = 4 * mm
+        first_center = box_y + box_h / 2 + (line_gap / 2 if len(lines) == 2 else 0)
+        for line_index, label in enumerate(lines):
+            V.draw_centered_line(
+                page,
+                label,
+                x + box_w / 2,
+                first_center - line_index * line_gap,
+                "AvenirNext-Demi",
+                6.6,
+                V.SLATE if index < 2 else V.LIGHT_INK,
+            )
         if index < 2:
             page.setStrokeColor(V.OLIVE)
             page.setLineWidth(1)
@@ -274,7 +282,14 @@ def draw_how_to(page: canvas.Canvas, text: str, chapters: list[Chapter], page_nu
         page.setFillColor(V.OLIVE)
         page.setFont("AvenirNext-Demi", 7.5)
         page.drawString(x, top - 2.8 * mm, f"{chapter.number:02d}")
-        V.draw_paragraph(page, escape(chapter.title), x + 9 * mm, top, 69 * mm, item_style)
+        V.draw_paragraph(
+            page,
+            safe_markup(chapter.title, item_style, 67 * mm),
+            x + 9 * mm,
+            top,
+            67 * mm,
+            item_style,
+        )
 
 
 def chapter_header(page: canvas.Canvas, chapter: Chapter, suffix: str, page_number: int) -> float:
@@ -421,7 +436,14 @@ def draw_exercise(page: canvas.Canvas, text: str, page_number: int) -> None:
     intro, remainder = text.split("Para cada ocorrência, anote:", 1)
     fields_text, closing = remainder.split("Ao final da semana, procure padrões.", 1)
     intro_style = style("exercise-intro-full", 9.2, 13.8, V.SLATE)
-    V.draw_paragraph(page, clean_inline(intro), MARGIN, PAGE_H - 77 * mm, 154 * mm, intro_style)
+    V.draw_paragraph(
+        page,
+        safe_markup(intro, intro_style, 154 * mm),
+        MARGIN,
+        PAGE_H - 77 * mm,
+        154 * mm,
+        intro_style,
+    )
 
     fields = [line[2:].strip() for line in fields_text.splitlines() if line.strip().startswith("- ")]
     y = PAGE_H - 103 * mm
@@ -515,6 +537,12 @@ def draw_conversation(page: canvas.Canvas, text: str, page_number: int) -> None:
     cta_h = 38 * mm
     page.setFillColor(V.OLIVE)
     page.roundRect(MARGIN, cta_y, PAGE_W - 2 * MARGIN, cta_h, 4 * mm, stroke=0, fill=1)
+    page.linkURL(
+        COO_LP_URL,
+        (MARGIN, cta_y, PAGE_W - MARGIN, cta_y + cta_h),
+        relative=0,
+        thickness=0,
+    )
     V.draw_label(page, "Próxima conversa", MARGIN + 7 * mm, cta_y + 27 * mm, V.LIGHT_INK)
     cta_style = style("conversation-cta", 16, 19, V.LIGHT_INK, "AvenirNext-Demi")
     V.draw_paragraph(page, "Quero conversar sobre minha operação.", MARGIN + 7 * mm, cta_y + 21 * mm, 145 * mm, cta_style)
