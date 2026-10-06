@@ -166,7 +166,7 @@ def footer(page: canvas.Canvas, number: int) -> None:
     page.line(MARGIN, y + 5 * mm, PAGE_W - MARGIN, y + 5 * mm)
     page.setFillColor(MUTED)
     page.setFont("AvenirNext-Medium", 7.2)
-    page.drawString(MARGIN, y, "EXECUTIVE SIGNAL  ·  OPERAÇÃO QUE ESCALA")
+    page.drawString(MARGIN, y, "RAFAEL CARVALHO  ·  OPERAÇÃO QUE ESCALA")
     page.drawRightString(PAGE_W - MARGIN, y, f"{number:02d}")
 
 
@@ -189,7 +189,7 @@ def prepare_photo() -> Path:
 def draw_cover(page: canvas.Canvas) -> None:
     page_background(page, DARK)
 
-    draw_label(page, "Executive Signal · Caderno 01", MARGIN, PAGE_H - 22 * mm, LIGHT_SLATE)
+    draw_label(page, "Rafael Carvalho · Caderno 01", MARGIN, PAGE_H - 22 * mm, LIGHT_SLATE)
 
     page.setFillColor(OLIVE)
     page.setFont("AvenirNext-Bold", 104)

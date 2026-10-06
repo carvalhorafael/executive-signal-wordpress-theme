@@ -89,7 +89,7 @@ Um fundador lê o material no notebook ou tablet, durante o dia, entre duas reun
 ## Elementos reutilizáveis da coleção
 
 - cabeçalho com nome da coleção e número do caderno;
-- rodapé com Executive Signal e paginação;
+- rodapé com "Rafael Carvalho · Operação que Escala" e paginação;
 - rótulo de capítulo;
 - bloco de sinais observáveis;
 - pergunta de diagnóstico;
