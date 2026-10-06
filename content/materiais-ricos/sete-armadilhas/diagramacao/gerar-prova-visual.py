@@ -199,7 +199,7 @@ def draw_cover(page: canvas.Canvas) -> None:
     title_style = paragraph_style("cover-title", 31, 32, LIGHT_INK, "AvenirNext-Demi")
     draw_paragraph(
         page,
-        "As Armadilhas que<br/>Mantêm o Fundador<br/>Preso à Operação",
+        "Armadilhas que<br/>Mantêm o Fundador<br/>Preso à Operação",
         68 * mm,
         PAGE_H - 39 * mm - content_shift,
         PAGE_W - 88 * mm,
