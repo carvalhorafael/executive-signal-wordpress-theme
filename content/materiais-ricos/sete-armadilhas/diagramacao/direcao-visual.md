@@ -115,3 +115,14 @@ Um fundador lê o material no notebook ou tablet, durante o dia, entre duas reun
 5. Página de exercício prático.
 
 Essa prova valida o sistema visual. Ela não é a versão completa do material.
+
+## Aplicação completa
+
+A versão integral distribui o conteúdo em 30 páginas para preservar leitura, espaço e função executiva:
+
+- cinco páginas de abertura e orientação;
+- três páginas por armadilha: contexto, mecanismo e decisão;
+- síntese para escolha do ponto de entrada;
+- exercício prático;
+- aprofundamento pelo Raio-X do Fundador-Gargalo;
+- fechamento contextual para o COO as a Service.

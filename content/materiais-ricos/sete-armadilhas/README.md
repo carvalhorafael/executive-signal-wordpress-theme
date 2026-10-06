@@ -1,6 +1,6 @@
 ---
 titulo: "As 7 Armadilhas que Mantêm o Fundador Preso à Operação"
-status: "conteúdo e sistema visual aprovados; diagramação em andamento"
+status: "conteúdo e sistema visual aprovados; PDF completo em validação"
 onda: 1
 ultima_atualizacao: "2026-10-06"
 ---
@@ -37,6 +37,7 @@ Relatório executivo curto, com uma armadilha por capítulo e aplicação práti
 - [E-mails](./emails.md): entrega e sequência inicial de nutrição.
 - [Direção visual](./diagramacao/direcao-visual.md): sistema visual proposto para a coleção.
 - [Gerador da prova visual](./diagramacao/gerar-prova-visual.py): fonte reproduzível do protótipo PDF.
+- [Gerador do PDF completo](./diagramacao/gerar-pdf-completo.py): fonte reproduzível da versão integral para validação.
 
 ## Armadilhas iniciais
 
