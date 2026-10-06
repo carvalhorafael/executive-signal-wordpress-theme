@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera a prova visual de quatro páginas do material Sete Armadilhas."""
+"""Gera a prova visual de cinco páginas do material Sete Armadilhas."""
 
 from __future__ import annotations
 
@@ -142,6 +142,23 @@ def draw_centered_line(
     page.drawCentredString(center_x, centered_baseline(font, size, center_y), text)
 
 
+def draw_link(
+    page: canvas.Canvas,
+    label: str,
+    url: str,
+    x: float,
+    y: float,
+) -> float:
+    font = "AvenirNext-Demi"
+    size = 8.1
+    width = pdfmetrics.stringWidth(label, font, size)
+    page.setFillColor(OLIVE)
+    page.setFont(font, size)
+    page.drawString(x, y, label)
+    page.linkURL(url, (x, y - 2, x + width, y + size + 2), relative=0)
+    return width
+
+
 def footer(page: canvas.Canvas, number: int) -> None:
     y = 12 * mm
     page.setStrokeColor(BORDER)
@@ -160,7 +177,7 @@ def page_background(page: canvas.Canvas, color: Color = PAPER) -> None:
 
 def prepare_photo() -> Path:
     TMP.mkdir(parents=True, exist_ok=True)
-    target = TMP / "rafael-cover.jpg"
+    target = TMP / "rafael-author.jpg"
     with Image.open(PHOTO) as image:
         image = image.convert("RGB")
         image = ImageEnhance.Contrast(image).enhance(1.08)
@@ -169,7 +186,7 @@ def prepare_photo() -> Path:
     return target
 
 
-def draw_cover(page: canvas.Canvas, photo_path: Path) -> None:
+def draw_cover(page: canvas.Canvas) -> None:
     page_background(page, DARK)
 
     draw_label(page, "Executive Signal · Caderno 01", MARGIN, PAGE_H - 22 * mm, LIGHT_SLATE)
@@ -198,11 +215,34 @@ def draw_cover(page: canvas.Canvas, photo_path: Path) -> None:
         subtitle_style,
     )
 
-    photo_size = 78 * mm
-    photo_x = (PAGE_W - photo_size) / 2
-    photo_y = 53 * mm
+    draw_label(page, "Material gratuito", MARGIN, 47 * mm, OLIVE_ON_DARK)
+    page.setFillColor(LIGHT_INK)
+    page.setFont("AvenirNext-Medium", 10.5)
+    page.drawString(MARGIN, 38 * mm, "Rafael Carvalho")
+    page.setFillColor(LIGHT_SLATE)
+    page.setFont("AvenirNext", 8.8)
+    page.drawString(MARGIN, 31.5 * mm, "COO as a Service para empresas em crescimento")
+
+
+def draw_author(page: canvas.Canvas, photo_path: Path) -> None:
+    page_background(page)
+    draw_label(page, "Sobre o autor · 01", MARGIN, PAGE_H - 22 * mm, OLIVE)
+
+    headline = paragraph_style("author-head", 25, 28, INK, "AvenirNext-Demi")
+    draw_paragraph(
+        page,
+        "Experiência real em operações<br/>que cresceram.",
+        MARGIN,
+        PAGE_H - 34 * mm,
+        150 * mm,
+        headline,
+    )
+
+    photo_size = 72 * mm
+    photo_x = MARGIN
+    photo_y = PAGE_H - 156 * mm
     page.setFillColor(OLIVE)
-    page.roundRect(photo_x - 4 * mm, photo_y + 4 * mm, photo_size, photo_size, 4 * mm, stroke=0, fill=1)
+    page.roundRect(photo_x + 4 * mm, photo_y + 4 * mm, photo_size, photo_size, 4 * mm, stroke=0, fill=1)
     page.drawImage(
         ImageReader(str(photo_path)),
         photo_x,
@@ -213,13 +253,56 @@ def draw_cover(page: canvas.Canvas, photo_path: Path) -> None:
         mask="auto",
     )
 
-    draw_label(page, "Material gratuito", MARGIN, 47 * mm, OLIVE_ON_DARK)
-    page.setFillColor(LIGHT_INK)
-    page.setFont("AvenirNext-Medium", 10.5)
-    page.drawString(MARGIN, 38 * mm, "Rafael Carvalho")
-    page.setFillColor(LIGHT_SLATE)
-    page.setFont("AvenirNext", 8.8)
-    page.drawString(MARGIN, 31.5 * mm, "COO as a Service para empresas em crescimento")
+    bio_style = paragraph_style("author-bio", 8.7, 13.1, SLATE)
+    draw_paragraph(
+        page,
+        "Rafael Carvalho é empreendedor e executivo há<br/>mais de 20 anos. Sua trajetória foi construída<br/>na interseção entre tecnologia, educação e<br/>gestão.<br/><br/>Cofundou a Edools e, posteriormente, atuou<br/>como COO da HeroSpark, onde liderou uma<br/>operação com mais de 200 profissionais e áreas<br/>como Vendas, Marketing, Customer Success,<br/>Suporte e Gestão de Pessoas.<br/><br/>Hoje, aplica esse repertório ao lado de<br/>fundadores e CEOs que precisam reduzir<br/>decisões concentradas no líder e construir uma<br/>operação com mais clareza, autonomia e<br/>capacidade de execução.",
+        105 * mm,
+        PAGE_H - 78 * mm,
+        85 * mm,
+        bio_style,
+    )
+
+    credentials_y = 61 * mm
+    credentials_h = 48 * mm
+    page.setFillColor(SURFACE_STRONG)
+    page.roundRect(MARGIN, credentials_y, PAGE_W - 2 * MARGIN, credentials_h, 4 * mm, stroke=0, fill=1)
+    draw_label(page, "Repertório aplicado", MARGIN + 7 * mm, credentials_y + 37 * mm, OLIVE)
+
+    columns = [
+        ("20+ ANOS", "Tecnologia, educação<br/>e gestão"),
+        ("200+ PESSOAS", "Lideradas na operação<br/>da HeroSpark"),
+        ("EMPREENDEDOR", "Fundador e executivo em<br/>diferentes estágios"),
+    ]
+    column_w = (PAGE_W - 2 * MARGIN - 14 * mm) / 3
+    for index, (title, description) in enumerate(columns):
+        x = MARGIN + 7 * mm + index * column_w
+        if index:
+            page.setStrokeColor(BORDER)
+            page.setLineWidth(0.45)
+            page.line(x - 5 * mm, credentials_y + 8 * mm, x - 5 * mm, credentials_y + 31 * mm)
+        page.setFillColor(INK)
+        page.setFont("AvenirNext-Demi", 9.2)
+        page.drawString(x, credentials_y + 24 * mm, title)
+        credential_style = paragraph_style(f"credential-{index}", 7.8, 10.8, SLATE)
+        draw_paragraph(page, description, x, credentials_y + 19 * mm, column_w - 8 * mm, credential_style)
+
+    draw_label(page, "Canais", MARGIN, 43 * mm, MUTED)
+    link_y = 34 * mm
+    link_x = MARGIN
+    links = [
+        ("LINKEDIN", "https://www.linkedin.com/in/rafaelmcarvalho/"),
+        ("INSTAGRAM", "https://www.instagram.com/eu.rafaelcarvalho/"),
+        ("YOUTUBE", "https://www.youtube.com/@RafaelCarvalhoMCC"),
+    ]
+    for index, (label, url) in enumerate(links):
+        width = draw_link(page, label, url, link_x, link_y)
+        link_x += width + 12 * mm
+        if index < len(links) - 1:
+            page.setFillColor(BORDER)
+            page.circle(link_x - 6 * mm, link_y + 1.2 * mm, 0.7 * mm, stroke=0, fill=1)
+
+    footer(page, 2)
 
 
 def draw_thesis(page: canvas.Canvas) -> None:
@@ -345,7 +428,7 @@ def draw_thesis(page: canvas.Canvas) -> None:
         PAGE_W - 2 * MARGIN - 14 * mm,
         quote,
     )
-    footer(page, 2)
+    footer(page, 3)
 
 
 def draw_chapter(page: canvas.Canvas) -> None:
@@ -429,7 +512,7 @@ def draw_chapter(page: canvas.Canvas) -> None:
         PAGE_W - 2 * MARGIN - 20 * mm,
         question,
     )
-    footer(page, 3)
+    footer(page, 4)
 
 
 def draw_exercise(page: canvas.Canvas) -> None:
@@ -501,7 +584,7 @@ def draw_exercise(page: canvas.Canvas) -> None:
         PAGE_W - 2 * MARGIN - 12 * mm,
         callout,
     )
-    footer(page, 4)
+    footer(page, 5)
 
 
 def build() -> Path:
@@ -513,7 +596,9 @@ def build() -> Path:
     document.setAuthor("Rafael Carvalho")
     document.setSubject("Prova visual da coleção Operação que Escala")
 
-    draw_cover(document, photo)
+    draw_cover(document)
+    document.showPage()
+    draw_author(document, photo)
     document.showPage()
     draw_thesis(document)
     document.showPage()

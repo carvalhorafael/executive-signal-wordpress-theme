@@ -10,6 +10,16 @@ ultima_atualizacao: "2026-10-06"
 
 ## Por que contratar pessoas, criar processos e aumentar as reuniões pode não reduzir a dependência da empresa em você
 
+## Sobre o autor
+
+Rafael Carvalho é empreendedor e executivo há mais de 20 anos. Sua trajetória foi construída na interseção entre tecnologia, educação e gestão. Cofundou a Edools e, posteriormente, atuou como COO da HeroSpark, onde liderou uma operação com mais de 200 profissionais e áreas como Vendas, Marketing, Customer Success, Suporte e Gestão de Pessoas.
+
+Hoje, aplica esse repertório ao lado de fundadores e CEOs que precisam reduzir decisões concentradas no líder e construir uma operação com mais clareza, autonomia e capacidade de execução.
+
+- [LinkedIn](https://www.linkedin.com/in/rafaelmcarvalho/)
+- [Instagram](https://www.instagram.com/eu.rafaelcarvalho/)
+- [YouTube](https://www.youtube.com/@RafaelCarvalhoMCC)
+
 Uma empresa raramente nasce com responsabilidades perfeitamente distribuídas, decisões bem delimitadas e uma cadência de gestão confiável.
 
 No começo, isso nem sempre é um problema. O fundador conhece o produto, acompanha os clientes, reúne as informações e toma a maior parte das decisões. Sua presença reduz a distância entre perceber um problema e agir sobre ele.

@@ -8,7 +8,7 @@ ultima_atualizacao: "2026-10-06"
 
 ## Validação
 
-Em 2026-10-06, cores, fontes e estilo visual foram aprovados. A prova foi ajustada após a revisão anotada para corrigir posicionamento da fotografia, contenção de textos e centralização dentro dos elementos.
+Em 2026-10-06, cores, fontes e estilo visual foram aprovados. A prova foi ajustada após a revisão anotada para corrigir contenção de textos e centralização dentro dos elementos. Na rodada seguinte, a fotografia saiu da capa e passou para uma página dedicada ao autor.
 
 ## Cena de uso
 
@@ -46,7 +46,8 @@ Um fundador lê o material no notebook ou tablet, durante o dia, entre duas reun
 
 ### Imagem
 
-- Fotografia real de Rafael na capa, com presença secundária ao título.
+- Capa sem fotografia, preservando uma apresentação mais sóbria e executiva.
+- Fotografia real de Rafael concentrada na página "Sobre o autor".
 - Sem banco de imagens corporativo.
 - O conteúdo interno usa diagramas e estrutura, não decoração fotográfica.
 
@@ -56,8 +57,15 @@ Um fundador lê o material no notebook ou tablet, durante o dia, entre duas reun
 
 - Número 7 como sinal editorial dominante.
 - Título em bloco assimétrico.
-- Subtítulo curto, autoria e fotografia real.
+- Subtítulo curto e autoria no rodapé.
 - Sem selos, garantias, mockups ou elementos de infoproduto.
+
+### Sobre o autor
+
+- Fotografia real, biografia curta e credenciais objetivas.
+- Página orientada a estabelecer confiança antes do diagnóstico.
+- Links discretos e clicáveis para LinkedIn, Instagram e YouTube.
+- Sem chamada comercial ou relato biográfico extenso.
 
 ### Tese diagnóstica
 
@@ -101,8 +109,9 @@ Um fundador lê o material no notebook ou tablet, durante o dia, entre duas reun
 ## Escopo da primeira prova
 
 1. Capa.
-2. Página de tese diagnóstica.
-3. Página-modelo da Armadilha 2.
-4. Página de exercício prático.
+2. Página "Sobre o autor".
+3. Página de tese diagnóstica.
+4. Página-modelo da Armadilha 2.
+5. Página de exercício prático.
 
 Essa prova valida o sistema visual. Ela não é a versão completa do material.
