@@ -35,6 +35,8 @@ Relatório executivo curto, com uma armadilha por capítulo e aplicação práti
 - [Landing page](./landing-page.md): primeira versão da página de captura.
 - [Anúncios](./anuncios.md): ângulos e variações iniciais para teste.
 - [E-mails](./emails.md): entrega e sequência inicial de nutrição.
+- [Direção visual](./diagramacao/direcao-visual.md): sistema visual proposto para a coleção.
+- [Gerador da prova visual](./diagramacao/gerar-prova-visual.py): fonte reproduzível do protótipo PDF.
 
 ## Armadilhas iniciais
 
