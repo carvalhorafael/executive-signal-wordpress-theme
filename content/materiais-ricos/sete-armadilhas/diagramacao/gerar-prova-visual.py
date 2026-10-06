@@ -188,19 +188,20 @@ def prepare_photo() -> Path:
 
 def draw_cover(page: canvas.Canvas) -> None:
     page_background(page, DARK)
+    content_shift = 40 * mm
 
     draw_label(page, "Rafael Carvalho · Caderno 01", MARGIN, PAGE_H - 22 * mm, LIGHT_SLATE)
 
     page.setFillColor(OLIVE)
     page.setFont("AvenirNext-Bold", 104)
-    page.drawString(MARGIN - 2 * mm, PAGE_H - 82 * mm, "7")
+    page.drawString(MARGIN - 2 * mm, PAGE_H - 82 * mm - content_shift, "7")
 
     title_style = paragraph_style("cover-title", 31, 32, LIGHT_INK, "AvenirNext-Demi")
     draw_paragraph(
         page,
         "As Armadilhas que<br/>Mantêm o Fundador<br/>Preso à Operação",
         68 * mm,
-        PAGE_H - 39 * mm,
+        PAGE_H - 39 * mm - content_shift,
         PAGE_W - 88 * mm,
         title_style,
     )
@@ -210,7 +211,7 @@ def draw_cover(page: canvas.Canvas) -> None:
         page,
         "Por que contratar pessoas, criar processos e aumentar as reuniões pode não reduzir a dependência da empresa em você.",
         MARGIN,
-        PAGE_H - 117 * mm,
+        PAGE_H - 117 * mm - content_shift,
         104 * mm,
         subtitle_style,
     )
