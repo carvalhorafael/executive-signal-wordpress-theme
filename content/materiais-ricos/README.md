@@ -1,7 +1,7 @@
 ---
 titulo: "Materiais ricos para COO as a Service"
 status: "em desenvolvimento"
-ultima_atualizacao: "2026-10-04"
+ultima_atualizacao: "2026-10-06"
 ---
 
 # Materiais ricos para COO as a Service
@@ -18,7 +18,7 @@ Anúncio -> página do material -> captura -> entrega gratuita -> nutrição con
 
 | Material | Papel principal | Onda | Status |
 | --- | --- | --- | --- |
-| [As 7 Armadilhas que Mantêm o Fundador Preso à Operação](./sete-armadilhas/README.md) | Descoberta e reconhecimento do problema | 1 | Pacote inicial para validação |
+| [As 7 Armadilhas que Mantêm o Fundador Preso à Operação](./sete-armadilhas/README.md) | Descoberta e reconhecimento do problema | 1 | Conteúdo aprovado; diagramação pendente |
 | [Raio-X do Fundador-Gargalo](./raio-x-fundador-gargalo/README.md) | Diagnóstico e qualificação | 1 | Brief inicial |
 | [O Sistema Operacional Mínimo para Empresas em Crescimento](./sistema-operacional-minimo/README.md) | Educação da solução | 1 | Brief inicial |
 | [Teste de Autonomia da Liderança](./teste-autonomia-lideranca/README.md) | Diagnóstico específico | 2 | Brief inicial |

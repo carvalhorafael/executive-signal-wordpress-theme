@@ -1,8 +1,8 @@
 ---
 titulo: "As 7 Armadilhas que Mantêm o Fundador Preso à Operação"
-status: "em produção"
+status: "conteúdo aprovado; produção visual pendente"
 onda: 1
-ultima_atualizacao: "2026-10-04"
+ultima_atualizacao: "2026-10-06"
 ---
 
 # As 7 Armadilhas que Mantêm o Fundador Preso à Operação
@@ -31,7 +31,7 @@ Relatório executivo curto, com uma armadilha por capítulo e aplicação práti
 
 ## Arquivos de produção
 
-- [Conteúdo do material](./conteudo.md): primeira versão editorial completa.
+- [Conteúdo do material](./conteudo.md): conteúdo editorial aprovado em 2026-10-06.
 - [Landing page](./landing-page.md): primeira versão da página de captura.
 - [Anúncios](./anuncios.md): ângulos e variações iniciais para teste.
 - [E-mails](./emails.md): entrega e sequência inicial de nutrição.
@@ -106,7 +106,8 @@ Cada armadilha pode originar:
 - Aprovado: material da primeira onda.
 - Aprovado: cada armadilha deve conter mecanismo, consequência e pergunta de diagnóstico.
 - Aprovado: usar o Raio-X como principal próximo passo.
-- Proposta para validação: manter a ordem atual, avançando de respostas comuns para a dependência sistêmica do fundador.
-- Proposta para validação: relatório executivo curto, com leitura estimada entre 15 e 20 minutos.
-- Pendente: revisar e aprovar a primeira versão editorial.
+- Aprovado em 2026-10-06: conteúdo editorial completo, incluindo título, promessa, ordem das armadilhas, profundidade, exercício e transição para o Raio-X.
+- Aprovado: manter a ordem atual, avançando de respostas comuns para a dependência sistêmica do fundador.
+- Aprovado: relatório executivo curto, com leitura estimada entre 15 e 20 minutos.
+- Pendente: definir e aprovar a direção visual e diagramar o material.
 - Pendente: revisar a landing page, os anúncios e a sequência de e-mails.

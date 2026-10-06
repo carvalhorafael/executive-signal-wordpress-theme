@@ -1,8 +1,9 @@
 ---
 titulo: "As 7 Armadilhas que Mantêm o Fundador Preso à Operação"
 subtitulo: "Por que contratar pessoas, criar processos e aumentar as reuniões pode não reduzir a dependência da empresa em você"
-status: "primeira versão editorial"
-ultima_atualizacao: "2026-10-04"
+status: "conteúdo editorial aprovado"
+aprovado_em: "2026-10-06"
+ultima_atualizacao: "2026-10-06"
 ---
 
 # As 7 Armadilhas que Mantêm o Fundador Preso à Operação
