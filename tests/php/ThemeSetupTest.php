@@ -156,6 +156,16 @@ final class ThemeSetupTest extends TestCase {
 	}
 
 	/**
+	 * Rafael Carvalho Links should be selectable as a page template.
+	 */
+	public function test_rafael_links_template_is_registered(): void {
+		$templates = wp_get_theme()->get_page_templates();
+
+		$this->assertArrayHasKey( 'page-links.php', $templates );
+		$this->assertSame( 'Links — Rafael Carvalho', $templates['page-links.php'] );
+	}
+
+	/**
 	 * Palestras should be selectable as a page template.
 	 */
 	public function test_speaking_template_is_registered(): void {
