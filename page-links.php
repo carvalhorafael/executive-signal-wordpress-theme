@@ -32,7 +32,6 @@ $youtube_url        = 'https://www.youtube.com/@RafaelCarvalhoMCC?utm_medium=sit
 		<header class="rafael-links__profile">
 			<img class="rafael-links__portrait" src="<?php echo esc_url( $portrait['url'] ); ?>" alt="<?php echo esc_attr( $portrait['alt'] ); ?>" width="<?php echo esc_attr( $portrait['width'] ); ?>" height="<?php echo esc_attr( $portrait['height'] ); ?>" fetchpriority="high">
 			<div class="rafael-links__introduction">
-				<p class="rafael-links__eyebrow"><?php esc_html_e( 'Rafael Carvalho', 'executive-signal-wordpress-theme' ); ?></p>
 				<h1><?php esc_html_e( 'Estratégia só gera resultado quando vira execução.', 'executive-signal-wordpress-theme' ); ?></h1>
 				<p><?php esc_html_e( 'Empreendedor e executivo. Compartilho ideias e ferramentas para quem precisa decidir, liderar e fazer acontecer.', 'executive-signal-wordpress-theme' ); ?></p>
 			</div>

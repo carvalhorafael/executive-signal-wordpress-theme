@@ -33,7 +33,7 @@ msgstr "Tema WordPress do Executive Signal."
 
 #. Author of the theme
 #: style.css
-#: page-links.php:35
+#: header-links.php:23
 msgid "Rafael Carvalho"
 msgstr "Rafael Carvalho"
 
@@ -1201,29 +1201,29 @@ msgstr "Home — Rafael Carvalho"
 msgid "Links — Rafael Carvalho"
 msgstr "Links — Rafael Carvalho"
 
-#: page-links.php:36
+#: page-links.php:35
 msgid "Estratégia só gera resultado quando vira execução."
 msgstr "Estratégia só gera resultado quando vira execução."
 
-#: page-links.php:37
+#: page-links.php:36
 msgid "Empreendedor e executivo. Compartilho ideias e ferramentas para quem precisa decidir, liderar e fazer acontecer."
 msgstr "Empreendedor e executivo. Compartilho ideias e ferramentas para quem precisa decidir, liderar e fazer acontecer."
 
-#: page-links.php:43
+#: page-links.php:42
 #: template-parts/home/content.php:96
 msgid "Atuação principal"
 msgstr "Atuação principal"
 
-#: page-links.php:44
+#: page-links.php:43
 #: template-parts/home/content.php:244
 msgid "Sua empresa cresceu. A operação ainda depende demais de você?"
 msgstr "Sua empresa cresceu. A operação ainda depende demais de você?"
 
-#: page-links.php:45
+#: page-links.php:44
 msgid "Conheça uma atuação executiva próxima para organizar prioridades, fortalecer a liderança e transformar estratégia em execução consistente."
 msgstr "Conheça uma atuação executiva próxima para organizar prioridades, fortalecer a liderança e transformar estratégia em execução consistente."
 
-#: page-links.php:47
+#: page-links.php:46
 #: page-sobre-rafael-carvalho.php:250
 #: template-parts/home/content.php:41
 #: template-parts/home/content.php:248
@@ -1231,52 +1231,52 @@ msgstr "Conheça uma atuação executiva próxima para organizar prioridades, fo
 msgid "Conheça o COO as a Service"
 msgstr "Conheça o COO as a Service"
 
-#: page-links.php:50
+#: page-links.php:49
 msgid "Conteúdos e recursos"
 msgstr "Conteúdos e recursos"
 
-#: page-links.php:53
+#: page-links.php:52
 #: template-parts/home/content.php:211
 msgid "Canal no YouTube"
 msgstr "Canal no YouTube"
 
-#: page-links.php:54
+#: page-links.php:53
 msgid "Vídeos sobre empreendedorismo, estratégia, operação e liderança."
 msgstr "Vídeos sobre empreendedorismo, estratégia, operação e liderança."
 
-#: page-links.php:60
+#: page-links.php:59
 #: template-parts/home/content.php:201
 msgid "Materiais gratuitos"
 msgstr "Materiais gratuitos"
 
-#: page-links.php:61
+#: page-links.php:60
 msgid "Guias e ferramentas práticas para tomar decisões e executar melhor."
 msgstr "Guias e ferramentas práticas para tomar decisões e executar melhor."
 
-#: page-links.php:67
+#: page-links.php:66
 msgid "Artigos"
 msgstr "Artigos"
 
-#: page-links.php:68
+#: page-links.php:67
 msgid "Reflexões para quem precisa decidir e fazer acontecer."
 msgstr "Reflexões para quem precisa decidir e fazer acontecer."
 
-#: page-links.php:74
+#: page-links.php:73
 msgid "Redes sociais e contato"
 msgstr "Redes sociais e contato"
 
-#: page-links.php:75
+#: page-links.php:74
 #: template-parts/home/content.php:216
 msgid "Instagram"
 msgstr "Instagram"
 
-#: page-links.php:76
+#: page-links.php:75
 #: template-parts/home/content.php:221
 #: template-parts/share-post.php:23
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: page-links.php:78
+#: page-links.php:77
 msgid "Contato"
 msgstr "Contato"
 

@@ -20,11 +20,7 @@
 	<header class="links-site-header">
 		<div class="links-site-header__inner">
 			<div class="links-site-header__brand">
-				<?php if ( has_custom_logo() ) : ?>
-					<?php the_custom_logo(); ?>
-				<?php else : ?>
-					<a class="links-site-header__brand-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-				<?php endif; ?>
+				<a class="links-site-header__brand-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php esc_html_e( 'Rafael Carvalho', 'executive-signal-wordpress-theme' ); ?></a>
 			</div>
 
 			<?php executive_signal_render_theme_switcher(); ?>

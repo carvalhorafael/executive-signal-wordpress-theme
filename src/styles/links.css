@@ -37,7 +37,7 @@
 }
 
 .links-site-header__brand-link {
-  color: var(--es-text-primary);
+  color: var(--es-accent);
   font-weight: var(--es-font-weight-heading);
   text-decoration: none;
 }
@@ -244,26 +244,19 @@
 
 @media (max-width: 520px) {
   .rafael-links__profile {
-    align-items: start;
-    grid-template-columns: 4.5rem minmax(0, 1fr);
+    display: block;
   }
 
-  .rafael-links__introduction h1,
-  .rafael-links__introduction > p:last-child {
-    grid-column: 1 / -1;
+  .rafael-links__portrait {
+    width: 4.5rem;
   }
 
   .rafael-links__introduction {
-    display: contents;
-  }
-
-  .rafael-links__eyebrow {
-    align-self: center;
-    margin: 0;
+    margin-top: 1.5rem;
   }
 
   .rafael-links__introduction h1 {
-    margin-top: 0.5rem;
+    margin-top: 0;
   }
 
   .rafael-links__social {
