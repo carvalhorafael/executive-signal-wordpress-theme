@@ -248,7 +248,7 @@
   }
 
   .rafael-links__portrait {
-    width: 4.5rem;
+    width: clamp(7.5rem, 34vw, 9rem);
   }
 
   .rafael-links__introduction {
