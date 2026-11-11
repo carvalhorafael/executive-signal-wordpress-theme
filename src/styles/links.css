@@ -244,18 +244,28 @@
 
 @media (max-width: 520px) {
   .rafael-links__profile {
-    display: block;
+    align-items: center;
+    column-gap: 1rem;
+    grid-template-columns: clamp(7.5rem, 34vw, 9rem) minmax(0, 1fr);
+    row-gap: 1.5rem;
   }
 
   .rafael-links__portrait {
-    width: clamp(7.5rem, 34vw, 9rem);
+    width: 100%;
   }
 
   .rafael-links__introduction {
-    margin-top: 1.5rem;
+    display: contents;
   }
 
   .rafael-links__introduction h1 {
+    font-size: clamp(1.65rem, 7vw, 2.1rem);
+    grid-column: 2;
+    max-width: none;
+  }
+
+  .rafael-links__introduction > p:last-child {
+    grid-column: 1 / -1;
     margin-top: 0;
   }
 
