@@ -31,6 +31,7 @@ msgstr ""
 
 #. Author of the theme
 #: style.css
+#: header-links.php:23
 msgid "Rafael Carvalho"
 msgstr ""
 
@@ -169,6 +170,7 @@ msgid "Publish comment"
 msgstr ""
 
 #. translators: %s: Current year.
+#: footer-links.php:15
 #: footer-sales.php:16
 #, php-format
 msgid "Copyright © %s Rafael Carvalho."
@@ -184,6 +186,11 @@ msgstr ""
 #: footer.php:28
 #, php-format
 msgid "Copyright © %s - Developed by Rafael Carvalho®"
+msgstr ""
+
+#: header-links.php:18
+#: header.php:18
+msgid "Skip to content"
 msgstr ""
 
 #: header-sales.php:18
@@ -222,10 +229,6 @@ msgstr ""
 
 #: header-speaking.php:35
 msgid "Convidar Rafael"
-msgstr ""
-
-#: header.php:18
-msgid "Skip to content"
 msgstr ""
 
 #: header.php:41
@@ -1192,6 +1195,89 @@ msgstr ""
 msgid "Home — Rafael Carvalho"
 msgstr ""
 
+#. Template Name of the theme
+msgid "Links — Rafael Carvalho"
+msgstr ""
+
+#: page-links.php:35
+msgid "Estratégia só gera resultado quando vira execução."
+msgstr ""
+
+#: page-links.php:36
+msgid "Empreendedor e executivo. Compartilho ideias e ferramentas para quem precisa decidir, liderar e fazer acontecer."
+msgstr ""
+
+#: page-links.php:42
+#: template-parts/home/content.php:96
+msgid "Atuação principal"
+msgstr ""
+
+#: page-links.php:43
+#: template-parts/home/content.php:244
+msgid "Sua empresa cresceu. A operação ainda depende demais de você?"
+msgstr ""
+
+#: page-links.php:44
+msgid "Conheça uma atuação executiva próxima para organizar prioridades, fortalecer a liderança e transformar estratégia em execução consistente."
+msgstr ""
+
+#: page-links.php:46
+#: page-sobre-rafael-carvalho.php:250
+#: template-parts/home/content.php:41
+#: template-parts/home/content.php:248
+#: template-parts/post-coo-cta.php:17
+msgid "Conheça o COO as a Service"
+msgstr ""
+
+#: page-links.php:49
+msgid "Conteúdos e recursos"
+msgstr ""
+
+#: page-links.php:52
+#: template-parts/home/content.php:211
+msgid "Canal no YouTube"
+msgstr ""
+
+#: page-links.php:53
+msgid "Vídeos sobre empreendedorismo, estratégia, operação e liderança."
+msgstr ""
+
+#: page-links.php:59
+#: template-parts/home/content.php:201
+msgid "Materiais gratuitos"
+msgstr ""
+
+#: page-links.php:60
+msgid "Guias e ferramentas práticas para tomar decisões e executar melhor."
+msgstr ""
+
+#: page-links.php:66
+msgid "Artigos"
+msgstr ""
+
+#: page-links.php:67
+msgid "Reflexões para quem precisa decidir e fazer acontecer."
+msgstr ""
+
+#: page-links.php:73
+msgid "Redes sociais e contato"
+msgstr ""
+
+#: page-links.php:74
+#: template-parts/home/content.php:216
+msgid "Instagram"
+msgstr ""
+
+#: page-links.php:75
+#: template-parts/home/content.php:221
+#: template-parts/share-post.php:23
+msgid "LinkedIn"
+msgstr ""
+
+#: page-links.php:77
+msgid "Contato"
+msgstr ""
+
 #. translators: %s: Number of free materials found in an archive.
 #: page-materiais-gratuitos.php:54
 #: taxonomy-material_categoria.php:36
@@ -1845,13 +1931,6 @@ msgstr ""
 msgid "Hoje, ele também dedica essa experiência a ajudar fundadores e CEOs de empresas que já validaram seu produto e cresceram, mas perceberam que a execução passou a depender demais deles."
 msgstr ""
 
-#: page-sobre-rafael-carvalho.php:250
-#: template-parts/home/content.php:41
-#: template-parts/home/content.php:248
-#: template-parts/post-coo-cta.php:17
-msgid "Conheça o COO as a Service"
-msgstr ""
-
 #: page-sobre-rafael-carvalho.php:251
 msgid "Conheça minhas palestras"
 msgstr ""
@@ -2321,10 +2400,6 @@ msgstr ""
 msgid "A liderança assume decisões e a operação ganha clareza."
 msgstr ""
 
-#: template-parts/home/content.php:96
-msgid "Atuação principal"
-msgstr ""
-
 #: template-parts/home/content.php:98
 msgid "COO as a Service é uma atuação próxima para diagnosticar gargalos, organizar prioridades e fortalecer a capacidade de execução da liderança."
 msgstr ""
@@ -2425,10 +2500,6 @@ msgstr ""
 msgid "Recursos"
 msgstr ""
 
-#: template-parts/home/content.php:201
-msgid "Materiais gratuitos"
-msgstr ""
-
 #: template-parts/home/content.php:202
 msgid "Guias e ferramentas para decisões mais claras."
 msgstr ""
@@ -2449,10 +2520,6 @@ msgstr ""
 msgid "Vídeos"
 msgstr ""
 
-#: template-parts/home/content.php:211
-msgid "Canal no YouTube"
-msgstr ""
-
 #: template-parts/home/content.php:212
 msgid "Conversas sobre empreendedorismo, estratégia, operação e liderança."
 msgstr ""
@@ -2461,21 +2528,12 @@ msgstr ""
 msgid "Rede social"
 msgstr ""
 
-#: template-parts/home/content.php:216
-msgid "Instagram"
-msgstr ""
-
 #: template-parts/home/content.php:217
 msgid "Bastidores, ideias e aprendizados do dia a dia."
 msgstr ""
 
 #: template-parts/home/content.php:220
 msgid "Rede profissional"
-msgstr ""
-
-#: template-parts/home/content.php:221
-#: template-parts/share-post.php:23
-msgid "LinkedIn"
 msgstr ""
 
 #: template-parts/home/content.php:222
@@ -2492,10 +2550,6 @@ msgstr ""
 
 #: template-parts/home/content.php:235
 msgid "Conhecer palestras"
-msgstr ""
-
-#: template-parts/home/content.php:244
-msgid "Sua empresa cresceu. A operação ainda depende demais de você?"
 msgstr ""
 
 #: template-parts/home/content.php:245
