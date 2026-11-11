@@ -73,9 +73,10 @@
 
 .rafael-links__profile {
   align-items: center;
+  column-gap: clamp(1.25rem, 4vw, 2.5rem);
   display: grid;
-  gap: clamp(1.25rem, 4vw, 2.5rem);
   grid-template-columns: clamp(9rem, 20vw, 18rem) minmax(0, 1fr);
+  row-gap: clamp(1.25rem, 2vw, 1.75rem);
 }
 
 .rafael-links__portrait {
@@ -88,7 +89,7 @@
 }
 
 .rafael-links__introduction {
-  max-width: 42rem;
+  display: contents;
 }
 
 .rafael-links__eyebrow {
@@ -105,6 +106,7 @@
   color: var(--es-text-primary);
   font-size: clamp(2rem, 5.5vw, 4rem);
   font-weight: var(--es-font-weight-heading);
+  grid-column: 2;
   letter-spacing: var(--es-letter-spacing-title);
   line-height: 1.02;
   margin: 0;
@@ -114,8 +116,9 @@
 .rafael-links__introduction > p:last-child {
   color: var(--es-text-secondary);
   font-size: clamp(1rem, 2vw, 1.125rem);
+  grid-column: 1 / -1;
   line-height: 1.65;
-  margin: 1rem 0 0;
+  margin: 0;
   max-width: 58ch;
 }
 
@@ -254,19 +257,9 @@
     width: 100%;
   }
 
-  .rafael-links__introduction {
-    display: contents;
-  }
-
   .rafael-links__introduction h1 {
     font-size: clamp(1.65rem, 7vw, 2.1rem);
-    grid-column: 2;
     max-width: none;
-  }
-
-  .rafael-links__introduction > p:last-child {
-    grid-column: 1 / -1;
-    margin-top: 0;
   }
 
   .rafael-links__social {
